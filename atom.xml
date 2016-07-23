@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="williamliuwen.cn/"/>
-  <updated>2016-07-23T02:52:32.000Z</updated>
+  <updated>2016-07-23T03:06:53.000Z</updated>
   <id>williamliuwen.cn/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo 部署</title>
+    <link href="williamliuwen.cn/2016/07/23/hexo-%E9%83%A8%E7%BD%B2/"/>
+    <id>williamliuwen.cn/2016/07/23/hexo-部署/</id>
+    <published>2016-07-23T02:53:57.000Z</published>
+    <updated>2016-07-23T03:06:53.000Z</updated>
+    
+    <content type="html">&lt;h4 id=&quot;部署hexo前提准备&quot;&gt;&lt;a href=&quot;#部署hexo前提准备&quot; class=&quot;headerlink&quot; title=&quot;部署hexo前提准备&quot;&gt;&lt;/a&gt;部署hexo前提准备&lt;/h4&gt;&lt;p&gt;1.到node.js 网站 &lt;a href=&quot;https://nodejs.org/en/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://nodejs.org/en/&lt;/a&gt;  下载node.js 直接安装，安装完，查看版本 ，node -v&lt;/p&gt;
+&lt;p&gt;2.到homebrew 网站  &lt;a href=&quot;http://brew.sh/index_zh-cn.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://brew.sh/index_zh-cn.html&lt;/a&gt; 使用下面的命令安装,如果安装失败，使用sudo&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;开始部署hexo&quot;&gt;&lt;a href=&quot;#开始部署hexo&quot; class=&quot;headerlink&quot; title=&quot;开始部署hexo&quot;&gt;&lt;/a&gt;开始部署hexo&lt;/h4&gt;&lt;p&gt;1.使用下面的命令，一条一条来，如果不行，用sudo&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-cli -g&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;hexo init blog&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;cd blog&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;2.直接访问本地部署好的hexo&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;部署hexo前提准备&quot;&gt;&lt;a href=&quot;#部署hexo前提准备&quot; class=&quot;headerlink&quot; title=&quot;部署hexo前提准备&quot;&gt;&lt;/a&gt;部署hexo前提准备&lt;/h4&gt;&lt;p&gt;1.到node.js 网站 &lt;a href=&quot;https://nodejs.
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>NSRunLoop</title>
