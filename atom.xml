@@ -1,0 +1,934 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>太阳在的地方</title>
+  <subtitle>知我者谓我心忧，不知我者谓我何求。</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="williamliuwen.cn/"/>
+  <updated>2016-07-23T01:13:27.000Z</updated>
+  <id>williamliuwen.cn/</id>
+  
+  <author>
+    <name>刘 小汶</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NSRunLoop</title>
+    <link href="williamliuwen.cn/2016/07/23/NSRunLoop/"/>
+    <id>williamliuwen.cn/2016/07/23/NSRunLoop/</id>
+    <published>2016-07-23T00:35:55.000Z</published>
+    <updated>2016-07-23T01:13:27.000Z</updated>
+    
+    <content type="html">&lt;p&gt;####运行循环本质&lt;/p&gt;
+&lt;p&gt;1.从字面上看，就是运行循环跑圈&lt;/p&gt;
+&lt;p&gt;2.其实它内部就是do-while循环，在这个循环内部不断地处理各种任务（比如Source、Timer、Observer）&lt;/p&gt;
+&lt;p&gt;3.循环体的开始需要检测是否有需要处理的事件，如果有则去处&amp;gt; - 理，如果没有则进入睡眠以节省CPU时间&lt;/p&gt;
+&lt;p&gt;####FIXME:0.运行循环 概念性的东西有？&lt;/p&gt;
+&lt;p&gt;概念1【输入源==事件源】&lt;br&gt;具体查看《RunLoop【输入源】》&lt;/p&gt;
+&lt;p&gt;概念2【模式】&lt;br&gt;具体查看《RunLoop【模式】》&lt;/p&gt;
+&lt;p&gt;概念3【观察者Observer】&lt;br&gt;具体查看《RunLoop【观察者】》&lt;/p&gt;
+&lt;p&gt;####FIXME:1.运行循环 为什么要使用运行循环&lt;/p&gt;
+&lt;p&gt;1.我们思考一下：程序为什么可以处理用户的各种事件，而且可以保证程序不退出？答案：就是因为程序里面有个系统的默认运行循环，所以能保证程序不退出，并且处理用户的各种事件&lt;/p&gt;
+&lt;p&gt;2.想要了解为什么要使用运行循环，我们可以从使用运行循环的目的来了解，使用了运行循环我们可以：&lt;br&gt;a. 保证程序不退出 ;&lt;br&gt;b. 负责处理输入事件;&lt;br&gt;c. 如果没有事件发生，会让程序进入休眠状态。&lt;br&gt;从上面可以得出结论，为什么要使用运行循环，因为这是一个APP的基本，没有运行循环，就没有APP的正常运行。&lt;/p&gt;
+&lt;p&gt;3.通过上面的了解我们可以总结运行循环的优点：有事情就做事情，没事情就休息；优点：节省CPU资源、提高程序性能；&lt;/p&gt;
+&lt;p&gt;####FIXME:2.运行循环 程序里哪里存在运行循环&lt;/p&gt;
+&lt;p&gt;1.【系统默认 运行循环】系统默认就是一个运行循环，可以保证程序不死掉；系统默认运行循环在主线程&lt;/p&gt;
+&lt;p&gt;####FIXME:3.运行循环 与线程的关系&lt;/p&gt;
+&lt;p&gt;1.每一个线程内部都有一个消息循环。只有主线程的消息循环默认开启,子线程的消息循环默认不开启，一个运行循环对应着一条唯一的线程，如何让子线程不死 ，给这条子线程开启一个运行循环，子线程的runloop需要手动创建,需要手动开启&lt;/p&gt;
+&lt;p&gt;2.线程在执行中的休眠和激活就是由RunLoop对象进行管理的&lt;/p&gt;
+&lt;p&gt;3.RunLoop是用来管理线程的&lt;/p&gt;
+&lt;p&gt;4.每一个线程都有一个RunLoop对象。可以通过具体的方法去获得&lt;/p&gt;
+&lt;p&gt;5.但是需要注意：虽然每一个线程都可以获取RunLoop对象，但是并不是每一个线程中都有实例对象，我们可以这样理解：如果我们不获取RunLoop，这个RunLoop就不存在，我们获取时，如果不存在，就会去创建。在主线程中，这个MainRunLoop是默认创建并运行激活的&lt;/p&gt;
+&lt;p&gt;6.每条线程都有唯一的一个与之对应的RunLoop对象&lt;/p&gt;
+&lt;p&gt;####FIXME:4.运行循环 生命周期&lt;/p&gt;
+&lt;p&gt;1.运行循环的生命周期：在第一次获取时创建，在线程结束时销毁&lt;/p&gt;
+&lt;p&gt;####FIXME:5.运行循环 基本运行流程&lt;/p&gt;
+&lt;p&gt;1.创建消息（即输入源）；&lt;/p&gt;
+&lt;p&gt;2.指定该事件（源）在循环中运行的模式，并加入循环；&lt;/p&gt;
+&lt;p&gt;3.当事件的模式与消息循环的模式匹配的时候，消息才会运行。&lt;/p&gt;
+&lt;p&gt;4.运行逻辑总结：一个线程对应一个runLoop,主线程的runloop是程序一启动,默认就创建一个runloop,创建好了之后就会给它添加一些默认的模式,每个模式里面会有很多的 source /timer/observer ,添加好这些模式后,observer就会监听主线程的runloop,进入runloop后,就开始处理事件,先处理timer,再处理source0,source0处理完之后再处理source1,当把这些所有的事件反复的处理完之后,如果没有事件了,那么runloop就会进入睡眠状态,当用户又触发了新的事件,就会唤醒runloop,唤醒runloop后回到第二步,重新处理新的timer,新的source0,新的source1,处理完后就睡眠,一直反复,当我们把程序关闭或者强退,这个时候observer就会监听都runloop退出了.&lt;/p&gt;
+&lt;p&gt;####FIXME:6.运行循环 API&lt;/p&gt;
+&lt;p&gt;1.NSRunloop&lt;/p&gt;
+&lt;p&gt;2.CFRunLoopRef&lt;/p&gt;
+&lt;p&gt;3.两种API的区别1：NSRunloop线程不安全，CFRunLoopRef线程安全；NSRunLoop是Cocoa框架中的类，与之对应的是在Core Fundation中有一个CFRunLoopRef类。这两者的区别是前者不是线程安全的，而CFRunLoopRef是线程安全的。所以：NSRunloop不能调用其他线程的方法.The NSRunLoop class is generally not considered to be thread-safe and its methods should only be called within the context of the current thread. You should never try to call the methods of an NSRunLoop object running in a different thread, as doing so might cause unexpected results.&lt;/p&gt;
+&lt;p&gt;4.两种API的区别2：CFRunLoopRef创建一个timer必须添加到runloop 才会执行,添加的时候要指定模式 defaurce模式 ,不对程序做任何操作 timer就会后台运行 ,当我进行操作的时候runloop模式就会从默认模式切换到其他模式,假如说我操作scrollerView 它就会从default模式切换到tracking模式。而roonloop 同一时刻只能执行一种模式.&lt;/p&gt;
+&lt;p&gt;5.NSRunLoop是基于CFRunLoopRef的一层OC包装，提供了面向对象的 API，但是这些 API 不是线程安全的。所以要了解RunLoop内部结构，需要多研究CFRunLoopRef层面的API（Core Foundation层面）&lt;/p&gt;
+&lt;p&gt;####FIXME:7.运行循环 启动&lt;/p&gt;
+&lt;p&gt;启动的三种方式：&lt;/p&gt;
+&lt;p&gt;1.无条件的—-无条件的进入Runloop是最简单的方法，但也最不推荐使用的。因为这样会使你的线程处在一个永久的循环中，这会让你对Runloop本身的控制很少。你可以添加或删除输入源和定时器，但是退出Runloop的唯一方法是杀死它。没有任何办法可以让这Runloop运行在自定义模式下。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[[NSRunLoop currentRunLoop] run];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;2.设置超时时间—-替代无条件进入Runloop更好的办法是用预设超时时间来运行Runloop，这样Runloop运作直到某一事件到达或者规定的时间已经到期。如果是事件到达，消息会被传递给相应的处理程序来处理，然后Runloop退出。你可以重新启动Runloop来等待下一事件。如果是规定时间到期了，你只需简单的重启Runloop或使用此段时间来做任何的其他工作。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:2]]; 2 秒钟之后结束&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;3.特定的模式—-除了超时机制，你也可以使用特定的模式来运行你的Runloop。模式和超时不是互斥的，他们可以在启动RunLoop的时候同时使用。模式限制了可以传递事件给Runloop的输入源的类型。暂停当前处理的流程，转而处理其他输入源，当date设置为&lt;a href=&quot;将来，基本不会到达的时间&quot;&gt;NSDate distantFuture&lt;/a&gt;，所以除非处理其他输入源结束，否则永不退出处理暂停的当前处理的流程&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;####FIXME:8.运行循环 结束&lt;/p&gt;
+&lt;p&gt;结束的三种方式：&lt;/p&gt;
+&lt;p&gt;1.给RunLoop设置超时时间&lt;/p&gt;
+&lt;p&gt;2.通知RunLoop停止—-如果可以配置的话，推荐使用第一种方法。指定一个超时时间可以使RunLoop退出前完成所有正常操作，包括发送消息给RunLoop观察者。&lt;/p&gt;
+&lt;p&gt;3.使用CFRunLoopStop来显式的停止RunLoop和使用超时时间产生的结果相似。RunLoop把所有剩余的通知发送出去再退出。与设置超时的不同的是你可以在无条件启动的RunLoop里面使用该技术。&lt;/p&gt;
+&lt;p&gt;####FIXME:9.运行循环 添加输入源&lt;/p&gt;
+&lt;p&gt;具体查看《NSRunLoop【例子&lt;em&gt;输入源&lt;/em&gt;】》&lt;/p&gt;
+&lt;p&gt;####FIXME:10.运行循环 移除输入源&lt;/p&gt;
+&lt;p&gt;1.输入源被注册到RunLoop中时会有方法进行remove。但是定时器没有remove，但是它的invalidate方法可以将其从RunLoop中移除。invalidate是重要的也是唯一的将定时器从RunLoop中注销的方法，所以如果我们创建了定时器，就一定要再不适用的时候调用invalidate方法。&lt;/p&gt;
+&lt;p&gt;2.自动释放池,什么时候创建和释放 ?&lt;br&gt;(1)第一次创建:是在runloop进入的时候创建 对应的状态 = KCFRunLoopEntry&lt;br&gt;(2)最后一个退出,是在runloop退出的时候 对应的状态 = KCFRunLoopExit&lt;br&gt;(3)其他的创建和释放&lt;br&gt;每次睡觉的时候会释放前自动释放池,再创建一个新的&lt;br&gt;即将进入睡眠的时候,先释放上一次创建的自动释放池,然后再创建一个新的释放池&lt;/p&gt;
+&lt;p&gt;####FIXME:11.运行循环 能运行的关键&lt;/p&gt;
+&lt;p&gt;1.每次运行一个RunLoop，你指定（显式或隐式）RunLoop的运行模式。当相应的模式传递给RunLoop时，只有与该模式对应的Input Source才被监控并允许RunLoop对事件进行处理（与此类似，也只有与该模式对应的Observers才会被通知）&lt;/p&gt;
+&lt;p&gt;2.上面的对应关系是：&lt;/p&gt;
+&lt;p&gt;RunLoop—-模式—-&lt;br&gt;模式—-Input Sources&lt;br&gt;模式—-Observers&lt;/p&gt;
+&lt;p&gt;####FIXME:12.运行循环 可以对运行循环做的操作&lt;/p&gt;
+&lt;p&gt;1.添加输入源；添加定时源；添加观察者；&lt;/p&gt;
+&lt;p&gt;####FIXME:13.运行循环 获得RunLoop对象&lt;/p&gt;
+&lt;p&gt;Foundation&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[NSRunLoop currentRunLoop];   // 获得当前线程的RunLoop对象&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[NSRunLoop mainRunLoop];      // 获得主线程的RunLoop对象&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Core Foundation&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;CFRunLoopGetCurrent();       // 获得当前线程的RunLoop对象&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CFRunLoopGetMain();          // 获得主线程的RunLoop对象&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;####运行循环本质&lt;/p&gt;
+&lt;p&gt;1.从字面上看，就是运行循环跑圈&lt;/p&gt;
+&lt;p&gt;2.其实它内部就是do-while循环，在这个循环内部不断地处理各种任务（比如Source、Timer、Observer）&lt;/p&gt;
+&lt;p&gt;3.循环体的开始需要检测是否有需要处理的事件，如果有
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>提升自己</title>
+    <link href="williamliuwen.cn/2016/06/06/%E6%8F%90%E5%8D%87%E8%87%AA%E5%B7%B1/"/>
+    <id>williamliuwen.cn/2016/06/06/提升自己/</id>
+    <published>2016-06-06T12:02:32.000Z</published>
+    <updated>2016-06-06T12:24:08.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;疑问：&quot;&gt;&lt;a href=&quot;#疑问：&quot; class=&quot;headerlink&quot; title=&quot;疑问：&quot;&gt;&lt;/a&gt;疑问：&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;1.为什么要学这些？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2.什么是系统性的目标？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;3.如何利用有限时间最大化自己的长期收益&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;行动：&quot;&gt;&lt;a href=&quot;#行动：&quot; class=&quot;headerlink&quot; title=&quot;行动：&quot;&gt;&lt;/a&gt;行动：&lt;/h3&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;第一：打造你的工具箱&lt;br&gt;    如果程序员是侠客，编缉器则是他手中的剑。建议你花足够多的时间来思考如何组织你的个人知识库；做到长期从事的任务（往往不随技术而改变，也不随公司而改变）&lt;br&gt;工具：Emacs&lt;br&gt;信息采集器：用来收集别人产生的信息&lt;br&gt;键盘：HHKB键盘&lt;/p&gt;
+&lt;p&gt;第二：目标要够大，这样你才能看到更多的风景。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;1.“我要成为iOS developer中的达人” “我要成为前端应用开发的专家” 两者区别？前者学到深处你可能会去钻研iOS framework里各种奇技淫巧；后者你会开始关注视觉与交互设计，研究各平台间的差异与共同趋势；后者更有助于你的个人发展。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2.当初入一个领域时，选择主流技术框架；当你有一定经验后，选择技术时更应该关注背后的推动者，我相信优秀的人和团队总能打造优秀的产品，无论是商业公司还是开源社区。不必太在意技术的新旧，因为可能很快都会成为过去时。你真正要学习的是技术背后的思想。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;3.如果学习一门技术仅仅停留在用的层面上，你就还没有完全吸取其中的精华，而且学习的收益会随着技术的过时而消失。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;4.在选择学习一门新技术时，最大化它与你现有知识库的差异性。不管你是否会在可见的未来用到，它们能让你从一个不同的角度看待编程。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;5.有很多人想成为全栈工程师，最快的捷径就是打造一款自己的产品。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;6.如果每一个程序员都有自己的作品，我想程序员的面试会简单许多。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;第三：重视沟通能力的培养、&lt;/p&gt;
+&lt;p&gt;第四：累积你的人脉：结识一两个同道中人远比听技术讲座有价值。每个人都需要一个职场导师。&lt;/p&gt;
+&lt;p&gt;第五：公司的发展前景、你将要加入的团队、薪资福利&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pic/0606.jpg&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;只要你想学，就去学。不要考虑成功在哪里。其实最重要的是过程。&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;疑问：&quot;&gt;&lt;a href=&quot;#疑问：&quot; class=&quot;headerlink&quot; title=&quot;疑问：&quot;&gt;&lt;/a&gt;疑问：&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;1.为什么要学这些？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2.什么是系统性的目标？&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;3.如何利用有限时间最大化自己的长期收益&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;行动：&quot;&gt;&lt;a href=&quot;#行动：&quot; class=&quot;headerlink&quot; title=&quot;行动：&quot;&gt;&lt;/a&gt;行动：&lt;/h3&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>GitHub命令小结</title>
+    <link href="williamliuwen.cn/2016/06/03/GitHub%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93/"/>
+    <id>williamliuwen.cn/2016/06/03/GitHub命令小结/</id>
+    <published>2016-06-03T11:57:34.000Z</published>
+    <updated>2016-06-03T12:00:56.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;如果你是初学者，可以按照步骤来，这是一个记录贴，方便查询代码；&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;初步建立GitHub仓库的一些命令：&quot;&gt;&lt;a href=&quot;#初步建立GitHub仓库的一些命令：&quot; class=&quot;headerlink&quot; title=&quot;初步建立GitHub仓库的一些命令：&quot;&gt;&lt;/a&gt;初步建立GitHub仓库的一些命令：&lt;/h3&gt;&lt;p&gt;touch README.md  // 新建说明文件&lt;br&gt;ssh-keygen -t rsa -C “your_email@youremail.com” // 创建本地的keygen&lt;br&gt;cd ~/.ssh // 进入创建好keygen的文件，用cat id_rsa.pub来查看keygen，然后再把它复制到你的github&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;ssh -T git@github.com // 这个是测试一下连接；&lt;br&gt;git config –global user.name “your name”&lt;br&gt;git config –global user.email “your_email@youremail.com”&lt;br&gt;git init //在当前项目目录中生成本地git管理,并建立一个隐藏.git目录&lt;br&gt;git add . //添加当前目录中的所有文件到索引&lt;br&gt;git commit -m “first commit”  // 提交到本地源码库，并附加提交注释&lt;br&gt;git remote add origin https: // github.com/chape/test.git //添加到远程项目，别名为origin&lt;br&gt;git push -u origin master  // 把本地源码库push到github 别名为origin的远程项目中，确认提交&lt;/p&gt;
+&lt;h3 id=&quot;每次更改完本地仓库之后，使用更新语句提交到远程仓库：&quot;&gt;&lt;a href=&quot;#每次更改完本地仓库之后，使用更新语句提交到远程仓库：&quot; class=&quot;headerlink&quot; title=&quot;每次更改完本地仓库之后，使用更新语句提交到远程仓库：&quot;&gt;&lt;/a&gt;每次更改完本地仓库之后，使用更新语句提交到远程仓库：&lt;/h3&gt;&lt;p&gt;cd /到你要更新的目录下&lt;/p&gt;
+&lt;p&gt;git add .&lt;/p&gt;
+&lt;p&gt;git commit -m “update test” //检测文件改动并附加提交注释&lt;/p&gt;
+&lt;p&gt;git push -u origin master //提交修改到项目主线&lt;/p&gt;
+&lt;h3 id=&quot;如果你在家又更新代码；回到公司的本地代码库没有更新到最新，就需要从远程仓库pull下最新的代码到本地：&quot;&gt;&lt;a href=&quot;#如果你在家又更新代码；回到公司的本地代码库没有更新到最新，就需要从远程仓库pull下最新的代码到本地：&quot; class=&quot;headerlink&quot; title=&quot;如果你在家又更新代码；回到公司的本地代码库没有更新到最新，就需要从远程仓库pull下最新的代码到本地：&quot;&gt;&lt;/a&gt;如果你在家又更新代码；回到公司的本地代码库没有更新到最新，就需要从远程仓库pull下最新的代码到本地：&lt;/h3&gt;&lt;p&gt;git pull origin master //从Github上pull到本地源码库&lt;/p&gt;
+&lt;h3 id=&quot;后期进阶用到的GitHub命令：&quot;&gt;&lt;a href=&quot;#后期进阶用到的GitHub命令：&quot; class=&quot;headerlink&quot; title=&quot;后期进阶用到的GitHub命令：&quot;&gt;&lt;/a&gt;后期进阶用到的GitHub命令：&lt;/h3&gt;&lt;p&gt;git push origin master //把本地源码库push到Github&lt;br&gt;git config –list //查看配置信息&lt;br&gt;git status //查看项目状态信息&lt;br&gt;git branch //查看项目分支&lt;br&gt;git checkout -b host//添加一个名为host的分支&lt;br&gt;git checkout master //切换到主干&lt;br&gt;git merge host //合并分支host到主干&lt;br&gt;git branch -d host //删除分支host&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;持续更新,逐步完善…&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&quot;最近更新说明：&quot;&gt;&lt;a href=&quot;#最近更新说明：&quot; class=&quot;headerlink&quot; title=&quot;最近更新说明：&quot;&gt;&lt;/a&gt;最近更新说明：&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;2015.10.16 终于知道了怎么同步远程仓库到本地。&lt;/li&gt;
+&lt;li&gt;2016.06.03 把文章迁移过来&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/pic/0603.jpg&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;桃之夭夭，灼灼其华，之子于归，宜其室家。 —— 《诗经‧周南‧桃夭》&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;如果你是初学者，可以按照步骤来，这是一个记录贴，方便查询代码；&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;初步建立GitHub仓库的一些命令：&quot;&gt;&lt;a href=&quot;#初步建立GitHub仓库的一些命令：&quot; class=&quot;headerlink&quot; title=&quot;初步建立GitHub仓库的一些命令：&quot;&gt;&lt;/a&gt;初步建立GitHub仓库的一些命令：&lt;/h3&gt;&lt;p&gt;touch README.md  // 新建说明文件&lt;br&gt;ssh-keygen -t rsa -C “your_email@youremail.com” // 创建本地的keygen&lt;br&gt;cd ~/.ssh // 进入创建好keygen的文件，用cat id_rsa.pub来查看keygen，然后再把它复制到你的github&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>衣物极简原则</title>
+    <link href="williamliuwen.cn/2016/06/01/%E8%A1%A3%E7%89%A9%E6%9E%81%E7%AE%80%E5%8E%9F%E5%88%99/"/>
+    <id>williamliuwen.cn/2016/06/01/衣物极简原则/</id>
+    <published>2016-06-01T12:09:33.000Z</published>
+    <updated>2016-06-01T12:15:52.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;每日给自己一句话：超抵抗力最大的路径前进！&quot;&gt;&lt;a href=&quot;#每日给自己一句话：超抵抗力最大的路径前进！&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：超抵抗力最大的路径前进！&quot;&gt;&lt;/a&gt;每日给自己一句话：超抵抗力最大的路径前进！&lt;/h3&gt;&lt;p&gt;转自：豆瓣：Oscar&lt;/p&gt;
+&lt;h4 id=&quot;我的精简心得之一：-衣物精简原则&quot;&gt;&lt;a href=&quot;#我的精简心得之一：-衣物精简原则&quot; class=&quot;headerlink&quot; title=&quot;我的精简心得之一： 衣物精简原则&quot;&gt;&lt;/a&gt;我的精简心得之一： 衣物精简原则&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;有不少人问我是怎么精简我的物品的，有哪些经验或者哪些物品值得推荐。其实在精简的过程中，我确实感受到这里面还是有一定的原则可循的，那就写一篇文字和大家分享。声明：以下文字只是个人总结，没有经过普遍性验证，仅供参考。在精简物品的过程中，个人衣物是重头戏，我们就先来谈谈这个话题。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h4 id=&quot;精简原则：&quot;&gt;&lt;a href=&quot;#精简原则：&quot; class=&quot;headerlink&quot; title=&quot;精简原则：&quot;&gt;&lt;/a&gt;精简原则：&lt;/h4&gt;&lt;p&gt;1、功能性&amp;gt;适合性&amp;gt;个人喜好&lt;br&gt;我们平时在选购物品的时候，经常以个人喜好为主要标准。但是我认为要以功能性优先。比如你有很多喜欢的牛仔裤，但是如果公司要求正装出席某些场合的时候，你是否有合适的服装？&lt;br&gt;在满足功能性的前提下，其次要考虑的是适合性。穿在模特身上好看的衣服，一定适合自己吗？绝大多数情况之下，答案让人沮丧。我们的喜好经常受到媒体潜移默化地引导。最好的办法还是要了解自己的特质，身材比例，体型，肤色，气质，等等。网上有很多这类的电子书，大家可以参阅。&lt;br&gt;最后，在功能性和适合性都得到满足的前提下，我们再去考虑个人喜好。&lt;/p&gt;
+&lt;p&gt;2、 基本款&amp;gt;流行款&lt;br&gt;基本款的另一个名字叫经典。相对于流行款，它的适用范围更广，可搭配程度更高，并且不需要经常升级和更新。基本款的颜色最好选择纯色，相对于花色或多色的衣服，纯色的衣服更加高雅和容易搭配。&lt;/p&gt;
+&lt;p&gt;3、外衣偏深色，内衣偏浅色。&lt;br&gt;投资了经典设计和高质量的基本款之后，衣服升级的频率就会显著地下降。但是在这里要说明，外衣选择深色，即使很长时间之后也不会显得很旧；而内衣则不然，由于是贴身的衣服，应该选择浅色，一旦颜色泛黄显旧就要更新升级，以保证衣物的功能性，防止影响健康。&lt;/p&gt;
+&lt;p&gt;4、选择可以承受范围内最好的。&lt;br&gt;便宜的东西未必不好，但好东西肯定不便宜。从经济学的角度来说，非常容易理解。好的衣服，需要好的设计人员，优质的原材料，高超的制作工艺，等等…这些成本都要分摊到我们购买的价格中。但是，由于适合我们自己的东西不多（因为个人特征的独特性），所以在购买数量小的前提下，我们可以追求那些设计和质量更好的衣服，当然价钱会更高。需要说明的是，我们要鉴别价格高的原因，如果是出于品牌定位的话，我就觉得没有必要了。&lt;/p&gt;
+&lt;p&gt;5、去标签化。&lt;br&gt;我们已经为商品付出了成本，不再需要变成商家的移动广告，我买的是商品本身而不是它的品牌效应。在同等质量的情况下，我会选择没有标签的，或者标签非常小的，或者标签不起眼的品牌。&lt;/p&gt;
+&lt;p&gt;6、精明选择，标准化更替。&lt;br&gt;由于成年之后，我们的特征相对稳定。所以按照上面的原则选择的衣服应该是比较适合自己的，那么接下来就对这些衣物进行标准化，也就是说在衣物需要更替的时候，尽量选择同品牌同款同色的衣服。&lt;/p&gt;
+&lt;h4 id=&quot;我的精简心得之二-内衣篇&quot;&gt;&lt;a href=&quot;#我的精简心得之二-内衣篇&quot; class=&quot;headerlink&quot; title=&quot;我的精简心得之二 内衣篇&quot;&gt;&lt;/a&gt;我的精简心得之二 内衣篇&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;在第一篇心得中，曾经有一条原则涉及到内衣的选择，就是内衣要选择浅色。其他的就看个人的偏好了，而且在这个方面，男生女生的选择差异巨大。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于我这样的男生而言，选择相对简单：&lt;/p&gt;
+&lt;p&gt;1、 V领白色短袖打底衫－优衣库 AIRism系列&lt;br&gt;这个主要是温暖季节为衬衣打底，不至于衬衣因为出汗而贴到后背上。另外，穿白衬衣的时候也不至于太透。由于白色打底，会让白衬衣看上去更加洁白。&lt;/p&gt;
+&lt;p&gt;2、V领白色长袖打底衫－优衣库 HEATTECH系列&lt;/p&gt;
+&lt;p&gt;3、白色紧身裤 －HEATTECH系列&lt;br&gt;这两件基本上应对冬季，除非特别冷的天气，平时足够了。&lt;/p&gt;
+&lt;p&gt;4、黑色五指袜 - 优衣库&lt;br&gt;五指袜能够有效保持脚趾间部位的干爽，达到保暖，抑菌的作用，对足部健康非常有益。对于袜子，我只选择黑色，因为百搭。&lt;/p&gt;
+&lt;h4 id=&quot;我的精简心得之三：中衣篇&quot;&gt;&lt;a href=&quot;#我的精简心得之三：中衣篇&quot; class=&quot;headerlink&quot; title=&quot;我的精简心得之三：中衣篇&quot;&gt;&lt;/a&gt;我的精简心得之三：中衣篇&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;选择功能性较强的内衣可以很大程度上削弱中衣的重要性，而中衣的选择则更多地关注百搭。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;1、纯色精致牛津纺衬衣 - 优衣库&lt;br&gt;衬衣主要在工作场合穿着，所以纯色的衬衣更百搭。精致牛津纺面料容易打理，由于我衬衣和衣架一一对应，所以洗过晾干的衬衣也不用叠，直接挂到衣橱里面，没有什么褶皱和折痕，避免了熨烫的麻烦。&lt;/p&gt;
+&lt;p&gt;2、V领浅灰色羊毛衫 - 无印良品&lt;br&gt;灰色是高雅色，也属于百搭系列。和西裤衬衣组合就非常商务，而和牛仔裤搭配就非常休闲。&lt;/p&gt;
+&lt;p&gt;3、Columbia Men’s Expedition Long Sleeve 1/2 Zip Shirt - Black&lt;/p&gt;
+&lt;p&gt;4、Columbia Men’s Extreme Fleece Tight - Black&lt;br&gt;哥伦比亚这一身保暖效果非常好，使用了OMNI-HEAT THERMAL REFLECTIVE技术，能够反射人体自身散发的热量，通过自身的热量循环减少热量损失，最终达到保暖的作用，同时兼顾透气，排汗，速干和抑菌。这个套装对我非常重要，它们使我不借助臃肿的羽绒服轻松度过华北的寒冬。&lt;/p&gt;
+&lt;p&gt;5、浅灰色长袖T恤衫 - 优衣库&lt;br&gt;百搭休闲。&lt;/p&gt;
+&lt;h4 id=&quot;我的精简心得之四：外衣篇&quot;&gt;&lt;a href=&quot;#我的精简心得之四：外衣篇&quot; class=&quot;headerlink&quot; title=&quot;我的精简心得之四：外衣篇&quot;&gt;&lt;/a&gt;我的精简心得之四：外衣篇&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;如果不是意外损坏的话，外衣的使用寿命一般都是很长的，更新换代的频率也非常慢。所以，选择的标准是经典款式。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;1、短款黑色羊绒大衣。&lt;br&gt;即使再极简，我也觉得这件外衣不能少。和西裤搭配，那就是商务着装的代表；和牛仔裤搭配，那就休闲衣着的经典。&lt;/p&gt;
+&lt;p&gt;2、黑色商务套装。&lt;br&gt;其实，炭灰色也许比黑色更经典。不论怎样，西装是功能性第一的服装，不过一套足矣。&lt;/p&gt;
+&lt;p&gt;3、黑色西裤。&lt;br&gt;主要是工作着装。&lt;/p&gt;
+&lt;p&gt;4、牛仔裤。&lt;br&gt;无需赘述，一条就好。&lt;/p&gt;
+&lt;h4 id=&quot;我的精简心得之五-APP管理篇&quot;&gt;&lt;a href=&quot;#我的精简心得之五-APP管理篇&quot; class=&quot;headerlink&quot; title=&quot;我的精简心得之五 APP管理篇&quot;&gt;&lt;/a&gt;我的精简心得之五 APP管理篇&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;现在智能设备大行其道，确实给我们带来了方便，但同时也带来了烦恼。如何找到自己需要的App呢？我也没有灵丹妙药，还是要根据自己的需要不断尝试，去粗取精。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;经过了长时间的体验，我最终选择了这几个App, 和大家分享一下，如果你也一直在寻找这类的App, 不妨体验一下，或者有更好的推荐也可以分享给我。那我就在这里抛个砖引个玉吧。&lt;/p&gt;
+&lt;p&gt;1、Kindle: Mobi格式电子书阅读利器。&lt;/p&gt;
+&lt;p&gt;2、Pocket: 优秀文章一键保存。&lt;/p&gt;
+&lt;p&gt;3、Adobe Reader: PDF格式电子书阅读。&lt;/p&gt;
+&lt;p&gt;4、WeChat: 关闭朋友圈功能，主要用于《逻辑思维》语音推荐和推荐文章阅读。&lt;/p&gt;
+&lt;p&gt;5、WhatsApp: 和国外朋友和同事日常联系。&lt;/p&gt;
+&lt;p&gt;6、 LinkedIn: 商务应用。&lt;/p&gt;
+&lt;p&gt;7、MindNode: 思维的导图工具。&lt;/p&gt;
+&lt;p&gt;8、Evernote: 知识管理工具。&lt;/p&gt;
+&lt;p&gt;9、Eidetic: 记忆增强工具。&lt;/p&gt;
+&lt;p&gt;10、Bible: 电子版圣经。&lt;br&gt;其它日常需要都能够被系统自带App满足。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pic/0601.jpg&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;只有小孩知道他们在寻找什么。 —— 《小王子》    &lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;每日给自己一句话：超抵抗力最大的路径前进！&quot;&gt;&lt;a href=&quot;#每日给自己一句话：超抵抗力最大的路径前进！&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：超抵抗力最大的路径前进！&quot;&gt;&lt;/a&gt;每日给自己一句话：超抵抗力最大的路径前进！&lt;/h3&gt;&lt;p&gt;转自：豆瓣：Oscar&lt;/p&gt;
+&lt;h4 id=&quot;我的精简心得之一：-衣物精简原则&quot;&gt;&lt;a href=&quot;#我的精简心得之一：-衣物精简原则&quot; class=&quot;headerlink&quot; title=&quot;我的精简心得之一： 衣物精简原则&quot;&gt;&lt;/a&gt;我的精简心得之一： 衣物精简原则&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;有不少人问我是怎么精简我的物品的，有哪些经验或者哪些物品值得推荐。其实在精简的过程中，我确实感受到这里面还是有一定的原则可循的，那就写一篇文字和大家分享。声明：以下文字只是个人总结，没有经过普遍性验证，仅供参考。在精简物品的过程中，个人衣物是重头戏，我们就先来谈谈这个话题。&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>极简消费观</title>
+    <link href="williamliuwen.cn/2016/05/31/%E6%9E%81%E7%AE%80%E6%B6%88%E8%B4%B9%E8%A7%82/"/>
+    <id>williamliuwen.cn/2016/05/31/极简消费观/</id>
+    <published>2016-05-31T12:17:55.000Z</published>
+    <updated>2016-05-31T12:20:28.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;每日给自己一段话：&quot;&gt;&lt;a href=&quot;#每日给自己一段话：&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一段话：&quot;&gt;&lt;/a&gt;每日给自己一段话：&lt;/h3&gt;&lt;p&gt;生活就像逆水行舟，想活得有意义，还是要走抵抗力最大的那条路。看书学习抵抗力大，刷微博微信抵抗力小；坚持锻炼身体抵抗力大，窝在沙发里上网看电视抵抗力小；吃清淡健康食物抵抗力大，喝啤酒吃炸鸡抵抗力小；精简生活抵抗力大，囤积、消费抵抗力小。&lt;br&gt;抵抗力最大的路和抵抗力最小的路有共同的起点，可终点不啻霄壤。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;开始正文：来自网络&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在我们现在的社会中，消费主义是主流思想。每天我们都要被动地被广告成千上万次，在这样密集的轰滥炸式的灌输之下，有几人能保持理性消费？广告的作用并不是简单地宣扬产品的优点，其真正的目的是营造一种气氛，造成一种假象，让你感觉必须使用这种产品你才能幸福。但是，从过去成千上万次的消费经验中，我们很容易就能发现，购买不能让我们感到真正的快乐。但是那些看上去很好、实际没用的东西却让我们付出巨大的代价。我们需要加更多的班，挣更多的钱去还信用卡；我们减少了陪家人的时间；我们减少了本应该不断增长的个人存款；我们减少了梦想基金。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;我一个朋友，爱买衣服。那些衣服价格不菲，堆积成山，很少上身，甚至有的根本没穿过。她有一个梦想就是去欧洲旅行，尤其喜欢捷克的布拉格。很久以来，一直都念叨着存钱去旅行。我告诉她，如果你不买那些从来没有穿过的衣服，你早可以在布拉格广场边上租个房子住上一个月了…&lt;br&gt;那什么是极简消费观呢？我没有明确的定义，但我可以分享自己的看法。&lt;/p&gt;
+&lt;h5 id=&quot;第一原则：能租的就不买，能借的就不租。&quot;&gt;&lt;a href=&quot;#第一原则：能租的就不买，能借的就不租。&quot; class=&quot;headerlink&quot; title=&quot;第一原则：能租的就不买，能借的就不租。&quot;&gt;&lt;/a&gt;第一原则：能租的就不买，能借的就不租。&lt;/h5&gt;&lt;p&gt;我不是为了购买而购买，消费是为了完成某件事情。看看家里的东西，很多都是使用了一次或者几次之后就束之高阁，在我们“万一某天还能用的上”的心理作用下，被遗忘在角落。如果你做一个试验，把所有的物品都整理出来，你会发现已经忘记很多东西的存在。所以，租、借的方式可能让我们省下很多的金钱、维护的精力、家中的空间，还能让那些东西物尽其用。&lt;/p&gt;
+&lt;h5 id=&quot;第二原则：少、小、好、巧，外加环保。&quot;&gt;&lt;a href=&quot;#第二原则：少、小、好、巧，外加环保。&quot; class=&quot;headerlink&quot; title=&quot;第二原则：少、小、好、巧，外加环保。&quot;&gt;&lt;/a&gt;第二原则：少、小、好、巧，外加环保。&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;少&lt;/strong&gt;：囤积是人的天性之一，商家也用“量贩”的方式引诱消费者。可是为什么购买超过需求的物品呢？就是因为便宜？但是你牺牲了家中的空间和再次选择的权利。我曾经以量贩的方式购买过东西，后来发现不好用。扔掉省下的大部分吧，绝对浪费；不扔吧，实在不好用；最后，好不容易用完了，简直是煎熬。以后就买小包装了，其实没有贵多少，再说，哪有量贩式的精品…&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;小&lt;/strong&gt;：现在进入了微时代，什么都是越便携越好。这个我非常赞同。一般来说，东西做大一些相对容易，要做得更小，需要更加精细的工艺。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;好&lt;/strong&gt;：极简主义者不是乞丐，虽然我拒绝购买不需要的物品，但是对于购买的物品质量都是高要求的。由于购买的东西少，我有更多的资金去购买高质量的物&lt;br&gt;品，享受高品质的使用体验。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;巧&lt;/strong&gt;：我喜欢设计精巧的物品。这样在使用的时候更加方便顺手，同时也能增加使用的愉悦感。典型的例子就是瑞士军刀。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;环保&lt;/strong&gt;：物品的材质不但影响品质，也影响环境。尽量选择环保材料和生产工艺的物品是极简主义者的态度。例如：能用玻璃的，就不用塑料；能用电子的，就不用纸张；能用再生纸的，就不用非再生纸；能用棉花的，就不用羊毛的，等等。&lt;/p&gt;
+&lt;p&gt;这些原则不是对生活的限制，而是对生活品质的追求&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pic/0531.jpg&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;士之读书治学，盖将以脱心志于俗谛之桎梏，真理因得以发扬。思想而不自由，毋宁死耳。 —— 陈寅恪    &lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;每日给自己一段话：&quot;&gt;&lt;a href=&quot;#每日给自己一段话：&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一段话：&quot;&gt;&lt;/a&gt;每日给自己一段话：&lt;/h3&gt;&lt;p&gt;生活就像逆水行舟，想活得有意义，还是要走抵抗力最大的那条路。看书学习抵抗力大，刷微博微信抵抗力小；坚持锻炼身体抵抗力大，窝在沙发里上网看电视抵抗力小；吃清淡健康食物抵抗力大，喝啤酒吃炸鸡抵抗力小；精简生活抵抗力大，囤积、消费抵抗力小。&lt;br&gt;抵抗力最大的路和抵抗力最小的路有共同的起点，可终点不啻霄壤。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>极简生活</title>
+    <link href="williamliuwen.cn/2016/05/30/%E6%9E%81%E7%AE%80%E7%94%9F%E6%B4%BB/"/>
+    <id>williamliuwen.cn/2016/05/30/极简生活/</id>
+    <published>2016-05-30T11:43:26.000Z</published>
+    <updated>2016-05-30T12:02:58.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;关键词：&quot;&gt;&lt;a href=&quot;#关键词：&quot; class=&quot;headerlink&quot; title=&quot;关键词：&quot;&gt;&lt;/a&gt;关键词：&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;仓库(住所)&lt;/li&gt;
+&lt;li&gt;现在当下（快活）&lt;/li&gt;
+&lt;li&gt;未来过去（不快活）&lt;/li&gt;
+&lt;li&gt;需要，合适，舒服&lt;/li&gt;
+&lt;li&gt;不增加衣物，不增加卡片&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;内容较多，给大家列多几点&quot;&gt;&lt;a href=&quot;#内容较多，给大家列多几点&quot; class=&quot;headerlink&quot; title=&quot;内容较多，给大家列多几点:&quot;&gt;&lt;/a&gt;内容较多，给大家列多几点:&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;超过自己管理能力的物品，不持有不留恋的物品，不持有无法回归自然或转让给其他人的物品，不持有和自己或自己的生活风格不符的物品，不持有生命本身就是一场体验，只经历，不占有。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;不持有的生活不仅是提倡绿色环保，节俭，乐活，更是精神压力的释放与解脱，内省，灵修，心灵成长和达到各方面的平衡。每天使用到的东西要斤斤计较，就是常用的东西都要选自己喜欢的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;对于一些不常用的东西，可以向朋友借。让自己的东西只出不进每天坚持不买瓶装饮料，而是自制饮料。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;每天收拾一个抽屉每天走路带上计步器。扔掉不要的运动器材。出门自己带购物袋，不需要商场的购物袋，不要接受免费的赠品。购物的时候要考虑东西是否对自己有用。而不是看买哪件还是哪件好。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;不去特定去看优惠的信息，要到需要的时候去买，而不是看到优惠才想自己需不需要买。两者前后顺序不一样。不管多便宜，只买有用的东西即使免费送，也只接受需要的东西。学会扔掉的习惯。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;学会用东西来代替自己需要的东西。如果你在考虑你是否需要买一样东西的时候，可以考虑这样东西，是否有无都对你无所谓。如果是就不买。跟比人说“谢谢”的时候，要注释对方的眼睛并微笑。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;每天至少仰望一次天空。r吃饭的时候不可一心二用，如一边吃饭一边看电视。回家之后，一定要把手提包和外套放到固定位置，回家之后，把脱下来的鞋摆好。在泡澡之前让孩子（或自己）将玩具放好。最好不要使用淋浴，而是盆浴。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;每天闭目静坐5分钟。尽量一天之内整理好已经晒干的衣物。在固定的时间看电视在固定的时间上网，玩游戏。睡觉之前，确保地面上没有任何东西。睡觉之前，不要在水槽中放置需要洗涤的衣物。睡觉之前，准备好第二天外出时所需的物品。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;每一条都很受用，慢慢领悟慢慢做，如果都做到了，你就成功了：&quot;&gt;&lt;a href=&quot;#每一条都很受用，慢慢领悟慢慢做，如果都做到了，你就成功了：&quot; class=&quot;headerlink&quot; title=&quot;每一条都很受用，慢慢领悟慢慢做，如果都做到了，你就成功了：&quot;&gt;&lt;/a&gt;每一条都很受用，慢慢领悟慢慢做，如果都做到了，你就成功了：&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;每天用吸尘器把房间打扫一遍。每三天擦拭一次地板和家具。把一年之内不打算穿的衣服处理掉（出售，转赠，扔掉）对那些沾有污垢或开线的衣物进行修补，无法修补的处理掉。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;处理掉不佩戴的饰品。处理掉夹脚或基本不穿的鞋。将那些毫无“用武之地”的领带处理掉处理掉那些变旧或使用起来不舒服的毛巾。处理掉多余的被褥及亚麻类用品处理掉那些毫无用处的家具和电器。处理掉那些没有保存价值的信–仅仅是问候的信？邮递广告。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;扔掉那些没有放入相册中或没有保存必要的照片处理掉已经用不到的婴儿车等婴儿用品。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;处理掉不玩的玩具在一个月前的杂志中，找出有保存价值的保存起来，其余的处理掉。处理掉那些读过后感觉没有保存价值的书（出售，送人，扔掉）处理掉那些听过后没有感觉没有保存价值的dvd处理掉那些录好后一直没有看过的录像处理掉那些拆开没再碰过的赠品或礼物处理掉不喜欢的装饰品处理掉那些不用的餐具盒烹饪用具去自己喜欢的饭店遇到东西用完的情况时，尽量选择不购买，试着用其他方式代替，以不增加物品，一定要买，则要选择可以使生活变得更加简单的物品。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;选择购买食品时，选那些没有附带赠品的东西；不要申请会员卡。不要轻易在跳蚤市场买东西，不要图便宜货觉得有趣就盲目购买。不要轻易在外出旅行时购买纪念品。尽量使用充电电池。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;吃剩的冷冻食品不要在继续保存。不让免费的物品进入家里，家里的东西就会慢慢变少。不购买那些长期储藏品使家中物品的数量缩减20%银行卡有钱才买商品，不能提前透支。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;多出去旅行或听音乐会，以此来取代购物。对于长期处于无精打采的状态的人，应该美美的睡一觉，吃一顿，欣赏美丽的风景，给予身体和心灵养分。约朋友出来见个面。帮助不肯扔东西的人，一点点的开始扔垃圾，即使当事人发现了，自己也要装作不知道。需要“从无论怎么看都是垃圾”的东西开始。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;我很喜欢这一条：&quot;&gt;&lt;a href=&quot;#我很喜欢这一条：&quot; class=&quot;headerlink&quot; title=&quot;我很喜欢这一条：&quot;&gt;&lt;/a&gt;我很喜欢这一条：&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;对于兴趣爱好，即使花费时间，也不能花费金钱的原则，另外，如果对某件事情产生了兴趣，就一定要坚持到底。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;如果对很多事情都感兴趣，尽量选择那些不需要太多东西的爱好。对某一事情产生兴趣时，尽量租借所需的物品。如果对某一爱好不感兴趣了，就将与之有关的东西赠与或借给他人。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;对于那些即使花钱也很难坚持到底的兴趣，要趁早放弃。从你最介意的地方开始处理，并要保证处理后东西不会再增加。衣服的分类1工作2游玩3日常生活4正式场合需要处理的东西报纸，宣传单各种通知单剪报，发票会员卡，积分卡纸盒发票要坚持放在固定的地方。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;处理掉不用的会员卡，不接受新的会员卡。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;早起30分钟，让你的时间渐渐地宽裕起来。认真地享受自己的每一餐（包括做饭的过程），这样你的心情也会得到放松。仰望天空无须花费你很多时间，但却能使你的生活变得悠闲，舒适。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/pic/0530.jpg&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当你把幸福掌握在手中的时候，它看起来总是微不足道，但当它不见的时候，你才会了解它是多么重要和珍贵。 —— 马克西姆·高尔基&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;关键词：&quot;&gt;&lt;a href=&quot;#关键词：&quot; class=&quot;headerlink&quot; title=&quot;关键词：&quot;&gt;&lt;/a&gt;关键词：&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;仓库(住所)&lt;/li&gt;
+&lt;li&gt;现在当下（快活）&lt;/li&gt;
+&lt;li&gt;未来过去（不快活）&lt;/li&gt;
+&lt;li&gt;需要，合适，舒服&lt;/li&gt;
+&lt;li&gt;不增加衣物，不增加卡片&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>网络专家认识论</title>
+    <link href="williamliuwen.cn/2016/05/28/%E7%BD%91%E7%BB%9C%E4%B8%93%E5%AE%B6%E8%AE%A4%E8%AF%86%E8%AE%BA/"/>
+    <id>williamliuwen.cn/2016/05/28/网络专家认识论/</id>
+    <published>2016-05-28T01:50:45.000Z</published>
+    <updated>2016-05-28T01:54:09.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;每日给自己一句话：在没有成功之前都是在做量的积累；&quot;&gt;&lt;a href=&quot;#每日给自己一句话：在没有成功之前都是在做量的积累；&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：在没有成功之前都是在做量的积累；&quot;&gt;&lt;/a&gt;每日给自己一句话：在没有成功之前都是在做量的积累；&lt;/h3&gt;&lt;h2 id=&quot;专家&quot;&gt;&lt;a href=&quot;#专家&quot; class=&quot;headerlink&quot; title=&quot;专家&quot;&gt;&lt;/a&gt;专家&lt;/h2&gt;&lt;h3 id=&quot;职称：&quot;&gt;&lt;a href=&quot;#职称：&quot; class=&quot;headerlink&quot; title=&quot;职称：&quot;&gt;&lt;/a&gt;职称：&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;高级&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;工作在大的网络公司、或研究所&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;主要是技术主管、项目经理、技术专家&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;1、技术专家&quot;&gt;&lt;a href=&quot;#1、技术专家&quot; class=&quot;headerlink&quot; title=&quot;1、技术专家&quot;&gt;&lt;/a&gt;1、技术专家&lt;/h4&gt;&lt;h5 id=&quot;工作描述：&quot;&gt;&lt;a href=&quot;#工作描述：&quot; class=&quot;headerlink&quot; title=&quot;工作描述：&quot;&gt;&lt;/a&gt;工作描述：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;某一行业的专家、顾问、权威；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果的确非常喜爱技术工作，而不擅长和喜欢与人沟通，则可以完全专注于自身的领域，以发展成为行业资深专家为方向和目标&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;发展过程比较漫长，任何一个领域的顶尖技术人才都需要长期的行业经验的累积和个人孜孜不倦的投入；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;优势是越老越吃香，当别人随着年龄的逐步增长而开始担心饭碗问题时，你则渐入佳境，开始进入职业发展的黄金时期。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;工作要求：&quot;&gt;&lt;a href=&quot;#工作要求：&quot; class=&quot;headerlink&quot; title=&quot;工作要求：&quot;&gt;&lt;/a&gt;工作要求：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;全面的网络技术&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;对新技术有深刻的认识，所以要求有极强的学习能力&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;就业前景：&quot;&gt;&lt;a href=&quot;#就业前景：&quot; class=&quot;headerlink&quot; title=&quot;就业前景：&quot;&gt;&lt;/a&gt;就业前景：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;待遇很高，技术人员到30岁后的发展目标之一&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;2、项目经理&quot;&gt;&lt;a href=&quot;#2、项目经理&quot; class=&quot;headerlink&quot; title=&quot;2、项目经理&quot;&gt;&lt;/a&gt;2、项目经理&lt;/h4&gt;&lt;h5 id=&quot;工作内容：&quot;&gt;&lt;a href=&quot;#工作内容：&quot; class=&quot;headerlink&quot; title=&quot;工作内容：&quot;&gt;&lt;/a&gt;工作内容：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;融合技术和管理的复合性人才&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;参与项目谈判&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;项目目标和项目财务指标&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;划分工作内容并合理分配&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;指导网络工程师&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;控制工作的进度，按计划完成项目&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;组织项目会议&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;职位要求：&quot;&gt;&lt;a href=&quot;#职位要求：&quot; class=&quot;headerlink&quot; title=&quot;职位要求：&quot;&gt;&lt;/a&gt;职位要求：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;多年的网络工程师经验&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;希望做管理&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;需要自己学习项目管理知识&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;就业前景：-1&quot;&gt;&lt;a href=&quot;#就业前景：-1&quot; class=&quot;headerlink&quot; title=&quot;就业前景：&quot;&gt;&lt;/a&gt;就业前景：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;技术人员到35岁后的发展目标之一&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;待遇高，可晋升企业核心管理层&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;3、技术主管&quot;&gt;&lt;a href=&quot;#3、技术主管&quot; class=&quot;headerlink&quot; title=&quot;3、技术主管&quot;&gt;&lt;/a&gt;3、技术主管&lt;/h4&gt;&lt;h5 id=&quot;工作任务描述：&quot;&gt;&lt;a href=&quot;#工作任务描述：&quot; class=&quot;headerlink&quot; title=&quot;工作任务描述：&quot;&gt;&lt;/a&gt;工作任务描述：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;带领技术团队创造更多的价值&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在信息方面参与公司的规划和计划&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;职位要求：-1&quot;&gt;&lt;a href=&quot;#职位要求：-1&quot; class=&quot;headerlink&quot; title=&quot;职位要求：&quot;&gt;&lt;/a&gt;职位要求：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;技术全面；有管理能力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;就业前景：-2&quot;&gt;&lt;a href=&quot;#就业前景：-2&quot; class=&quot;headerlink&quot; title=&quot;就业前景：&quot;&gt;&lt;/a&gt;就业前景：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;是网络工程师30岁后的发展方向&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/pic/0528.jpg&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;每日给自己一句话：在没有成功之前都是在做量的积累；&quot;&gt;&lt;a href=&quot;#每日给自己一句话：在没有成功之前都是在做量的积累；&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：在没有成功之前都是在做量的积累；&quot;&gt;&lt;/a&gt;每日给自己一句话：在没有成功之前都是在做量的积累；&lt;/h3&gt;&lt;h2 id=&quot;专家&quot;&gt;&lt;a href=&quot;#专家&quot; class=&quot;headerlink&quot; title=&quot;专家&quot;&gt;&lt;/a&gt;专家&lt;/h2&gt;&lt;h3 id=&quot;职称：&quot;&gt;&lt;a href=&quot;#职称：&quot; class=&quot;headerlink&quot; title=&quot;职称：&quot;&gt;&lt;/a&gt;职称：&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;高级&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;工作在大的网络公司、或研究所&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;主要是技术主管、项目经理、技术专家&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;1、技术专家&quot;&gt;&lt;a href=&quot;#1、技术专家&quot; class=&quot;headerlink&quot; title=&quot;1、技术专家&quot;&gt;&lt;/a&gt;1、技术专家&lt;/h4&gt;&lt;h5 id=&quot;工作描述：&quot;&gt;&lt;a href=&quot;#工作描述：&quot; class=&quot;headerlink&quot; title=&quot;工作描述：&quot;&gt;&lt;/a&gt;工作描述：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;某一行业的专家、顾问、权威；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果的确非常喜爱技术工作，而不擅长和喜欢与人沟通，则可以完全专注于自身的领域，以发展成为行业资深专家为方向和目标&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>网络管理员认识论</title>
+    <link href="williamliuwen.cn/2016/05/27/%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%91%98%E8%AE%A4%E8%AF%86%E8%AE%BA/"/>
+    <id>williamliuwen.cn/2016/05/27/网络管理员认识论/</id>
+    <published>2016-05-27T15:52:15.000Z</published>
+    <updated>2016-05-27T15:55:38.000Z</updated>
+    
+    <content type="html">&lt;h4 id=&quot;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&quot;&gt;&lt;a href=&quot;#每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&quot;&gt;&lt;/a&gt;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&lt;/h4&gt;&lt;p&gt;网络工程师里面的最低级别：&lt;/p&gt;
+&lt;h4 id=&quot;网络管理员&quot;&gt;&lt;a href=&quot;#网络管理员&quot; class=&quot;headerlink&quot; title=&quot;网络管理员&quot;&gt;&lt;/a&gt;网络管理员&lt;/h4&gt;&lt;h4 id=&quot;职称：&quot;&gt;&lt;a href=&quot;#职称：&quot; class=&quot;headerlink&quot; title=&quot;职称：&quot;&gt;&lt;/a&gt;职称：&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;初级&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;工作在中小企业，涵盖网络基础设施管理、网络操作系统管理、网络应用系统管理、网络用户管理、网络安全保密管理、信息存储备份管理和网络机房管理等几大方向。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;这些管理涉及到多个领域，每个领域的管理又有各自特定的任务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h4 id=&quot;主要岗位：&quot;&gt;&lt;a href=&quot;#主要岗位：&quot; class=&quot;headerlink&quot; title=&quot;主要岗位：&quot;&gt;&lt;/a&gt;主要岗位：&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;网络管理员（系统管理员）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;工作职责描述：&quot;&gt;&lt;a href=&quot;#工作职责描述：&quot; class=&quot;headerlink&quot; title=&quot;工作职责描述：&quot;&gt;&lt;/a&gt;工作职责描述：&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;网络本身的管理；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;网络中操作/应用系统的管理(在大型企业、外资、合资企业中通常称之为“MIS（Manger Information System，信息系统管理员）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;两者的区别主要是：网络管理员重在OSI下3层，系统管理员则主要在系统维护和公司信息系统管理上。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;就业前景：&quot;&gt;&lt;a href=&quot;#就业前景：&quot; class=&quot;headerlink&quot; title=&quot;就业前景：&quot;&gt;&lt;/a&gt;就业前景：&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;是一个专业网络人员必经的初始阶段&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;待遇：&quot;&gt;&lt;a href=&quot;#待遇：&quot; class=&quot;headerlink&quot; title=&quot;待遇：&quot;&gt;&lt;/a&gt;待遇：&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;1800元——3000元（视专业的掌握程度以及技术的熟练度而定）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/pic/0527.jpg&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;天作孽，犹可违；自作孽，不可逭。 —— 《尚书·太甲中》&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&quot;&gt;&lt;a href=&quot;#每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&quot;&gt;&lt;/a&gt;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&lt;/h4&gt;&lt;p&gt;网络工程师里面的最低级别：&lt;/p&gt;
+&lt;h4 id=&quot;网络管理员&quot;&gt;&lt;a href=&quot;#网络管理员&quot; class=&quot;headerlink&quot; title=&quot;网络管理员&quot;&gt;&lt;/a&gt;网络管理员&lt;/h4&gt;&lt;h4 id=&quot;职称：&quot;&gt;&lt;a href=&quot;#职称：&quot; class=&quot;headerlink&quot; title=&quot;职称：&quot;&gt;&lt;/a&gt;职称：&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;初级&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;工作在中小企业，涵盖网络基础设施管理、网络操作系统管理、网络应用系统管理、网络用户管理、网络安全保密管理、信息存储备份管理和网络机房管理等几大方向。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;这些管理涉及到多个领域，每个领域的管理又有各自特定的任务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>网络工程师认识论</title>
+    <link href="williamliuwen.cn/2016/05/26/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%AE%A4%E8%AF%86%E8%AE%BA/"/>
+    <id>williamliuwen.cn/2016/05/26/网络工程师认识论/</id>
+    <published>2016-05-26T15:10:12.000Z</published>
+    <updated>2016-05-26T15:16:06.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;每日给自己一句话：不要随大流，要有自己的绝活；&quot;&gt;&lt;a href=&quot;#每日给自己一句话：不要随大流，要有自己的绝活；&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：不要随大流，要有自己的绝活；&quot;&gt;&lt;/a&gt;每日给自己一句话：不要随大流，要有自己的绝活；&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;比网络管理员高一级别，打怪应该需要打一年才能升到，而且还要自己平时努力，不然管理员还是管理员；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;工程师&quot;&gt;&lt;a href=&quot;#工程师&quot; class=&quot;headerlink&quot; title=&quot;工程师&quot;&gt;&lt;/a&gt;工程师&lt;/h3&gt;&lt;h4 id=&quot;职称：&quot;&gt;&lt;a href=&quot;#职称：&quot; class=&quot;headerlink&quot; title=&quot;职称：&quot;&gt;&lt;/a&gt;职称：&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;中级&lt;/li&gt;
+&lt;li&gt;工作在网络公司或者大中型企业。在网络公司中主要任务是设计并建设；在大中型企业中的主要任务是运营和维护。&lt;/li&gt;
+&lt;li&gt;网络工程师其实是一个包括许多种工种的职业，不同的网络工程师工种对从业的人员的要求也不一样，对从业人员的网络管理水平的要求差别很大。专业网络工程师主要有：网络系统设计师、网络工程师、系统工程师、网络安全工程师、数据存储工程师等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h4 id=&quot;1、普通网络工程师&quot;&gt;&lt;a href=&quot;#1、普通网络工程师&quot; class=&quot;headerlink&quot; title=&quot;1、普通网络工程师&quot;&gt;&lt;/a&gt;1、普通网络工程师&lt;/h4&gt;&lt;h5 id=&quot;工作职责描述：&quot;&gt;&lt;a href=&quot;#工作职责描述：&quot; class=&quot;headerlink&quot; title=&quot;工作职责描述：&quot;&gt;&lt;/a&gt;工作职责描述：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;高级网络管理员，在大企业中或是在网络公司工作&lt;/li&gt;
+&lt;li&gt;维护公司网络设备，保证公司骨干网络正常工作&lt;/li&gt;
+&lt;li&gt;对主流的网络设备非常了解&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;职位要求：&quot;&gt;&lt;a href=&quot;#职位要求：&quot; class=&quot;headerlink&quot; title=&quot;职位要求：&quot;&gt;&lt;/a&gt;职位要求：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;扎实而又全面的网络知识功底&lt;/li&gt;
+&lt;li&gt;多年专业网络管理经验&lt;/li&gt;
+&lt;li&gt;对产品性能和最新技术掌握很好&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;就业前景：国内网络公司的技术人员或专业的IDC中心、大的ISP服务商&quot;&gt;&lt;a href=&quot;#就业前景：国内网络公司的技术人员或专业的IDC中心、大的ISP服务商&quot; class=&quot;headerlink&quot; title=&quot;就业前景：国内网络公司的技术人员或专业的IDC中心、大的ISP服务商&quot;&gt;&lt;/a&gt;就业前景：国内网络公司的技术人员或专业的IDC中心、大的ISP服务商&lt;/h5&gt;&lt;h4 id=&quot;2、普通系统工程师&quot;&gt;&lt;a href=&quot;#2、普通系统工程师&quot; class=&quot;headerlink&quot; title=&quot;2、普通系统工程师&quot;&gt;&lt;/a&gt;2、普通系统工程师&lt;/h4&gt;&lt;h5 id=&quot;工作职责描述：-1&quot;&gt;&lt;a href=&quot;#工作职责描述：-1&quot; class=&quot;headerlink&quot; title=&quot;工作职责描述：&quot;&gt;&lt;/a&gt;工作职责描述：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;高级网络管理员&lt;/li&gt;
+&lt;li&gt;在大企业中或是在网络公司工作&lt;/li&gt;
+&lt;li&gt;维护并保证系统工作正常&lt;/li&gt;
+&lt;li&gt;对流行的OS非常了解&lt;/li&gt;
+&lt;li&gt;对系统故障的解决有丰富的经验&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;职位要求：-1&quot;&gt;&lt;a href=&quot;#职位要求：-1&quot; class=&quot;headerlink&quot; title=&quot;职位要求：&quot;&gt;&lt;/a&gt;职位要求：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;扎实而又全面的网络知识功底&lt;/li&gt;
+&lt;li&gt;多年专业网络管理经验&lt;/li&gt;
+&lt;li&gt;对新OS系统和最新技术掌握很好&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;就业前景：&quot;&gt;&lt;a href=&quot;#就业前景：&quot; class=&quot;headerlink&quot; title=&quot;就业前景：&quot;&gt;&lt;/a&gt;就业前景：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;国内网络公司的技术人员&lt;/li&gt;
+&lt;li&gt;大公司的技术人员&lt;/li&gt;
+&lt;li&gt;外包公司&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;3、网络系统设计师&quot;&gt;&lt;a href=&quot;#3、网络系统设计师&quot; class=&quot;headerlink&quot; title=&quot;3、网络系统设计师&quot;&gt;&lt;/a&gt;3、网络系统设计师&lt;/h4&gt;&lt;h5 id=&quot;工作职责描述：-2&quot;&gt;&lt;a href=&quot;#工作职责描述：-2&quot; class=&quot;headerlink&quot; title=&quot;工作职责描述：&quot;&gt;&lt;/a&gt;工作职责描述：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;公司需要建设网络，主要根据要求进行设计，客户能满意&lt;/li&gt;
+&lt;li&gt;设计项目达到全面、高的实用性和可用性&lt;/li&gt;
+&lt;li&gt;网络系统设计师是一个综合性的工种&lt;/li&gt;
+&lt;li&gt;网络和系统方面都有很好的经验&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;职位要求：-2&quot;&gt;&lt;a href=&quot;#职位要求：-2&quot; class=&quot;headerlink&quot; title=&quot;职位要求：&quot;&gt;&lt;/a&gt;职位要求：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;扎实而又全面的网络知识功底&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;多年专业网络管理、设计经验&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;对网络核心技术掌握很好&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;就业前景：-1&quot;&gt;&lt;a href=&quot;#就业前景：-1&quot; class=&quot;headerlink&quot; title=&quot;就业前景：&quot;&gt;&lt;/a&gt;就业前景：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;国内真正的设计师凤毛麟角 工资过万&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;4、网络存储工程师&quot;&gt;&lt;a href=&quot;#4、网络存储工程师&quot; class=&quot;headerlink&quot; title=&quot;4、网络存储工程师&quot;&gt;&lt;/a&gt;4、网络存储工程师&lt;/h4&gt;&lt;h5 id=&quot;工作职责描述：-3&quot;&gt;&lt;a href=&quot;#工作职责描述：-3&quot; class=&quot;headerlink&quot; title=&quot;工作职责描述：&quot;&gt;&lt;/a&gt;工作职责描述：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;主要工作在一些大的数据需要量大的公司如银行、电视台、IDC中心&lt;/li&gt;
+&lt;li&gt;有效管理公司海量数据，有存储设备测试、评估环境、系统咨询、实施指导、测试、培训、相关解决方案&lt;/li&gt;
+&lt;li&gt;灾难恢复&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;职位要求：-3&quot;&gt;&lt;a href=&quot;#职位要求：-3&quot; class=&quot;headerlink&quot; title=&quot;职位要求：&quot;&gt;&lt;/a&gt;职位要求：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;有多年的网络管理经验&lt;/li&gt;
+&lt;li&gt;熟悉一些常用数据库软件&lt;/li&gt;
+&lt;li&gt;有网络存储理论知识，包括存储基础、技术及网络存储高级技术&lt;/li&gt;
+&lt;li&gt;熟悉主流存储、备份厂商的产品线；如IBM/HP/SUN&lt;/li&gt;
+&lt;li&gt;熟练掌握veritas、legato、tsm、dp等备份软件工具使用&lt;/li&gt;
+&lt;li&gt;具有良好的撰写需求分析、解决方案、PPT、系统软硬件配置等方案的能力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;就业前景：-2&quot;&gt;&lt;a href=&quot;#就业前景：-2&quot; class=&quot;headerlink&quot; title=&quot;就业前景：&quot;&gt;&lt;/a&gt;就业前景：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;国内每年所需的网络存储人才在60万以上，而目前国内每年最多仅能提供1万左右，缺口极大。随着网络经济的日益普及，此类人才在未来几年中的需求将持续攀升，专业的硬件服务器和网络存储人才的工资标准可能还要远高于软、硬件开发人员。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;5、网络安全工程师&quot;&gt;&lt;a href=&quot;#5、网络安全工程师&quot; class=&quot;headerlink&quot; title=&quot;5、网络安全工程师&quot;&gt;&lt;/a&gt;5、网络安全工程师&lt;/h4&gt;&lt;h5 id=&quot;工作职责描述：-4&quot;&gt;&lt;a href=&quot;#工作职责描述：-4&quot; class=&quot;headerlink&quot; title=&quot;工作职责描述：&quot;&gt;&lt;/a&gt;工作职责描述：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;主要保护网络安全&lt;/li&gt;
+&lt;li&gt;保护网站、邮件等服务器安全&lt;/li&gt;
+&lt;li&gt;合理布置网络结构和网络产品&lt;/li&gt;
+&lt;li&gt;对企业能进行安全评估和防护&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;工作要求：&quot;&gt;&lt;a href=&quot;#工作要求：&quot; class=&quot;headerlink&quot; title=&quot;工作要求：&quot;&gt;&lt;/a&gt;工作要求：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;有多年的网络管理经验&lt;/li&gt;
+&lt;li&gt;熟悉多种网络安全技术，对各种主流的安全产品（如防火墙、防病毒、入侵检测等）有较好的理论基础和实践经验，了解各种安全产品（例如FireWall、VPN、防病毒产品、IPS等）的特点、使用方法及常用的调试技巧；&lt;/li&gt;
+&lt;li&gt;精通Windows、Linux等系统环境，能进行维护管理和故障分析&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;就业前景：-3&quot;&gt;&lt;a href=&quot;#就业前景：-3&quot; class=&quot;headerlink&quot; title=&quot;就业前景：&quot;&gt;&lt;/a&gt;就业前景：&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;当前最急缺的人才，工资增长幅度大&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/pic/0526.jpg&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;凡是合理的都是存在的，凡是存在的都是合理的。 —— 黑格尔    &lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;每日给自己一句话：不要随大流，要有自己的绝活；&quot;&gt;&lt;a href=&quot;#每日给自己一句话：不要随大流，要有自己的绝活；&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：不要随大流，要有自己的绝活；&quot;&gt;&lt;/a&gt;每日给自己一句话：不要随大流，要有自己的绝活；&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;比网络管理员高一级别，打怪应该需要打一年才能升到，而且还要自己平时努力，不然管理员还是管理员；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;工程师&quot;&gt;&lt;a href=&quot;#工程师&quot; class=&quot;headerlink&quot; title=&quot;工程师&quot;&gt;&lt;/a&gt;工程师&lt;/h3&gt;&lt;h4 id=&quot;职称：&quot;&gt;&lt;a href=&quot;#职称：&quot; class=&quot;headerlink&quot; title=&quot;职称：&quot;&gt;&lt;/a&gt;职称：&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;中级&lt;/li&gt;
+&lt;li&gt;工作在网络公司或者大中型企业。在网络公司中主要任务是设计并建设；在大中型企业中的主要任务是运营和维护。&lt;/li&gt;
+&lt;li&gt;网络工程师其实是一个包括许多种工种的职业，不同的网络工程师工种对从业的人员的要求也不一样，对从业人员的网络管理水平的要求差别很大。专业网络工程师主要有：网络系统设计师、网络工程师、系统工程师、网络安全工程师、数据存储工程师等。&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>解读网络工程师职业</title>
+    <link href="williamliuwen.cn/2016/05/25/%E8%A7%A3%E8%AF%BB%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%81%8C%E4%B8%9A/"/>
+    <id>williamliuwen.cn/2016/05/25/解读网络工程师职业/</id>
+    <published>2016-05-25T14:34:36.000Z</published>
+    <updated>2016-05-25T14:36:58.000Z</updated>
+    
+    <content type="html">&lt;h4 id=&quot;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&quot;&gt;&lt;a href=&quot;#每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&quot;&gt;&lt;/a&gt;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&lt;/h4&gt;&lt;h4 id=&quot;一、网络工程师的职业优势&quot;&gt;&lt;a href=&quot;#一、网络工程师的职业优势&quot; class=&quot;headerlink&quot; title=&quot;一、网络工程师的职业优势&quot;&gt;&lt;/a&gt;一、网络工程师的职业优势&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;1、最具增值潜力的职业，掌握企业核心网络架构、安全技术，具有不可替代的竞争优势&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2、新型网络人才缺口大，27%的行业增长速度导致网络人才年缺口达30万，高薪高福利成为必然&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;3、可实现专业零基础入行，4-10个月的强化训练和职业化引导，就可成为企业急需的技能型网络人才&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;4、就业面广，一专多能，实践经验适用于各个领域&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;5、增值潜力大，职业价值随着自身经验的丰富以及项目运作的成熟，升值空间一路看涨&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;6、职业发展前景广阔，网络工程师到项目经理仅一步之遥，从容晋升Manager&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;二、网络工程师解读&quot;&gt;&lt;a href=&quot;#二、网络工程师解读&quot; class=&quot;headerlink&quot; title=&quot;二、网络工程师解读&quot;&gt;&lt;/a&gt;二、网络工程师解读&lt;/h4&gt;&lt;p&gt;何谓网络工程师，网络工程师是通过学习和训练，掌握网络技术的理论知识和操作技能的网络技术人员。网络工程师能够从事计算机信息系统的设计、建设、运行和维护工作。&lt;/p&gt;
+&lt;p&gt;具体来说，我们可以从企业信息化的岗位体系中作一些了解。企业（或政府）信息化过程中需要以下四种人：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;1、企业信息化主管：负责信息化建设中的目标与方案决策，信息化建设中的方向研究；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2、工程技术人员：负责信息化系统的设计、建设，包括设备、系统、数据库、应用系统的建设；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;3、运行维护人员：负责信息化系统的运行、维护、管理以及基本的开发；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;4、操作应用人员：主要应用信息化系统进行本职工作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一般来说，IT企业的IT技术职位根据职能可以分为管理岗位：企业信息主管CIO、总监、IT经理、项目经理等；工程技术岗位：规划设计师、网络工程师、系统工程师、软件工程师和数据库工程师等；运行维护岗位：数据库管理员、系统管理员、网络管理员、服务器管理员等；操作岗位：办公文员、CAD设计员、网页制作员、多媒体制作员等。&lt;/p&gt;
+&lt;p&gt;根据企业规模大小，规模较小的企业，一个岗位可能涵盖几个岗位的内容，系统管理员既要负责系统管理，又要承担网络管理；大企业则会分的比较专业，有网络设计师、系统集成工程师、网络安装工程师、综合布线工程师和系统测试工程师等。&lt;/p&gt;
+&lt;h4 id=&quot;网络工程师职业规划过程主要有以下几步：&quot;&gt;&lt;a href=&quot;#网络工程师职业规划过程主要有以下几步：&quot; class=&quot;headerlink&quot; title=&quot;网络工程师职业规划过程主要有以下几步：&quot;&gt;&lt;/a&gt;网络工程师职业规划过程主要有以下几步：&lt;/h4&gt;&lt;p&gt;两年以上的小型企业→四年左右的中型企业→大型企业或跨国集团公司&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;第一步，小企业的网络管理员（系统管理员）；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;第二步，进入大中型企业，同样的网络管理工作，工资就可能完全不同了，一般都在3000元以上。做了部门经理时，还可以高达5000元或以上；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;第三步，学习更全面的知识成为普通的网络工程师工资就高达3500元以上；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;第四步，学习更全面的知识成为专业的网络工程师，如网络存储工程师、网络安全工程师的工资就可以达8000元以上，做大型企业或专业网络公司IT经理的工资就更高了，基本在万元以上。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/pic/0525.jpg&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;真正的大不敬是不尊重别人的神。 —— 马克·吐温&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&quot;&gt;&lt;a href=&quot;#每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&quot;&gt;&lt;/a&gt;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&lt;/h4&gt;&lt;h4 id=&quot;一、网络工程师的职业优势&quot;&gt;&lt;a href=&quot;#一、网络工程师的职业优势&quot; class=&quot;headerlink&quot; title=&quot;一、网络工程师的职业优势&quot;&gt;&lt;/a&gt;一、网络工程师的职业优势&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;1、最具增值潜力的职业，掌握企业核心网络架构、安全技术，具有不可替代的竞争优势&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2、新型网络人才缺口大，27%的行业增长速度导致网络人才年缺口达30万，高薪高福利成为必然&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;3、可实现专业零基础入行，4-10个月的强化训练和职业化引导，就可成为企业急需的技能型网络人才&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>给网络工程师的建议</title>
+    <link href="williamliuwen.cn/2016/05/24/%E7%BB%99%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E5%BB%BA%E8%AE%AE/"/>
+    <id>williamliuwen.cn/2016/05/24/给网络工程师的建议/</id>
+    <published>2016-05-24T14:35:18.000Z</published>
+    <updated>2016-05-24T14:44:54.000Z</updated>
+    
+    <content type="html">&lt;h4 id=&quot;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot;&gt;&lt;a href=&quot;#每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot;&gt;&lt;/a&gt;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&lt;/h4&gt;&lt;h4 id=&quot;应聘网络工程师要注意的地方：&quot;&gt;&lt;a href=&quot;#应聘网络工程师要注意的地方：&quot; class=&quot;headerlink&quot; title=&quot;应聘网络工程师要注意的地方：&quot;&gt;&lt;/a&gt;应聘网络工程师要注意的地方：&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;首先是简历这里，我比较关注的是职业经历和工作成果，还有就是技术专业方向等，对于职业经历，关注的重点是曾服务企业的规模以及所具体负责的业务范围，特别在具体工作中所处的位置是主导还是参与很重要。而技术方向而言，应当体现对自己职业生涯规划的一个思想，把自己在IT领域的学习和发展方向表述清晰。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;通过大部分简历的筛选来看，大部分简历内容比较泛泛，简历描述各种技术都会，实际面试的交流却反应出只是了解皮毛而已。我挑选的简历基本都是三年以上的工作经验，但是通过面试，感觉到大部分工程师还是处于办公电脑基础维护这样的水平，对于三层交换、路由、防火墙、数据库、分布式网络规划管理等方面缺乏一定的深入，我想建议具有一定经验的网络工程师来说，经过3年的积累，应该为自己的技术发展做个规划。个人比较喜欢接受过职业培训的员工，他们的动手实践能力一般都比较强，因为职业培训不同于大学教育，是很注重学员的实践能力的。山东海天软件培训基地创始人邹晓东就说过，实践能力是他们教学的宗旨。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;谈谈面试，求职者的外在形象和沟通能力很重要。形象要体现出职业化，比如衣着搭配、头发、胡子（男同胞）等等，昨天面试看到有的头发乱乱的像几天没洗了，有的迎面坐下就传来很浓的汗味儿，这样的给人第一印象就不是很好。再说说沟通这里，我的面试风格比较随意，不需要做那些什么TCP协议之类的笔试题，就是面谈，谈自己的工作经历，我问的比较细，关注技术要点，&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;到底什么水平通过这样的交流很容易体现出来，而交流过程会观察个人的表达能力和性格特点，比如有的人说话过程中声音发颤，有的人特别喜欢狡辩，有的人特别被动等。还有面试的其它一些细节，作为应聘者也要注意，因为面试你的人时刻在观察着你。比如有的人一进来公司，便对前台小姐大声说你们公司挺难找的啊，有的人在等待时歪坐着翘着二郎腿东张西望，这些细节都反应出一个人的职业素养。我建议学习IT技术的同时，要培养自己的职业素养和管理能力，以更高的职业水平来要求自己。   &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;最后说一下职业规划，虽然作为网络工程师是技术主导，但是要有管理的思想和理念，其实每个人都是管理者，因为首先你已经有了很好的管理对象，就是你自己。对于IT技术，要有全面了解的意识，了解整个IT领域的新知识和新概念，但是更为重要的是自己要选择一个深入发展的方向，成为一个专业的专家，就是说要注重自己在IT领域横向和纵向的双向发展。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/pic/0524.png&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;竭力为善，爱自由甚于一切，即使为了王座，也永勿欺妄真理。 —— 贝多芬    &lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot;&gt;&lt;a href=&quot;#每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot;&gt;&lt;/a&gt;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&lt;/h4&gt;&lt;h4 id=&quot;应聘网络工程师要注意的地方：&quot;&gt;&lt;a href=&quot;#应聘网络工程师要注意的地方：&quot; class=&quot;headerlink&quot; title=&quot;应聘网络工程师要注意的地方：&quot;&gt;&lt;/a&gt;应聘网络工程师要注意的地方：&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;首先是简历这里，我比较关注的是职业经历和工作成果，还有就是技术专业方向等，对于职业经历，关注的重点是曾服务企业的规模以及所具体负责的业务范围，特别在具体工作中所处的位置是主导还是参与很重要。而技术方向而言，应当体现对自己职业生涯规划的一个思想，把自己在IT领域的学习和发展方向表述清晰。&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>我的番茄炒蛋</title>
+    <link href="williamliuwen.cn/2016/05/23/%E6%88%91%E7%9A%84%E7%95%AA%E8%8C%84%E7%82%92%E8%9B%8B/"/>
+    <id>williamliuwen.cn/2016/05/23/我的番茄炒蛋/</id>
+    <published>2016-05-23T11:53:26.000Z</published>
+    <updated>2016-05-23T12:14:42.000Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;每日给自己一句话：背人说话没好事儿&quot;&gt;&lt;a href=&quot;#每日给自己一句话：背人说话没好事儿&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：背人说话没好事儿&quot;&gt;&lt;/a&gt;每日给自己一句话：背人说话没好事儿&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;一生大概有80年，一年大概有12个月，大概有365天，每天有24个小时，除了8小时的睡觉时间，16个小时都在工作，学习，生活，旅游，发呆。&lt;/p&gt;
+&lt;p&gt;你的一生是否幸福快乐自由享受，就在乎这80年里面，你是否过得幸福快乐自由享受；也在乎每天年中365天里面你是否过得幸福快乐自由享受；也在乎你每天16个小时里面，你是否过得幸福快乐自由享受。&lt;/p&gt;
+&lt;p&gt;珍惜你一天里面的16个小时，不要浪费，不给花在无关的事，无关的人上面。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;工作日&quot;&gt;&lt;a href=&quot;#工作日&quot; class=&quot;headerlink&quot; title=&quot;工作日&quot;&gt;&lt;/a&gt;工作日&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;我的工作日：一天里面大概有10个番茄时间花在学习上，就是花了5个小时了，还剩下11个小时，一个小时2个番茄时间，就是说还有22个番茄时间，我都用在了哪里呢：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;番茄时间完成的原则：具体时间根据具体情况而定，只要能完成总的番茄时间。对于番茄时间被打断是否承认为番茄时间问题上，还在考虑中。&lt;/li&gt;
+&lt;li&gt;下面的计划只是用一个月以内，根据以后具体的角色改变而改变。&lt;/li&gt;
+&lt;li&gt;我的工作：睡觉时间标准比例是：晚上10点–白天6点&lt;/li&gt;
+&lt;li&gt;我的工作：工作学习生活旅游时间是：白天6点–晚上10点，划分的细致一点是：&lt;/li&gt;
+&lt;li&gt;&lt;ul&gt;
+&lt;li&gt;我的工作：一天下来总共需要完成14个番茄时间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;早上&quot;&gt;&lt;a href=&quot;#早上&quot; class=&quot;headerlink&quot; title=&quot;早上&quot;&gt;&lt;/a&gt;早上&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;6点-1点，7个小时，&lt;/li&gt;
+&lt;li&gt;在家里待的时间是2个小时（可以利用2个番茄时间，1小时）1/2=50%；&lt;/li&gt;
+&lt;li&gt;在公司待的时间8点–1点，就是5小时（可以利用4个番茄时间，2小时），2/5=40%。可以扩充多1个番茄时间：2.5/5=50%  下午1点-6点，5个小时（可以利用4个番茄时间，2小时），2/5=40%。可以扩充多1个番茄时间：2.5/5=50%  &lt;/li&gt;
+&lt;li&gt;晚上6点-10,4个小时，6点-8点吃饭休息洗澡时间，8点-10点（有2个番茄时间可以利用）剩下1个小时什么都不做。&lt;/li&gt;
+&lt;li&gt;剩下的一个小时，可以陪伴家人，可以跟宝宝聊天早上：家里2个番茄时间；公司5个番茄时间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;下午：&quot;&gt;&lt;a href=&quot;#下午：&quot; class=&quot;headerlink&quot; title=&quot;下午：&quot;&gt;&lt;/a&gt;下午：&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;公司5个番茄时间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;完成：&quot;&gt;&lt;a href=&quot;#完成：&quot; class=&quot;headerlink&quot; title=&quot;完成：&quot;&gt;&lt;/a&gt;完成：&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;家里2个番茄时间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;周末&quot;&gt;&lt;a href=&quot;#周末&quot; class=&quot;headerlink&quot; title=&quot;周末&quot;&gt;&lt;/a&gt;周末&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;我的周末：睡觉时间标准比例是：晚上10点–白天8点，周六除外，周六需要10点起床；我的周末：基于周末可能有时候会有事情办，对于没有时间安排的番茄时间，可以具体说明时间都去哪里了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;我的周六：总共需要完成12个番茄时间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;早上10点-1点，3个小时，吃饭时间12点-1点包括休息，完全可以利用时间10-12点，2个小时，4个饭番茄时间  下午1点-6点，5个小时，吃饭时间5点-6点，完全可以利用时间1点-5点，4个小时，8个番茄时间  晚上6点-10,6点-8点，陪伴家人时间，休息，8点-10点，自己休息时间，自由发挥。早上：4个番茄时间;下午：8个番茄时间;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;我的周日：总共需要完成16个番茄时间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;早上8点-1点，5个小时，吃饭时间12点-1点包括休息，完全可以利用时间8点-12点，4个小时，8个饭番茄时间  下午1点-6点，5个小时，吃饭时间5点-6点，完全可以利用时间1点-5点，4个小时，8个番茄时间  晚上6点-10,6点-8点，陪伴家人时间，休息，8点-10点，自己休息时间，自由发挥。早上：8个番茄时间;下午：8个番茄时间;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;每日给自己一句话：背人说话没好事儿&quot;&gt;&lt;a href=&quot;#每日给自己一句话：背人说话没好事儿&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：背人说话没好事儿&quot;&gt;&lt;/a&gt;每日给自己一句话：背人说话没好事儿&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;一生大概有80年，一年大概有12个月，大概有365天，每天有24个小时，除了8小时的睡觉时间，16个小时都在工作，学习，生活，旅游，发呆。&lt;/p&gt;
+&lt;p&gt;你的一生是否幸福快乐自由享受，就在乎这80年里面，你是否过得幸福快乐自由享受；也在乎每天年中365天里面你是否过得幸福快乐自由享受；也在乎你每天16个小时里面，你是否过得幸福快乐自由享受。&lt;/p&gt;
+&lt;p&gt;珍惜你一天里面的16个小时，不要浪费，不给花在无关的事，无关的人上面。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>番茄工作法影响力</title>
+    <link href="williamliuwen.cn/2016/05/22/%E7%95%AA%E8%8C%84%E5%B7%A5%E4%BD%9C%E6%B3%95%E5%BD%B1%E5%93%8D%E5%8A%9B/"/>
+    <id>williamliuwen.cn/2016/05/22/番茄工作法影响力/</id>
+    <published>2016-05-22T13:11:43.000Z</published>
+    <updated>2016-05-23T12:32:53.000Z</updated>
+    
+    <content type="html">&lt;hr&gt;
+&lt;h3 id=&quot;每日给自己一句话：I-didn’t-allude-to-anything-or-anybody-我并未影射任何人或任何事&quot;&gt;&lt;a href=&quot;#每日给自己一句话：I-didn’t-allude-to-anything-or-anybody-我并未影射任何人或任何事&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：I didn’t allude to anything or anybody.(我并未影射任何人或任何事)&quot;&gt;&lt;/a&gt;每日给自己一句话：I didn’t allude to anything or anybody.(我并未影射任何人或任何事)&lt;/h3&gt;&lt;h3 id=&quot;总共40多条，带你全面领悟番茄的乐趣：&quot;&gt;&lt;a href=&quot;#总共40多条，带你全面领悟番茄的乐趣：&quot; class=&quot;headerlink&quot; title=&quot;总共40多条，带你全面领悟番茄的乐趣：&quot;&gt;&lt;/a&gt;总共40多条，带你全面领悟番茄的乐趣：&lt;/h3&gt;&lt;p&gt;1、采用简单的工具，比如铅笔，纸，不容易引起分心的工具。&lt;/p&gt;
+&lt;p&gt;2、一个番茄时间有30分钟，包括25分钟工作时间和一个5分钟休息时间&lt;/p&gt;
+&lt;p&gt;3、一个番茄时间不能被划分，不能被中断，如果发上所说情况，重新开始计算番茄时间。25分钟纯粹工作时间，然后休息3-5分钟。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;4、到了休息时间，必须停止工作，就算你觉得你能再这休息的几分钟内完成你的工作。&lt;/p&gt;
+&lt;p&gt;5、休息时间能做的事情：在房间走一走；喝杯水；策划一下你假期的行程；坐坐深呼吸；伸展鱼洞；与同事分享快乐。&lt;/p&gt;
+&lt;p&gt;6、每4个番茄时间，进行一段长时间的休息，15-30分钟。&lt;/p&gt;
+&lt;p&gt;7、15-30分钟休息时间可以做的事情：不去做复杂的事情；喝一杯咖啡；散步；清理办公桌；检查电子邮件。&lt;/p&gt;
+&lt;p&gt;8、特殊情况：当前的番茄时间作废&lt;/p&gt;
+&lt;p&gt;9、完成一项任务后就开始下一项任务，直到所有任务完成，并且一定要休息好。&lt;/p&gt;
+&lt;p&gt;10、对于番茄工作法来说，开始时间或者是结束时间并不重要，重要的是完成任务所用的番茄数。&lt;/p&gt;
+&lt;p&gt;邪恶的分界线&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;11、被别人打断分两种：外部因素和内部因素;内部因素与注意力不集中联系在一起。应对这种情况：可以在计划外的紧急事件内标注内部因素原因。花在打断上的时间越少越好，至多几秒钟，否则，打断就真正成立。&lt;/p&gt;
+&lt;p&gt;12、如果遇到计划外的紧急事件，可以在下一个番茄时间处理这件事，而保证现在这个番茄时间不被打断。&lt;/p&gt;
+&lt;p&gt;13、如果发生的紧急事情你必须打断现在的番茄时间，那么就把当前的番茄时间作废，就算马上要响铃也是一样。&lt;/p&gt;
+&lt;p&gt;14、应对被外部因素打断的方法：快速记录事情，推迟事情，并写进日程表，询问打断你的人是否同意。&lt;/p&gt;
+&lt;p&gt;15、要做到我们不再被轻易打断，而是由我们来操控打断&lt;/p&gt;
+&lt;p&gt;16、应对打断：每天抽出一个番茄时间来安排这些打断，让打断变成事件&lt;/p&gt;
+&lt;p&gt;17、要做到成功的拖延打断，越迟越好，尽量减轻这些打断的紧急程度，增加这些打断的可控制性。把打断的时间缩短越小越好。&lt;/p&gt;
+&lt;p&gt;18、每天结束是，把内部打断和外部打断都记录进档案中，观察分析它们，努力克服这些打断，使打断最小化。&lt;/p&gt;
+&lt;p&gt;19、如果一项任务的估测值大于5到7个番茄数，那么就打散它。&lt;/p&gt;
+&lt;p&gt;20、选出的任务的番茄总数，既可用番茄总数，不要超过自己今天所能完成的极限。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;21、在所有8个番茄时间之外再增加任务是没有意义的。如果完成了所有任务而可用番茄树还没用完，则需要从活动清单中跳出任务来填补没有完成的番茄树，直到完成为止。&lt;/p&gt;
+&lt;p&gt;22、通过对任务进行番茄数的估测&lt;/p&gt;
+&lt;p&gt;23、不是每个项目都是可以估测的，通过学习一些前沿的资料，然后再进行思路整理，再进行估测。&lt;/p&gt;
+&lt;p&gt;24、每个番茄时间25分钟，不需要被改变。逐渐形成生物钟&lt;/p&gt;
+&lt;p&gt;25、&lt;/p&gt;
+&lt;p&gt;26、一轮即四个饭去欸时间。每轮的第一个番茄时间可以用来回顾之前的工作，每轮的最后一个番茄时间对这一轮中工作的总结。可以试着大声朗读，或复述给你的同伴听，那会使回顾和总结变得更加有效。有规律地回顾和总结能激发你的学习热情，促进你获得新的知识，温故而知新。&lt;/p&gt;
+&lt;p&gt;27、如果没有空闲时间，我们是在把自身的能量消耗殆尽，创造力、想象力、好奇心都会被磨灭，就像引擎没有了燃料。&lt;/p&gt;
+&lt;p&gt;28、作息时间表是对每日进程和结果的估测。一旦填好了工作计划表，今天的目标就明显了，要做多少事，要完成多少任务，我们会尽力去完成这些人物。如果时间用完了，我们还没有完成任务，我们会想哪里除了错误。&lt;/p&gt;
+&lt;p&gt;29、要遵守作息时间表&lt;/p&gt;
+&lt;p&gt;30、一份好的作息时间表，必须包含充足的空闲时间&lt;/p&gt;
+&lt;h4 id=&quot;如果看累了，可以休息一下，不需要一次看完，要慢慢品！&quot;&gt;&lt;a href=&quot;#如果看累了，可以休息一下，不需要一次看完，要慢慢品！&quot; class=&quot;headerlink&quot; title=&quot;如果看累了，可以休息一下，不需要一次看完，要慢慢品！&quot;&gt;&lt;/a&gt;如果看累了，可以休息一下，不需要一次看完，要慢慢品！&lt;/h4&gt;&lt;p&gt;31、为了保证这种负荷的工作能够得到积极的结果，而不陷入上面提到的恶性循环，你不能连续超负荷超过5天。威这段时期制定一份特殊的作息时间表，并预留一定的恢复时间，以应对不可避免的工作效率下降。&lt;/p&gt;
+&lt;p&gt;32、完美的作息时间表例子：&lt;/p&gt;
+&lt;p&gt;33、最重要的是坚持，坚持记录，分析，反馈才能得到真正属于你自己的有效方案&lt;/p&gt;
+&lt;p&gt;34、要清除地知道自己，怎样的安排对自己是最有效的。&lt;/p&gt;
+&lt;p&gt;35、番茄例子：一个全天学习的学生:8:30–12:30和1:30–5:30;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;早上两轮，下午两轮;早上第一轮4个番茄；第二轮3个番茄;下午第三轮4个番茄；第四轮3个番茄&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;早上第一轮第一个番茄用来整理和计划你今天要做的事情；接下来的3个番茄时间和第二轮的前两个番茄时间用来学习；第二轮的第三个番茄时间用来查看和回复邮件等处理打断的最好方式。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;下午第三轮的第一个番茄时间，回顾早上学习的内容。第三轮后3个番茄用来学习；第四轮前两个番茄时间，复习今天学的内容，总结，整理，浏览最近几天内学习的东西。最后一个番茄时间，用来记录档案，分析档案，信息反馈。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;36、每个番茄时间后的休息时间不能少于3到5分钟，当你特别累的时候，至多可休息10分钟。超过5到10分钟也是不可取的，那会打乱番茄工作法的节奏，如果真的特别累，还是要等到一轮番茄时间结束后再延长休息时间，遮掩工会更佳合适。&lt;/p&gt;
+&lt;p&gt;37、番茄工作法手机软件（xplabs开发的）；厨房带有静音功能的电子计时器；番茄工作法PC版软件aka soft-pomodoro(jtomato)&lt;/p&gt;
+&lt;p&gt;38、番茄工作法强调，要把精力放在当前的番茄时间上，完成了，就跳到下一个番茄时间，你的注意力要放在当下，而不是过去或者将来的空想。&lt;/p&gt;
+&lt;p&gt;39、当自己感到迷失，那就停下来，用一个番茄时间去思考问题，重新安排工作计划，制定作息时间表，然后再继续工作。&lt;/p&gt;
+&lt;p&gt;40、机械的番茄计时器是最好的。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;41、番茄工作法的好处之一是提高估测能力。&lt;/p&gt;
+&lt;p&gt;42、强调：如果一项任务的估测值大于5到7个番茄时间，就必须打散它。&lt;/p&gt;
+&lt;p&gt;43、如果自己觉得特别累，就减少每轮番茄的个数（比如每轮4个番茄减少到每轮3个），并且延长每轮之间的休息时长。你越是感到累或是烦躁，就越是需要停下来反思，休息，而不是不惜一切继续前进。&lt;/p&gt;
+&lt;p&gt;44、不要去追求已经失去的时间，而是要努力做好当前的工作。&lt;/p&gt;
+&lt;p&gt;45、遵守纪律是番茄工作法保持高效率的关键&lt;/p&gt;
+&lt;p&gt;46、作息时间表分为工作时间和空闲时间，空闲时间我们就不再需要番茄工作法。&lt;/p&gt;
+&lt;p&gt;47、休息时间：只能从事简单的事情。&lt;/p&gt;
+&lt;p&gt;48、每天都要对记录的数据进行观察和分析&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;其他学习笔记&lt;br&gt;学习《如何掌控自己的时间和生活》&lt;/p&gt;
+&lt;p&gt;1、我们很有效率，但是没有目标;我们笨鸟先飞，但是不知所踪&lt;/p&gt;
+&lt;p&gt;2、在如何应用时间这件事情上，做出正确的选择要比更快更好地完成手头的工作更加重要。&lt;/p&gt;
+&lt;p&gt;3、每个人每个星期都只有168个小时&lt;/p&gt;
+&lt;p&gt;4、有时候你必须做一些别人希望你做的事情。&lt;br&gt;学习《时间投资法》&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/pic/0523.jpg&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我的那些最重要的发现是受到失败的启示而作出的。 —— 汉弗里·戴维    &lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h3 id=&quot;每日给自己一句话：I-didn’t-allude-to-anything-or-anybody-我并未影射任何人或任何事&quot;&gt;&lt;a href=&quot;#每日给自己一句话：I-didn’t-allude-to-anything-or-anybody-我并未影射任何人或任何事&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：I didn’t allude to anything or anybody.(我并未影射任何人或任何事)&quot;&gt;&lt;/a&gt;每日给自己一句话：I didn’t allude to anything or anybody.(我并未影射任何人或任何事)&lt;/h3&gt;&lt;h3 id=&quot;总共40多条，带你全面领悟番茄的乐趣：&quot;&gt;&lt;a href=&quot;#总共40多条，带你全面领悟番茄的乐趣：&quot; class=&quot;headerlink&quot; title=&quot;总共40多条，带你全面领悟番茄的乐趣：&quot;&gt;&lt;/a&gt;总共40多条，带你全面领悟番茄的乐趣：&lt;/h3&gt;&lt;p&gt;1、采用简单的工具，比如铅笔，纸，不容易引起分心的工具。&lt;/p&gt;
+&lt;p&gt;2、一个番茄时间有30分钟，包括25分钟工作时间和一个5分钟休息时间&lt;/p&gt;
+&lt;p&gt;3、一个番茄时间不能被划分，不能被中断，如果发上所说情况，重新开始计算番茄时间。25分钟纯粹工作时间，然后休息3-5分钟。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
