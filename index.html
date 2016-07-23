@@ -154,6 +154,13 @@
 <h4 id="开始部署hexo"><a href="#开始部署hexo" class="headerlink" title="开始部署hexo"></a>开始部署hexo</h4><p>1.使用下面的命令，一条一条来，如果不行，用sudo</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">hexo init blog</span><br><span class="line">cd blog</span><br><span class="line">npm install</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 <p>2.直接访问本地部署好的hexo</p>
+<h4 id="利用hexo发布文章"><a href="#利用hexo发布文章" class="headerlink" title="利用hexo发布文章"></a>利用hexo发布文章</h4><p>1.新建文章，先进入hexo文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;新文章&quot;</span><br></pre></td></tr></table></figure>
+<p>2.写好文章后，生成静态文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+<p>3.生成静态文件后，上传到github</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<h4 id="hexo技巧"><a href="#hexo技巧" class="headerlink" title="hexo技巧"></a>hexo技巧</h4><p>1.因为hexo生成的静态文件是放在public文件夹下面的，如果你部署github的时候，使用的git destop版本来上传代码的话，你可以clone你的git下来的时候，clone到hexo文件下，且改名为public，那么下次hexo生成静态文件的时候就会直接生成到clone下来的git文件夹里面，那你用git desktop上传代码的时候，就可以直接commit上传了</p>
 
       
     </div>
