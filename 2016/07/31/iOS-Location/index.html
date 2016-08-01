@@ -6,25 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>iOS Location | 太阳在的地方</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Location分两种服务1.标准位置服务 Standard Location Service
-使用场景：定位及时,精度较高,并且运行时间较短;
-2.显著的位置变化定位服务 significant-change location service
-使用场景：长时间监控用户位置,用户移动速度比较快(例如打车软件)，为什么打车软件适用呢，说明一下，因为坐车使用APP的话，移动的速度快，距离变化非常明显，">
+  <meta name="description" content="1.Location常识？1.基于GPS/基站/wifi定位
+3种区别是：iOS不像Android系统在定位服务编程时，可以指定采用哪种途径进行定位。iOS的API把底层这些细节屏蔽掉了，开发人员和用户并不知道现在设备是采用哪种方式进行定位的，iOS系统会根据设备的情况和周围的环境，采用一套最佳的解决方案。这个方案是这样的，如果能够接收GPS信息，那么设备优先采用GPS定位，否则采用Wifi或蜂窝">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS Location">
 <meta property="og:url" content="williamliuwen.cn/2016/07/31/iOS-Location/index.html">
 <meta property="og:site_name" content="太阳在的地方">
-<meta property="og:description" content="Location分两种服务1.标准位置服务 Standard Location Service
-使用场景：定位及时,精度较高,并且运行时间较短;
-2.显著的位置变化定位服务 significant-change location service
-使用场景：长时间监控用户位置,用户移动速度比较快(例如打车软件)，为什么打车软件适用呢，说明一下，因为坐车使用APP的话，移动的速度快，距离变化非常明显，">
-<meta property="og:updated_time" content="2016-08-01T12:51:30.000Z">
+<meta property="og:description" content="1.Location常识？1.基于GPS/基站/wifi定位
+3种区别是：iOS不像Android系统在定位服务编程时，可以指定采用哪种途径进行定位。iOS的API把底层这些细节屏蔽掉了，开发人员和用户并不知道现在设备是采用哪种方式进行定位的，iOS系统会根据设备的情况和周围的环境，采用一套最佳的解决方案。这个方案是这样的，如果能够接收GPS信息，那么设备优先采用GPS定位，否则采用Wifi或蜂窝">
+<meta property="og:updated_time" content="2016-08-01T14:58:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS Location">
-<meta name="twitter:description" content="Location分两种服务1.标准位置服务 Standard Location Service
-使用场景：定位及时,精度较高,并且运行时间较短;
-2.显著的位置变化定位服务 significant-change location service
-使用场景：长时间监控用户位置,用户移动速度比较快(例如打车软件)，为什么打车软件适用呢，说明一下，因为坐车使用APP的话，移动的速度快，距离变化非常明显，">
+<meta name="twitter:description" content="1.Location常识？1.基于GPS/基站/wifi定位
+3种区别是：iOS不像Android系统在定位服务编程时，可以指定采用哪种途径进行定位。iOS的API把底层这些细节屏蔽掉了，开发人员和用户并不知道现在设备是采用哪种方式进行定位的，iOS系统会根据设备的情况和周围的环境，采用一套最佳的解决方案。这个方案是这样的，如果能够接收GPS信息，那么设备优先采用GPS定位，否则采用Wifi或蜂窝">
   
   
     <link rel="icon" href="img/favicon.gif">
@@ -163,34 +157,31 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="Location分两种服务"><a href="#Location分两种服务" class="headerlink" title="Location分两种服务"></a>Location分两种服务</h4><p>1.标准位置服务 Standard Location Service</p>
-<pre><code>使用场景：定位及时,精度较高,并且运行时间较短;
-</code></pre><p>2.显著的位置变化定位服务 significant-change location service</p>
-<pre><code>使用场景：长时间监控用户位置,用户移动速度比较快(例如打车软件)，为什么打车软件适用呢，说明一下，因为坐车使用APP的话，移动的速度快，距离变化非常明显，所以使用这种方式。这种方式适用长时间监控，但长时间监控不能保持实时监控，就会导致后台不会时刻运行位置更新服务，而是在使用的时候才会调用，这个是由苹果系统控制，iOS开发者无法控制。
-</code></pre><h5 id="通过什么方式实现定位？"><a href="#通过什么方式实现定位？" class="headerlink" title="通过什么方式实现定位？"></a>通过什么方式实现定位？</h5><p>1.基于gps/基站/wifi定位</p>
-<pre><code>3种区别是：iOS不像Android系统在定位服务编程时，可以指定采用哪种途径进行定位。iOS的API把底层这些细节屏蔽掉了，开发人员和用户并不知道现在设备是采用哪种方式进行定位的，iOS系统会根据设备的情况和周围的环境，采用一套最佳的解决方案。这个方案是这样的，如果能够接收GPS信息，那么设备优先采用GPS定位，否则采用Wifi或蜂窝基站定位，在Wifi和蜂窝基站之间优先使用Wifi，如果无法连接Wifi才使用蜂窝基站定位。
-总体来说GPS定位优点是准确、覆盖面广阔，缺点是不能被遮挡（例如：在建筑物里面收不到GPS卫星信号）、GPS开启后比较费电。蜂窝基站不仅误差比较大，而且会耗费用户流量费。而Wifi定位是最经济实惠的。
-</code></pre><p>2.如果使用基站进行定位,必须要求设备有电话模块</p>
+        <h4 id="1-Location常识？"><a href="#1-Location常识？" class="headerlink" title="1.Location常识？"></a>1.Location常识？</h4><p>1.基于GPS/基站/wifi定位</p>
+<p>3种区别是：iOS不像Android系统在定位服务编程时，可以指定采用哪种途径进行定位。iOS的API把底层这些细节屏蔽掉了，开发人员和用户并不知道现在设备是采用哪种方式进行定位的，iOS系统会根据设备的情况和周围的环境，采用一套最佳的解决方案。这个方案是这样的，如果能够接收GPS信息，那么设备优先采用GPS定位，否则采用Wifi或蜂窝基站定位，在Wifi和蜂窝基站之间优先使用Wifi，如果无法连接Wifi才使用蜂窝基站定位。总体来说GPS定位优点是准确、覆盖面广阔，缺点是不能被遮挡（例如：在建筑物里面收不到GPS卫星信号）、GPS开启后比较费电。蜂窝基站不仅误差比较大，而且会耗费用户流量费。而Wifi定位是最经济实惠的。</p>
+<p>2.如果使用基站进行定位,必须要求设备有电话模块</p>
 <p>1）当app被完全关闭时,也可以接收到位置通知,并让app进入到后台处理 </p>
 <p>2）定位精度相比于上面,精度不大,所以耗电小,而且定位更新频率依据基站密度而定</p>
-<h5 id="位置更新注意"><a href="#位置更新注意" class="headerlink" title="位置更新注意"></a>位置更新注意</h5><p>1.必须开启手机位置服务</p>
-<p>2.位置更新的评估标准有：高精度低频率、高精度高频率、低精度低频率、低精度高频率</p>
-<p>3.对iOS9+，需要加allowsBackgroundLocationUpdates = YES</p>
-<h5 id="标准位置服务-Standard-Location-Service"><a href="#标准位置服务-Standard-Location-Service" class="headerlink" title="标准位置服务 Standard Location Service"></a>标准位置服务 Standard Location Service</h5><p>1.可以提供持续的位置更新</p>
+<p>3.必须开启手机位置服务</p>
+<p>4.位置更新的评估标准有：高精度低频率、高精度高频率、低精度低频率、低精度高频率</p>
+<h4 id="2-Location使用的框架？"><a href="#2-Location使用的框架？" class="headerlink" title="2.Location使用的框架？"></a>2.Location使用的框架？</h4><h4 id="3-Location注意点？"><a href="#3-Location注意点？" class="headerlink" title="3.Location注意点？"></a>3.Location注意点？</h4><p>1.对iOS9+，需要加allowsBackgroundLocationUpdates = YES</p>
+<p>2.</p>
+<h4 id="4-Location遇到的问题？"><a href="#4-Location遇到的问题？" class="headerlink" title="4.Location遇到的问题？"></a>4.Location遇到的问题？</h4><h4 id="5-Location两种服务"><a href="#5-Location两种服务" class="headerlink" title="5.Location两种服务?"></a>5.Location两种服务?</h4><p>标准位置服务 Standard Location Service</p>
+<p>1.可以提供持续的位置更新</p>
 <p>2.可以提供最精确的位置更新</p>
 <p>3.如果被用户手动关闭，就不会再被唤醒</p>
 <p>4.定位基于gps/基站/wifi定位</p>
-<h5 id="重要改变位置服务-significant-change-location-service"><a href="#重要改变位置服务-significant-change-location-service" class="headerlink" title="重要改变位置服务 significant-change location service"></a>重要改变位置服务 significant-change location service</h5><p>1.提供至少15分钟一次的位置更新</p>
+<p>5.使用场景：定位及时,精度较高,并且运行时间较短;</p>
+<hr>
+<p>显著的位置变化定位服务 significant-change location service</p>
+<p>1.提供至少15分钟一次的位置更新</p>
 <p>2.无法提供精确的位置更新</p>
 <p>3.可以重新启动位置更新服务</p>
 <p>4.使用基站定位的，所以设备一定要有电话模块</p>
 <p>5.不管是在后台还是用户手动关闭APP都会被唤醒调用委托,只有3种方法关闭1）用户关闭定位服务（2）用户关闭对该app的定位服务（3）设备处于飞行模式或者无法开启必要的硬件</p>
 <p>6.startMonitoringSignificantLocationChanges什么时候更新呢？是在更换基站的时候更新。所以更新频率与基站密度有关。市区更新频率较郊区高。所以很多同学说没有更新是因为还在同一组基站范围内。</p>
-<h5 id="位置更新CLLocationManager"><a href="#位置更新CLLocationManager" class="headerlink" title="位置更新CLLocationManager"></a>位置更新CLLocationManager</h5><p>CLLocationManager是定位服务管理类它能够给我们供给获得设备的位置信息和高度信息，也可以监控设备进入或离开某个区域，它还可以帮助获得设备的运行方向等。</p>
-<h5 id="位置更新activityType"><a href="#位置更新activityType" class="headerlink" title="位置更新activityType"></a>位置更新activityType</h5><p>activityType：设置定位数据的用途。该属性支持CLActivityTypeOther（定位数据作为普通用途）CLActivityTypeAutomotiveNavigation（定位数据作为车辆导航使用）<br>CLActivityTypeFitness（定位数据作为步行导航使用）CLActivityTypeOtherNavigation（定位数据作为其他导航使用）</p>
-<h5 id="位置更新常用属性"><a href="#位置更新常用属性" class="headerlink" title="位置更新常用属性"></a>位置更新常用属性</h5><p>distanceFilter：设置CLLocationManager的自动过滤距离。也就是说，只有当设备在水平方向的位置改变超过该数值（以米为单位）指定的距离时才会生成一次位置改变的信号。</p>
-<p>pausesLocationUpdatesAutomatically：设置iOS设备是否可暂停定位来节省电池的电量。如果该属性设为“YES”，则当iOS设备不再需要定位数据时，iOS设备可以自动暂停定位。</p>
-<p>————CLLocation</p>
+<p>7.使用场景：长时间监控用户位置,用户移动速度比较快(例如打车软件)，为什么打车软件适用呢，说明一下，因为坐车使用APP的话，移动的速度快，距离变化非常明显，所以使用这种方式。这种方式适用长时间监控，但长时间监控不能保持实时监控，就会导致后台不会时刻运行位置更新服务，而是在使用的时候才会调用，这个是由苹果系统控制，iOS开发者无法控制。</p>
+<h4 id="6-Location常用属性和方法？"><a href="#6-Location常用属性和方法？" class="headerlink" title="6.Location常用属性和方法？"></a>6.Location常用属性和方法？</h4><p>CLLocation</p>
 <p>CLLocation类代表一个位置信息，其中还包括了方向和速度。比如我在长安街188号以5公里/小时的速度往西走。CLLocation具有下面的属性和方法：</p>
 <p>@property  CLLocationCoordinate2D coordinate; //以经度和纬度表示的位置信息</p>
 <p>@property CLLocationDistance altitude;  //海拔</p>
@@ -198,9 +189,10 @@
 <p>@property CLLocationAccuracy verticalAccuracy; //垂直精度</p>
 <p>@property CLLocationDirection course; //方向</p>
 <p>@property CLLocationSpeed speed; //速度</p>
-<p>-（NSDate *）timeStamp;</p>
-<p>//两个位置之间的距离<br>-(CLLocationDistance)distanceFromLocation:(CLLocation *)location;</p>
-<p>————-CLLocationManager</p>
+<p>-（NSDate*）timeStamp;</p>
+<p>-(CLLocationDistance)distanceFromLocation:(CLLocation*)location;//两个位置之间的距离</p>
+<hr>
+<p>CLLocationManager</p>
 <p>CLLocationManager类管理和提供位置服务。它的属性和方法有：</p>
 <p>@property CLLocation *location; //位置</p>
 <p>@property id<cllocationmanagerdelegate> delegate;</cllocationmanagerdelegate></p>
@@ -211,13 +203,14 @@
 <p>-(void)startUpdatingHeading; //开始更新方向（比如：你改往东走）</p>
 <p>-(void)stopUpdatingHeading; //停止更新方向</p>
 <p>CLLocationManagerDelegate是一个委托类。你的应用程序需要使用这个委托类。</p>
-<p>当用户改变位置的时候，CLLocationManager回调的方法是：</p>
-<pre><code>-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
-</code></pre><p>当用户改变方向的时候，所调用的方法是：</p>
-<pre><code>-(void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLLHeading *)newHeading;
-</code></pre><p>当iPhone无法获得当前位置的信息时，所回调的方法是：</p>
-<pre><code>-(void)locationManager: (CLLocationManager *)manager didFailLoadWithError:(NSError *)error;
-</code></pre><h5 id="后台运行位置更新"><a href="#后台运行位置更新" class="headerlink" title="后台运行位置更新"></a>后台运行位置更新</h5><p>原则:1.在处理位置数据的时候尽量减少工作量</p>
+<p>-(void)locationManager:(CLLocationManager<em>)manager didUpdateToLocation:(CLLocation</em>)newLocation fromLocation:(CLLocation*)oldLocation;//当用户改变位置的时候回调</p>
+<p>-(void)locationManager:(CLLocationManager<em>)manager didUpdateHeading:(CLLHeading</em>)newHeading;//当用户改变方向的时候回调</p>
+<p>-(void)locationManager: (CLLocationManager <em>)manager didFailLoadWithError:(NSError </em>)error;//当iPhone无法获得当前位置的信息时回调</p>
+<h5 id="位置更新CLLocationManager"><a href="#位置更新CLLocationManager" class="headerlink" title="位置更新CLLocationManager"></a>位置更新CLLocationManager</h5><p>CLLocationManager是定位服务管理类它能够给我们供给获得设备的位置信息和高度信息，也可以监控设备进入或离开某个区域，它还可以帮助获得设备的运行方向等。</p>
+<h5 id="位置更新activityType"><a href="#位置更新activityType" class="headerlink" title="位置更新activityType"></a>位置更新activityType</h5><p>activityType：设置定位数据的用途。该属性支持CLActivityTypeOther（定位数据作为普通用途）CLActivityTypeAutomotiveNavigation（定位数据作为车辆导航使用）<br>CLActivityTypeFitness（定位数据作为步行导航使用）CLActivityTypeOtherNavigation（定位数据作为其他导航使用）</p>
+<h5 id="位置更新常用属性"><a href="#位置更新常用属性" class="headerlink" title="位置更新常用属性"></a>位置更新常用属性</h5><p>distanceFilter：设置CLLocationManager的自动过滤距离。也就是说，只有当设备在水平方向的位置改变超过该数值（以米为单位）指定的距离时才会生成一次位置改变的信号。</p>
+<p>pausesLocationUpdatesAutomatically：设置iOS设备是否可暂停定位来节省电池的电量。如果该属性设为“YES”，则当iOS设备不再需要定位数据时，iOS设备可以自动暂停定位。</p>
+<h5 id="后台运行位置更新"><a href="#后台运行位置更新" class="headerlink" title="后台运行位置更新"></a>后台运行位置更新</h5><p>原则:1.在处理位置数据的时候尽量减少工作量</p>
 <h5 id="后台运行位置离上次更新时间"><a href="#后台运行位置离上次更新时间" class="headerlink" title="后台运行位置离上次更新时间"></a>后台运行位置离上次更新时间</h5><p>NSTimeInterval howRecent = [newLocation.timestamp timeIntervalSinceNow];</p>
 <p>if(howRecent &lt; -10) return ； //离上次更新的时间少于10秒</p>
 <h5 id="后台运行位置判断精度"><a href="#后台运行位置判断精度" class="headerlink" title="后台运行位置判断精度"></a>后台运行位置判断精度</h5><p>if(newLocation.horizontalAccuracy &gt; 100) return; //精度&gt; 100米</p>
@@ -229,20 +222,12 @@
 <p>、、、</p>
 <p>// Delegate method from the CLLocationManagerDelegate protocol.</p>
 <ul>
-<li><p>(void)locationManager:(CLLocationManager *)manager</p>
-<pre><code>didUpdateLocations:(NSArray *)locations {
-</code></pre><p> // Add the new locations to the hike<br> [self.hike addLocations:locations];</p>
-<p>  参数locations是位置变化的聚拢，它按照时间变化的顺序存放。如果想获得当前设备的位置，可以使用第①行的[locations lastObject]语句获得聚拢中最后一个元素，它就是设备当前位置了。</p>
-<p>  CLLocation封装了位置、高度等信息。在上面代码中我们使用了它的两个属性：altitude和coordinate，altitude属性是高度值，coordinate是封装了经度和纬度的结构体CLLocationCoordinate2D</p>
-<p>  CLLocationCoordinate2D;其中latitude为经度信息，longitude为纬度信息，它们都是CLLocationDegrees类型，CLLocationDegrees是使用typedef定义的double类型。</p>
-<p> // Defer updates until the user hikes a certain distance<br> // or when a certain amount of time has passed.<br> if (!self.deferringUpdates) {</p>
-<pre><code>CLLocationDistance distance = self.hike.goal - self.hike.distance;
-NSTimeInterval time = [self.nextAudible timeIntervalSinceNow];
-[locationManager allowDeferredLocationUpdatesUntilTraveled:distance
-                                                   timeout:time];
-</code></pre><p> self.deferringUpdates = YES;<br> }<br>}</p>
-</li>
+<li>(void)locationManager:(CLLocationManager <em>)manager<br>didUpdateLocations:(NSArray </em>)locations {<br>// Add the new locations to the hike<br>[self.hike addLocations:locations];</li>
 </ul>
+<p>参数locations是位置变化的聚拢，它按照时间变化的顺序存放。如果想获得当前设备的位置，可以使用第①行的[locations lastObject]语句获得聚拢中最后一个元素，它就是设备当前位置了。</p>
+<p>CLLocation封装了位置、高度等信息。在上面代码中我们使用了它的两个属性：altitude和coordinate，altitude属性是高度值，coordinate是封装了经度和纬度的结构体CLLocationCoordinate2D</p>
+<p>CLLocationCoordinate2D;其中latitude为经度信息，longitude为纬度信息，它们都是CLLocationDegrees类型，CLLocationDegrees是使用typedef定义的double类型。</p>
+<p>// Defer updates until the user hikes a certain distance<br>// or when a certain amount of time has passed.<br>if (!self.deferringUpdates) {<br>CLLocationDistance distance = self.hike.goal - self.hike.distance;<br>NSTimeInterval time = [self.nextAudible timeIntervalSinceNow];<br>[locationManager allowDeferredLocationUpdatesUntilTraveled:distance<br>timeout:time];<br>self.deferringUpdates = YES;<br>}<br>}</p>
 <p>、、、</p>
 <h5 id="位置更新常用代码及解释"><a href="#位置更新常用代码及解释" class="headerlink" title="位置更新常用代码及解释"></a>位置更新常用代码及解释</h5><p>1.每隔多少米定位一次</p>
 <p>代码: self.locationM.distanceFilter = 100;</p>
@@ -253,13 +238,13 @@ NSTimeInterval time = [self.nextAudible timeIntervalSinceNow];
 <h5 id="位置更新desiredAccuracy"><a href="#位置更新desiredAccuracy" class="headerlink" title="位置更新desiredAccuracy"></a>位置更新desiredAccuracy</h5><p>kCLLocationAccuracyBestForNavigation    最适合导航<br>kCLLocationAccuracyBest    精度最好的<br>kCLLocationAccuracyNearestTenMeters    附近10米<br>kCLLocationAccuracyHundredMeters    附近100米<br>kCLLocationAccuracyKilometer    附近1000米<br>kCLLocationAccuracyThreeKilometers    附近3000米</p>
 <p>精度越高请求获得位置信息的时间就越短，这就意味着设备越耗电。因此一个应用应该选择适合它的精度，如果你的应用是一个车载导航应用，kCLLocationAccuracyBestForNavigation是比较好的选择，你可以使用汽车上的电瓶为设备供电。如果你的应用为徒步旅行者供给的导航应用，kCLLocationAccuracyHundredMeters是一个不错的选择。</p>
 <h5 id="位置更新代理方法"><a href="#位置更新代理方法" class="headerlink" title="位置更新代理方法"></a>位置更新代理方法</h5><p>1.当停止位置更新，会回调代理方法： locationManagerDidPauseLocationUpdates:</p>
-<p>2.当继续位置更新，会回调代理方法：<br> locationManagerDidResumeLocationUpdates: </p>
+<p>2.当继续位置更新，会回调代理方法：<br>locationManagerDidResumeLocationUpdates: </p>
 <h5 id="APP挂了，怎么重新运行位置更新"><a href="#APP挂了，怎么重新运行位置更新" class="headerlink" title="APP挂了，怎么重新运行位置更新"></a>APP挂了，怎么重新运行位置更新</h5><p>1.使用 region monitoring</p>
 <p>2.使用 significant-change location service.</p>
 <h5 id="什么情况位置更新不能用了"><a href="#什么情况位置更新不能用了" class="headerlink" title="什么情况位置更新不能用了"></a>什么情况位置更新不能用了</h5><p>情况是：a user disables the Background App Refresh setting either globally or specifically for your app</p>
 <h5 id="位置更新后台运行资源紧张问题"><a href="#位置更新后台运行资源紧张问题" class="headerlink" title="位置更新后台运行资源紧张问题"></a>位置更新后台运行资源紧张问题</h5><p>1.如果使用startUpdatingLocation，当有更新时遇到资源紧张，则会被延迟调用委托。如果对于实时性要求高的可能不适合这个，很难控制用户机器性能状况。</p>
 <h5 id="后台位置更新需要更多的时间处理位置数据使用的方法是？"><a href="#后台位置更新需要更多的时间处理位置数据使用的方法是？" class="headerlink" title="后台位置更新需要更多的时间处理位置数据使用的方法是？"></a>后台位置更新需要更多的时间处理位置数据使用的方法是？</h5><p>If an iOS app needs more time to process the location data, it can request more background execution time using </p>
-<p> beginBackgroundTaskWithName:expirationHandler:</p>
+<p>beginBackgroundTaskWithName:expirationHandler:</p>
 <h5 id="后台位置更新会用到的方法"><a href="#后台位置更新会用到的方法" class="headerlink" title="后台位置更新会用到的方法"></a>后台位置更新会用到的方法</h5><p>1.UIApplication:beginBackgroundTaskWithExpirationHandler:</p>
 <p>2.UIApplication:backgroundTimeRemaining</p>
 <h5 id="本文参考链接"><a href="#本文参考链接" class="headerlink" title="本文参考链接"></a>本文参考链接</h5><p>1.<a href="https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/LocationAwarenessPG/CoreLocation/CoreLocation.html#//apple_ref/doc/uid/TP40009497-CH2-SW1" target="_blank" rel="external">https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/LocationAwarenessPG/CoreLocation/CoreLocation.html#//apple_ref/doc/uid/TP40009497-CH2-SW1</a></p>
