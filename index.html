@@ -263,12 +263,71 @@
 <p>4.Dispatch Source常用属性和方法？</p>
 <p>dispatch_source_create//创建</p>
 <hr>
-<h2 id="Thread-NSOperation"><a href="#Thread-NSOperation" class="headerlink" title="Thread - NSOperation"></a>Thread - NSOperation</h2><p>1.NSOperation须知？</p>
-<ul>
+<h2 id="Thread-NSOperation"><a href="#Thread-NSOperation" class="headerlink" title="Thread - NSOperation"></a>Thread - NSOperation</h2><h3 id="1-NSOperation须知？"><a href="#1-NSOperation须知？" class="headerlink" title="1.NSOperation须知？"></a>1.NSOperation须知？</h3><ul>
 <li>1）NSOperation使用的优点和局限</li>
 </ul>
-<p>2.NSOperation使用注意？</p>
-<p>3.NSOperation常用属性和方法？</p>
+<h3 id="2-NSOperation使用注意？"><a href="#2-NSOperation使用注意？" class="headerlink" title="2.NSOperation使用注意？"></a>2.NSOperation使用注意？</h3><p>1.为什么在并发情况下需要自己来设定isExecuting和isFinished这两个状态量呢?</p>
+<ul>
+<li>1)为什么在并发情况下需要自己来设定isExecuting和isFinished这两个状态量呢?</li>
+<li>2)因为在并发情况下系统不知道operation什么时候finished, operation里面的task一般来说是异步执行的</li>
+<li>3)也就是start函数返回了operation不一定就是finish了, 这个你自己来控制, 你什么时候将isFinished置为YES(发送相应的KVO消息), operation就什么时候完成了</li>
+<li>4)修改的方法：willChangeValueForKey  /  didChangeValueForKey</li>
+</ul>
+<h3 id="3-NSOperation常用属性和方法？"><a href="#3-NSOperation常用属性和方法？" class="headerlink" title="3.NSOperation常用属性和方法？"></a>3.NSOperation常用属性和方法？</h3><ul>
+<li><p>-(void)start;//启动任务,默认在当前队列同步执行；当实现了start方法时，默认会执行start方法，而不执行main方法</p>
+</li>
+<li><p>-(void)main;//main函数执行完成后, isExecuting会被置为NO, 而isFinished则被置为YES.</p>
+</li>
+<li><p>-(void)addDependency:(NSOperation *)op;//依赖可以跨队列依赖</p>
+</li>
+<li><p>-(void)removeDependency:(NSOperation *)op;</p>
+</li>
+<li><p>-(void)cancel;//取消任务，GCD没有这个功能</p>
+</li>
+<li><p>-(void)waitUntilFinished ;</p>
+</li>
+<li><p>-(void)addExecutionBlock:(void (^)(void))block;//参考《NSOperation【子类1：NSBlockOperation】》</p>
+</li>
+<li><p>-(nullable instancetype)initWithTarget:(id)target selector:(SEL)sel object:(nullable id)arg;</p>
+</li>
+<li><p>-(instancetype)initWithInvocation:(NSInvocation *)inv NS_DESIGNATED_INITIALIZER;</p>
+</li>
+<li><p>-(void)addOperation:(NSOperation *)op;</p>
+</li>
+<li><p>-(void)addOperations:(NSArray<nsoperation *=""> *)ops waitUntilFinished:(BOOL)wait ;</nsoperation></p>
+</li>
+<li><p>-(void)addOperationWithBlock:(void (^)(void))block ;</p>
+</li>
+<li><p>-(void)cancelAllOperations;//取消队列中所有的任务</p>
+</li>
+<li><p>-(void)waitUntilAllOperationsAreFinished;//阻塞当前线程直到此队列中的所有任务执行完毕</p>
+</li>
+<li><p>+(nullable NSOperationQueue *)currentQueue ;</p>
+</li>
+<li><p>+(NSOperationQueue *)mainQueue ;//获取主队列</p>
+</li>
+<li><p>+(instancetype)blockOperationWithBlock:(void (^)(void))block;</p>
+</li>
+<li><p>@property NSInteger maxConcurrentOperationCount;//最大并发数;用来设置最多可以让多少个任务同时执行;为 1 时为串行；主对列默认是串行队列</p>
+</li>
+<li><p>@property (readonly) NSUInteger operationCount;//获取队列的任务数</p>
+</li>
+<li><p>@property (readonly, getter=isCancelled) BOOL cancelled;//取消；用KVO可以方便的监测NSOperation的状态(isExecuted, isFinished, isCancelled)</p>
+</li>
+<li><p>@property (readonly, getter=isExecuting) BOOL executing;//正在执行；因为都起了别名，所以可以通过 isExecuting 来 getter 属性值</p>
+</li>
+<li><p>@property (readonly, getter=isFinished) BOOL finished;//完成</p>
+</li>
+<li><p>@property (getter=isSuspended) BOOL suspended;//暂停;[queue setSuspended:YES];是重写 set 方法</p>
+</li>
+</ul>
+<h4 id="NSOperationQueuePriority"><a href="#NSOperationQueuePriority" class="headerlink" title="NSOperationQueuePriority"></a>NSOperationQueuePriority</h4><ul>
+<li>NSOperationQueuePriorityVeryLow = -8L,</li>
+<li>NSOperationQueuePriorityLow = -4L,</li>
+<li>NSOperationQueuePriorityNormal = 0,</li>
+<li>NSOperationQueuePriorityHigh = 4,</li>
+<li>NSOperationQueuePriorityVeryHigh = 8</li>
+</ul>
 <h4 id="参考连接"><a href="#参考连接" class="headerlink" title="参考连接"></a>参考连接</h4><p>1.<a href="http://www.jianshu.com/p/c56b614db49d" target="_blank" rel="external">http://www.jianshu.com/p/c56b614db49d</a></p>
 <p>2.<a href="http://alex1212112.github.io/blog/2015/11/24/dispatch-source/" target="_blank" rel="external">http://alex1212112.github.io/blog/2015/11/24/dispatch-source/</a></p>
 
