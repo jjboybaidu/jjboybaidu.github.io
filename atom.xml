@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="williamliuwen.cn/"/>
-  <updated>2016-08-02T09:46:33.000Z</updated>
+  <updated>2016-08-02T10:08:49.000Z</updated>
   <id>williamliuwen.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="williamliuwen.cn/2016/08/02/iOS-Thread/"/>
     <id>williamliuwen.cn/2016/08/02/iOS-Thread/</id>
     <published>2016-08-02T08:52:50.000Z</published>
-    <updated>2016-08-02T09:46:33.000Z</updated>
+    <updated>2016-08-02T10:08:49.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;Thread方案&quot;&gt;&lt;a href=&quot;#Thread方案&quot; class=&quot;headerlink&quot; title=&quot;Thread方案&quot;&gt;&lt;/a&gt;Thread方案&lt;/h2&gt;&lt;p&gt;1.NSOperation&lt;/p&gt;
 &lt;p&gt;2.GCD&lt;/p&gt;
@@ -29,7 +29,6 @@
 &lt;ul&gt;
 &lt;li&gt;1.xxx&lt;/li&gt;
 &lt;li&gt;2.xxx&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&quot;Thread-NSThread&quot;&gt;&lt;a href=&quot;#Thread-NSThread&quot; class=&quot;headerlink&quot; title=&quot;Thread - NSThread&quot;&gt;&lt;/a&gt;Thread - NSThread&lt;/h2&gt;&lt;p&gt;1.NSThread须知？&lt;/p&gt;
@@ -50,17 +49,31 @@
 &lt;p&gt;串行就是一个接一个执行，串行是任务A执行完了任务B才能执行, 它们俩只能顺序执行&lt;/p&gt;
 &lt;p&gt;2.什么是并行？&lt;/p&gt;
 &lt;p&gt;并行就是多个可以一起执行，并行则是任务A和任务B可以同时执行&lt;/p&gt;
-&lt;p&gt;3.什么是同步？&lt;/p&gt;
-&lt;p&gt;同步就是，比如用来下载图片的函数A，同步函数只有在image下载结束之后才返回，下载的这段时间函数A只能搬个小板凳在那儿坐等&lt;/p&gt;
-&lt;p&gt;4.什么是异步？&lt;/p&gt;
-&lt;p&gt;异步，异步函数, 立即返回,图片会去下载 但函数A不会去等它完成，因此异步函数不会堵塞当前线程去执行下一个函数。&lt;/p&gt;
+&lt;p&gt;3.什么是同步（ dispatch_sync ）？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;1)同步就是，比如用来下载图片的函数A，同步函数只有在image下载结束之后才返回，下载的这段时间函数A只能搬个小板凳在那儿坐等&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2)只能在当前线程中执行任务，不具备开启新线程的能力&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;4.什么是异步（ dispatch_async）？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;1)异步，异步函数, 立即返回,图片会去下载 但函数A不会去等它完成，因此异步函数不会堵塞当前线程去执行下一个函数。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2)可以在新的线程中执行任务，具备开启新线程的能力&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;5.串行、并行、异步、同步与线程的关系？&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;同步（ dispatch_sync）不会开启新线程，暂停执行所有不以block块任务为第一任务的队列，阻塞&lt;/li&gt;
 &lt;li&gt;异步（ dispatch_async）不一定会开启新线程，这个跟队列有关，当前线程会直接往下执行，它不会阻塞当前线程&lt;/li&gt;
+&lt;li&gt;同步执行和异步执行，他们之间的区别主要在于会不会阻塞当前线程,同步会让系统判定暂停执行所有不以block块任务为第一任务的队列（即如果block块任务不在队列头，那么block块任务所在的队列也会暂停执行），且同步一定不会开启新线程，因为GCD觉得既然其它队列暂停执行，block块任务就可以在当前线程执行了，没有必要开启新线程。而异步则系统不会进行判定，但是不一定会开启新线程，这个跟队列有关，如果是新创建的队列，那么GCD就会开启新线程，如果加入已有的队列，那么就会在队列所在的线程中执行。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h5 id=&quot;GCD-队列、主队列、全局队列、自定义队列、任务、串行队列、并发队列&quot;&gt;&lt;a href=&quot;#GCD-队列、主队列、全局队列、自定义队列、任务、串行队列、并发队列&quot; class=&quot;headerlink&quot; title=&quot;GCD - 队列、主队列、全局队列、自定义队列、任务、串行队列、并发队列&quot;&gt;&lt;/a&gt;GCD - 队列、主队列、全局队列、自定义队列、任务、串行队列、并发队列&lt;/h5&gt;&lt;p&gt;1.队列与任务关系?&lt;/p&gt;
-&lt;p&gt;队列是用来放置任务的，一个队列可以有很多任务，同时也会有很多队列。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1）队列是用来放置任务的，一个队列可以有很多任务，同时也会有很多队列。&lt;/li&gt;
+&lt;li&gt;2）所以操作任务的一般步骤是：第一步先确定想做的事情，就是定制任务；第二步是将任务添加到队列中，GCD会自动将队列中的任务取出，放到对应的线程中执行；注意：任务的取出遵循队列的FIFO原则：先进先出，后进后出；&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;2.任务是什么？&lt;/p&gt;
 &lt;p&gt;任务就是想要做的事，表示执行什么操作&lt;/p&gt;
 &lt;p&gt;3.队列是什么？&lt;/p&gt;
@@ -81,7 +94,39 @@
 &lt;ul&gt;
 &lt;li&gt;1.自定义队列可以是串行队列，也可以是并行队列&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;2-GCD使用注意？&quot;&gt;&lt;a href=&quot;#2-GCD使用注意？&quot; class=&quot;headerlink&quot; title=&quot;2.GCD使用注意？&quot;&gt;&lt;/a&gt;2.GCD使用注意？&lt;/h3&gt;&lt;h3 id=&quot;3-GCD常用属性和方法？&quot;&gt;&lt;a href=&quot;#3-GCD常用属性和方法？&quot; class=&quot;headerlink&quot; title=&quot;3.GCD常用属性和方法？&quot;&gt;&lt;/a&gt;3.GCD常用属性和方法？&lt;/h3&gt;&lt;hr&gt;
+&lt;h3 id=&quot;2-GCD使用注意？&quot;&gt;&lt;a href=&quot;#2-GCD使用注意？&quot; class=&quot;headerlink&quot; title=&quot;2.GCD使用注意？&quot;&gt;&lt;/a&gt;2.GCD使用注意？&lt;/h3&gt;&lt;h3 id=&quot;3-GCD常用属性和方法？&quot;&gt;&lt;a href=&quot;#3-GCD常用属性和方法？&quot; class=&quot;headerlink&quot; title=&quot;3.GCD常用属性和方法？&quot;&gt;&lt;/a&gt;3.GCD常用属性和方法？&lt;/h3&gt;&lt;p&gt;1.dispatch_sync// 同步执行&lt;/p&gt;
+&lt;p&gt;2.dispatch_async// 异步执行&lt;/p&gt;
+&lt;p&gt;3.dispatch_once_t// 保证某段代码在程序运行过程中只被执行1次&lt;/p&gt;
+&lt;p&gt;4.dispatch_after// 延时&lt;/p&gt;
+&lt;p&gt;5.dispatch_group_async// 组异步&lt;/p&gt;
+&lt;p&gt;6.dispatch_suspend// 挂起&lt;/p&gt;
+&lt;p&gt;7.dispatch_resume// 继续&lt;/p&gt;
+&lt;p&gt;8.dispatch_barrier_async//  作用是在并行队列中，等待前面的队列执行完成后在继续往下执行&lt;/p&gt;
+&lt;p&gt;9.dispatch_queue_t// 队列&lt;/p&gt;
+&lt;p&gt;10.dispatch_apply&lt;/p&gt;
+&lt;p&gt;11.[NSThread sleepForTimeInterval:1.0]; //线程休眠,等同于sleep(1)&lt;/p&gt;
+&lt;p&gt;12.dispatch_queue_t queue = dispatch_get_main_queue(); // 创建主队列&lt;/p&gt;
+&lt;h3 id=&quot;4-GCD-Dispatch-Source函数&quot;&gt;&lt;a href=&quot;#4-GCD-Dispatch-Source函数&quot; class=&quot;headerlink&quot; title=&quot;4.GCD - Dispatch Source函数&quot;&gt;&lt;/a&gt;4.GCD - Dispatch Source函数&lt;/h3&gt;&lt;p&gt;1.Dispatch Source函数须知？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1）Source 可以理解为产生事件的地方，Source 产生事件，然后 Source 的回调函数负责 处理这些事件。&lt;/li&gt;
+&lt;li&gt;2）iOS 中有两种 Source，一种是 Run Loop Source ,一种是 Dispatch Source。&lt;/li&gt;
+&lt;li&gt;3）在 Run Loop 中， Run Loop Source 产生事件，之后唤醒 Run Loop， Run Loop 便执行该 Source 的回调函数。&lt;/li&gt;
+&lt;li&gt;4）Dispatch Source 也会产生一些特定的事件，当这些事件发生的时候，其回调的 block （响应句柄）会自动加入到 对应的 dispatch queue 中。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2.Dispatch Source 种类&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DISPATCH_SOURCE_TYPE_TIMER             定时器&lt;/li&gt;
+&lt;li&gt;DISPATCH_SOURCE_TYPE_SIGNAL            接收到 UNIX 信号&lt;/li&gt;
+&lt;li&gt;DISPATCH_SOURCE_TYPE_READ              文件可读&lt;/li&gt;
+&lt;li&gt;DISPATCH_SOURCE_TYPE_WRITE             文件可写&lt;/li&gt;
+&lt;li&gt;DISPATCH_SOURCE_TYPE_VNODE             文件系统有变更&lt;/li&gt;
+&lt;li&gt;DISPATCH_SOURCE_TYPE_PROC              与进程相关的事件&lt;/li&gt;
+&lt;li&gt;DISPATCH_SOURCE_TYPE_MACH_SEND Mach    端口发送事件&lt;/li&gt;
+&lt;li&gt;DISPATCH_SOURCE_TYPE_MACH_RECV Mach    端口接收事件&lt;/li&gt;
+&lt;li&gt;DISPATCH_SOURCE_TYPE_DATA_ADD          用户自定义的事件－变量相加&lt;/li&gt;
+&lt;li&gt;DISPATCH_SOURCE_TYPE_DATA_OR           用户自定义的事件－变量相或&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
 &lt;h2 id=&quot;Thread-NSOperation&quot;&gt;&lt;a href=&quot;#Thread-NSOperation&quot; class=&quot;headerlink&quot; title=&quot;Thread - NSOperation&quot;&gt;&lt;/a&gt;Thread - NSOperation&lt;/h2&gt;&lt;p&gt;1.NSOperation须知？&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;1）NSOperation使用的优点和局限&lt;/li&gt;
@@ -89,7 +134,7 @@
 &lt;p&gt;2.NSOperation使用注意？&lt;/p&gt;
 &lt;p&gt;3.NSOperation常用属性和方法？&lt;/p&gt;
 &lt;h4 id=&quot;参考连接&quot;&gt;&lt;a href=&quot;#参考连接&quot; class=&quot;headerlink&quot; title=&quot;参考连接&quot;&gt;&lt;/a&gt;参考连接&lt;/h4&gt;&lt;p&gt;1.&lt;a href=&quot;http://www.jianshu.com/p/c56b614db49d&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/c56b614db49d&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;2.&lt;/p&gt;
+&lt;p&gt;2.&lt;a href=&quot;http://alex1212112.github.io/blog/2015/11/24/dispatch-source/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://alex1212112.github.io/blog/2015/11/24/dispatch-source/&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
