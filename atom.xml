@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="williamliuwen.cn/"/>
-  <updated>2016-08-02T10:08:49.000Z</updated>
+  <updated>2016-08-02T11:28:30.000Z</updated>
   <id>williamliuwen.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="williamliuwen.cn/2016/08/02/iOS-Thread/"/>
     <id>williamliuwen.cn/2016/08/02/iOS-Thread/</id>
     <published>2016-08-02T08:52:50.000Z</published>
-    <updated>2016-08-02T10:08:49.000Z</updated>
+    <updated>2016-08-02T11:28:30.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;Thread方案&quot;&gt;&lt;a href=&quot;#Thread方案&quot; class=&quot;headerlink&quot; title=&quot;Thread方案&quot;&gt;&lt;/a&gt;Thread方案&lt;/h2&gt;&lt;p&gt;1.NSOperation&lt;/p&gt;
 &lt;p&gt;2.GCD&lt;/p&gt;
@@ -80,19 +80,19 @@
 &lt;p&gt;用来存放任务&lt;/p&gt;
 &lt;p&gt;4.并发队列（Concurrent Dispatch Queue）是什么？&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;1.可以让多个任务并发（同时）执行（自动开启多个线程同时执行任务）&lt;/li&gt;
-&lt;li&gt;2.并发功能只有在异步（dispatch_async）函数下才有效&lt;/li&gt;
-&lt;li&gt;3.全局队列就是并发队列&lt;/li&gt;
+&lt;li&gt;1）可以让多个任务并发（同时）执行（自动开启多个线程同时执行任务）&lt;/li&gt;
+&lt;li&gt;2）并发功能只有在异步（dispatch_async）函数下才有效&lt;/li&gt;
+&lt;li&gt;3）全局队列就是并发队列&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;5.串行队列（Serial Dispatch Queue）是什么？&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;1.让任务一个接着一个地执行（一个任务执行完毕后，再执行下一个任务）&lt;/li&gt;
-&lt;li&gt;2.串行和并行是针对同一个队列中的任务而言的，当使用串行，那么队列里的那么队列里的任务最多只能使用一个线程运行，即同一时刻只有一个任务在执行，如果是并行，那么系统会根据队列里的任务自动分配线程执行，最大线程数根据参数设定。&lt;/li&gt;
-&lt;li&gt;3.主队列就是串行队列&lt;/li&gt;
+&lt;li&gt;1）让任务一个接着一个地执行（一个任务执行完毕后，再执行下一个任务）&lt;/li&gt;
+&lt;li&gt;2）串行和并行是针对同一个队列中的任务而言的，当使用串行，那么队列里的那么队列里的任务最多只能使用一个线程运行，即同一时刻只有一个任务在执行，如果是并行，那么系统会根据队列里的任务自动分配线程执行，最大线程数根据参数设定。&lt;/li&gt;
+&lt;li&gt;3）主队列就是串行队列&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;6.自定义队列（Serial Dispatch Queue）是什么？&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;1.自定义队列可以是串行队列，也可以是并行队列&lt;/li&gt;
+&lt;li&gt;1）自定义队列可以是串行队列，也可以是并行队列&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;2-GCD使用注意？&quot;&gt;&lt;a href=&quot;#2-GCD使用注意？&quot; class=&quot;headerlink&quot; title=&quot;2.GCD使用注意？&quot;&gt;&lt;/a&gt;2.GCD使用注意？&lt;/h3&gt;&lt;h3 id=&quot;3-GCD常用属性和方法？&quot;&gt;&lt;a href=&quot;#3-GCD常用属性和方法？&quot; class=&quot;headerlink&quot; title=&quot;3.GCD常用属性和方法？&quot;&gt;&lt;/a&gt;3.GCD常用属性和方法？&lt;/h3&gt;&lt;p&gt;1.dispatch_sync// 同步执行&lt;/p&gt;
 &lt;p&gt;2.dispatch_async// 异步执行&lt;/p&gt;
@@ -126,6 +126,12 @@
 &lt;li&gt;DISPATCH_SOURCE_TYPE_DATA_ADD          用户自定义的事件－变量相加&lt;/li&gt;
 &lt;li&gt;DISPATCH_SOURCE_TYPE_DATA_OR           用户自定义的事件－变量相或&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;3.选择Dispatch Source还是dispatch_async？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1）Dispatch Source优势是可以利用联结dispatch_source_merge_data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;4.Dispatch Source常用属性和方法？&lt;/p&gt;
+&lt;p&gt;dispatch_source_create//创建&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&quot;Thread-NSOperation&quot;&gt;&lt;a href=&quot;#Thread-NSOperation&quot; class=&quot;headerlink&quot; title=&quot;Thread - NSOperation&quot;&gt;&lt;/a&gt;Thread - NSOperation&lt;/h2&gt;&lt;p&gt;1.NSOperation须知？&lt;/p&gt;
 &lt;ul&gt;
