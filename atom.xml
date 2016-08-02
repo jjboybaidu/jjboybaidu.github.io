@@ -36,7 +36,7 @@
     <link href="williamliuwen.cn/2016/07/31/iOS-Location/"/>
     <id>williamliuwen.cn/2016/07/31/iOS-Location/</id>
     <published>2016-07-31T03:07:55.000Z</published>
-    <updated>2016-08-02T02:27:17.000Z</updated>
+    <updated>2016-08-02T02:32:13.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;1-Location常识？&quot;&gt;&lt;a href=&quot;#1-Location常识？&quot; class=&quot;headerlink&quot; title=&quot;1.Location常识？&quot;&gt;&lt;/a&gt;1.Location常识？&lt;/h2&gt;&lt;p&gt;1)基于GPS/基站/wifi定位&lt;/p&gt;
 &lt;p&gt;3种区别是：iOS不像Android系统在定位服务编程时，可以指定采用哪种途径进行定位。iOS的API把底层这些细节屏蔽掉了，开发人员和用户并不知道现在设备是采用哪种方式进行定位的，iOS系统会根据设备的情况和周围的环境，采用一套最佳的解决方案。这个方案是这样的，如果能够接收GPS信息，那么设备优先采用GPS定位，否则采用Wifi或蜂窝基站定位，在Wifi和蜂窝基站之间优先使用Wifi，如果无法连接Wifi才使用蜂窝基站定位。总体来说GPS定位优点是准确、覆盖面广阔，缺点是不能被遮挡（例如：在建筑物里面收不到GPS卫星信号）、GPS开启后比较费电。蜂窝基站不仅误差比较大，而且会耗费用户流量费。而Wifi定位是最经济实惠的。&lt;/p&gt;
@@ -80,6 +80,8 @@
 &lt;li&gt;因为我们的地图应用无法使用标准的地球坐标，所以我们应该想办法把标准的地球坐标转换为火星坐标&lt;/li&gt;
 &lt;li&gt;这也就是我们如果在开发需要地图应用的时候，需要经常使用第三方的API，必须百度地图，高德地图，谷歌地图的原因了，因为它们已经帮我们把标准的地球坐标通过它们自己的算法转换成了火星坐标了，而如果我们自己去写的话，那真的是一个大的工程；&lt;/li&gt;
 &lt;li&gt;火星坐标的存在可以保护用户的位置隐私。&lt;/li&gt;
+&lt;li&gt;原则上，根据我们的法律，都不允许分享任何带有经纬度的坐标系统，不管你是真实的WGS84坐标还是加密后的火星坐标。 &lt;/li&gt;
+&lt;li&gt;如果你不是做导航软件、地图软件的公司，那么你就无法获得国测局的保密插件，如果你是用户，得到了火星坐标，那么也是无法逆转回地球坐标的。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;2-Location使用的框架？&quot;&gt;&lt;a href=&quot;#2-Location使用的框架？&quot; class=&quot;headerlink&quot; title=&quot;2.Location使用的框架？&quot;&gt;&lt;/a&gt;2.Location使用的框架？&lt;/h2&gt;&lt;p&gt;1)Core Locatin Framework API&lt;/p&gt;
 &lt;p&gt;2)CoreLocation框架中所有数据类型的前缀都是CL&lt;/p&gt;
@@ -300,6 +302,7 @@
 &lt;p&gt;5.&lt;a href=&quot;http://blog.csdn.net/coolypf/article/details/8569813&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/coolypf/article/details/8569813&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;6.&lt;a href=&quot;https://www.keakon.net/2011/07/02/WGS84%E5%9D%90%E6%A0%87%E8%BD%AC%E7%81%AB%E6%98%9F%E5%9D%90%E6%A0%87%EF%BC%88iOS%E7%AF%87%EF%BC%89&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.keakon.net/2011/07/02/WGS84%E5%9D%90%E6%A0%87%E8%BD%AC%E7%81%AB%E6%98%9F%E5%9D%90%E6%A0%87%EF%BC%88iOS%E7%AF%87%EF%BC%89&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;7.&lt;a href=&quot;http://blog.csdn.net/giswens/article/details/8775183&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/giswens/article/details/8775183&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;8.&lt;a href=&quot;http://blog.csdn.net/giswens/article/details/8775121&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/giswens/article/details/8775121&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
