@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="williamliuwen.cn/"/>
-  <updated>2016-08-04T11:56:32.000Z</updated>
+  <updated>2016-08-04T13:44:37.000Z</updated>
   <id>williamliuwen.cn/</id>
   
   <author>
@@ -14,6 +14,80 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS分类/协议/扩展/代理/数据源</title>
+    <link href="williamliuwen.cn/2016/08/04/iOS%E5%88%86%E7%B1%BB-%E5%8D%8F%E8%AE%AE-%E6%89%A9%E5%B1%95-%E4%BB%A3%E7%90%86-%E6%95%B0%E6%8D%AE%E6%BA%90/"/>
+    <id>williamliuwen.cn/2016/08/04/iOS分类-协议-扩展-代理-数据源/</id>
+    <published>2016-08-04T12:37:24.000Z</published>
+    <updated>2016-08-04T13:44:37.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;分类&quot;&gt;&lt;a href=&quot;#分类&quot; class=&quot;headerlink&quot; title=&quot;分类&quot;&gt;&lt;/a&gt;分类&lt;/h2&gt;&lt;p&gt;1.分类原则&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;分类可以访问原类中的成员变量，但是在分类不能添加任何变量。若需要添加变量可以考虑创建子类&lt;/li&gt;
+&lt;li&gt;分类中的方法名可以与原类的某个方法名相同（即重载），但是原类的同名方法将失效，不能访问&lt;/li&gt;
+&lt;li&gt;通过分类添加的方法是可以被子类继承的&lt;/li&gt;
+&lt;li&gt;不必实现分类的所有方法。可以在分类中声明所有的方法，但不实现，在需要的时候再去实现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2.&lt;/p&gt;
+&lt;p&gt;3.&lt;/p&gt;
+&lt;p&gt;4.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;协议&quot;&gt;&lt;a href=&quot;#协议&quot; class=&quot;headerlink&quot; title=&quot;协议&quot;&gt;&lt;/a&gt;协议&lt;/h2&gt;&lt;p&gt;1.协议的原则&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;实现此协议的类必须实现对应的方法&lt;/li&gt;
+&lt;li&gt;协议中方法是否必须实现，通过关键字进行@required和@optional进行设置&lt;/li&gt;
+&lt;li&gt;如果不设置则默认是@required（注意ObjC是弱语法，即使不实现必选方法编译运行也不会报错）&lt;/li&gt;
+&lt;li&gt;一个类可以同时实现多个协议，中间通过逗号分隔&lt;/li&gt;
+&lt;li&gt;协议的实现只能在类的声明上,不能放到类的实现上（也就是说必须写成@interface Person:NSObject&lt;animaldelegate&gt;而不能写成@implementation Person&lt;animaldelegate&gt;）&lt;/animaldelegate&gt;&lt;/animaldelegate&gt;&lt;/li&gt;
+&lt;li&gt;协议中不能定义属性、成员变量等,只能定义方法&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2.例如定义一个动物协议，其中有吃的方法；人对象实现这个动物这个协议，不要遵守动物的方法；&lt;/p&gt;
+&lt;p&gt;3.代理模式的出现&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;事实上在ObjC中协议的更多作用是用于约束一个类必须实现某些方法，而从面向对象的角度而言这个类跟接口并不一定存在某种自然关系，可能是两个完全不同意义上的事物,这种模式我们称之为代理模式（Delegation）。在Cocoa框架中大量采用这种模式实现数据和UI的分离，而且基本上所有的协议都是以Delegate结尾。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;4.协议和代理&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;协议和代理是模块化开发和封装的产物&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;5.模块间通信（举例）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;大厨类只做菜 但是菜做好了怎么办，必须及时的上菜，让顾客享用。但是大厨自己不能上菜，所以大厨必须抛出菜做好了的信号，具体这个菜上不上，怎么上，就不是大厨关心的了&lt;/li&gt;
+&lt;li&gt;这里的喊一声就实现了通信（抽象点就是用协议）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;// 第一步：大厨把菜做好了，通知自己的代理把菜拿走&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;DaChu.h&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@protocol DaChuDelegate &amp;lt;NSObject&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (void)doSomethingAftercaiZuohaole;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@end&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@interface DaChu : NSObject&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*  delegate 是dachu类的一个属性，weak 关键字是为了避免循环引用，&amp;lt;DaChuDelegate&amp;gt;表示遵守DaChuDelegate协议&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*  更加直白点：在大厨心里有一个人接受他的菜好了的信号去做一些事情，具体这个人是谁，大厨不关心，这个人的代号是delegate&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@property (nonatomic, weak) id &amp;lt;DaChuDelegate&amp;gt; delegate;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (void)kaiShiZuoCai;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Dachu.m&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;quot;DaChu.h&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@implementation DaChu&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (void)kaiShiZuoCai&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSLog(@&amp;quot;开始做菜&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sleep(2);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSLog(@&amp;quot;做好菜了，该上菜了&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//下面这句是判断 一下delegate是否实现了doSomethingAftercaiZuohaole方法，如果delegate没有实现&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//直接[self.delegate doSomethingAftercaiZuohaole];会crash&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;if ([self.delegate respondsToSelector:@selector(doSomethingAftercaiZuohaole)]) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[self.delegate doSomethingAftercaiZuohaole];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;// 第二步：代理小二遵守大厨的拿菜方法，等大厨通知，把菜拿走&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;quot;XiaoEr.h&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;quot;DaChu.h&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@interface XiaoEr ()&amp;lt;DaChuDelegate&amp;gt;//&amp;lt;DaChuDelegate&amp;gt;表示遵守DaChuDelegate协议，并且实现协议里面的方法&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@end&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@implementation XiaoEr&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (void)XiaoErZhunBei&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DaChu *dachu1 = [[DaChu alloc] init];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dachu1.delegate = self;//说明小二充当代理的角色，负责接收菜好了的信号。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[dachu1 kaiShiZuoCai];//大厨开始做菜&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (void)doSomethingAftercaiZuohaole&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSLog(@&amp;quot;小二知道了&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;6.分类也可以遵守协议&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@interface Person(chinaPerson) &amp;lt;NSCopying,NSCoding&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;说明Person类拥有一个分类chinaPerson，这个分类遵守NSCopying 和NSCoding协议&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;扩展&quot;&gt;&lt;a href=&quot;#扩展&quot; class=&quot;headerlink&quot; title=&quot;扩展&quot;&gt;&lt;/a&gt;扩展&lt;/h2&gt;&lt;p&gt;1.&lt;/p&gt;
+&lt;p&gt;2.&lt;/p&gt;
+&lt;h6 id=&quot;参考链接&quot;&gt;&lt;a href=&quot;#参考链接&quot; class=&quot;headerlink&quot; title=&quot;参考链接&quot;&gt;&lt;/a&gt;参考链接&lt;/h6&gt;&lt;p&gt;1.&lt;a href=&quot;http://blog.csdn.net/jianxin160/article/details/47753189&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/jianxin160/article/details/47753189&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2.&lt;a href=&quot;http://www.cnblogs.com/iyou/p/3636848.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/iyou/p/3636848.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;3.&lt;/p&gt;
+&lt;p&gt;4.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;分类&quot;&gt;&lt;a href=&quot;#分类&quot; class=&quot;headerlink&quot; title=&quot;分类&quot;&gt;&lt;/a&gt;分类&lt;/h2&gt;&lt;p&gt;1.分类原则&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;分类可以访问原类中的成员变量，但是在分类不能添加任何变量。若需要添加变量可以考虑创建子类&lt;/li&gt;
+&lt;li&gt;分类中的方法名可以与原类的某个方法名相同（即重载），但是原类的同名方法将失效，不能访问&lt;/li&gt;
+&lt;li&gt;通过分类添加的方法是可以被子类继承的&lt;/li&gt;
+&lt;li&gt;不必实现分类的所有方法。可以在分类中声明所有的方法，但不实现，在需要的时候再去实现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2.&lt;/p&gt;
+&lt;p&gt;3.&lt;/p&gt;
+&lt;p&gt;4.&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>iOS-Tips</title>
@@ -1708,43 +1782,6 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;3、可实现专业零基础入行，4-10个月的强化训练和职业化引导，就可成为企业急需的技能型网络人才&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>给网络工程师的建议</title>
-    <link href="williamliuwen.cn/2016/05/24/%E7%BB%99%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E5%BB%BA%E8%AE%AE/"/>
-    <id>williamliuwen.cn/2016/05/24/给网络工程师的建议/</id>
-    <published>2016-05-24T14:35:18.000Z</published>
-    <updated>2016-05-24T14:44:54.000Z</updated>
-    
-    <content type="html">&lt;h4 id=&quot;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot;&gt;&lt;a href=&quot;#每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot;&gt;&lt;/a&gt;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&lt;/h4&gt;&lt;h4 id=&quot;应聘网络工程师要注意的地方：&quot;&gt;&lt;a href=&quot;#应聘网络工程师要注意的地方：&quot; class=&quot;headerlink&quot; title=&quot;应聘网络工程师要注意的地方：&quot;&gt;&lt;/a&gt;应聘网络工程师要注意的地方：&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;首先是简历这里，我比较关注的是职业经历和工作成果，还有就是技术专业方向等，对于职业经历，关注的重点是曾服务企业的规模以及所具体负责的业务范围，特别在具体工作中所处的位置是主导还是参与很重要。而技术方向而言，应当体现对自己职业生涯规划的一个思想，把自己在IT领域的学习和发展方向表述清晰。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;通过大部分简历的筛选来看，大部分简历内容比较泛泛，简历描述各种技术都会，实际面试的交流却反应出只是了解皮毛而已。我挑选的简历基本都是三年以上的工作经验，但是通过面试，感觉到大部分工程师还是处于办公电脑基础维护这样的水平，对于三层交换、路由、防火墙、数据库、分布式网络规划管理等方面缺乏一定的深入，我想建议具有一定经验的网络工程师来说，经过3年的积累，应该为自己的技术发展做个规划。个人比较喜欢接受过职业培训的员工，他们的动手实践能力一般都比较强，因为职业培训不同于大学教育，是很注重学员的实践能力的。山东海天软件培训基地创始人邹晓东就说过，实践能力是他们教学的宗旨。&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;谈谈面试，求职者的外在形象和沟通能力很重要。形象要体现出职业化，比如衣着搭配、头发、胡子（男同胞）等等，昨天面试看到有的头发乱乱的像几天没洗了，有的迎面坐下就传来很浓的汗味儿，这样的给人第一印象就不是很好。再说说沟通这里，我的面试风格比较随意，不需要做那些什么TCP协议之类的笔试题，就是面谈，谈自己的工作经历，我问的比较细，关注技术要点，&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;到底什么水平通过这样的交流很容易体现出来，而交流过程会观察个人的表达能力和性格特点，比如有的人说话过程中声音发颤，有的人特别喜欢狡辩，有的人特别被动等。还有面试的其它一些细节，作为应聘者也要注意，因为面试你的人时刻在观察着你。比如有的人一进来公司，便对前台小姐大声说你们公司挺难找的啊，有的人在等待时歪坐着翘着二郎腿东张西望，这些细节都反应出一个人的职业素养。我建议学习IT技术的同时，要培养自己的职业素养和管理能力，以更高的职业水平来要求自己。   &lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;最后说一下职业规划，虽然作为网络工程师是技术主导，但是要有管理的思想和理念，其实每个人都是管理者，因为首先你已经有了很好的管理对象，就是你自己。对于IT技术，要有全面了解的意识，了解整个IT领域的新知识和新概念，但是更为重要的是自己要选择一个深入发展的方向，成为一个专业的专家，就是说要注重自己在IT领域横向和纵向的双向发展。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;/pic/0524.png&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;竭力为善，爱自由甚于一切，即使为了王座，也永勿欺妄真理。 —— 贝多芬    &lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot;&gt;&lt;a href=&quot;#每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot;&gt;&lt;/a&gt;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&lt;/h4&gt;&lt;h4 id=&quot;应聘网络工程师要注意的地方：&quot;&gt;&lt;a href=&quot;#应聘网络工程师要注意的地方：&quot; class=&quot;headerlink&quot; title=&quot;应聘网络工程师要注意的地方：&quot;&gt;&lt;/a&gt;应聘网络工程师要注意的地方：&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;首先是简历这里，我比较关注的是职业经历和工作成果，还有就是技术专业方向等，对于职业经历，关注的重点是曾服务企业的规模以及所具体负责的业务范围，特别在具体工作中所处的位置是主导还是参与很重要。而技术方向而言，应当体现对自己职业生涯规划的一个思想，把自己在IT领域的学习和发展方向表述清晰。&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
