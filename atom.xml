@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="williamliuwen.cn/"/>
-  <updated>2016-08-04T11:43:36.000Z</updated>
+  <updated>2016-08-04T11:54:18.000Z</updated>
   <id>williamliuwen.cn/</id>
   
   <author>
@@ -16,22 +16,49 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>iOS-Tips</title>
+    <link href="williamliuwen.cn/2016/08/04/iOS-Tips/"/>
+    <id>williamliuwen.cn/2016/08/04/iOS-Tips/</id>
+    <published>2016-08-04T11:53:15.000Z</published>
+    <updated>2016-08-04T11:54:18.000Z</updated>
+    
+    <content type="html">&lt;h6 id=&quot;Tip1-隐藏状态栏&quot;&gt;&lt;a href=&quot;#Tip1-隐藏状态栏&quot; class=&quot;headerlink&quot; title=&quot;Tip1 隐藏状态栏&quot;&gt;&lt;/a&gt;Tip1 隐藏状态栏&lt;/h6&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- (BOOL)prefersStatusBarHidden&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;return  YES;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h6 id=&quot;Tip2-设置与状态栏间距（没有导航栏）&quot;&gt;&lt;a href=&quot;#Tip2-设置与状态栏间距（没有导航栏）&quot; class=&quot;headerlink&quot; title=&quot;Tip2 设置与状态栏间距（没有导航栏）&quot;&gt;&lt;/a&gt;Tip2 设置与状态栏间距（没有导航栏）&lt;/h6&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;If you are doing thins programatically and are using a UITableViewController without a UINavigationController your best bet is to do the following in viewDidLoad:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;The UITableViewController will still scroll behind the status bar but won&amp;apos;t be under it when scrolled to the top.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;self.tableView.contentInset = UIEdgeInsetsMake(20.0f,0.0f,0.0f,0.0f);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h6 id=&quot;Tip3-修改状态栏颜色&quot;&gt;&lt;a href=&quot;#Tip3-修改状态栏颜色&quot; class=&quot;headerlink&quot; title=&quot;Tip3 修改状态栏颜色&quot;&gt;&lt;/a&gt;Tip3 修改状态栏颜色&lt;/h6&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;第一步：在info.plist中添加一个字段：UIViewControllerBasedStatusBarAppearance 设置值为 NO&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;第二步，设置状态栏颜色:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h6 id=&quot;Tip4-快速设置UIWindows根控制器&quot;&gt;&lt;a href=&quot;#Tip4-快速设置UIWindows根控制器&quot; class=&quot;headerlink&quot; title=&quot;Tip4 快速设置UIWindows根控制器&quot;&gt;&lt;/a&gt;Tip4 快速设置UIWindows根控制器&lt;/h6&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DefineTabBarController *tabBarVc = [[DefineTabBarController alloc] init];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;self.window.rootViewController = tabBarVc;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[self.window makeKeyAndVisible];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;return YES;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h6 id=&quot;Tip5-修改APP显示名称&quot;&gt;&lt;a href=&quot;#Tip5-修改APP显示名称&quot; class=&quot;headerlink&quot; title=&quot;Tip5 修改APP显示名称&quot;&gt;&lt;/a&gt;Tip5 修改APP显示名称&lt;/h6&gt;&lt;ul&gt;
+&lt;li&gt;Bundle name           - 简单来说就是App安装到iOS机子里的App文件夹名&lt;/li&gt;
+&lt;li&gt;Executable name       –  执行程序名,默认与PRODUCT_NAME一致&lt;/li&gt;
+&lt;li&gt;Bundle display name   –  真正显示到用户屏幕上的App名称&lt;h6 id=&quot;Tip6-逻辑删除代码比注释代码好&quot;&gt;&lt;a href=&quot;#Tip6-逻辑删除代码比注释代码好&quot; class=&quot;headerlink&quot; title=&quot;Tip6 逻辑删除代码比注释代码好&quot;&gt;&lt;/a&gt;Tip6 逻辑删除代码比注释代码好&lt;/h6&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#if 0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//CODE&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#endif&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h6 id=&quot;Tip1-隐藏状态栏&quot;&gt;&lt;a href=&quot;#Tip1-隐藏状态栏&quot; class=&quot;headerlink&quot; title=&quot;Tip1 隐藏状态栏&quot;&gt;&lt;/a&gt;Tip1 隐藏状态栏&lt;/h6&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;t
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>iOS人机交互</title>
     <link href="williamliuwen.cn/2016/08/04/iOS%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92/"/>
     <id>williamliuwen.cn/2016/08/04/iOS人机交互/</id>
     <published>2016-08-04T11:36:27.000Z</published>
-    <updated>2016-08-04T11:43:36.000Z</updated>
+    <updated>2016-08-04T11:52:30.000Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;人机交互摘要&quot;&gt;&lt;a href=&quot;#人机交互摘要&quot; class=&quot;headerlink&quot; title=&quot;人机交互摘要&quot;&gt;&lt;/a&gt;人机交互摘要&lt;/h2&gt;&lt;p&gt;1）将重要内容和功能放到更重要的位置，以便用户可以更容易地关注主要任务&lt;br&gt;“一些可行的方法是，将主要元素放置在屏幕的上半部分，并靠近屏幕左侧（基于从左至右的阅读习惯）：&lt;br&gt;”&lt;/p&gt;
+    <content type="html">&lt;h2 id=&quot;人机交互摘要&quot;&gt;&lt;a href=&quot;#人机交互摘要&quot; class=&quot;headerlink&quot; title=&quot;人机交互摘要&quot;&gt;&lt;/a&gt;人机交互摘要&lt;/h2&gt;&lt;p&gt;1）将重要内容和功能放到更重要的位置，以便用户可以更容易地关注主要任务&lt;br&gt;一些可行的方法是，将主要元素放置在屏幕的上半部分，并靠近屏幕左侧（基于从左至右的阅读习惯）：&lt;/p&gt;
 &lt;p&gt;2）给每个交互元素以足够的间距，以便用户对内容和控件进行操作&lt;br&gt;“可点击控件的点击区域不小于 44 x 44 点&lt;/p&gt;
 &lt;p&gt;3）如果只有部分功能不可用，那在用户用到这些功能时提供解释界面或者提示&lt;/p&gt;
-&lt;p&gt;4）如果所有的功能都不可用，就向用户展示一个界面去描述问题并建议用户如何纠正&lt;br&gt;“这能给用户一种反馈，让他们觉得你的 app 并没有出错。这也会赋予用户以控制感，让他们来决定是采取纠正措施并继续使用你的 app，还是切换到另一个 app。”&lt;/p&gt;
+&lt;p&gt;4）如果所有的功能都不可用，就向用户展示一个界面去描述问题并建议用户如何纠正&lt;br&gt;这能给用户一种反馈，让他们觉得你的 app 并没有出错。这也会赋予用户以控制感，让他们来决定是采取纠正措施并继续使用你的 app，还是切换到另一个 app。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;5）App 重启后要恢复其状态，以便用户可以从中断的地方继续使用，而不要让用户去记住如何返回之前所在的位置&lt;br&gt;“你可以前往「State Preservation and Restoration」了解更多关于高效重建和恢复 app 状态的方式。”&lt;/p&gt;
-&lt;p&gt;6）显示一个和 app 首屏极其相似的启动画面&lt;br&gt;“显示一个和 app 首屏极其相似的启动画面。iOS 会在你的 app 启动的瞬间显示这个启动画面，这可以让用户感觉你的 app 非常快，并让你有足够的时间去加载内容。参阅「启动画面」（第 180 页）了解如何创建启动画面。”&lt;/p&gt;
+&lt;p&gt;5）App 重启后要恢复其状态，以便用户可以从中断的地方继续使用，而不要让用户去记住如何返回之前所在的位置&lt;br&gt;你可以前往「State Preservation and Restoration」了解更多关于高效重建和恢复 app 状态的方式。&lt;/p&gt;
+&lt;p&gt;6）显示一个和 app 首屏极其相似的启动画面&lt;br&gt;显示一个和 app 首屏极其相似的启动画面。iOS 会在你的 app 启动的瞬间显示这个启动画面，这可以让用户感觉你的 app 非常快，并让你有足够的时间去加载内容。参阅「启动画面」（第 180 页）了解如何创建启动画面。&lt;/p&gt;
 &lt;p&gt;7）避免要求用户提供设置信息&lt;/p&gt;
-&lt;p&gt;8）尽可能将登陆延后&lt;br&gt;“最好在用户没有登录时就可以通过导航来浏览你的 app 并使用部分功能。用户在在可以做点有用的事情前通常已经从那些强制他们登录的 app 中离开了。”&lt;/p&gt;
-&lt;p&gt;9）尽可能避免在界面中出现不一致的样式&lt;br&gt;“通常来说，拥有相似功能的元素看上去也应该很像。用户常常会认为那些他们所看到的不一致背后必定富有深意，然后花时间去理解它们。”&lt;/p&gt;
+&lt;p&gt;8）尽可能将登陆延后&lt;br&gt;最好在用户没有登录时就可以通过导航来浏览你的 app 并使用部分功能。用户在在可以做点有用的事情前通常已经从那些强制他们登录的 app 中离开了。&lt;/p&gt;
+&lt;p&gt;9）尽可能避免在界面中出现不一致的样式&lt;br&gt;通常来说，拥有相似功能的元素看上去也应该很像。用户常常会认为那些他们所看到的不一致背后必定富有深意，然后花时间去理解它们。&lt;/p&gt;
 &lt;p&gt;10）确保主要内容在默认尺寸下可以被阅读和理解&lt;br&gt;例如，用户不应需要滚动才读到重要文本，或者放大图片才能看到主要内容。&lt;/p&gt;
 &lt;h2 id=&quot;导航栏样式&quot;&gt;&lt;a href=&quot;#导航栏样式&quot; class=&quot;headerlink&quot; title=&quot;导航栏样式&quot;&gt;&lt;/a&gt;导航栏样式&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;导航栏样式原则&lt;/li&gt;
@@ -49,10 +76,10 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;人机交互摘要&quot;&gt;&lt;a href=&quot;#人机交互摘要&quot; class=&quot;headerlink&quot; title=&quot;人机交互摘要&quot;&gt;&lt;/a&gt;人机交互摘要&lt;/h2&gt;&lt;p&gt;1）将重要内容和功能放到更重要的位置，以便用户可以更容易地关注主要任务&lt;br&gt;“一些可行的方法是，将主要元素放置在屏幕的上半部分，并靠近屏幕左侧（基于从左至右的阅读习惯）：&lt;br&gt;”&lt;/p&gt;
+      &lt;h2 id=&quot;人机交互摘要&quot;&gt;&lt;a href=&quot;#人机交互摘要&quot; class=&quot;headerlink&quot; title=&quot;人机交互摘要&quot;&gt;&lt;/a&gt;人机交互摘要&lt;/h2&gt;&lt;p&gt;1）将重要内容和功能放到更重要的位置，以便用户可以更容易地关注主要任务&lt;br&gt;一些可行的方法是，将主要元素放置在屏幕的上半部分，并靠近屏幕左侧（基于从左至右的阅读习惯）：&lt;/p&gt;
 &lt;p&gt;2）给每个交互元素以足够的间距，以便用户对内容和控件进行操作&lt;br&gt;“可点击控件的点击区域不小于 44 x 44 点&lt;/p&gt;
 &lt;p&gt;3）如果只有部分功能不可用，那在用户用到这些功能时提供解释界面或者提示&lt;/p&gt;
-&lt;p&gt;4）如果所有的功能都不可用，就向用户展示一个界面去描述问题并建议用户如何纠正&lt;br&gt;“这能给用户一种反馈，让他们觉得你的 app 并没有出错。这也会赋予用户以控制感，让他们来决定是采取纠正措施并继续使用你的 app，还是切换到另一个 app。”&lt;/p&gt;
+&lt;p&gt;4）如果所有的功能都不可用，就向用户展示一个界面去描述问题并建议用户如何纠正&lt;br&gt;这能给用户一种反馈，让他们觉得你的 app 并没有出错。这也会赋予用户以控制感，让他们来决定是采取纠正措施并继续使用你的 app，还是切换到另一个 app。&lt;/p&gt;
     
     </summary>
     
@@ -316,11 +343,46 @@
     <link href="williamliuwen.cn/2016/08/03/iOS%E6%8A%A5%E9%94%99/"/>
     <id>williamliuwen.cn/2016/08/03/iOS报错/</id>
     <published>2016-08-03T13:21:40.000Z</published>
-    <updated>2016-08-03T13:21:40.000Z</updated>
+    <updated>2016-08-04T11:53:51.000Z</updated>
     
-    <content type="html"></content>
+    <content type="html">&lt;h6 id=&quot;报错1-duplicate-symbol-OBJCMETACLASS-类名-in-？？&quot;&gt;&lt;a href=&quot;#报错1-duplicate-symbol-OBJCMETACLASS-类名-in-？？&quot; class=&quot;headerlink&quot; title=&quot;报错1 duplicate symbol _OBJCMETACLASS$_类名 in: ？？&quot;&gt;&lt;/a&gt;报错1 duplicate symbol _OBJC&lt;em&gt;METACLASS&lt;/em&gt;$_类名 in: ？？&lt;/h6&gt;&lt;blockquote&gt;
+&lt;p&gt;思路1 90%都是因为#import了.m文件; 思路2 其他可能是因为项目中存在了2个一样的.m文件&lt;/p&gt;
+&lt;h6 id=&quot;报错2-could-not-inspect-the-application-package-？？&quot;&gt;&lt;a href=&quot;#报错2-could-not-inspect-the-application-package-？？&quot; class=&quot;headerlink&quot; title=&quot;报错2 could not inspect the application package ？？&quot;&gt;&lt;/a&gt;报错2 could not inspect the application package ？？&lt;/h6&gt;&lt;p&gt;思路1 按中Option的时候，进入菜单Product | Clean Build Folder …进行Clean后再运行&lt;/p&gt;
+&lt;h6 id=&quot;报错3-Outlets-cannot-be-connected-to-repeating-content-？？&quot;&gt;&lt;a href=&quot;#报错3-Outlets-cannot-be-connected-to-repeating-content-？？&quot; class=&quot;headerlink&quot; title=&quot;报错3 Outlets cannot be connected to repeating content ？？&quot;&gt;&lt;/a&gt;报错3 Outlets cannot be connected to repeating content ？？&lt;/h6&gt;&lt;p&gt;思路1 直接使用静态cell可以解决&lt;/p&gt;
+&lt;h6 id=&quot;报错4-This-application’s-application-identifier-entitlement-does-not-match-that-of-the-installed-application-These-values-must-match-for-an-upgrade-to-be-allowed-？？&quot;&gt;&lt;a href=&quot;#报错4-This-application’s-application-identifier-entitlement-does-not-match-that-of-the-installed-application-These-values-must-match-for-an-upgrade-to-be-allowed-？？&quot; class=&quot;headerlink&quot; title=&quot;报错4 This application’s application-identifier entitlement does not match that of the installed application. These values must match for an upgrade to be allowed.？？&quot;&gt;&lt;/a&gt;报错4 This application’s application-identifier entitlement does not match that of the installed application. These values must match for an upgrade to be allowed.？？&lt;/h6&gt;&lt;p&gt;思路1 把你以前安装同名软件卸掉(建议)或者更改项目的bunldID（不建议）&lt;/p&gt;
+&lt;h6 id=&quot;报错5-the-item-height-must-be-less-than-the-height-of-the-UICollectionView-minus-the-section-insets-top-and-bottom-values-？？&quot;&gt;&lt;a href=&quot;#报错5-the-item-height-must-be-less-than-the-height-of-the-UICollectionView-minus-the-section-insets-top-and-bottom-values-？？&quot; class=&quot;headerlink&quot; title=&quot;报错5 the item height must be less than the height of the UICollectionView minus the section insets top and bottom values. ？？&quot;&gt;&lt;/a&gt;报错5 the item height must be less than the height of the UICollectionView minus the section insets top and bottom values. ？？&lt;/h6&gt;&lt;p&gt;思路1 把collectiview的高亮背景色调成蓝色+把当前控制器的under属性取消勾选，附带原答案（I found that, using storyboards, you have to go into the storyboard and click on the overall View Controller (the view should be highlighted in blue) and go to the Attributes Inspector (the fourth tab on the right side of the screen) and unchecking the “Under Top Bars”, “Under Bottom Bars”, and “Under Opaque Bars.” This cleared up the issue for me, and it cleared it for my coworkers as well.）&lt;/p&gt;
+&lt;h6 id=&quot;报错6-Terminating-app-due-to-uncaught-exception-‘NSInvalidArgumentException’-reason-‘attempt-to-scroll-to-invalid-index-path-length-2-path-50-0-？？&quot;&gt;&lt;a href=&quot;#报错6-Terminating-app-due-to-uncaught-exception-‘NSInvalidArgumentException’-reason-‘attempt-to-scroll-to-invalid-index-path-length-2-path-50-0-？？&quot; class=&quot;headerlink&quot; title=&quot;报错6 Terminating app due to uncaught exception ‘NSInvalidArgumentException’, reason: ‘attempt to scroll to invalid index path:  {length = 2, path = 50 - 0} ？？&quot;&gt;&lt;/a&gt;报错6 Terminating app due to uncaught exception ‘NSInvalidArgumentException’, reason: ‘attempt to scroll to invalid index path: &lt;nsindexpath: 0xc000000000000c96=&quot;&quot;&gt; {length = 2, path = 50 - 0} ？？&lt;/nsindexpath:&gt;&lt;/h6&gt;&lt;p&gt;思路1 检查下面的方法有没有值：我的错误在于：没有指定代理和数据源代理，就是拖线；还可以查看有没有执行下面的方法，如果没有拖线是不会执行的，因为当前不是代理，就不会执行这个代理的方法；numberOfItemsInSection / numberOfSectionsInCollectionView&lt;/p&gt;
+&lt;h6 id=&quot;报错7-Settings-→-General-→-DeviceManagement-→-DeveloperApp-→-Trust&quot;&gt;&lt;a href=&quot;#报错7-Settings-→-General-→-DeviceManagement-→-DeveloperApp-→-Trust&quot; class=&quot;headerlink&quot; title=&quot;报错7 Settings → General → DeviceManagement → DeveloperApp → Trust. ??&quot;&gt;&lt;/a&gt;报错7 Settings → General → DeviceManagement → DeveloperApp → Trust. ??&lt;/h6&gt;&lt;p&gt;思路1 在手机上设置&lt;/p&gt;
+&lt;h6 id=&quot;报错8-declaration-of-inet-addr-must-be-imported-from-module-darwin-posix-arpa-inet-？？&quot;&gt;&lt;a href=&quot;#报错8-declaration-of-inet-addr-must-be-imported-from-module-darwin-posix-arpa-inet-？？&quot; class=&quot;headerlink&quot; title=&quot;报错8 declaration of inet_addr must be imported from module darwin.posix.arpa.inet ？？&quot;&gt;&lt;/a&gt;报错8 declaration of inet_addr must be imported from module darwin.posix.arpa.inet ？？&lt;/h6&gt;&lt;p&gt;思路1 导入 #include &lt;arpa inet.h=&quot;&quot;&gt;&lt;/arpa&gt;&lt;/p&gt;
+&lt;h6 id=&quot;报错9-dylib，tbd转换-？？&quot;&gt;&lt;a href=&quot;#报错9-dylib，tbd转换-？？&quot; class=&quot;headerlink&quot; title=&quot;报错9 dylib，tbd转换 ？？&quot;&gt;&lt;/a&gt;报错9 dylib，tbd转换 ？？&lt;/h6&gt;&lt;p&gt;思路1 在添加framework那个对话框，最下面有个 “add other…” 点开之后， cmd+shift+G  路径输入 /usr/lib/  然后 找到你需要的lib文件 就ok了&lt;/p&gt;
+&lt;h6 id=&quot;报错10-implicitly-declaring-library-function-‘strncpy’-with-type-？？&quot;&gt;&lt;a href=&quot;#报错10-implicitly-declaring-library-function-‘strncpy’-with-type-？？&quot; class=&quot;headerlink&quot; title=&quot;报错10 implicitly declaring library function ‘strncpy’ with type ？？&quot;&gt;&lt;/a&gt;报错10 implicitly declaring library function ‘strncpy’ with type ？？&lt;/h6&gt;&lt;p&gt;思路1 &lt;a href=&quot;http://stackoverflow.com/questions/977233/warning-incompatible-implicit-declaration-of-built-in-function-xyz&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/977233/warning-incompatible-implicit-declaration-of-built-in-function-xyz&lt;/a&gt;&lt;/p&gt;
+&lt;h6 id=&quot;报错11-No-visible-interface-for-UIView-declares-the-selector-‘loadRequest-’-on-line-？？&quot;&gt;&lt;a href=&quot;#报错11-No-visible-interface-for-UIView-declares-the-selector-‘loadRequest-’-on-line-？？&quot; class=&quot;headerlink&quot; title=&quot;报错11 No visible @interface for UIView declares the selector ‘loadRequest:’ on line ？？&quot;&gt;&lt;/a&gt;报错11 No visible @interface for UIView declares the selector ‘loadRequest:’ on line ？？&lt;/h6&gt;&lt;p&gt;思路1 why you are getting this error is becuase loadRequest is not the method of UIView. But in-spite of that it is the method of UIWebView. For more refer this UIWebView documentation . So just replace UIView to UIWebView and check&lt;br&gt;//Comment this&lt;br&gt;//@property (strong, nonatomic) IBOutlet UIView &lt;em&gt;viewWeb;&lt;br&gt;//Modify this&lt;br&gt;//@property (strong, nonatomic) IBOutlet UIWebView &lt;/em&gt;viewWeb;&lt;/p&gt;
+&lt;h6 id=&quot;报错12-implicitly-declaring-library-function-‘objc-xxxxxx’-with-type-？？&quot;&gt;&lt;a href=&quot;#报错12-implicitly-declaring-library-function-‘objc-xxxxxx’-with-type-？？&quot; class=&quot;headerlink&quot; title=&quot;报错12 implicitly declaring library function ‘objc_xxxxxx’ with type  ？？&quot;&gt;&lt;/a&gt;报错12 implicitly declaring library function ‘objc_xxxxxx’ with type  ？？&lt;/h6&gt;&lt;p&gt;思路1 添加头文件 #import &lt;objc message.h=&quot;&quot;&gt;&lt;/objc&gt;&lt;/p&gt;
+&lt;h6 id=&quot;报错13-没有模拟器-？？&quot;&gt;&lt;a href=&quot;#报错13-没有模拟器-？？&quot; class=&quot;headerlink&quot; title=&quot;报错13 没有模拟器  ？？&quot;&gt;&lt;/a&gt;报错13 没有模拟器  ？？&lt;/h6&gt;&lt;p&gt;思路1 工程的版本太高，模拟器不支持; 唯一办法是：调低工程的编译版本&lt;/p&gt;
+&lt;h6 id=&quot;报错14-setvalue-forUndefinedKey-？？&quot;&gt;&lt;a href=&quot;#报错14-setvalue-forUndefinedKey-？？&quot; class=&quot;headerlink&quot; title=&quot;报错14 setvalue-forUndefinedKey  ？？&quot;&gt;&lt;/a&gt;报错14 setvalue-forUndefinedKey  ？？&lt;/h6&gt;&lt;p&gt;思路1 原因是找不到连线的属性；可能是storyboar里面连线的属性被删除了&lt;/p&gt;
+&lt;h6 id=&quot;报错14-APP程序闪退-？？&quot;&gt;&lt;a href=&quot;#报错14-APP程序闪退-？？&quot; class=&quot;headerlink&quot; title=&quot;报错14 APP程序闪退  ？？&quot;&gt;&lt;/a&gt;报错14 APP程序闪退  ？？&lt;/h6&gt;&lt;p&gt;思路1 provisioning profile证书变成invalid;原因分析：估计谁重新生成过调试证书了或者有人把你的证书revoke了；深度分析：导致生成证书的原因：使用陌生的设备编译了工程文件，且编译的时候点击了修复证书；原文（May be you added a new device to the mix or updated something else that affects this mobileprovision. Click on the Edit and just re-generate the mobileprovision and the status should then go from Invalid to Green dot that is Valid：就是说添加新的设备，会影响mobileprovision）原文链接：&lt;a href=&quot;http://zhidao.baidu.com/link?url=guOm7huxAgSy2ZEdwWpEfp77I9tuK6KfdbfarlJ6OhuiSZPs6q5T8HHHDsP0w9oIrJOIwlomY6geZD5Bq5kbU82sRdoGfR9rYi9cSjWT0ei&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://zhidao.baidu.com/link?url=guOm7huxAgSy2ZEdwWpEfp77I9tuK6KfdbfarlJ6OhuiSZPs6q5T8HHHDsP0w9oIrJOIwlomY6geZD5Bq5kbU82sRdoGfR9rYi9cSjWT0ei&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://stackoverflow.com/questions/25887845/apple-developer-provisioning-profile-showing-invalid-status&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://stackoverflow.com/questions/25887845/apple-developer-provisioning-profile-showing-invalid-status&lt;/a&gt;&lt;/p&gt;
+&lt;h6 id=&quot;报错15-error-instance-variable-‘wheels’-is-protected-p-gt-wheels-4-？？&quot;&gt;&lt;a href=&quot;#报错15-error-instance-variable-‘wheels’-is-protected-p-gt-wheels-4-？？&quot; class=&quot;headerlink&quot; title=&quot;报错15 error:instance variable ‘wheels’ is protected p-&amp;gt;wheels = 4  ？？&quot;&gt;&lt;/a&gt;报错15 error:instance variable ‘wheels’ is protected p-&amp;gt;wheels = 4  ？？&lt;/h6&gt;&lt;p&gt;思路1 给这个属性添加@protect&lt;/p&gt;
+&lt;h6 id=&quot;报错16-Requesting-the-window-of-a-view-with-a-nil-layer-This-view-probably-hasn’t-received-initWithFrame-or-initWithCoder-？？&quot;&gt;&lt;a href=&quot;#报错16-Requesting-the-window-of-a-view-with-a-nil-layer-This-view-probably-hasn’t-received-initWithFrame-or-initWithCoder-？？&quot; class=&quot;headerlink&quot; title=&quot;报错16 Requesting the window of a view () with a nil layer. This view probably hasn’t received initWithFrame: or initWithCoder:  ？？&quot;&gt;&lt;/a&gt;报错16 Requesting the window of a view (&lt;wldotacell: 0=&quot;&quot; 0x79f86160;=&quot;&quot; baseclass=&quot;UITableViewCell;&quot; frame=&quot;(0&quot; 0;=&quot;&quot; 0);=&quot;&quot; transform=&quot;[0,&quot; 0,=&quot;&quot; 0];=&quot;&quot; alpha=&quot;0;&quot; opaque=&quot;NO;&quot; autoresize=&quot;W;&quot; layer=&quot;(null)&quot;&gt;) with a nil layer. This view probably hasn’t received initWithFrame: or initWithCoder:  ？？&lt;/wldotacell:&gt;&lt;/h6&gt;&lt;p&gt;因为是手动代码写控件，所以需要重写initWithStyle方法&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;if (self) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 头像控件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;UIImageView *iconView = [[UIImageView alloc]init];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[self.contentView addSubview:iconView];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;self.iconView = iconView;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 名字控件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;UILabel *nameView = [[UILabel alloc]init];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[self.contentView addSubview:nameView];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;self.nameView = nameView;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;return self;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h6 id=&quot;报错17-cancelPeripheralConnection-CBPeripheral-peripheral不会马上断开外设-？？&quot;&gt;&lt;a href=&quot;#报错17-cancelPeripheralConnection-CBPeripheral-peripheral不会马上断开外设-？？&quot; class=&quot;headerlink&quot; title=&quot;报错17 cancelPeripheralConnection:(CBPeripheral *)peripheral不会马上断开外设  ？？&quot;&gt;&lt;/a&gt;报错17 cancelPeripheralConnection:(CBPeripheral *)peripheral不会马上断开外设  ？？&lt;/h6&gt;&lt;blockquote&gt;
+&lt;p&gt;思路1 系统自带的不会马上断开&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;http://www.jianshu.com/p/d8aad492b937&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;https://devzone.nordicsemi.com/question/3366/ios-corebluetooth-reconnecting-device-with-pair/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;http://stackoverflow.com/questions/22158099/getting-ios-centralmanagerdiddisconnectperipheral-call-but-device-is-not-really&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h6 id=&quot;报错18-viewController-up-unrecongized-selector-sent-to-instance-0x8c50af0-？？&quot;&gt;&lt;a href=&quot;#报错18-viewController-up-unrecongized-selector-sent-to-instance-0x8c50af0-？？&quot; class=&quot;headerlink&quot; title=&quot;报错18 -[viewController up]: unrecongized selector sent to instance 0x8c50af0  ？？&quot;&gt;&lt;/a&gt;报错18 -[viewController up]: unrecongized selector sent to instance 0x8c50af0  ？？&lt;/h6&gt;&lt;blockquote&gt;
+&lt;p&gt;思路1 表示某个对象没有实现某个方法&lt;/p&gt;
+&lt;h6 id=&quot;报错19-让手机震动方法-？？&quot;&gt;&lt;a href=&quot;#报错19-让手机震动方法-？？&quot; class=&quot;headerlink&quot; title=&quot;报错19 让手机震动方法  ？？&quot;&gt;&lt;/a&gt;报错19 让手机震动方法  ？？&lt;/h6&gt;&lt;p&gt;思路1 导入#import &lt;audiotoolbox audiotoolbox.h=&quot;&quot;&gt;   代码：AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);&lt;/audiotoolbox&gt;&lt;/p&gt;
+&lt;h6 id=&quot;报错20-检查广告标识符-？？&quot;&gt;&lt;a href=&quot;#报错20-检查广告标识符-？？&quot; class=&quot;headerlink&quot; title=&quot;报错20 检查广告标识符  ？？&quot;&gt;&lt;/a&gt;报错20 检查广告标识符  ？？&lt;/h6&gt;&lt;p&gt;思路1 如果你APP里面有广告标识符，但你选择了否 解决方案&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1.方案一：重新下载xcode，安装比较新的版本重新打包ipa&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2.方案二：检测哪里用到IDFA，首先cd到你的工程目录下，然后执行命令：（ grep -r advertisingIdentifier . ）注意后面还有一个点。找到后，把你广告移除&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3.方案三：承认你有广告标识符&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h6 id=&quot;报错21-NSURLSession-NSURLConnection-HTTP-load-failed-kCFStreamErrorDomainSSL-9802-？？&quot;&gt;&lt;a href=&quot;#报错21-NSURLSession-NSURLConnection-HTTP-load-failed-kCFStreamErrorDomainSSL-9802-？？&quot; class=&quot;headerlink&quot; title=&quot;报错21 NSURLSession/NSURLConnection HTTP load failed (kCFStreamErrorDomainSSL, -9802)  ？？&quot;&gt;&lt;/a&gt;报错21 NSURLSession/NSURLConnection HTTP load failed (kCFStreamErrorDomainSSL, -9802)  ？？&lt;/h6&gt;&lt;blockquote&gt;
+&lt;p&gt;思路1 在info.plist里面添加如下内容即可:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;key&amp;gt;NSAppTransportSecurity&amp;lt;/key&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;dict&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;key&amp;gt;NSAllowsArbitraryLoads&amp;lt;/key&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;true/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/dict&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;iOS8 编译错误&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Build Settings 里 将 Enable Bitcode的值设置成 NO&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;http://my.oschina.net/rareliu/blog/509521&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h6 id=&quot;报错22-在ios上摇动时出现撤销、重做弹出框-？？&quot;&gt;&lt;a href=&quot;#报错22-在ios上摇动时出现撤销、重做弹出框-？？&quot; class=&quot;headerlink&quot; title=&quot;报错22 在ios上摇动时出现撤销、重做弹出框  ？？&quot;&gt;&lt;/a&gt;报错22 在ios上摇动时出现撤销、重做弹出框  ？？&lt;/h6&gt;&lt;blockquote&gt;
+&lt;p&gt;思路1 [UIApplication sharedApplication].applicationSupportsShakeToEdit = NO;&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;http://ask.csdn.net/questions/236048&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;http://stackoverflow.com/questions/6520125/how-to-disable-ios-shake-to-undo-in-a-webapp&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
     
     <summary type="html">
+    
+      &lt;h6 id=&quot;报错1-duplicate-symbol-OBJCMETACLASS-类名-in-？？&quot;&gt;&lt;a href=&quot;#报错1-duplicate-symbol-OBJCMETACLASS-类名-in-？？&quot; class=&quot;headerlink&quot; title=&quot;报错1 du
     
     </summary>
     
@@ -1636,71 +1698,6 @@
       &lt;h4 id=&quot;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot;&gt;&lt;a href=&quot;#每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot;&gt;&lt;/a&gt;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&lt;/h4&gt;&lt;h4 id=&quot;应聘网络工程师要注意的地方：&quot;&gt;&lt;a href=&quot;#应聘网络工程师要注意的地方：&quot; class=&quot;headerlink&quot; title=&quot;应聘网络工程师要注意的地方：&quot;&gt;&lt;/a&gt;应聘网络工程师要注意的地方：&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;首先是简历这里，我比较关注的是职业经历和工作成果，还有就是技术专业方向等，对于职业经历，关注的重点是曾服务企业的规模以及所具体负责的业务范围，特别在具体工作中所处的位置是主导还是参与很重要。而技术方向而言，应当体现对自己职业生涯规划的一个思想，把自己在IT领域的学习和发展方向表述清晰。&lt;/li&gt;
 &lt;/ul&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>我的番茄炒蛋</title>
-    <link href="williamliuwen.cn/2016/05/23/%E6%88%91%E7%9A%84%E7%95%AA%E8%8C%84%E7%82%92%E8%9B%8B/"/>
-    <id>williamliuwen.cn/2016/05/23/我的番茄炒蛋/</id>
-    <published>2016-05-23T11:53:26.000Z</published>
-    <updated>2016-05-23T12:14:42.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;每日给自己一句话：背人说话没好事儿&quot;&gt;&lt;a href=&quot;#每日给自己一句话：背人说话没好事儿&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：背人说话没好事儿&quot;&gt;&lt;/a&gt;每日给自己一句话：背人说话没好事儿&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;一生大概有80年，一年大概有12个月，大概有365天，每天有24个小时，除了8小时的睡觉时间，16个小时都在工作，学习，生活，旅游，发呆。&lt;/p&gt;
-&lt;p&gt;你的一生是否幸福快乐自由享受，就在乎这80年里面，你是否过得幸福快乐自由享受；也在乎每天年中365天里面你是否过得幸福快乐自由享受；也在乎你每天16个小时里面，你是否过得幸福快乐自由享受。&lt;/p&gt;
-&lt;p&gt;珍惜你一天里面的16个小时，不要浪费，不给花在无关的事，无关的人上面。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;工作日&quot;&gt;&lt;a href=&quot;#工作日&quot; class=&quot;headerlink&quot; title=&quot;工作日&quot;&gt;&lt;/a&gt;工作日&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;我的工作日：一天里面大概有10个番茄时间花在学习上，就是花了5个小时了，还剩下11个小时，一个小时2个番茄时间，就是说还有22个番茄时间，我都用在了哪里呢：&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;番茄时间完成的原则：具体时间根据具体情况而定，只要能完成总的番茄时间。对于番茄时间被打断是否承认为番茄时间问题上，还在考虑中。&lt;/li&gt;
-&lt;li&gt;下面的计划只是用一个月以内，根据以后具体的角色改变而改变。&lt;/li&gt;
-&lt;li&gt;我的工作：睡觉时间标准比例是：晚上10点–白天6点&lt;/li&gt;
-&lt;li&gt;我的工作：工作学习生活旅游时间是：白天6点–晚上10点，划分的细致一点是：&lt;/li&gt;
-&lt;li&gt;&lt;ul&gt;
-&lt;li&gt;我的工作：一天下来总共需要完成14个番茄时间&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;早上&quot;&gt;&lt;a href=&quot;#早上&quot; class=&quot;headerlink&quot; title=&quot;早上&quot;&gt;&lt;/a&gt;早上&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;6点-1点，7个小时，&lt;/li&gt;
-&lt;li&gt;在家里待的时间是2个小时（可以利用2个番茄时间，1小时）1/2=50%；&lt;/li&gt;
-&lt;li&gt;在公司待的时间8点–1点，就是5小时（可以利用4个番茄时间，2小时），2/5=40%。可以扩充多1个番茄时间：2.5/5=50%  下午1点-6点，5个小时（可以利用4个番茄时间，2小时），2/5=40%。可以扩充多1个番茄时间：2.5/5=50%  &lt;/li&gt;
-&lt;li&gt;晚上6点-10,4个小时，6点-8点吃饭休息洗澡时间，8点-10点（有2个番茄时间可以利用）剩下1个小时什么都不做。&lt;/li&gt;
-&lt;li&gt;剩下的一个小时，可以陪伴家人，可以跟宝宝聊天早上：家里2个番茄时间；公司5个番茄时间&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;下午：&quot;&gt;&lt;a href=&quot;#下午：&quot; class=&quot;headerlink&quot; title=&quot;下午：&quot;&gt;&lt;/a&gt;下午：&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;公司5个番茄时间&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;完成：&quot;&gt;&lt;a href=&quot;#完成：&quot; class=&quot;headerlink&quot; title=&quot;完成：&quot;&gt;&lt;/a&gt;完成：&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;家里2个番茄时间&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;周末&quot;&gt;&lt;a href=&quot;#周末&quot; class=&quot;headerlink&quot; title=&quot;周末&quot;&gt;&lt;/a&gt;周末&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;我的周末：睡觉时间标准比例是：晚上10点–白天8点，周六除外，周六需要10点起床；我的周末：基于周末可能有时候会有事情办，对于没有时间安排的番茄时间，可以具体说明时间都去哪里了。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;我的周六：总共需要完成12个番茄时间&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;早上10点-1点，3个小时，吃饭时间12点-1点包括休息，完全可以利用时间10-12点，2个小时，4个饭番茄时间  下午1点-6点，5个小时，吃饭时间5点-6点，完全可以利用时间1点-5点，4个小时，8个番茄时间  晚上6点-10,6点-8点，陪伴家人时间，休息，8点-10点，自己休息时间，自由发挥。早上：4个番茄时间;下午：8个番茄时间;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;我的周日：总共需要完成16个番茄时间&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;早上8点-1点，5个小时，吃饭时间12点-1点包括休息，完全可以利用时间8点-12点，4个小时，8个饭番茄时间  下午1点-6点，5个小时，吃饭时间5点-6点，完全可以利用时间1点-5点，4个小时，8个番茄时间  晚上6点-10,6点-8点，陪伴家人时间，休息，8点-10点，自己休息时间，自由发挥。早上：8个番茄时间;下午：8个番茄时间;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;每日给自己一句话：背人说话没好事儿&quot;&gt;&lt;a href=&quot;#每日给自己一句话：背人说话没好事儿&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：背人说话没好事儿&quot;&gt;&lt;/a&gt;每日给自己一句话：背人说话没好事儿&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;一生大概有80年，一年大概有12个月，大概有365天，每天有24个小时，除了8小时的睡觉时间，16个小时都在工作，学习，生活，旅游，发呆。&lt;/p&gt;
-&lt;p&gt;你的一生是否幸福快乐自由享受，就在乎这80年里面，你是否过得幸福快乐自由享受；也在乎每天年中365天里面你是否过得幸福快乐自由享受；也在乎你每天16个小时里面，你是否过得幸福快乐自由享受。&lt;/p&gt;
-&lt;p&gt;珍惜你一天里面的16个小时，不要浪费，不给花在无关的事，无关的人上面。&lt;/p&gt;
-&lt;/blockquote&gt;
     
     </summary>
     
