@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>williamliuwen.cn/2016/08/02/iOS-Thread/</loc>
+    
+    <lastmod>2016-08-04T11:48:19.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>williamliuwen.cn/2016/07/23/NSRunLoop/</loc>
     
     <lastmod>2016-08-04T11:44:37.000Z</lastmod>
@@ -40,13 +47,6 @@
     <loc>williamliuwen.cn/2016/08/03/iOS%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</loc>
     
     <lastmod>2016-08-03T13:19:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>williamliuwen.cn/2016/08/02/iOS-Thread/</loc>
-    
-    <lastmod>2016-08-02T13:08:59.000Z</lastmod>
     
   </url>
   

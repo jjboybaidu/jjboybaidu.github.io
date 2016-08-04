@@ -348,7 +348,7 @@
     <link href="williamliuwen.cn/2016/08/02/iOS-Thread/"/>
     <id>williamliuwen.cn/2016/08/02/iOS-Thread/</id>
     <published>2016-08-02T08:52:50.000Z</published>
-    <updated>2016-08-02T13:08:59.000Z</updated>
+    <updated>2016-08-04T11:48:19.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;Thread方案&quot;&gt;&lt;a href=&quot;#Thread方案&quot; class=&quot;headerlink&quot; title=&quot;Thread方案&quot;&gt;&lt;/a&gt;Thread方案&lt;/h2&gt;&lt;p&gt;1.NSOperation&lt;/p&gt;
 &lt;p&gt;2.GCD&lt;/p&gt;
@@ -367,11 +367,12 @@
 &lt;p&gt;3.NSThread常用属性和方法？&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&quot;Thread-GCD&quot;&gt;&lt;a href=&quot;#Thread-GCD&quot; class=&quot;headerlink&quot; title=&quot;Thread - GCD&quot;&gt;&lt;/a&gt;Thread - GCD&lt;/h2&gt;&lt;h3 id=&quot;1-GCD须知？&quot;&gt;&lt;a href=&quot;#1-GCD须知？&quot; class=&quot;headerlink&quot; title=&quot;1.GCD须知？&quot;&gt;&lt;/a&gt;1.GCD须知？&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;1）GCD使用的优点和局限&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1.GCD是苹果公司为多核的并行运算提出的解决方案&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2.GCD会自动利用更多的CPU内核（比如双核、四核）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3.GCD会自动管理线程的生命周期（创建线程、调度任务、销毁线程）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4.GCD的高级功能：监视进程或者监视文件夹内文件的变化之类的比较合适。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;li&gt;1）GCD使用的优点和局限&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1.GCD是苹果公司为多核的并行运算提出的解决方案&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2.GCD会自动利用更多的CPU内核（比如双核、四核）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3.GCD会自动管理线程的生命周期（创建线程、调度任务、销毁线程）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4.GCD的高级功能：监视进程或者监视文件夹内文件的变化之类的比较合适。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;2）GCD 全称是Grand Central Dispatch，可译为“牛逼的中枢调度器”&lt;/p&gt;
-&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;2）GCD 全称是Grand Central Dispatch，可译为“牛逼的中枢调度器”&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h5 id=&quot;GCD-串行、并行、异步、同步&quot;&gt;&lt;a href=&quot;#GCD-串行、并行、异步、同步&quot; class=&quot;headerlink&quot; title=&quot;GCD - 串行、并行、异步、同步&quot;&gt;&lt;/a&gt;GCD - 串行、并行、异步、同步&lt;/h5&gt;&lt;p&gt;1.什么是串行？&lt;/p&gt;
 &lt;p&gt;串行就是一个接一个执行，串行是任务A执行完了任务B才能执行, 它们俩只能顺序执行&lt;/p&gt;
@@ -534,7 +535,24 @@
     
       &lt;h2 id=&quot;Thread方案&quot;&gt;&lt;a href=&quot;#Thread方案&quot; class=&quot;headerlink&quot; title=&quot;Thread方案&quot;&gt;&lt;/a&gt;Thread方案&lt;/h2&gt;&lt;p&gt;1.NSOperation&lt;/p&gt;
 &lt;p&gt;2.GCD&lt;/p&gt;
-&lt;p&gt;3.NSThread&lt;/
+&lt;p&gt;3.NSThread&lt;/p&gt;
+&lt;p&gt;4.Thread须知？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.xxx&lt;/li&gt;
+&lt;li&gt;2.xxx&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;Thread-NSThread&quot;&gt;&lt;a href=&quot;#Thread-NSThread&quot; class=&quot;headerlink&quot; title=&quot;Thread - NSThread&quot;&gt;&lt;/a&gt;Thread - NSThread&lt;/h2&gt;&lt;p&gt;1.NSThread须知？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1）NSThread使用的优点和局限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2.NSThread使用注意？&lt;/p&gt;
+&lt;p&gt;3.NSThread常用属性和方法？&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;Thread-GCD&quot;&gt;&lt;a href=&quot;#Thread-GCD&quot; class=&quot;headerlink&quot; title=&quot;Thread - GCD&quot;&gt;&lt;/a&gt;Thread - GCD&lt;/h2&gt;&lt;h3 id=&quot;1-GCD须知？&quot;&gt;&lt;a href=&quot;#1-GCD须知？&quot; class=&quot;headerlink&quot; title=&quot;1.GCD须知？&quot;&gt;&lt;/a&gt;1.GCD须知？&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;1）GCD使用的优点和局限&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1.GCD是苹果公司为多核的并行运算提出的解决方案&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2.GCD会自动利用更多的CPU内核（比如双核、四核）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3.GCD会自动管理线程的生命周期（创建线程、调度任务、销毁线程）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4.GCD的高级功能：监视进程或者监视文件夹内文件的变化之类的比较合适。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
