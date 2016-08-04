@@ -152,7 +152,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="人机交互摘要"><a href="#人机交互摘要" class="headerlink" title="人机交互摘要"></a>人机交互摘要</h2><p>1）将重要内容和功能放到更重要的位置，以便用户可以更容易地关注主要任务<br>“一些可行的方法是，将主要元素放置在屏幕的上半部分，并靠近屏幕左侧（基于从左至右的阅读习惯）：<br>”</p>
+<p>2）给每个交互元素以足够的间距，以便用户对内容和控件进行操作<br>“可点击控件的点击区域不小于 44 x 44 点</p>
+<p>3）如果只有部分功能不可用，那在用户用到这些功能时提供解释界面或者提示</p>
+<p>4）如果所有的功能都不可用，就向用户展示一个界面去描述问题并建议用户如何纠正<br>“这能给用户一种反馈，让他们觉得你的 app 并没有出错。这也会赋予用户以控制感，让他们来决定是采取纠正措施并继续使用你的 app，还是切换到另一个 app。”</p>
       
     </div>
     
@@ -161,6 +164,10 @@
       
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/04/iOS人机交互/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -215,58 +222,6 @@
 <p>1）对于常量的命名最好在前面加上字母k作为标记. 如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">static const NSTimeInterval kAnimationDuration = 0.3;</span><br></pre></td></tr></table></figure></p>
 <p>2）定义作为NSDictionary或者Notification等的Key值字符串时加上const关键字, 以防止被修改. 如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *const UIApplicationDidEnterBackgroundNotification</span><br></pre></td></tr></table></figure></p>
 <p>3）若常量作用域超出编译单元(实现文件), 需要在类外可见时, 使用extern关键字, 并加上该类名作为前缀. 如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extern NSString *const PGThumbnailSize</span><br></pre></td></tr></table></figure></p>
-<p>3.iOS枚举命令</p>
-<p>枚举类型命名要加相关类名前缀并且枚举值命名要加枚举类型前缀.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typedef NS_ENUM(NSInteger, UIViewAnimationTransition) &#123;</span><br><span class="line">UIViewAnimationTransitionNone,</span><br><span class="line">UIViewAnimationTransitionFlipFromLeft,</span><br><span class="line">UIViewAnimationTransitionFlipFromRight,</span><br><span class="line">UIViewAnimationTransitionCurlUp,</span><br><span class="line">UIViewAnimationTransitionCurlDown,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>4.iOS变量和对象命名</p>
-<p>1）给一个对象命名时建议采用修饰+类型的方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">titleLabel    //表示标题的label,  是UILabel类型</span><br><span class="line">confirmButton //表示确认的button, 是UIButton类型</span><br></pre></td></tr></table></figure></p>
-<p>2）对于BOOL类型, 应加上is前缀<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)isEqualToString:(NSString *)aString</span><br></pre></td></tr></table></figure></p>
-<p>3）如果某方法返回非属性的 BOOL 值, 那么应根据其功能, 选用 has 或 is 当前缀, 如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)hasPrefix:(NSString *)aString</span><br></pre></td></tr></table></figure></p>
-<p>4）如果某个命名已经很明确了, 为了简洁可以省去类型名. 比如scores, 很明显是个array了, 就不必命名成scoreArray了</p>
-<p>5.iOS命名常规错误<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">UserFollowerTableViewController    // 不推荐</span><br><span class="line">UserFollowerListController         // OK</span><br><span class="line">UserLikedTagListController         // 不推荐</span><br><span class="line">TagUserLikedListController         // OK，把显示的对象放在第一位</span><br></pre></td></tr></table></figure></p>
-<p>6.iOS通知命名</p>
-<p>这里学习iOS的命名方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NSApplicationDidBecomeActiveNotification</span><br><span class="line">NSWindowDidMiniaturizeNotification</span><br><span class="line">NSTextViewDidChangeSelectionNotification</span><br><span class="line">NSColorPanelColorDidChangeNotification</span><br></pre></td></tr></table></figure></p>
-<p>7.类名、局部变量、类成员命名</p>
-<ul>
-<li>类名采用大驼峰（UpperCamelCase）</li>
-<li>类成员、方法小驼峰（lowerCamelCase）</li>
-<li>局部变量大小写首选小驼峰，也可使用小写下划线的形式（snake_case）</li>
-<li>C函数的命名用大驼峰</li>
-</ul>
-<h2 id="编码规范"><a href="#编码规范" class="headerlink" title="编码规范"></a>编码规范</h2><p>1.编码规范–判断nil或者YES/NO<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if (someObject) &#123; ... &#125;</span><br><span class="line">if (!someObject) &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
-<p>2.编码规范–条件赋值</p>
-<p>如果是存在就赋值本身, 那就可以这样简写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = object ? : [self createObject];</span><br></pre></td></tr></table></figure></p>
-<p>3.编码规范–初始化方法</p>
-<p>初始化的时候，直接赋值的好处是：</p>
-<p>第一个好处还是简洁</p>
-<p>第二个好处是可以防止初始化进去nil值造成crash<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NSArray *names = @[@&quot;Brian&quot;, @&quot;Matt&quot;, @&quot;Chris&quot;, @&quot;Alex&quot;, @&quot;Steve&quot;];</span><br><span class="line"></span><br><span class="line">NSDictionary *productManagers = @&#123;@&quot;iPhone&quot; : @&quot;Kate&quot;, @&quot;iPad&quot; : @&quot;Kamal&quot;&#125;;</span><br><span class="line"></span><br><span class="line">NSNumber *shouldUseLiterals = @YES;</span><br><span class="line">NSNumber *buildingZIPCode = @10018;</span><br></pre></td></tr></table></figure></p>
-<p>4.编码规范–定义属性</p>
-<p>1）建议定义属性的时候把所有的参数写全, 尤其是如果想定义成只读的(防止外面修改)那一定要加上readonly, 这也是代码安全性的一个习惯.</p>
-<p>2）如果是内部使用的属性, 那么就定义成私有的属性(定义到.m的class extension里面)<br>对于拥有Mutable子类型的对象(e.g. NSString, NSArray, NSDictionary)一定要定义成copy属性. Why? 示例: NSArray的array = NSMutableArray的mArray; 如果mArray在某个地方改变了, 那array也会跟着改变. So, make sense?</p>
-<p>3）尽量不要暴露mutable类型的对象在public interface, 建议在.h定义一个Inmutable类型的属性, 然后在.m的get函数里面返回一个内部定义的mutable变量. Why? For security as well!</p>
-<p>@property (nonatomic, readwrite, copy) NSString *name;</p>
-<p>5.编码规范–BOOL赋值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BOOL isAdult = age &gt; 18;</span><br></pre></td></tr></table></figure></p>
-<p>6.编码规范–拒绝死值</p>
-<p>1）死值每次修改的时候容易被遗忘, 地方多了找起来就悲剧了. 而且定义成枚举或者static可以让错误发生在编译阶段. 另外仅仅看到一个数字, 完全不知道这个数字代表的意义. 纳尼?<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (car == Car.Nissan)</span><br><span class="line">or</span><br><span class="line">const int adultAge = 18; if (age &gt; adultAge) &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
-<p>7.编码规范–复杂的条件判断</p>
-<p>清晰明了, 每个函数只做一件事!<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">if ([self canDeleteJob:job]) &#123; ... &#125;</span><br><span class="line"></span><br><span class="line">- (BOOL)canDeleteJob:(Job *)job</span><br><span class="line">&#123;</span><br><span class="line">BOOL invalidJobState = job.JobState == JobState.New</span><br><span class="line">|| job.JobState == JobState.Submitted</span><br><span class="line">|| job.JobState == JobState.Expired;</span><br><span class="line">BOOL invalidJob = job.JobTitle &amp;&amp; job.JobTitle.length;</span><br><span class="line"></span><br><span class="line">return invalidJobState || invalidJob;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>8.编码规范–嵌套判断</p>
-<p>一旦发现某个条件不符合, 立即返回, 条理更清晰<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (!user.UserName) return NO;</span><br><span class="line">if (!user.Password) return NO;</span><br><span class="line">if (!user.Email) return NO;</span><br><span class="line">return YES;</span><br></pre></td></tr></table></figure></p>
-<p>9.编码规范–参数过多</p>
-<p>当发现实现某一功能需要传递的参数太多时, 就预示着你应该聚合成一个model类了…这样代码更整洁, 也不容易因为参数太多导致出错<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">user里面有userName、password、email</span><br><span class="line">- (void)registerUser(User *user)</span><br><span class="line">&#123;</span><br><span class="line">// to do...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>10.编码规范–把方法进行分类</p>
-<p>1）使用#pragma mark –来分类方法</p>
-<p>#pragma mark – Life Cycle//代表生命周期方法</p>
-<p>#pragma mark - Events//代表事件</p>
-<p>#pragma mark – Private Methods//代表私有方法</p>
-<p>#pragma mark - UITextFieldDelegate//代理</p>
-<p>#pragma mark - UITableViewDataSource//数据源</p>
-<p>#pragma mark - UITableViewDelegate//代理</p>
-<p>#pragma mark - Custom Delegates//自定义代理</p>
-<p>#pragma mark – Getters and Setters//getter和setter方法</p>
-<p>11.编码规范–注释符号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/***************************************************************************</span><br><span class="line">*                                文件引用</span><br><span class="line">***************************************************************************/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/***************************************************************************</span><br><span class="line">*                                 宏定义</span><br><span class="line">***************************************************************************/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/***************************************************************************</span><br><span class="line">*                                 常量</span><br><span class="line">***************************************************************************/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/***************************************************************************</span><br><span class="line">*                                类型定义</span><br><span class="line">***************************************************************************/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/***************************************************************************</span><br><span class="line">*                                全局变量</span><br><span class="line">***************************************************************************/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/***************************************************************************</span><br><span class="line">*                                 原型</span><br><span class="line">***************************************************************************/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/ ***************************************************************************</span><br><span class="line">*                                类特性</span><br><span class="line">***************************************************************************/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/ ***************************************************************************</span><br><span class="line">*                                类的实现</span><br><span class="line">***************************************************************************/</span><br></pre></td></tr></table></figure></p>
-<p>12.花括号空格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)methodName:(NSString *)string &#123;</span><br><span class="line">↑空格                              ↑空格，推荐花括号在一行</span><br><span class="line">if () &#123;</span><br><span class="line">空格↑  ↑空格，花括号不要另起一行</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">要换行↑ ↑空格，花括号不要另起一行</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><p><a href="http://www.jianshu.com/p/414bb5a53139" target="_blank" rel="external">http://www.jianshu.com/p/414bb5a53139</a></p>
-
       
     </div>
     
@@ -275,6 +230,10 @@
       
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/03/iOS规范/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

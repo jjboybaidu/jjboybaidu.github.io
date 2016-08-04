@@ -22,7 +22,7 @@
 防止命名冲突(通过加前缀来保证)
 每个模块都要加上自己的前缀, 前缀在编程接口中非常重要, 可以区分软件的功能范畴并防止不同文件或者类之间命名发生冲突, 比如相册模块(PhotoGallery)的代码都以PG作为前缀: PGAlbumViewController, PGDataManager.
 可扩展则是要求写代码时要考虑后面的扩展需">
-<meta property="og:updated_time" content="2016-08-03T22:15:35.000Z">
+<meta property="og:updated_time" content="2016-08-04T11:43:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS规范">
 <meta name="twitter:description" content="命名规范1.iOS命名原则
@@ -184,6 +184,7 @@
 <p>1）对于常量的命名最好在前面加上字母k作为标记. 如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">static const NSTimeInterval kAnimationDuration = 0.3;</span><br></pre></td></tr></table></figure></p>
 <p>2）定义作为NSDictionary或者Notification等的Key值字符串时加上const关键字, 以防止被修改. 如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *const UIApplicationDidEnterBackgroundNotification</span><br></pre></td></tr></table></figure></p>
 <p>3）若常量作用域超出编译单元(实现文件), 需要在类外可见时, 使用extern关键字, 并加上该类名作为前缀. 如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extern NSString *const PGThumbnailSize</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>3.iOS枚举命令</p>
 <p>枚举类型命名要加相关类名前缀并且枚举值命名要加枚举类型前缀.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typedef NS_ENUM(NSInteger, UIViewAnimationTransition) &#123;</span><br><span class="line">UIViewAnimationTransitionNone,</span><br><span class="line">UIViewAnimationTransitionFlipFromLeft,</span><br><span class="line">UIViewAnimationTransitionFlipFromRight,</span><br><span class="line">UIViewAnimationTransitionCurlUp,</span><br><span class="line">UIViewAnimationTransitionCurlDown,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <p>4.iOS变量和对象命名</p>
@@ -201,6 +202,54 @@
 <li>局部变量大小写首选小驼峰，也可使用小写下划线的形式（snake_case）</li>
 <li>C函数的命名用大驼峰</li>
 </ul>
+<p>8.命名规范–函数命名</p>
+<ul>
+<li><p>1)如果方法表示让对象执行一个动作，使用动词打头来命名，注意不要使用do，does这种多余的关键字，动词本身的暗示就足够了;动词打头的方法表示让对象执行一个动作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (void)invokeWithTarget:(id)target;</span><br><span class="line">- (void)selectTabViewItem:(NSTabViewItem *)tabViewItem;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2)如果方法是为了获取对象的一个属性值，直接用属性名称来命名这个方法，注意不要添加get或者其他的动词前缀</p>
+</li>
+</ul>
+<p>正确，使用属性名来命名方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (NSSize)cellSize;</span><br></pre></td></tr></table></figure></p>
+<p>错误，添加了多余的动词前缀<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (NSSize)calcCellSize;</span><br><span class="line">- (NSSize)getCellSize;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>3)对于有多个参数的方法，务必在每一个参数前都添加关键词，关键词应当清晰说明参数的作用</li>
+</ul>
+<p>正确，保证每个参数都有关键词修饰<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)sendAction:(SEL)aSelector toObject:(id)anObject forAllCells:(BOOL)flag;</span><br></pre></td></tr></table></figure></p>
+<p>错误，遗漏关键词<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)sendAction:(SEL)aSelector :(id)anObject :(BOOL)flag;</span><br></pre></td></tr></table></figure></p>
+<p>正确<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (id)viewWithTag:(NSInteger)aTag;</span><br></pre></td></tr></table></figure></p>
+<p>错误，关键词的作用不清晰<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (id)taggedView:(int)aTag;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>4)不要用and来连接两个参数，通常and用来表示方法执行了两个相对独立的操作（从设计上来说，这时候应该拆分成两个独立的方法）：</li>
+</ul>
+<p>错误，不要使用”and”来连接参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (int)runModalForDirectory:(NSString *)path andFile:(NSString *)name andTypes:(NSArray *)fileTypes;</span><br></pre></td></tr></table></figure></p>
+<p>正确，使用”and”来表示两个相对独立的操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)openFile:(NSString *)fullPath withApplication:(NSString *)appName andDeactivate:(BOOL)flag;</span><br></pre></td></tr></table></figure></p>
+<p>9.命名规范–分组命名</p>
+<ul>
+<li>使用英文，首字母大写，之后每个单词首字母都大写</li>
+<li>每个分组使用模块的名字</li>
+<li>使用的开源库统一放在“Library”分组下</li>
+<li>使用的公共组件统一放在“Common”分组下</li>
+<li>视图控制器及AppDelegate统一放在“Controllers”分组下</li>
+</ul>
+<p>10.命名规范–图片命名</p>
+<ul>
+<li>使用英文，首字母大写，之后每个单词首字母都大写</li>
+<li>添加模块名作为前缀，避免冲突</li>
+<li>图片应该与类文件一样，按模块分组放置</li>
+<li>只要文件名叫做Icon.png，就会自动被当做是应用程序的图标</li>
+<li>一个应用程序可以准备多种规格的图标，详情可以查看苹果官方文档，ios7 doc set/user expreience/guides/app icons on iPad and iphone</li>
+<li>一个app在启动过程中会全屏显示叫做Default.png的图片</li>
+</ul>
+<p>11.命名规范–特殊类命名</p>
+<ul>
+<li>如果是视图控制器的子类应添加后缀“ViewController”或者“Controller”</li>
+<li>如果是视图的子类应添加后缀“View”</li>
+<li>如果是按钮的子类应添加后缀“Button”</li>
+</ul>
+<p>命名规范–补充命名</p>
+<p>常量（预定义，局部常量等）使用小写k开头的驼峰法<br>举例：kInvalidHandle , kWritePerm</p>
+<p>枚举类型命名首字母大写，之后每个单词首字母都大写，最后加“s”<br>枚举变量使用枚举类型去掉“s”作为前缀，每个单词首字母大写，中间不允许加下划线<br>举例：<br>typedef enum UIControlEvents{<br>UIControlEventTouchDown,<br>UIControlEventTouchUpInside<br>}UIControlEvents;</p>
 <h2 id="编码规范"><a href="#编码规范" class="headerlink" title="编码规范"></a>编码规范</h2><p>1.编码规范–判断nil或者YES/NO<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if (someObject) &#123; ... &#125;</span><br><span class="line">if (!someObject) &#123; ... &#125;</span><br></pre></td></tr></table></figure></p>
 <p>2.编码规范–条件赋值</p>
 <p>如果是存在就赋值本身, 那就可以这样简写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result = object ? : [self createObject];</span><br></pre></td></tr></table></figure></p>
@@ -233,7 +282,120 @@
 <p>#pragma mark - Custom Delegates//自定义代理</p>
 <p>#pragma mark – Getters and Setters//getter和setter方法</p>
 <p>11.编码规范–注释符号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/***************************************************************************</span><br><span class="line">*                                文件引用</span><br><span class="line">***************************************************************************/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/***************************************************************************</span><br><span class="line">*                                 宏定义</span><br><span class="line">***************************************************************************/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/***************************************************************************</span><br><span class="line">*                                 常量</span><br><span class="line">***************************************************************************/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/***************************************************************************</span><br><span class="line">*                                类型定义</span><br><span class="line">***************************************************************************/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/***************************************************************************</span><br><span class="line">*                                全局变量</span><br><span class="line">***************************************************************************/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/***************************************************************************</span><br><span class="line">*                                 原型</span><br><span class="line">***************************************************************************/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/ ***************************************************************************</span><br><span class="line">*                                类特性</span><br><span class="line">***************************************************************************/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/ ***************************************************************************</span><br><span class="line">*                                类的实现</span><br><span class="line">***************************************************************************/</span><br></pre></td></tr></table></figure></p>
-<p>12.花括号空格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)methodName:(NSString *)string &#123;</span><br><span class="line">↑空格                              ↑空格，推荐花括号在一行</span><br><span class="line">if () &#123;</span><br><span class="line">空格↑  ↑空格，花括号不要另起一行</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">要换行↑ ↑空格，花括号不要另起一行</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>块代码注释符号<br>1）块注释风格1<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/////////////////////////////////////</span><br><span class="line">// @name UIButton控件生成相关API</span><br><span class="line">/////////////////////////////////////</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>2）块注释风格2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//</span><br><span class="line">// 块功能说明</span><br><span class="line">//</span><br></pre></td></tr></table></figure></p>
+<p>3）块注释风格3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">* 块功能说明</span><br><span class="line">*/</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>使用#program mark -  注释内容</li>
+</ul>
+<blockquote>
+<p>#program mark 是每个ios程序员都必须会用的技巧，通过#program mark 把代码分为个个部分，良好的注释是好代码的开始</p>
+</blockquote>
+<ul>
+<li><p>注释原则</p>
+<blockquote>
+<p>代码中尽量少注释，让代码能自我描述。不过当需要注释的时候，能需要清除的解释某个代码块的含义和作用。注释应当保持最新，如果不必要请删除。</p>
+</blockquote>
+</li>
+<li><p>#pragma clang 使用</p>
+</li>
+</ul>
+<p>1）取消xcode编译器内对于启用方法的警告<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#pragma clang diagnostic push</span><br><span class="line">#pragma clang diagnostic ignored &quot;-Wdeprecated-declarations&quot;</span><br><span class="line">// CODE:这段中出现使用所有的弃用方法都不会产生告警</span><br><span class="line">#pragma clang diagnostic pop</span><br></pre></td></tr></table></figure></p>
+<p>2）取消对未使用变量的警告，使用方法和上面相同，必须成对出现#pragma clang<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//方法1：</span><br><span class="line">diagnostic ---</span><br><span class="line">#pragma clang diagnostic ignored &quot;-Wunused-variable&quot;</span><br><span class="line">//方法2：</span><br><span class="line">#pragma unused (foo)</span><br></pre></td></tr></table></figure></p>
+<p>3）忽略内存泄露告警<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#pragma clang diagnostic push</span><br><span class="line">#pragma clang diagnostic ignored &quot;-Warc-performSelector-leaks&quot;</span><br><span class="line">[someController performSelector: NSSelectorFromString(@&quot;someMethod&quot;)]</span><br><span class="line">#pragma clang diagnostic pop</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>手动产生一条警告</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#warning :手动产生一条告警</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>手动产生一条错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#error : 手动产生一条错误</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>12.编码规范–花括号空格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)methodName:(NSString *)string &#123;</span><br><span class="line">↑空格                              ↑空格，推荐花括号在一行</span><br><span class="line">if () &#123;</span><br><span class="line">空格↑  ↑空格，花括号不要另起一行</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">要换行↑ ↑空格，花括号不要另起一行</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>13.编码规范–编码注意</p>
+<ul>
+<li>单个文件方法数不应超过30个</li>
+<li>不要按类别排序（如把IBAction放在一块），应按任务把相关的组合在一起</li>
+<li>禁止出现超过两层循环的代码，用函数或block替代</li>
+</ul>
+<p>14.编码规范–编码例子</p>
+<ul>
+<li>糟糕<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">- (Task *)creatTaskWithPath:(NSString *)path &#123;</span><br><span class="line">Task *aTask;</span><br><span class="line">if ([path isURL]) &#123;</span><br><span class="line">if ([fileManager isWritableFileAtPath:path]) &#123;</span><br><span class="line">if (![taskManager hasTaskWithPath:path]) &#123;</span><br><span class="line">aTask = [[Task alloc] initWithPath:path];</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">return nil;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">return nil;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">return nil;</span><br><span class="line">&#125;</span><br><span class="line">return aTask;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>*建议<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">- (Task *)creatTaskWithPath:(NSString *)path &#123;</span><br><span class="line">if (![path isURL]) &#123;</span><br><span class="line">return nil;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if (![fileManager isWritableFileAtPath:path]) &#123;</span><br><span class="line">return nil;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if ([taskManager hasTaskWithPath:path]) &#123;</span><br><span class="line">return nil;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Task *aTask = [[Task alloc] initWithPath:path];</span><br><span class="line">return aTask;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>15.编码规范–编码注释适当使用</p>
+<ul>
+<li>尽量让代码可以自表述，而不是依赖注释。</li>
+<li>注释应该表达那些代码没有表达以及无法表达的东西。</li>
+<li>如果一段注释被用于解释一些本应该由这段代码自己表达的东西，我们就应该将这段注释看成一个改变代码结构或编码惯例直至代码可以自我表达的信号。</li>
+<li>我们重命名那些糟糕的方法和类名，而不是去修补。我们选择将长函数中的一些代码段抽取出来形成一些小函数，这些小函数的名字可以表述原代码段的意图，而不是对这些代码段进行注释。</li>
+<li>尽可能的通过代码进行表达。你通过代码所能表达的和你想要表达的所有事情之间的差额将为注释提供了一个合理的候选使用场合。对那些代码无法表达的东西进行注释，而不要仅简单地注释那些代码没有表达的东西。</li>
+<li>方法内部禁止使用块注释。除非要临时注释大段代码，一般情况总应使用行注释。</li>
+</ul>
+<p>16.编码规范–参数分行</p>
+<ul>
+<li><p>正确使用：如果第一段名称过短，后续名称可以以Tab的长度（4个空格）为单位进行缩进</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (void)short:(GTMFoo *)theFoo</span><br><span class="line">longKeyword:(NSRect)theRect</span><br><span class="line">evenLongerKeyword:(float)theInterval</span><br><span class="line">error:(NSError **)theError &#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>错误使用：要么写在一行，要么全部分行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[myObject doFooWith:arg1 name:arg2</span><br><span class="line">error:arg3];</span><br><span class="line">[myObject doFooWith:arg1</span><br><span class="line">name:arg2 error:arg3];</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>17.编码规范–冒号两边</p>
+<ul>
+<li><p>正确，在语法糖的”[]”或者”{}”两端留有空格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSArray *array = @[ [foo description], @&quot;Another String&quot;, [bar description] ];</span><br><span class="line">NSDictionary *dict = @&#123; NSForegroundColorAttributeName : [NSColor redColor] &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构造字典时，字典的Key和Value与中间的冒号:都要留有一个空格</p>
+</li>
+<li><p>正确，冒号’:’前后留有一个空格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NSDictionary *option1 = @&#123;</span><br><span class="line">NSFontAttributeName : [NSFont fontWithName:@&quot;Helvetica-Bold&quot; size:12],</span><br><span class="line">NSForegroundColorAttributeName : fontColor</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>正确，按照Value来对齐</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NSDictionary *option2 = @&#123;</span><br><span class="line">NSFontAttributeName :            [NSFont fontWithName:@&quot;Arial&quot; size:12],</span><br><span class="line">NSForegroundColorAttributeName : fontColor</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>错误，冒号前应该有一个空格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NSDictionary *wrong = @&#123;</span><br><span class="line">AKey:       @&quot;b&quot;,</span><br><span class="line">BLongerKey: @&quot;c&quot;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>错误，每一个元素要么单独成为一行，要么全部写在一行内</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSDictionary *alsoWrong= @&#123; AKey : @&quot;a&quot;,</span><br><span class="line">BLongerKey : @&quot;b&quot; &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>错误，在冒号前只能有一个空格，冒号后才可以考虑按照Value对齐</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NSDictionary *stillWrong = @&#123;</span><br><span class="line">AKey       : @&quot;b&quot;,</span><br><span class="line">BLongerKey : @&quot;c&quot;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>18.编码规范–程序布局</p>
+<p>1）程序布局目的：程序布局的目的是显示出程序良好的逻辑结构，提高程序的准确性、连续性、可读性、可维护性。更重要的是，统一的程序布局和编程风格，有助于提高整个项目的开发质量，提高开发效率，降低开发成本。同时，对于普通程序员来说，养成良好的编程习惯有助于提高自己的编程水平，提高编程效率。因此，统一的、良好的程序布局和编程风格不仅仅是个人主观美学上的或是形式上的问题，而且会涉及到产品质量，涉及到个人编程能力的提高，必须引起大家重视。</p>
+<p>2）布局中的空格：每个方法或者功能块之间为了结构清晰，应当有且只有一行空格,如下示例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@interface SomeClass:NSObject</span><br><span class="line"></span><br><span class="line">@property (noatomic, strong) UIView *aView</span><br><span class="line"></span><br><span class="line">-(void)someMethod;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation SomeClass</span><br><span class="line"></span><br><span class="line">- (void)setAView:(NSInteger )aview &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(void)someMethod &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<p>3）布局中的Private Methods块：正常情况下ViewController里面不应该写<br>不是delegate方法的，不是event response方法的，不是life cycle方法的，就是private method了。对的，正常情况下ViewController里面一般是不会存在private methods的，这个private methods一般是用于日期换算、图片裁剪啥的这种小功能。这种小功能要么把它写成一个category，要么把他做成一个模块，哪怕这个模块只有一个函数也行。</p>
+<p>ViewController基本上是大部分业务的载体，本身代码已经相当复杂，所以跟业务关联不大的东西能不放在ViewController里面就不要放。另外一点，这个private method的功能这时候只是你用得到，但是将来说不定别的地方也会用到，一开始就独立出来，有利于将来的代码复用。</p>
+<p>4）布局中的初始化方法放哪里？</p>
+<p>属性初始化放哪最好？建议在Getter中初始化</p>
+<p>我看到很多APP，甚至我公司的项目，很多开发工程师，初始化属性的位置比较随意，有单独添加一个初始化方法类似setupView的，有在init初始化的，各种情况都有，我其实挺崩溃的，首先初始化方式不一致，其次这样做非常可能破坏了每个方法功能的单一性（每个方法只做一件事）。我比较习惯一个对象的”私有”属性写在extension里面，然后这些属性的初始化全部放在getter里面做，在init和dealloc之外，是不会出现任何类似_property这样的写法的。就是这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">@interface CustomObject()</span><br><span class="line"></span><br><span class="line">@property (nonatomic, strong) UILabel *label;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation</span><br><span class="line"></span><br><span class="line">#pragma mark - getters and setters</span><br><span class="line"></span><br><span class="line">- (UILabel *)label &#123;</span><br><span class="line">if (_label == nil) &#123;</span><br><span class="line">_label = [[UILabel alloc] init];</span><br><span class="line">_label.text = @&quot;1234&quot;;</span><br><span class="line">_label.font = [UIFont systemFontOfSize:12];</span><br><span class="line">... ...</span><br><span class="line">&#125;</span><br><span class="line">return _label;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line">#pragma mark - life cycle</span><br><span class="line"></span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">[super viewDidLoad];</span><br><span class="line">[self.view addSubview:self.label];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewWillAppear:(BOOL)animated &#123;</span><br><span class="line">[super viewWillAppear:animated];</span><br><span class="line">self.label.frame = CGRectMake(1, 2, 3, 4);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5）布局中的Getters and Setters放在最底部</p>
+<p>一个view可能会有非常多的view和其他属性,如果getters and setters放在前面，就会导致在implementation代码顶部有大量的初始化代码，这就导致主要的逻辑代码挪到后面去了，其他人阅读代码是不太方便的。</p>
+<p>19.编码规范–表达式</p>
+<ul>
+<li>if语句</li>
+</ul>
+<blockquote>
+<p>表达式大括号和其他大括号(if/else/switch/while 等.)总是在同一行语句打开但在新行中关闭。如果没有else 并且括号内只有一行语句，可以和if语句同行，并且不需要括号。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if (user.isHappy) &#123;</span><br><span class="line">//Do something</span><br><span class="line">&#125; else &#123;</span><br><span class="line">//Do something else</span><br><span class="line">&#125;</span><br><span class="line">if (somethingIsBad) return something;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<ul>
+<li>Switch语句<blockquote>
+<p>大括号在case语句中并不是必须的，除非编译器强制要求。当一个case语句包含多行代码时，大括号应该加上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">switch (condition) &#123;</span><br><span class="line">case 1:</span><br><span class="line">// ...</span><br><span class="line">break;</span><br><span class="line">case 2: &#123;</span><br><span class="line">// ...</span><br><span class="line">// Multi-line example using braces</span><br><span class="line">break;</span><br><span class="line">&#125;</span><br><span class="line">case 3:</span><br><span class="line">// ...</span><br><span class="line">break;</span><br><span class="line">default:</span><br><span class="line">// ...</span><br><span class="line">break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>当在switch使用枚举类型时，’default’是不需要的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">RWTLeftMenuTopItemType menuType = RWTLeftMenuTopItemMain;</span><br><span class="line">switch (menuType) &#123;</span><br><span class="line">case RWTLeftMenuTopItemMain:</span><br><span class="line">// ...</span><br><span class="line">break;</span><br><span class="line">case RWTLeftMenuTopItemShows:</span><br><span class="line">// ...</span><br><span class="line">break;</span><br><span class="line">case RWTLeftMenuTopItemSchedule:</span><br><span class="line">// ...</span><br><span class="line">break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
 <h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><p><a href="http://www.jianshu.com/p/414bb5a53139" target="_blank" rel="external">http://www.jianshu.com/p/414bb5a53139</a></p>
 
       

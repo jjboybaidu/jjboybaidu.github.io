@@ -20,7 +20,7 @@ FIXME:0.运行循环 概念性的东西有？概念1【输入源==事件源】�
 3.循环体的开始需要检测是否有需要处理的事件，如果有则去处&amp;gt; - 理，如果没有则进入睡眠以节省CPU时间
 FIXME:0.运行循环 概念性的东西有？概念1【输入源==事件源】具体查看《RunLoop【输入源】》
 概念2【模">
-<meta property="og:updated_time" content="2016-07-23T02:52:32.000Z">
+<meta property="og:updated_time" content="2016-08-04T11:44:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NSRunLoop">
 <meta name="twitter:description" content="运行循环本质1.从字面上看，就是运行循环跑圈
@@ -177,6 +177,7 @@ FIXME:0.运行循环 概念性的东西有？概念1【输入源==事件源】�
 <h4 id="FIXME-0-运行循环-概念性的东西有？"><a href="#FIXME-0-运行循环-概念性的东西有？" class="headerlink" title="FIXME:0.运行循环 概念性的东西有？"></a>FIXME:0.运行循环 概念性的东西有？</h4><p>概念1【输入源==事件源】<br>具体查看《RunLoop【输入源】》</p>
 <p>概念2【模式】<br>具体查看《RunLoop【模式】》</p>
 <p>概念3【观察者Observer】<br>具体查看《RunLoop【观察者】》</p>
+<a id="more"></a>
 <h4 id="FIXME-1-运行循环-为什么要使用运行循环"><a href="#FIXME-1-运行循环-为什么要使用运行循环" class="headerlink" title="FIXME:1.运行循环 为什么要使用运行循环"></a>FIXME:1.运行循环 为什么要使用运行循环</h4><p>1.我们思考一下：程序为什么可以处理用户的各种事件，而且可以保证程序不退出？答案：就是因为程序里面有个系统的默认运行循环，所以能保证程序不退出，并且处理用户的各种事件</p>
 <p>2.想要了解为什么要使用运行循环，我们可以从使用运行循环的目的来了解，使用了运行循环我们可以：<br>a. 保证程序不退出 ;<br>b. 负责处理输入事件;<br>c. 如果没有事件发生，会让程序进入休眠状态。<br>从上面可以得出结论，为什么要使用运行循环，因为这是一个APP的基本，没有运行循环，就没有APP的正常运行。</p>
 <p>3.通过上面的了解我们可以总结运行循环的优点：有事情就做事情，没事情就休息；优点：节省CPU资源、提高程序性能；</p>
