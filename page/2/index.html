@@ -126,6 +126,70 @@
 
       <div class="body-wrap">
   
+    <article id="post-iOS报错" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/03/iOS报错/" class="article-date">
+  	<time datetime="2016-08-03T13:21:40.000Z" itemprop="datePublished">2016-08-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/03/iOS报错/">iOS报错</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h6 id="报错1-duplicate-symbol-OBJCMETACLASS-类名-in-？？"><a href="#报错1-duplicate-symbol-OBJCMETACLASS-类名-in-？？" class="headerlink" title="报错1 duplicate symbol _OBJCMETACLASS$_类名 in: ？？"></a>报错1 duplicate symbol _OBJC<em>METACLASS</em>$_类名 in: ？？</h6><blockquote>
+<p>思路1 90%都是因为#import了.m文件; 思路2 其他可能是因为项目中存在了2个一样的.m文件</p>
+</blockquote>
+<h6 id="报错2-could-not-inspect-the-application-package-？？"><a href="#报错2-could-not-inspect-the-application-package-？？" class="headerlink" title="报错2 could not inspect the application package ？？"></a>报错2 could not inspect the application package ？？</h6><blockquote>
+<p>思路1 按中Option的时候，进入菜单Product | Clean Build Folder …进行Clean后再运行</p>
+</blockquote>
+<h6 id="报错3-Outlets-cannot-be-connected-to-repeating-content-？？"><a href="#报错3-Outlets-cannot-be-connected-to-repeating-content-？？" class="headerlink" title="报错3 Outlets cannot be connected to repeating content ？？"></a>报错3 Outlets cannot be connected to repeating content ？？</h6><blockquote>
+<p>思路1 直接使用静态cell可以解决</p>
+</blockquote>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/03/iOS报错/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-iOS最佳实践" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -348,71 +412,6 @@
         <p class="article-more-link">
           <a  href="/2016/07/31/iOS-Location/#more">more >></a>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-hexo-部署" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/23/hexo-部署/" class="article-date">
-  	<time datetime="2016-07-23T02:53:57.000Z" itemprop="datePublished">2016-07-23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/23/hexo-部署/">hexo 部署</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="部署hexo前提准备"><a href="#部署hexo前提准备" class="headerlink" title="部署hexo前提准备"></a>部署hexo前提准备</h4><p>1.到node.js 网站 <a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a>  下载node.js 直接安装，安装完，查看版本 ，node -v</p>
-<p>2.到homebrew 网站  <a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">http://brew.sh/index_zh-cn.html</a> 使用下面的命令安装,如果安装失败，使用sudo</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure>
-<h4 id="开始部署hexo"><a href="#开始部署hexo" class="headerlink" title="开始部署hexo"></a>开始部署hexo</h4><p>1.使用下面的命令，一条一条来，如果不行，用sudo</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">hexo init blog</span><br><span class="line">cd blog</span><br><span class="line">npm install</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-<p>2.直接访问本地部署好的hexo</p>
-<h4 id="利用hexo发布文章"><a href="#利用hexo发布文章" class="headerlink" title="利用hexo发布文章"></a>利用hexo发布文章</h4><p>1.新建文章，先进入hexo文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;新文章&quot;</span><br></pre></td></tr></table></figure>
-<p>2.写好文章后，生成静态文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-<p>3.生成静态文件后，上传到github</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<h4 id="hexo技巧"><a href="#hexo技巧" class="headerlink" title="hexo技巧"></a>hexo技巧</h4><p>1.因为hexo生成的静态文件是放在public文件夹下面的，如果你部署github的时候，使用的git destop版本来上传代码的话，你可以clone你的git下来的时候，clone到hexo文件下，且改名为public，那么下次hexo生成静态文件的时候就会直接生成到clone下来的git文件夹里面，那你用git desktop上传代码的时候，就可以直接commit上传了</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
       
       <div class="clearfix"></div>
     </div>

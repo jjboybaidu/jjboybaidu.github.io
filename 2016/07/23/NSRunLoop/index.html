@@ -20,7 +20,7 @@ FIXME:0.运行循环 概念性的东西有？概念1【输入源==事件源】�
 3.循环体的开始需要检测是否有需要处理的事件，如果有则去处&amp;gt; - 理，如果没有则进入睡眠以节省CPU时间
 FIXME:0.运行循环 概念性的东西有？概念1【输入源==事件源】具体查看《RunLoop【输入源】》
 概念2【模">
-<meta property="og:updated_time" content="2016-08-04T11:44:37.000Z">
+<meta property="og:updated_time" content="2016-08-07T22:23:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NSRunLoop">
 <meta name="twitter:description" content="运行循环本质1.从字面上看，就是运行循环跑圈
@@ -218,6 +218,7 @@ FIXME:0.运行循环 概念性的东西有？概念1【输入源==事件源】�
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[NSRunLoop currentRunLoop];   // 获得当前线程的RunLoop对象</span><br><span class="line">[NSRunLoop mainRunLoop];      // 获得主线程的RunLoop对象</span><br></pre></td></tr></table></figure>
 <p>Core Foundation</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CFRunLoopGetCurrent();       // 获得当前线程的RunLoop对象</span><br><span class="line">CFRunLoopGetMain();          // 获得主线程的RunLoop对象</span><br></pre></td></tr></table></figure>
+<h4 id="FIXME-13-RunLoop是否有效的关键是？"><a href="#FIXME-13-RunLoop是否有效的关键是？" class="headerlink" title="FIXME:13.RunLoop是否有效的关键是？"></a>FIXME:13.RunLoop是否有效的关键是？</h4><p>1.关键是有没有事件源或者定时源；</p>
 
       
     </div>

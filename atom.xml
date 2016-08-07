@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="williamliuwen.cn/"/>
-  <updated>2016-08-04T13:44:37.000Z</updated>
+  <updated>2016-08-07T22:24:32.000Z</updated>
   <id>williamliuwen.cn/</id>
   
   <author>
@@ -16,11 +16,162 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>SVN-Git</title>
+    <link href="williamliuwen.cn/2016/08/08/SVN-Git/"/>
+    <id>williamliuwen.cn/2016/08/08/SVN-Git/</id>
+    <published>2016-08-07T22:24:02.000Z</published>
+    <updated>2016-08-07T22:24:32.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;显示和隐藏文件&quot;&gt;&lt;a href=&quot;#显示和隐藏文件&quot; class=&quot;headerlink&quot; title=&quot;显示和隐藏文件&quot;&gt;&lt;/a&gt;显示和隐藏文件&lt;/h2&gt;&lt;p&gt;1.显示系统隐藏文件命令&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;defaults write com.apple.finder AppleShowAllFiles -bool true&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;为什么要使用Git&quot;&gt;&lt;a href=&quot;#为什么要使用Git&quot; class=&quot;headerlink&quot; title=&quot;为什么要使用Git&quot;&gt;&lt;/a&gt;为什么要使用Git&lt;/h2&gt;&lt;p&gt;1.Git的常用命令&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;git version : 查看电脑GIT的版本&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2.Git工具安装&lt;/p&gt;
+&lt;p&gt;1）如果你下载了Xcode，直接检查Git的版本&lt;/p&gt;
+&lt;p&gt;2）如果你没有Xcode，直接单独下载Git&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;为什么要使用SVN&quot;&gt;&lt;a href=&quot;#为什么要使用SVN&quot; class=&quot;headerlink&quot; title=&quot;为什么要使用SVN&quot;&gt;&lt;/a&gt;为什么要使用SVN&lt;/h2&gt;&lt;p&gt;1.没有使用SVN前&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无法后悔：做错了一个操作后，没有后悔药可以吃&lt;/li&gt;
+&lt;li&gt;版本备份：费空间、费时间&lt;/li&gt;
+&lt;li&gt;版本混乱：因版本备份过多造成混乱，难于找回正确的想要的版本&lt;/li&gt;
+&lt;li&gt;代码冲突：多人操作同一个文件（团队开发中的常见问题）&lt;/li&gt;
+&lt;li&gt;权限控制：无法对源代码进行精确的权限控制&lt;/li&gt;
+&lt;li&gt;追究责任：出现了严重的BUG，无法得知是谁干的，容易耍赖&lt;br&gt;*&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2.使用SVN后&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;能追踪一个项目从诞生一直到定案的过程&lt;/li&gt;
+&lt;li&gt;记录一个项目的所有内容变化&lt;/li&gt;
+&lt;li&gt;方便地查阅特定版本的修订情况&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;3.SVN工具&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CVS：开启版本控制之门，1990年诞生，“远古时代”的主流源代码管理工具&lt;/li&gt;
+&lt;li&gt;SVN：集中式版本控制。是CVS的接班人，速度比CVS快，功能比CVS多且强大。在国内使用率非常高（70%~90%）。&lt;/li&gt;
+&lt;li&gt;GIT：分布式版本控制。目前被越来越多的开源项目使用，不过在国内企业尚未大范围普及。gitHub上的代码就是用git管理的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;4.使用SVN基本操作&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;下载服务器代码&lt;/li&gt;
+&lt;li&gt;修改本地代码&lt;/li&gt;
+&lt;li&gt;提交本地代码&lt;br&gt;&lt;em&gt;
+&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;5.SVN常用命令&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;svn checkout：将服务器代码完整的下载到本地&lt;/li&gt;
+&lt;li&gt;svn commit：将本地修改的内容提交到服务器&lt;/li&gt;
+&lt;li&gt;svn update：将服务器最新代码下载到本地&lt;/li&gt;
+&lt;li&gt;svn delete：从本地的版本控制库中删除文件&lt;/li&gt;
+&lt;li&gt;svn remove：从本地的版本控制库中删除文件&lt;/li&gt;
+&lt;li&gt;注意：Checkout只需要做一次&lt;/li&gt;
+&lt;li&gt;提醒：每天下班前：commit“可运行版本”  每天上班前：update前一天所有代码&lt;/li&gt;
+&lt;li&gt;svn revert 可以用在：不小心写错了很多东西，想撤销所写的东西（还未把修改提交到服务器）&lt;/li&gt;
+&lt;li&gt;svn revert 可以用在2：不小心删错了文件，想把文件恢复回来（还未把删除提交到服务器）&lt;/li&gt;
+&lt;li&gt;svn update -r 版本号 可以用在：不小心写错了很多东西，想撤销所写的东西（已经把修改提交到服务器）&lt;/li&gt;
+&lt;li&gt;svn update -r 版本号 可以用在2：不小心删错了文件，想把文件恢复回来（已经把删除提交到服务器）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;6.搭建SVN服务器&lt;/p&gt;
+&lt;p&gt;1）服务器用途&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用于存储客户端上传的源代码&lt;/li&gt;
+&lt;li&gt;可以在Windows上安装Visual SVN Server&lt;/li&gt;
+&lt;li&gt;大部分情况下，公司的开发人员不必亲自搭建SVN服务器&lt;br&gt;*&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;7.搭建SVN客户端&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;上传本地的源代码到服务器，或者更新服务器的代码到本地，保持同步&lt;/li&gt;
+&lt;li&gt;可以在Mac上使用命令行、Versions、Cornerstone、Xcode&lt;/li&gt;
+&lt;li&gt;开发人员就属于客户端这个角色&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;8.commit代码的时候选择要忽略的文件&lt;/p&gt;
+&lt;p&gt;1）以下三个需要忽略的信息，都在xcuserdata 文件夹下，所以只需要忽略xcuserdata文件夹。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Xcode默认会记住我们当前正在编辑的文件，也就是上次退出项目时停留的文件，下次打开项目会停留在该文件。我们不需要把这些信息共享给同事，所以需要忽略。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Xcode会记录目录的打开情况。同事不需要共享。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;断点信息。同事不需要共享。&lt;br&gt;&lt;em&gt;
+&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;9.commit代码产生冲突的解决办法&lt;/p&gt;
+&lt;p&gt;1）两个人前后都改了同一个位置的代码，先改代码的人先commit。后改代码的没有update就commit，此时就会产生冲突。例如：&lt;/p&gt;
+&lt;p&gt;2）经理-&amp;gt;update-&amp;gt;修改了第99行代码-&amp;gt;commit；张三-&amp;gt;修改了第99行代码-&amp;gt;commit。此时就会冲突。&lt;/p&gt;
+&lt;p&gt;10.SVN添加静态库报错&lt;/p&gt;
+&lt;p&gt;1）注意：静态库拖拽到项目中后，.a文件默认是I（ignore）的，但是.a文件是需要参与编译的，所以需要用命令行把.a文件添加到项目中，然后commit。&lt;/p&gt;
+&lt;p&gt;11.SVN添加storyBoard报错&lt;/p&gt;
+&lt;p&gt;1）建议：尽量使用xib，这样可以避免多个人同时操作storyBoard。&lt;/p&gt;
+&lt;p&gt;2）在原来的Xcode版本中，svn对storyBoard的支持非常不好，鼠标点击一下xib或者storyBoard，xib或者storyBoard就会变成M。现在6.0版本之后，可以点击，但是不可以移动，如果移动xib或者storyBoard也会变为M。因为storyBoard本质是XML。&lt;/p&gt;
+&lt;p&gt;3）多个人同时修改storyBoard的后果，storyBoard冲突，导致storyBoard打不开。&lt;/p&gt;
+&lt;p&gt;4）和代码冲突类似，如果先往storyBoard的同一个位置添加了一个控件，并且后者在不知道前者在同一个位置添加了控件的情况下也再该位置添加了一个控件，那么两个控件在storyBoard上的位置冲突，后者commit会报错。&lt;/p&gt;
+&lt;p&gt;11.使用SVN建议&lt;/p&gt;
+&lt;p&gt;1）尽可能修改文件之前先update文件，写一些代码后就立即提交到服务器&lt;/p&gt;
+&lt;p&gt;2）尽可能在下班之前半小时就提交代码，这样可以预留出来半小时解决可能存在的冲突&lt;/p&gt;
+&lt;p&gt;3）修改公共文件之前尽可能和同事说一声，修改完成后让同事及时更新，不要做哑巴式程序员，多沟通才能避免一些不必要的冲突和误会，不仅是体现出来对工作的认真，也是对同事的尊重&lt;/p&gt;
+&lt;p&gt;12.SVN权限&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;read only&lt;/li&gt;
+&lt;li&gt;read/write&lt;br&gt;&lt;em&gt;
+&lt;/em&gt;&lt;br&gt;*&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;13.SVN中文件状态&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;‘ ‘ 没有修改&lt;/li&gt;
+&lt;li&gt;A 被添加到本地代码仓库&lt;/li&gt;
+&lt;li&gt;C 冲突&lt;/li&gt;
+&lt;li&gt;D 被删除&lt;/li&gt;
+&lt;li&gt;I 被忽略&lt;/li&gt;
+&lt;li&gt;M 被修改&lt;/li&gt;
+&lt;li&gt;R 被替换&lt;/li&gt;
+&lt;li&gt;X 外部定义创建的版本目录&lt;/li&gt;
+&lt;li&gt;? 文件没有被添加到本地版本库内&lt;/li&gt;
+&lt;li&gt;!文件丢失或者不完整（不是通过svn命令删除的文件）&lt;/li&gt;
+&lt;li&gt;~ 受控文件被其他文件阻隔&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;14.Git和SVN区别？&lt;/p&gt;
+&lt;p&gt;1）Git是分布式的，SVN不是；&lt;/p&gt;
+&lt;p&gt;2）Git复杂，Git adds Complexity,刚开始使用会有些疑惑，因为需要建两个Repositories(Local Repositories &amp;amp; Remote Repositories),指令很多，除此之外你需要知道哪些指令在Local Repository，哪些指令在Remote Repository。&lt;/p&gt;
+&lt;p&gt;3）Git下载下来后，在本地不必联网就可以看到所有的log，很方便学习，SVN却需要联网；&lt;/p&gt;
+&lt;p&gt;4）SVN在Commit前，我们都建议是先Update一下，跟本地的代码编译没问题，并确保开发的功能正常后再提交，这样其实挺麻烦的，有好几次同事没有先Updata，就Commit了，发生了一些错误，耽误了大家时间，Git可能这种情况会少些。&lt;/p&gt;
+&lt;p&gt;5) Git把内容按元数据方式存储，而SVN是按文件：&lt;/p&gt;
+&lt;p&gt;6) Git没有一个全局的版本号，而SVN有&lt;/p&gt;
+&lt;p&gt;7) Git的checkout是：而对于Git来说，尽管也有checkout命令，但是由于你需要在本地拥有仓库，所以通常从服务器上checkout代码的第一步是使用git clone来获取一个仓库的拷贝，默认的git clone操作同时还会checkout一份远程仓库上当前active的分支&lt;/p&gt;
+&lt;p&gt;##&lt;/p&gt;
+&lt;h6 id=&quot;参考链接&quot;&gt;&lt;a href=&quot;#参考链接&quot; class=&quot;headerlink&quot; title=&quot;参考链接&quot;&gt;&lt;/a&gt;参考链接&lt;/h6&gt;&lt;p&gt;1.&lt;a href=&quot;http://www.cnblogs.com/wsnb/p/4765597.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/wsnb/p/4765597.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2.&lt;a href=&quot;http://www.cnblogs.com/wsnb/p/4771379.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/wsnb/p/4771379.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;3.&lt;a href=&quot;http://www.jianshu.com/p/d3ebfa27b3ba&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/d3ebfa27b3ba&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;4.&lt;a href=&quot;http://blog.csdn.net/bruce_6/article/details/38299677&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/bruce_6/article/details/38299677&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;5.&lt;a href=&quot;http://blog.csdn.net/a117653909/article/details/8952183&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/a117653909/article/details/8952183&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;6.&lt;a href=&quot;http://www.jianshu.com/p/cf37ecd0c3a3&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/cf37ecd0c3a3&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;显示和隐藏文件&quot;&gt;&lt;a href=&quot;#显示和隐藏文件&quot; class=&quot;headerlink&quot; title=&quot;显示和隐藏文件&quot;&gt;&lt;/a&gt;显示和隐藏文件&lt;/h2&gt;&lt;p&gt;1.显示系统隐藏文件命令&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;defaults write com.apple.finder AppleShowAllFiles -bool true&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;为什么要使用Git&quot;&gt;&lt;a href=&quot;#为什么要使用Git&quot; class=&quot;headerlink&quot; title=&quot;为什么要使用Git&quot;&gt;&lt;/a&gt;为什么要使用Git&lt;/h2&gt;&lt;p&gt;1.Git的常用命令&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;git version : 查看电脑GIT的版本&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2.Git工具安装&lt;/p&gt;
+&lt;p&gt;1）如果你下载了Xcode，直接检查Git的版本&lt;/p&gt;
+&lt;p&gt;2）如果你没有Xcode，直接单独下载Git&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>iOS分类/协议/扩展/代理/数据源</title>
     <link href="williamliuwen.cn/2016/08/04/iOS%E5%88%86%E7%B1%BB-%E5%8D%8F%E8%AE%AE-%E6%89%A9%E5%B1%95-%E4%BB%A3%E7%90%86-%E6%95%B0%E6%8D%AE%E6%BA%90/"/>
     <id>williamliuwen.cn/2016/08/04/iOS分类-协议-扩展-代理-数据源/</id>
     <published>2016-08-04T12:37:24.000Z</published>
-    <updated>2016-08-04T13:44:37.000Z</updated>
+    <updated>2016-08-07T22:25:08.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;分类&quot;&gt;&lt;a href=&quot;#分类&quot; class=&quot;headerlink&quot; title=&quot;分类&quot;&gt;&lt;/a&gt;分类&lt;/h2&gt;&lt;p&gt;1.分类原则&lt;/p&gt;
 &lt;ul&gt;
@@ -63,6 +214,38 @@
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Dachu.m&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;quot;DaChu.h&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@implementation DaChu&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (void)kaiShiZuoCai&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSLog(@&amp;quot;开始做菜&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sleep(2);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSLog(@&amp;quot;做好菜了，该上菜了&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//下面这句是判断 一下delegate是否实现了doSomethingAftercaiZuohaole方法，如果delegate没有实现&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//直接[self.delegate doSomethingAftercaiZuohaole];会crash&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;if ([self.delegate respondsToSelector:@selector(doSomethingAftercaiZuohaole)]) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[self.delegate doSomethingAftercaiZuohaole];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;// 第二步：代理小二遵守大厨的拿菜方法，等大厨通知，把菜拿走&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;quot;XiaoEr.h&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;quot;DaChu.h&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@interface XiaoEr ()&amp;lt;DaChuDelegate&amp;gt;//&amp;lt;DaChuDelegate&amp;gt;表示遵守DaChuDelegate协议，并且实现协议里面的方法&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@end&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@implementation XiaoEr&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (void)XiaoErZhunBei&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DaChu *dachu1 = [[DaChu alloc] init];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;dachu1.delegate = self;//说明小二充当代理的角色，负责接收菜好了的信号。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[dachu1 kaiShiZuoCai];//大厨开始做菜&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (void)doSomethingAftercaiZuohaole&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSLog(@&amp;quot;小二知道了&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;6.分类也可以遵守协议&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@interface Person(chinaPerson) &amp;lt;NSCopying,NSCoding&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;说明Person类拥有一个分类chinaPerson，这个分类遵守NSCopying 和NSCoding协议&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;7.定义协议的类和遵守协议的类之间不存在自然关系&lt;/p&gt;
+&lt;p&gt;8.协议真正的作用是约束一个类必须实现某些方法；&lt;br&gt;就是说定义协议的类A是用来约束另一个遵守协议的类B必须实现某些方法；&lt;br&gt;并且类A和类B通常不存在关系；可能类A和类B是两个完全不同意义上的东西；&lt;br&gt;而我们把类A和类B这种关系模式称为“代理关系模式”；而“代理关系模式”大量&lt;br&gt;应用在Cocoa框架中，主要解决数据和UI的分离；&lt;/p&gt;
+&lt;p&gt;9.按钮点击–&amp;gt;事件机制（非OC语言）&lt;/p&gt;
+&lt;p&gt;满足事件机制条件&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用者订阅了点击事件&lt;/li&gt;
+&lt;li&gt;点击的时候会触发这个事件&lt;/li&gt;
+&lt;li&gt;OC中没有事件定义，用“代理关系模式”代替&lt;/li&gt;
+&lt;li&gt;首先在按钮中，定义按钮的代理，同时使用协议约束这个代理&lt;/li&gt;
+&lt;li&gt;（事件的触发者 = 点击按钮的）必须实现协议中的某些方法；&lt;/li&gt;
+&lt;li&gt;实现方法的过程中，按钮的处理流程是：&lt;/li&gt;
+&lt;li&gt;先检查代理是否实现了按钮定义的协议方法，如果实现了，则调用&lt;/li&gt;
+&lt;li&gt;MyListener作为事件触发者，它实现了KCButtonDelegate代理&lt;/li&gt;
+&lt;li&gt;事件触发者 = 代理&lt;/li&gt;
+&lt;li&gt;使用respondsToSelector方法可以判断一个对象是否实现了某个方法（需要注意方法名不是”onClick”而是“onClick:”，冒号也是方法名的一部分）；&lt;/li&gt;
+&lt;li&gt;看下面例子&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;10.例子代码解析&lt;/p&gt;
+&lt;p&gt;1）@property (nonatomic,retain) id&lt;kcbuttondelegate&gt; delegate;&lt;br&gt;//id可以表示任何一个ObjC对象类型，类型后面的”&amp;lt;协议名&amp;gt;“用于约束作为&lt;br&gt;这个属性的对象必须实现该协议(注意：使用id定义的对象类型不需要加“*”)；&lt;/kcbuttondelegate&gt;&lt;/p&gt;
+&lt;p&gt;11.@class或@protocol&lt;/p&gt;
+&lt;p&gt;1）在.h文件中如果使用了另一个文件的类或协议我们可以通过@class或者@protocol进行声明，&lt;br&gt;而不必导入这个文件，这样可以提高编译效率（注意有些情况必须使用@class或@protocol，&lt;br&gt;例如上面KCButton.h中上面声明的KCButtonDelegate协议中用到了KCButton类，&lt;br&gt;而此文件下方的KCButton类声明中又使用了KCButtonDelegate，&lt;br&gt;从而形成在一个文件中互相引用关系，此时必须使用@class或者@protocol声明，&lt;br&gt;否则编译阶段会报错），但是在.m文件中则必须导入对应的类声明文件或协议文件&lt;br&gt;（如果不导入虽然语法检查可以通过但是编译链接会报错）；&lt;/p&gt;
+&lt;p&gt;12.一个协议类，一个遵守协议类；&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;多个类定义了一个相同的协议，可以把这个协议抽出来&lt;/li&gt;
+&lt;li&gt;能不能把全部东西都抽出来不留任何东西，目前要保留@property(atomic) id&lt;xxdelegate&gt; delegate;&lt;/xxdelegate&gt;&lt;/li&gt;
+&lt;li&gt;方法可以抽出来&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;KCButton.h&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@class KCButton;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//一个协议可以扩展另一个协议，例如KCButtonDelegate扩展了NSObject协议&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@protocol KCButtonDelegate &amp;lt;NSObject&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@required                              //@required修饰的方法必须实现&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-(void)onClick:(KCButton *)button;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@optional                             //@optional修饰的方法是可选实现的&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-(void)onMouseover:(KCButton *)button;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-(void)onMouseout:(KCButton *)button;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@end&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@interface KCButton : NSObject&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//代理属性，同时约定作为代理的对象必须实现KCButtonDelegate协议&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@property (nonatomic,retain) id&amp;lt;KCButtonDelegate&amp;gt; delegate;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//点击方法&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-(void)click;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;KCButton.m&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;quot;KCButton.h&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@implementation KCButton&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-(void)click&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSLog(@&amp;quot;Invoke KCButton&amp;apos;s click method.&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//判断_delegate实例是否实现了onClick:方法（注意方法名是&amp;quot;onClick:&amp;quot;,后面有个:）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//避免未实现ButtonDelegate的类也作为KCButton的监听&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;if([_delegate respondsToSelector:@selector(onClick:)])&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[_delegate onClick:self];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;MyListener.h&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;lt;Foundation/Foundation.h&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@class KCButton;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@protocol KCButtonDelegate;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@interface MyListener : NSObject&amp;lt;KCButtonDelegate&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-(void)onClick:(KCButton *)button;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;MyListener.m&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;quot;MyListener.h&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;quot;KCButton.h&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@implementation MyListener&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-(void)onClick:(KCButton *)button&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSLog(@&amp;quot;Invoke MyListener&amp;apos;s onClick method.The button is:%@.&amp;quot;,button);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@end&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;main.m&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;lt;Foundation/Foundation.h&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;quot;KCButton.h&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;quot;MyListener.h&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;int main(int argc, const char * argv[]) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@autoreleasepool &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;KCButton *button=[[KCButton alloc]init];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;MyListener *listener=[[MyListener alloc]init];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//button的delegate属性对象是id任意类型；把listener赋值给它，那listener必须遵守delegate属性规定的协议；&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;button.delegate=listener;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[button click];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/* 结果：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Invoke KCButton&amp;apos;s click method.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Invoke MyListener&amp;apos;s onClick method.The button is:&amp;lt;KCButton: 0x1001034c0&amp;gt;.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;return 0;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h2 id=&quot;扩展&quot;&gt;&lt;a href=&quot;#扩展&quot; class=&quot;headerlink&quot; title=&quot;扩展&quot;&gt;&lt;/a&gt;扩展&lt;/h2&gt;&lt;p&gt;1.&lt;/p&gt;
 &lt;p&gt;2.&lt;/p&gt;
 &lt;h6 id=&quot;参考链接&quot;&gt;&lt;a href=&quot;#参考链接&quot; class=&quot;headerlink&quot; title=&quot;参考链接&quot;&gt;&lt;/a&gt;参考链接&lt;/h6&gt;&lt;p&gt;1.&lt;a href=&quot;http://blog.csdn.net/jianxin160/article/details/47753189&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/jianxin160/article/details/47753189&lt;/a&gt;&lt;/p&gt;
@@ -1083,7 +1266,7 @@
     <link href="williamliuwen.cn/2016/07/23/NSRunLoop/"/>
     <id>williamliuwen.cn/2016/07/23/NSRunLoop/</id>
     <published>2016-07-23T00:35:55.000Z</published>
-    <updated>2016-08-04T11:44:37.000Z</updated>
+    <updated>2016-08-07T22:23:35.000Z</updated>
     
     <content type="html">&lt;hr&gt;
 &lt;h4 id=&quot;运行循环本质&quot;&gt;&lt;a href=&quot;#运行循环本质&quot; class=&quot;headerlink&quot; title=&quot;运行循环本质&quot;&gt;&lt;/a&gt;运行循环本质&lt;/h4&gt;&lt;p&gt;1.从字面上看，就是运行循环跑圈&lt;/p&gt;
@@ -1133,6 +1316,7 @@
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[NSRunLoop currentRunLoop];   // 获得当前线程的RunLoop对象&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[NSRunLoop mainRunLoop];      // 获得主线程的RunLoop对象&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;Core Foundation&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;CFRunLoopGetCurrent();       // 获得当前线程的RunLoop对象&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CFRunLoopGetMain();          // 获得主线程的RunLoop对象&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;FIXME-13-RunLoop是否有效的关键是？&quot;&gt;&lt;a href=&quot;#FIXME-13-RunLoop是否有效的关键是？&quot; class=&quot;headerlink&quot; title=&quot;FIXME:13.RunLoop是否有效的关键是？&quot;&gt;&lt;/a&gt;FIXME:13.RunLoop是否有效的关键是？&lt;/h4&gt;&lt;p&gt;1.关键是有没有事件源或者定时源；&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1711,77 +1895,6 @@
 &lt;li&gt;中级&lt;/li&gt;
 &lt;li&gt;工作在网络公司或者大中型企业。在网络公司中主要任务是设计并建设；在大中型企业中的主要任务是运营和维护。&lt;/li&gt;
 &lt;li&gt;网络工程师其实是一个包括许多种工种的职业，不同的网络工程师工种对从业的人员的要求也不一样，对从业人员的网络管理水平的要求差别很大。专业网络工程师主要有：网络系统设计师、网络工程师、系统工程师、网络安全工程师、数据存储工程师等。&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>解读网络工程师职业</title>
-    <link href="williamliuwen.cn/2016/05/25/%E8%A7%A3%E8%AF%BB%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%81%8C%E4%B8%9A/"/>
-    <id>williamliuwen.cn/2016/05/25/解读网络工程师职业/</id>
-    <published>2016-05-25T14:34:36.000Z</published>
-    <updated>2016-05-25T14:36:58.000Z</updated>
-    
-    <content type="html">&lt;h4 id=&quot;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&quot;&gt;&lt;a href=&quot;#每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&quot;&gt;&lt;/a&gt;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&lt;/h4&gt;&lt;h4 id=&quot;一、网络工程师的职业优势&quot;&gt;&lt;a href=&quot;#一、网络工程师的职业优势&quot; class=&quot;headerlink&quot; title=&quot;一、网络工程师的职业优势&quot;&gt;&lt;/a&gt;一、网络工程师的职业优势&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;1、最具增值潜力的职业，掌握企业核心网络架构、安全技术，具有不可替代的竞争优势&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;2、新型网络人才缺口大，27%的行业增长速度导致网络人才年缺口达30万，高薪高福利成为必然&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;3、可实现专业零基础入行，4-10个月的强化训练和职业化引导，就可成为企业急需的技能型网络人才&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;4、就业面广，一专多能，实践经验适用于各个领域&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;5、增值潜力大，职业价值随着自身经验的丰富以及项目运作的成熟，升值空间一路看涨&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;6、职业发展前景广阔，网络工程师到项目经理仅一步之遥，从容晋升Manager&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;二、网络工程师解读&quot;&gt;&lt;a href=&quot;#二、网络工程师解读&quot; class=&quot;headerlink&quot; title=&quot;二、网络工程师解读&quot;&gt;&lt;/a&gt;二、网络工程师解读&lt;/h4&gt;&lt;p&gt;何谓网络工程师，网络工程师是通过学习和训练，掌握网络技术的理论知识和操作技能的网络技术人员。网络工程师能够从事计算机信息系统的设计、建设、运行和维护工作。&lt;/p&gt;
-&lt;p&gt;具体来说，我们可以从企业信息化的岗位体系中作一些了解。企业（或政府）信息化过程中需要以下四种人：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;1、企业信息化主管：负责信息化建设中的目标与方案决策，信息化建设中的方向研究；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;2、工程技术人员：负责信息化系统的设计、建设，包括设备、系统、数据库、应用系统的建设；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;3、运行维护人员：负责信息化系统的运行、维护、管理以及基本的开发；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;4、操作应用人员：主要应用信息化系统进行本职工作。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;一般来说，IT企业的IT技术职位根据职能可以分为管理岗位：企业信息主管CIO、总监、IT经理、项目经理等；工程技术岗位：规划设计师、网络工程师、系统工程师、软件工程师和数据库工程师等；运行维护岗位：数据库管理员、系统管理员、网络管理员、服务器管理员等；操作岗位：办公文员、CAD设计员、网页制作员、多媒体制作员等。&lt;/p&gt;
-&lt;p&gt;根据企业规模大小，规模较小的企业，一个岗位可能涵盖几个岗位的内容，系统管理员既要负责系统管理，又要承担网络管理；大企业则会分的比较专业，有网络设计师、系统集成工程师、网络安装工程师、综合布线工程师和系统测试工程师等。&lt;/p&gt;
-&lt;h4 id=&quot;网络工程师职业规划过程主要有以下几步：&quot;&gt;&lt;a href=&quot;#网络工程师职业规划过程主要有以下几步：&quot; class=&quot;headerlink&quot; title=&quot;网络工程师职业规划过程主要有以下几步：&quot;&gt;&lt;/a&gt;网络工程师职业规划过程主要有以下几步：&lt;/h4&gt;&lt;p&gt;两年以上的小型企业→四年左右的中型企业→大型企业或跨国集团公司&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;第一步，小企业的网络管理员（系统管理员）；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;第二步，进入大中型企业，同样的网络管理工作，工资就可能完全不同了，一般都在3000元以上。做了部门经理时，还可以高达5000元或以上；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;第三步，学习更全面的知识成为普通的网络工程师工资就高达3500元以上；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;第四步，学习更全面的知识成为专业的网络工程师，如网络存储工程师、网络安全工程师的工资就可以达8000元以上，做大型企业或专业网络公司IT经理的工资就更高了，基本在万元以上。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;/pic/0525.jpg&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;真正的大不敬是不尊重别人的神。 —— 马克·吐温&lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&quot;&gt;&lt;a href=&quot;#每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&quot;&gt;&lt;/a&gt;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&lt;/h4&gt;&lt;h4 id=&quot;一、网络工程师的职业优势&quot;&gt;&lt;a href=&quot;#一、网络工程师的职业优势&quot; class=&quot;headerlink&quot; title=&quot;一、网络工程师的职业优势&quot;&gt;&lt;/a&gt;一、网络工程师的职业优势&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;1、最具增值潜力的职业，掌握企业核心网络架构、安全技术，具有不可替代的竞争优势&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;2、新型网络人才缺口大，27%的行业增长速度导致网络人才年缺口达30万，高薪高福利成为必然&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;3、可实现专业零基础入行，4-10个月的强化训练和职业化引导，就可成为企业急需的技能型网络人才&lt;/p&gt;
-&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
