@@ -126,6 +126,193 @@
 
       <div class="body-wrap">
   
+    <article id="post-iOS-Thread" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/02/iOS-Thread/" class="article-date">
+  	<time datetime="2016-08-02T08:52:50.000Z" itemprop="datePublished">2016-08-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/02/iOS-Thread/">iOS-Thread</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Thread方案"><a href="#Thread方案" class="headerlink" title="Thread方案"></a>Thread方案</h2><p>1.NSOperation</p>
+<p>2.GCD</p>
+<p>3.NSThread</p>
+<p>4.Thread须知？</p>
+<ul>
+<li>1.xxx</li>
+<li>2.xxx</li>
+</ul>
+<hr>
+<h2 id="Thread-NSThread"><a href="#Thread-NSThread" class="headerlink" title="Thread - NSThread"></a>Thread - NSThread</h2><p>1.NSThread须知？</p>
+<ul>
+<li>1）NSThread使用的优点和局限</li>
+</ul>
+<p>2.NSThread使用注意？</p>
+<p>3.NSThread常用属性和方法？</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/02/iOS-Thread/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-iOS-Map" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/01/iOS-Map/" class="article-date">
+  	<time datetime="2016-08-01T14:31:01.000Z" itemprop="datePublished">2016-08-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/01/iOS-Map/">iOS-Map</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-iOS-Location" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/31/iOS-Location/" class="article-date">
+  	<time datetime="2016-07-31T03:07:55.000Z" itemprop="datePublished">2016-07-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/31/iOS-Location/">iOS Location</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-Location常识？"><a href="#1-Location常识？" class="headerlink" title="1.Location常识？"></a>1.Location常识？</h2><p>1)基于GPS/基站/wifi定位</p>
+<p>3种区别是：iOS不像Android系统在定位服务编程时，可以指定采用哪种途径进行定位。iOS的API把底层这些细节屏蔽掉了，开发人员和用户并不知道现在设备是采用哪种方式进行定位的，iOS系统会根据设备的情况和周围的环境，采用一套最佳的解决方案。这个方案是这样的，如果能够接收GPS信息，那么设备优先采用GPS定位，否则采用Wifi或蜂窝基站定位，在Wifi和蜂窝基站之间优先使用Wifi，如果无法连接Wifi才使用蜂窝基站定位。总体来说GPS定位优点是准确、覆盖面广阔，缺点是不能被遮挡（例如：在建筑物里面收不到GPS卫星信号）、GPS开启后比较费电。蜂窝基站不仅误差比较大，而且会耗费用户流量费。而Wifi定位是最经济实惠的。</p>
+<p>2)如果使用基站进行定位,必须要求设备有电话模块</p>
+<ul>
+<li><p>2.1 当app被完全关闭时,也可以接收到位置通知,并让app进入到后台处理 </p>
+</li>
+<li><p>2.2 定位精度相比于上面,精度不大,所以耗电小,而且定位更新频率依据基站密度而定</p>
+</li>
+</ul>
+<p>3)必须开启手机位置服务</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/31/iOS-Location/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-hexo-部署" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -253,191 +440,9 @@
 
 
   
-    <article id="post-提升自己" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/06/提升自己/" class="article-date">
-  	<time datetime="2016-06-06T12:02:32.000Z" itemprop="datePublished">2016-06-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/06/提升自己/">提升自己</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="疑问："><a href="#疑问：" class="headerlink" title="疑问："></a>疑问：</h3><ul>
-<li><p>1.为什么要学这些？</p>
-</li>
-<li><p>2.什么是系统性的目标？</p>
-</li>
-<li><p>3.如何利用有限时间最大化自己的长期收益</p>
-</li>
-</ul>
-<h3 id="行动："><a href="#行动：" class="headerlink" title="行动："></a>行动：</h3>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/06/06/提升自己/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-GitHub命令小结" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/03/GitHub命令小结/" class="article-date">
-  	<time datetime="2016-06-03T11:57:34.000Z" itemprop="datePublished">2016-06-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/03/GitHub命令小结/">GitHub命令小结</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>如果你是初学者，可以按照步骤来，这是一个记录贴，方便查询代码；</p>
-</blockquote>
-<h3 id="初步建立GitHub仓库的一些命令："><a href="#初步建立GitHub仓库的一些命令：" class="headerlink" title="初步建立GitHub仓库的一些命令："></a>初步建立GitHub仓库的一些命令：</h3><p>touch README.md  // 新建说明文件<br>ssh-keygen -t rsa -C “your_email@youremail.com” // 创建本地的keygen<br>cd ~/.ssh // 进入创建好keygen的文件，用cat id_rsa.pub来查看keygen，然后再把它复制到你的github</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/06/03/GitHub命令小结/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-衣物极简原则" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06/01/衣物极简原则/" class="article-date">
-  	<time datetime="2016-06-01T12:09:33.000Z" itemprop="datePublished">2016-06-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/01/衣物极简原则/">衣物极简原则</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="每日给自己一句话：超抵抗力最大的路径前进！"><a href="#每日给自己一句话：超抵抗力最大的路径前进！" class="headerlink" title="每日给自己一句话：超抵抗力最大的路径前进！"></a>每日给自己一句话：超抵抗力最大的路径前进！</h3><p>转自：豆瓣：Oscar</p>
-<h4 id="我的精简心得之一：-衣物精简原则"><a href="#我的精简心得之一：-衣物精简原则" class="headerlink" title="我的精简心得之一： 衣物精简原则"></a>我的精简心得之一： 衣物精简原则</h4><ul>
-<li>有不少人问我是怎么精简我的物品的，有哪些经验或者哪些物品值得推荐。其实在精简的过程中，我确实感受到这里面还是有一定的原则可循的，那就写一篇文字和大家分享。声明：以下文字只是个人总结，没有经过普遍性验证，仅供参考。在精简物品的过程中，个人衣物是重头戏，我们就先来谈谈这个话题。</li>
-</ul>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/06/01/衣物极简原则/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 </div>

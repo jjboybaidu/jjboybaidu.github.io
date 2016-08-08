@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="williamliuwen.cn/"/>
-  <updated>2016-08-07T22:24:32.000Z</updated>
+  <updated>2016-08-08T22:02:46.000Z</updated>
   <id>williamliuwen.cn/</id>
   
   <author>
@@ -14,6 +14,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS-RunTime</title>
+    <link href="williamliuwen.cn/2016/08/09/iOS-RunTime/"/>
+    <id>williamliuwen.cn/2016/08/09/iOS-RunTime/</id>
+    <published>2016-08-08T22:02:46.000Z</published>
+    <updated>2016-08-08T22:02:46.000Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>iOS-Block</title>
+    <link href="williamliuwen.cn/2016/08/09/iOS-Block/"/>
+    <id>williamliuwen.cn/2016/08/09/iOS-Block/</id>
+    <published>2016-08-08T22:02:38.000Z</published>
+    <updated>2016-08-08T22:02:38.000Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>iOS-Notification</title>
+    <link href="williamliuwen.cn/2016/08/09/iOS-Notification/"/>
+    <id>williamliuwen.cn/2016/08/09/iOS-Notification/</id>
+    <published>2016-08-08T22:01:34.000Z</published>
+    <updated>2016-08-08T22:01:34.000Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>SVN-Git</title>
@@ -277,7 +325,7 @@
     <link href="williamliuwen.cn/2016/08/04/iOS-Tips/"/>
     <id>williamliuwen.cn/2016/08/04/iOS-Tips/</id>
     <published>2016-08-04T11:53:15.000Z</published>
-    <updated>2016-08-08T13:11:10.000Z</updated>
+    <updated>2016-08-08T22:15:04.000Z</updated>
     
     <content type="html">&lt;h6 id=&quot;Tip1-隐藏状态栏&quot;&gt;&lt;a href=&quot;#Tip1-隐藏状态栏&quot; class=&quot;headerlink&quot; title=&quot;Tip1 隐藏状态栏&quot;&gt;&lt;/a&gt;Tip1 隐藏状态栏&lt;/h6&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (BOOL)prefersStatusBarHidden&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return  YES;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h6 id=&quot;Tip2-设置与状态栏间距（没有导航栏）&quot;&gt;&lt;a href=&quot;#Tip2-设置与状态栏间距（没有导航栏）&quot; class=&quot;headerlink&quot; title=&quot;Tip2 设置与状态栏间距（没有导航栏）&quot;&gt;&lt;/a&gt;Tip2 设置与状态栏间距（没有导航栏）&lt;/h6&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;If you are doing thins programatically and are using a UITableViewController without a UINavigationController your best bet is to do the following in viewDidLoad:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;The UITableViewController will still scroll behind the status bar but won&amp;apos;t be under it when scrolled to the top.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;self.tableView.contentInset = UIEdgeInsetsMake(20.0f,0.0f,0.0f,0.0f);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -297,6 +345,15 @@
 &lt;h6 id=&quot;Tip10-多线程同步问题&quot;&gt;&lt;a href=&quot;#Tip10-多线程同步问题&quot; class=&quot;headerlink&quot; title=&quot;Tip10 多线程同步问题&quot;&gt;&lt;/a&gt;Tip10 多线程同步问题&lt;/h6&gt;&lt;p&gt;1.对于数据源或model类一定要注意多线程同时访问的情况&lt;/p&gt;
 &lt;h6 id=&quot;Tip11-移除Observer&quot;&gt;&lt;a href=&quot;#Tip11-移除Observer&quot; class=&quot;headerlink&quot; title=&quot;Tip11 移除Observer&quot;&gt;&lt;/a&gt;Tip11 移除Observer&lt;/h6&gt;&lt;p&gt;1.现在的代码里面很多需要用到Observer, 根据被观察对象的状态来相应的Update UI或者执行某个操作. 注册observer很简单, 但是移除的时候就出问题了, 要么是忘记移除observer了, 要么是移除的时机不对. 如果某个被观察对象已经被释放了, observer还在, 那结果只能是crash了, 所以切记至少在dealloc里面移除一下observer&lt;/p&gt;
 &lt;h6 id=&quot;Tip12-NSArray-NSDictionary成员的判空保护&quot;&gt;&lt;a href=&quot;#Tip12-NSArray-NSDictionary成员的判空保护&quot; class=&quot;headerlink&quot; title=&quot;Tip12 NSArray, NSDictionary成员的判空保护&quot;&gt;&lt;/a&gt;Tip12 NSArray, NSDictionary成员的判空保护&lt;/h6&gt;&lt;p&gt;1.在addObject或insertObject到NSArray或者NSDictionary时最好加一下判空保护, 尤其是网络相关的逻辑, 如果网络返回为空(jason解析出来为空), 但你还是毅然决然的add到array里面&lt;/p&gt;
+&lt;h6 id=&quot;Tip13-单例代码块&quot;&gt;&lt;a href=&quot;#Tip13-单例代码块&quot; class=&quot;headerlink&quot; title=&quot;Tip13 单例代码块&quot;&gt;&lt;/a&gt;Tip13 单例代码块&lt;/h6&gt;&lt;p&gt;1.单例代码块a–初始化属性比较多的情况&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+ (instancetype)shareInstance &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    // dispatch_once_t表示只执行一次&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    static AppNetworkingClient *_instance = nil;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    static dispatch_once_t onceToken;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    dispatch_once(&amp;amp;onceToken, ^&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        // 初始化属性比较多，还可以更多，只要是一次性的&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        _instance = [[AppNetworkingClient alloc] initWithBaseURL:[NSURL URLWithString:baseUrlString]];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        _instance.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        _instance.requestSerializer.timeoutInterval = 10;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return _instance;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;2.单例代码块b–初始化属性少的情况&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;+ (instancetype *)shareInstance &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    static AccountManager *_instance = nil;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    // predicate和上面例子中的onceToken一个作用，可以自由替换，不是常量&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    static dispatch_once_t predicate;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    dispatch_once(&amp;amp;predicate, ^&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        _instance = [[self alloc] init];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return _instance;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h6 id=&quot;Tip14-僵尸模式&quot;&gt;&lt;a href=&quot;#Tip14-僵尸模式&quot; class=&quot;headerlink&quot; title=&quot;Tip14 僵尸模式&quot;&gt;&lt;/a&gt;Tip14 僵尸模式&lt;/h6&gt;&lt;p&gt;1.NSZombie僵尸，僵尸对象；&lt;/p&gt;
+&lt;p&gt;2.僵尸模式：NSZombieEnable&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;僵尸模式的作用是：用来接收错误信息（错误信息可以指一个错误的内存访问就会变成一条无法识别的消息,这条无法识别的信息就是错误信息）&lt;/li&gt;
+&lt;/ul&gt;
 </content>
     
     <summary type="html">
@@ -1628,281 +1685,6 @@
 &lt;li&gt;未来过去（不快活）&lt;/li&gt;
 &lt;li&gt;需要，合适，舒服&lt;/li&gt;
 &lt;li&gt;不增加衣物，不增加卡片&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>网络专家认识论</title>
-    <link href="williamliuwen.cn/2016/05/28/%E7%BD%91%E7%BB%9C%E4%B8%93%E5%AE%B6%E8%AE%A4%E8%AF%86%E8%AE%BA/"/>
-    <id>williamliuwen.cn/2016/05/28/网络专家认识论/</id>
-    <published>2016-05-28T01:50:45.000Z</published>
-    <updated>2016-05-28T01:54:09.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;每日给自己一句话：在没有成功之前都是在做量的积累；&quot;&gt;&lt;a href=&quot;#每日给自己一句话：在没有成功之前都是在做量的积累；&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：在没有成功之前都是在做量的积累；&quot;&gt;&lt;/a&gt;每日给自己一句话：在没有成功之前都是在做量的积累；&lt;/h3&gt;&lt;h2 id=&quot;专家&quot;&gt;&lt;a href=&quot;#专家&quot; class=&quot;headerlink&quot; title=&quot;专家&quot;&gt;&lt;/a&gt;专家&lt;/h2&gt;&lt;h3 id=&quot;职称：&quot;&gt;&lt;a href=&quot;#职称：&quot; class=&quot;headerlink&quot; title=&quot;职称：&quot;&gt;&lt;/a&gt;职称：&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;高级&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;工作在大的网络公司、或研究所&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;主要是技术主管、项目经理、技术专家&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;1、技术专家&quot;&gt;&lt;a href=&quot;#1、技术专家&quot; class=&quot;headerlink&quot; title=&quot;1、技术专家&quot;&gt;&lt;/a&gt;1、技术专家&lt;/h4&gt;&lt;h5 id=&quot;工作描述：&quot;&gt;&lt;a href=&quot;#工作描述：&quot; class=&quot;headerlink&quot; title=&quot;工作描述：&quot;&gt;&lt;/a&gt;工作描述：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;某一行业的专家、顾问、权威；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;如果的确非常喜爱技术工作，而不擅长和喜欢与人沟通，则可以完全专注于自身的领域，以发展成为行业资深专家为方向和目标&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;发展过程比较漫长，任何一个领域的顶尖技术人才都需要长期的行业经验的累积和个人孜孜不倦的投入；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;优势是越老越吃香，当别人随着年龄的逐步增长而开始担心饭碗问题时，你则渐入佳境，开始进入职业发展的黄金时期。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;工作要求：&quot;&gt;&lt;a href=&quot;#工作要求：&quot; class=&quot;headerlink&quot; title=&quot;工作要求：&quot;&gt;&lt;/a&gt;工作要求：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;全面的网络技术&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;对新技术有深刻的认识，所以要求有极强的学习能力&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;就业前景：&quot;&gt;&lt;a href=&quot;#就业前景：&quot; class=&quot;headerlink&quot; title=&quot;就业前景：&quot;&gt;&lt;/a&gt;就业前景：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;待遇很高，技术人员到30岁后的发展目标之一&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;2、项目经理&quot;&gt;&lt;a href=&quot;#2、项目经理&quot; class=&quot;headerlink&quot; title=&quot;2、项目经理&quot;&gt;&lt;/a&gt;2、项目经理&lt;/h4&gt;&lt;h5 id=&quot;工作内容：&quot;&gt;&lt;a href=&quot;#工作内容：&quot; class=&quot;headerlink&quot; title=&quot;工作内容：&quot;&gt;&lt;/a&gt;工作内容：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;融合技术和管理的复合性人才&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;参与项目谈判&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;项目目标和项目财务指标&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;划分工作内容并合理分配&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;指导网络工程师&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;控制工作的进度，按计划完成项目&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;组织项目会议&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;职位要求：&quot;&gt;&lt;a href=&quot;#职位要求：&quot; class=&quot;headerlink&quot; title=&quot;职位要求：&quot;&gt;&lt;/a&gt;职位要求：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;多年的网络工程师经验&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;希望做管理&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;需要自己学习项目管理知识&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;就业前景：-1&quot;&gt;&lt;a href=&quot;#就业前景：-1&quot; class=&quot;headerlink&quot; title=&quot;就业前景：&quot;&gt;&lt;/a&gt;就业前景：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;技术人员到35岁后的发展目标之一&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;待遇高，可晋升企业核心管理层&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;3、技术主管&quot;&gt;&lt;a href=&quot;#3、技术主管&quot; class=&quot;headerlink&quot; title=&quot;3、技术主管&quot;&gt;&lt;/a&gt;3、技术主管&lt;/h4&gt;&lt;h5 id=&quot;工作任务描述：&quot;&gt;&lt;a href=&quot;#工作任务描述：&quot; class=&quot;headerlink&quot; title=&quot;工作任务描述：&quot;&gt;&lt;/a&gt;工作任务描述：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;带领技术团队创造更多的价值&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;在信息方面参与公司的规划和计划&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;职位要求：-1&quot;&gt;&lt;a href=&quot;#职位要求：-1&quot; class=&quot;headerlink&quot; title=&quot;职位要求：&quot;&gt;&lt;/a&gt;职位要求：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;技术全面；有管理能力&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;就业前景：-2&quot;&gt;&lt;a href=&quot;#就业前景：-2&quot; class=&quot;headerlink&quot; title=&quot;就业前景：&quot;&gt;&lt;/a&gt;就业前景：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;是网络工程师30岁后的发展方向&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;/pic/0528.jpg&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;每日给自己一句话：在没有成功之前都是在做量的积累；&quot;&gt;&lt;a href=&quot;#每日给自己一句话：在没有成功之前都是在做量的积累；&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：在没有成功之前都是在做量的积累；&quot;&gt;&lt;/a&gt;每日给自己一句话：在没有成功之前都是在做量的积累；&lt;/h3&gt;&lt;h2 id=&quot;专家&quot;&gt;&lt;a href=&quot;#专家&quot; class=&quot;headerlink&quot; title=&quot;专家&quot;&gt;&lt;/a&gt;专家&lt;/h2&gt;&lt;h3 id=&quot;职称：&quot;&gt;&lt;a href=&quot;#职称：&quot; class=&quot;headerlink&quot; title=&quot;职称：&quot;&gt;&lt;/a&gt;职称：&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;高级&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;工作在大的网络公司、或研究所&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;主要是技术主管、项目经理、技术专家&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;1、技术专家&quot;&gt;&lt;a href=&quot;#1、技术专家&quot; class=&quot;headerlink&quot; title=&quot;1、技术专家&quot;&gt;&lt;/a&gt;1、技术专家&lt;/h4&gt;&lt;h5 id=&quot;工作描述：&quot;&gt;&lt;a href=&quot;#工作描述：&quot; class=&quot;headerlink&quot; title=&quot;工作描述：&quot;&gt;&lt;/a&gt;工作描述：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;某一行业的专家、顾问、权威；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;如果的确非常喜爱技术工作，而不擅长和喜欢与人沟通，则可以完全专注于自身的领域，以发展成为行业资深专家为方向和目标&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>网络管理员认识论</title>
-    <link href="williamliuwen.cn/2016/05/27/%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%91%98%E8%AE%A4%E8%AF%86%E8%AE%BA/"/>
-    <id>williamliuwen.cn/2016/05/27/网络管理员认识论/</id>
-    <published>2016-05-27T15:52:15.000Z</published>
-    <updated>2016-05-27T15:55:38.000Z</updated>
-    
-    <content type="html">&lt;h4 id=&quot;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&quot;&gt;&lt;a href=&quot;#每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&quot;&gt;&lt;/a&gt;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&lt;/h4&gt;&lt;p&gt;网络工程师里面的最低级别：&lt;/p&gt;
-&lt;h4 id=&quot;网络管理员&quot;&gt;&lt;a href=&quot;#网络管理员&quot; class=&quot;headerlink&quot; title=&quot;网络管理员&quot;&gt;&lt;/a&gt;网络管理员&lt;/h4&gt;&lt;h4 id=&quot;职称：&quot;&gt;&lt;a href=&quot;#职称：&quot; class=&quot;headerlink&quot; title=&quot;职称：&quot;&gt;&lt;/a&gt;职称：&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;初级&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;工作在中小企业，涵盖网络基础设施管理、网络操作系统管理、网络应用系统管理、网络用户管理、网络安全保密管理、信息存储备份管理和网络机房管理等几大方向。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;这些管理涉及到多个领域，每个领域的管理又有各自特定的任务。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h4 id=&quot;主要岗位：&quot;&gt;&lt;a href=&quot;#主要岗位：&quot; class=&quot;headerlink&quot; title=&quot;主要岗位：&quot;&gt;&lt;/a&gt;主要岗位：&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;网络管理员（系统管理员）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;工作职责描述：&quot;&gt;&lt;a href=&quot;#工作职责描述：&quot; class=&quot;headerlink&quot; title=&quot;工作职责描述：&quot;&gt;&lt;/a&gt;工作职责描述：&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;网络本身的管理；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;网络中操作/应用系统的管理(在大型企业、外资、合资企业中通常称之为“MIS（Manger Information System，信息系统管理员）。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;两者的区别主要是：网络管理员重在OSI下3层，系统管理员则主要在系统维护和公司信息系统管理上。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;就业前景：&quot;&gt;&lt;a href=&quot;#就业前景：&quot; class=&quot;headerlink&quot; title=&quot;就业前景：&quot;&gt;&lt;/a&gt;就业前景：&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;是一个专业网络人员必经的初始阶段&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;待遇：&quot;&gt;&lt;a href=&quot;#待遇：&quot; class=&quot;headerlink&quot; title=&quot;待遇：&quot;&gt;&lt;/a&gt;待遇：&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;1800元——3000元（视专业的掌握程度以及技术的熟练度而定）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;/pic/0527.jpg&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;天作孽，犹可违；自作孽，不可逭。 —— 《尚书·太甲中》&lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&quot;&gt;&lt;a href=&quot;#每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&quot;&gt;&lt;/a&gt;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&lt;/h4&gt;&lt;p&gt;网络工程师里面的最低级别：&lt;/p&gt;
-&lt;h4 id=&quot;网络管理员&quot;&gt;&lt;a href=&quot;#网络管理员&quot; class=&quot;headerlink&quot; title=&quot;网络管理员&quot;&gt;&lt;/a&gt;网络管理员&lt;/h4&gt;&lt;h4 id=&quot;职称：&quot;&gt;&lt;a href=&quot;#职称：&quot; class=&quot;headerlink&quot; title=&quot;职称：&quot;&gt;&lt;/a&gt;职称：&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;初级&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;工作在中小企业，涵盖网络基础设施管理、网络操作系统管理、网络应用系统管理、网络用户管理、网络安全保密管理、信息存储备份管理和网络机房管理等几大方向。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;这些管理涉及到多个领域，每个领域的管理又有各自特定的任务。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>网络工程师认识论</title>
-    <link href="williamliuwen.cn/2016/05/26/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%AE%A4%E8%AF%86%E8%AE%BA/"/>
-    <id>williamliuwen.cn/2016/05/26/网络工程师认识论/</id>
-    <published>2016-05-26T15:10:12.000Z</published>
-    <updated>2016-05-26T15:16:06.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;每日给自己一句话：不要随大流，要有自己的绝活；&quot;&gt;&lt;a href=&quot;#每日给自己一句话：不要随大流，要有自己的绝活；&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：不要随大流，要有自己的绝活；&quot;&gt;&lt;/a&gt;每日给自己一句话：不要随大流，要有自己的绝活；&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;比网络管理员高一级别，打怪应该需要打一年才能升到，而且还要自己平时努力，不然管理员还是管理员；&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;工程师&quot;&gt;&lt;a href=&quot;#工程师&quot; class=&quot;headerlink&quot; title=&quot;工程师&quot;&gt;&lt;/a&gt;工程师&lt;/h3&gt;&lt;h4 id=&quot;职称：&quot;&gt;&lt;a href=&quot;#职称：&quot; class=&quot;headerlink&quot; title=&quot;职称：&quot;&gt;&lt;/a&gt;职称：&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;中级&lt;/li&gt;
-&lt;li&gt;工作在网络公司或者大中型企业。在网络公司中主要任务是设计并建设；在大中型企业中的主要任务是运营和维护。&lt;/li&gt;
-&lt;li&gt;网络工程师其实是一个包括许多种工种的职业，不同的网络工程师工种对从业的人员的要求也不一样，对从业人员的网络管理水平的要求差别很大。专业网络工程师主要有：网络系统设计师、网络工程师、系统工程师、网络安全工程师、数据存储工程师等。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h4 id=&quot;1、普通网络工程师&quot;&gt;&lt;a href=&quot;#1、普通网络工程师&quot; class=&quot;headerlink&quot; title=&quot;1、普通网络工程师&quot;&gt;&lt;/a&gt;1、普通网络工程师&lt;/h4&gt;&lt;h5 id=&quot;工作职责描述：&quot;&gt;&lt;a href=&quot;#工作职责描述：&quot; class=&quot;headerlink&quot; title=&quot;工作职责描述：&quot;&gt;&lt;/a&gt;工作职责描述：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;高级网络管理员，在大企业中或是在网络公司工作&lt;/li&gt;
-&lt;li&gt;维护公司网络设备，保证公司骨干网络正常工作&lt;/li&gt;
-&lt;li&gt;对主流的网络设备非常了解&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;职位要求：&quot;&gt;&lt;a href=&quot;#职位要求：&quot; class=&quot;headerlink&quot; title=&quot;职位要求：&quot;&gt;&lt;/a&gt;职位要求：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;扎实而又全面的网络知识功底&lt;/li&gt;
-&lt;li&gt;多年专业网络管理经验&lt;/li&gt;
-&lt;li&gt;对产品性能和最新技术掌握很好&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;就业前景：国内网络公司的技术人员或专业的IDC中心、大的ISP服务商&quot;&gt;&lt;a href=&quot;#就业前景：国内网络公司的技术人员或专业的IDC中心、大的ISP服务商&quot; class=&quot;headerlink&quot; title=&quot;就业前景：国内网络公司的技术人员或专业的IDC中心、大的ISP服务商&quot;&gt;&lt;/a&gt;就业前景：国内网络公司的技术人员或专业的IDC中心、大的ISP服务商&lt;/h5&gt;&lt;h4 id=&quot;2、普通系统工程师&quot;&gt;&lt;a href=&quot;#2、普通系统工程师&quot; class=&quot;headerlink&quot; title=&quot;2、普通系统工程师&quot;&gt;&lt;/a&gt;2、普通系统工程师&lt;/h4&gt;&lt;h5 id=&quot;工作职责描述：-1&quot;&gt;&lt;a href=&quot;#工作职责描述：-1&quot; class=&quot;headerlink&quot; title=&quot;工作职责描述：&quot;&gt;&lt;/a&gt;工作职责描述：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;高级网络管理员&lt;/li&gt;
-&lt;li&gt;在大企业中或是在网络公司工作&lt;/li&gt;
-&lt;li&gt;维护并保证系统工作正常&lt;/li&gt;
-&lt;li&gt;对流行的OS非常了解&lt;/li&gt;
-&lt;li&gt;对系统故障的解决有丰富的经验&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;职位要求：-1&quot;&gt;&lt;a href=&quot;#职位要求：-1&quot; class=&quot;headerlink&quot; title=&quot;职位要求：&quot;&gt;&lt;/a&gt;职位要求：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;扎实而又全面的网络知识功底&lt;/li&gt;
-&lt;li&gt;多年专业网络管理经验&lt;/li&gt;
-&lt;li&gt;对新OS系统和最新技术掌握很好&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;就业前景：&quot;&gt;&lt;a href=&quot;#就业前景：&quot; class=&quot;headerlink&quot; title=&quot;就业前景：&quot;&gt;&lt;/a&gt;就业前景：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;国内网络公司的技术人员&lt;/li&gt;
-&lt;li&gt;大公司的技术人员&lt;/li&gt;
-&lt;li&gt;外包公司&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;3、网络系统设计师&quot;&gt;&lt;a href=&quot;#3、网络系统设计师&quot; class=&quot;headerlink&quot; title=&quot;3、网络系统设计师&quot;&gt;&lt;/a&gt;3、网络系统设计师&lt;/h4&gt;&lt;h5 id=&quot;工作职责描述：-2&quot;&gt;&lt;a href=&quot;#工作职责描述：-2&quot; class=&quot;headerlink&quot; title=&quot;工作职责描述：&quot;&gt;&lt;/a&gt;工作职责描述：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;公司需要建设网络，主要根据要求进行设计，客户能满意&lt;/li&gt;
-&lt;li&gt;设计项目达到全面、高的实用性和可用性&lt;/li&gt;
-&lt;li&gt;网络系统设计师是一个综合性的工种&lt;/li&gt;
-&lt;li&gt;网络和系统方面都有很好的经验&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;职位要求：-2&quot;&gt;&lt;a href=&quot;#职位要求：-2&quot; class=&quot;headerlink&quot; title=&quot;职位要求：&quot;&gt;&lt;/a&gt;职位要求：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;扎实而又全面的网络知识功底&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;多年专业网络管理、设计经验&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;对网络核心技术掌握很好&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;就业前景：-1&quot;&gt;&lt;a href=&quot;#就业前景：-1&quot; class=&quot;headerlink&quot; title=&quot;就业前景：&quot;&gt;&lt;/a&gt;就业前景：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;国内真正的设计师凤毛麟角 工资过万&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;4、网络存储工程师&quot;&gt;&lt;a href=&quot;#4、网络存储工程师&quot; class=&quot;headerlink&quot; title=&quot;4、网络存储工程师&quot;&gt;&lt;/a&gt;4、网络存储工程师&lt;/h4&gt;&lt;h5 id=&quot;工作职责描述：-3&quot;&gt;&lt;a href=&quot;#工作职责描述：-3&quot; class=&quot;headerlink&quot; title=&quot;工作职责描述：&quot;&gt;&lt;/a&gt;工作职责描述：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;主要工作在一些大的数据需要量大的公司如银行、电视台、IDC中心&lt;/li&gt;
-&lt;li&gt;有效管理公司海量数据，有存储设备测试、评估环境、系统咨询、实施指导、测试、培训、相关解决方案&lt;/li&gt;
-&lt;li&gt;灾难恢复&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;职位要求：-3&quot;&gt;&lt;a href=&quot;#职位要求：-3&quot; class=&quot;headerlink&quot; title=&quot;职位要求：&quot;&gt;&lt;/a&gt;职位要求：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;有多年的网络管理经验&lt;/li&gt;
-&lt;li&gt;熟悉一些常用数据库软件&lt;/li&gt;
-&lt;li&gt;有网络存储理论知识，包括存储基础、技术及网络存储高级技术&lt;/li&gt;
-&lt;li&gt;熟悉主流存储、备份厂商的产品线；如IBM/HP/SUN&lt;/li&gt;
-&lt;li&gt;熟练掌握veritas、legato、tsm、dp等备份软件工具使用&lt;/li&gt;
-&lt;li&gt;具有良好的撰写需求分析、解决方案、PPT、系统软硬件配置等方案的能力&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;就业前景：-2&quot;&gt;&lt;a href=&quot;#就业前景：-2&quot; class=&quot;headerlink&quot; title=&quot;就业前景：&quot;&gt;&lt;/a&gt;就业前景：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;国内每年所需的网络存储人才在60万以上，而目前国内每年最多仅能提供1万左右，缺口极大。随着网络经济的日益普及，此类人才在未来几年中的需求将持续攀升，专业的硬件服务器和网络存储人才的工资标准可能还要远高于软、硬件开发人员。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;5、网络安全工程师&quot;&gt;&lt;a href=&quot;#5、网络安全工程师&quot; class=&quot;headerlink&quot; title=&quot;5、网络安全工程师&quot;&gt;&lt;/a&gt;5、网络安全工程师&lt;/h4&gt;&lt;h5 id=&quot;工作职责描述：-4&quot;&gt;&lt;a href=&quot;#工作职责描述：-4&quot; class=&quot;headerlink&quot; title=&quot;工作职责描述：&quot;&gt;&lt;/a&gt;工作职责描述：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;主要保护网络安全&lt;/li&gt;
-&lt;li&gt;保护网站、邮件等服务器安全&lt;/li&gt;
-&lt;li&gt;合理布置网络结构和网络产品&lt;/li&gt;
-&lt;li&gt;对企业能进行安全评估和防护&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;工作要求：&quot;&gt;&lt;a href=&quot;#工作要求：&quot; class=&quot;headerlink&quot; title=&quot;工作要求：&quot;&gt;&lt;/a&gt;工作要求：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;有多年的网络管理经验&lt;/li&gt;
-&lt;li&gt;熟悉多种网络安全技术，对各种主流的安全产品（如防火墙、防病毒、入侵检测等）有较好的理论基础和实践经验，了解各种安全产品（例如FireWall、VPN、防病毒产品、IPS等）的特点、使用方法及常用的调试技巧；&lt;/li&gt;
-&lt;li&gt;精通Windows、Linux等系统环境，能进行维护管理和故障分析&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;就业前景：-3&quot;&gt;&lt;a href=&quot;#就业前景：-3&quot; class=&quot;headerlink&quot; title=&quot;就业前景：&quot;&gt;&lt;/a&gt;就业前景：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;当前最急缺的人才，工资增长幅度大&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;/pic/0526.jpg&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;凡是合理的都是存在的，凡是存在的都是合理的。 —— 黑格尔    &lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;每日给自己一句话：不要随大流，要有自己的绝活；&quot;&gt;&lt;a href=&quot;#每日给自己一句话：不要随大流，要有自己的绝活；&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：不要随大流，要有自己的绝活；&quot;&gt;&lt;/a&gt;每日给自己一句话：不要随大流，要有自己的绝活；&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;比网络管理员高一级别，打怪应该需要打一年才能升到，而且还要自己平时努力，不然管理员还是管理员；&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;工程师&quot;&gt;&lt;a href=&quot;#工程师&quot; class=&quot;headerlink&quot; title=&quot;工程师&quot;&gt;&lt;/a&gt;工程师&lt;/h3&gt;&lt;h4 id=&quot;职称：&quot;&gt;&lt;a href=&quot;#职称：&quot; class=&quot;headerlink&quot; title=&quot;职称：&quot;&gt;&lt;/a&gt;职称：&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;中级&lt;/li&gt;
-&lt;li&gt;工作在网络公司或者大中型企业。在网络公司中主要任务是设计并建设；在大中型企业中的主要任务是运营和维护。&lt;/li&gt;
-&lt;li&gt;网络工程师其实是一个包括许多种工种的职业，不同的网络工程师工种对从业的人员的要求也不一样，对从业人员的网络管理水平的要求差别很大。专业网络工程师主要有：网络系统设计师、网络工程师、系统工程师、网络安全工程师、数据存储工程师等。&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
