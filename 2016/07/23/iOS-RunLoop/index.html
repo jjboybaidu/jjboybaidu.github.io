@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>iOS-RunLoop | 太阳在的地方</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="运行循环本质1.从字面上看，就是运行循环跑圈
+2.其实它内部就是do-while循环，在这个循环内部不断地处理各种任务（比如Source、Timer、Observer）
+3.循环体的开始需要检测是否有需要处理的事件，如果有则去处&amp;gt; - 理，如果没有则进入睡眠以节省CPU时间
+FIXME:0.运行循环 概念性的东西有？概念1【输入源==事件源】具体查看《RunLoop【输入源】》
+概念2【模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-RunLoop">
+<meta property="og:url" content="williamliuwen.cn/2016/07/23/iOS-RunLoop/index.html">
+<meta property="og:site_name" content="太阳在的地方">
+<meta property="og:description" content="运行循环本质1.从字面上看，就是运行循环跑圈
+2.其实它内部就是do-while循环，在这个循环内部不断地处理各种任务（比如Source、Timer、Observer）
+3.循环体的开始需要检测是否有需要处理的事件，如果有则去处&amp;gt; - 理，如果没有则进入睡眠以节省CPU时间
+FIXME:0.运行循环 概念性的东西有？概念1【输入源==事件源】具体查看《RunLoop【输入源】》
+概念2【模">
+<meta property="og:updated_time" content="2016-08-09T13:24:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-RunLoop">
+<meta name="twitter:description" content="运行循环本质1.从字面上看，就是运行循环跑圈
+2.其实它内部就是do-while循环，在这个循环内部不断地处理各种任务（比如Source、Timer、Observer）
+3.循环体的开始需要检测是否有需要处理的事件，如果有则去处&amp;gt; - 理，如果没有则进入睡眠以节省CPU时间
+FIXME:0.运行循环 概念性的东西有？概念1【输入源==事件源】具体查看《RunLoop【输入源】》
+概念2【模">
+  
+  
+    <link rel="icon" href="img/favicon.gif">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">刘 小汶</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">知我者谓我心忧，不知我者谓我何求。</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于小汶</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/williamliuwen" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">刘 小汶</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="img/avatar.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">刘 小汶</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">知我者谓我心忧，不知我者谓我何求。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于小汶</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/williamliuwen" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-iOS-RunLoop" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/23/iOS-RunLoop/" class="article-date">
+  	<time datetime="2016-07-23T00:35:55.000Z" itemprop="datePublished">2016-07-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS-RunLoop
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h4 id="运行循环本质"><a href="#运行循环本质" class="headerlink" title="运行循环本质"></a>运行循环本质</h4><p>1.从字面上看，就是运行循环跑圈</p>
+<p>2.其实它内部就是do-while循环，在这个循环内部不断地处理各种任务（比如Source、Timer、Observer）</p>
+<p>3.循环体的开始需要检测是否有需要处理的事件，如果有则去处&gt; - 理，如果没有则进入睡眠以节省CPU时间</p>
+<h4 id="FIXME-0-运行循环-概念性的东西有？"><a href="#FIXME-0-运行循环-概念性的东西有？" class="headerlink" title="FIXME:0.运行循环 概念性的东西有？"></a>FIXME:0.运行循环 概念性的东西有？</h4><p>概念1【输入源==事件源】<br>具体查看《RunLoop【输入源】》</p>
+<p>概念2【模式】<br>具体查看《RunLoop【模式】》</p>
+<p>概念3【观察者Observer】<br>具体查看《RunLoop【观察者】》</p>
+<a id="more"></a>
+<h4 id="FIXME-1-运行循环-为什么要使用运行循环"><a href="#FIXME-1-运行循环-为什么要使用运行循环" class="headerlink" title="FIXME:1.运行循环 为什么要使用运行循环"></a>FIXME:1.运行循环 为什么要使用运行循环</h4><p>1.我们思考一下：程序为什么可以处理用户的各种事件，而且可以保证程序不退出？答案：就是因为程序里面有个系统的默认运行循环，所以能保证程序不退出，并且处理用户的各种事件</p>
+<p>2.想要了解为什么要使用运行循环，我们可以从使用运行循环的目的来了解，使用了运行循环我们可以：<br>a. 保证程序不退出 ;<br>b. 负责处理输入事件;<br>c. 如果没有事件发生，会让程序进入休眠状态。<br>从上面可以得出结论，为什么要使用运行循环，因为这是一个APP的基本，没有运行循环，就没有APP的正常运行。</p>
+<p>3.通过上面的了解我们可以总结运行循环的优点：有事情就做事情，没事情就休息；优点：节省CPU资源、提高程序性能；</p>
+<h4 id="FIXME-2-运行循环-程序里哪里存在运行循环"><a href="#FIXME-2-运行循环-程序里哪里存在运行循环" class="headerlink" title="FIXME:2.运行循环 程序里哪里存在运行循环"></a>FIXME:2.运行循环 程序里哪里存在运行循环</h4><p>1.【系统默认 运行循环】系统默认就是一个运行循环，可以保证程序不死掉；系统默认运行循环在主线程</p>
+<h4 id="FIXME-3-运行循环-与线程的关系"><a href="#FIXME-3-运行循环-与线程的关系" class="headerlink" title="FIXME:3.运行循环 与线程的关系"></a>FIXME:3.运行循环 与线程的关系</h4><p>1.每一个线程内部都有一个消息循环。只有主线程的消息循环默认开启,子线程的消息循环默认不开启，一个运行循环对应着一条唯一的线程，如何让子线程不死 ，给这条子线程开启一个运行循环，子线程的runloop需要手动创建,需要手动开启</p>
+<p>2.线程在执行中的休眠和激活就是由RunLoop对象进行管理的</p>
+<p>3.RunLoop是用来管理线程的</p>
+<p>4.每一个线程都有一个RunLoop对象。可以通过具体的方法去获得</p>
+<p>5.但是需要注意：虽然每一个线程都可以获取RunLoop对象，但是并不是每一个线程中都有实例对象，我们可以这样理解：如果我们不获取RunLoop，这个RunLoop就不存在，我们获取时，如果不存在，就会去创建。在主线程中，这个MainRunLoop是默认创建并运行激活的</p>
+<p>6.每条线程都有唯一的一个与之对应的RunLoop对象</p>
+<h4 id="FIXME-4-运行循环-生命周期"><a href="#FIXME-4-运行循环-生命周期" class="headerlink" title="FIXME:4.运行循环 生命周期"></a>FIXME:4.运行循环 生命周期</h4><p>1.运行循环的生命周期：在第一次获取时创建，在线程结束时销毁</p>
+<h4 id="FIXME-5-运行循环-基本运行流程"><a href="#FIXME-5-运行循环-基本运行流程" class="headerlink" title="FIXME:5.运行循环 基本运行流程"></a>FIXME:5.运行循环 基本运行流程</h4><p>1.创建消息（即输入源）；</p>
+<p>2.指定该事件（源）在循环中运行的模式，并加入循环；</p>
+<p>3.当事件的模式与消息循环的模式匹配的时候，消息才会运行。</p>
+<p>4.运行逻辑总结：一个线程对应一个runLoop,主线程的runloop是程序一启动,默认就创建一个runloop,创建好了之后就会给它添加一些默认的模式,每个模式里面会有很多的 source /timer/observer ,添加好这些模式后,observer就会监听主线程的runloop,进入runloop后,就开始处理事件,先处理timer,再处理source0,source0处理完之后再处理source1,当把这些所有的事件反复的处理完之后,如果没有事件了,那么runloop就会进入睡眠状态,当用户又触发了新的事件,就会唤醒runloop,唤醒runloop后回到第二步,重新处理新的timer,新的source0,新的source1,处理完后就睡眠,一直反复,当我们把程序关闭或者强退,这个时候observer就会监听都runloop退出了.</p>
+<h4 id="FIXME-6-运行循环-API"><a href="#FIXME-6-运行循环-API" class="headerlink" title="FIXME:6.运行循环 API"></a>FIXME:6.运行循环 API</h4><p>1.NSRunloop</p>
+<p>2.CFRunLoopRef</p>
+<p>3.两种API的区别1：NSRunloop线程不安全，CFRunLoopRef线程安全；NSRunLoop是Cocoa框架中的类，与之对应的是在Core Fundation中有一个CFRunLoopRef类。这两者的区别是前者不是线程安全的，而CFRunLoopRef是线程安全的。所以：NSRunloop不能调用其他线程的方法.The NSRunLoop class is generally not considered to be thread-safe and its methods should only be called within the context of the current thread. You should never try to call the methods of an NSRunLoop object running in a different thread, as doing so might cause unexpected results.</p>
+<p>4.两种API的区别2：CFRunLoopRef创建一个timer必须添加到runloop 才会执行,添加的时候要指定模式 defaurce模式 ,不对程序做任何操作 timer就会后台运行 ,当我进行操作的时候runloop模式就会从默认模式切换到其他模式,假如说我操作scrollerView 它就会从default模式切换到tracking模式。而roonloop 同一时刻只能执行一种模式.</p>
+<p>5.NSRunLoop是基于CFRunLoopRef的一层OC包装，提供了面向对象的 API，但是这些 API 不是线程安全的。所以要了解RunLoop内部结构，需要多研究CFRunLoopRef层面的API（Core Foundation层面）</p>
+<h4 id="FIXME-7-运行循环-启动"><a href="#FIXME-7-运行循环-启动" class="headerlink" title="FIXME:7.运行循环 启动"></a>FIXME:7.运行循环 启动</h4><p>启动的三种方式：</p>
+<p>1.无条件的—-无条件的进入Runloop是最简单的方法，但也最不推荐使用的。因为这样会使你的线程处在一个永久的循环中，这会让你对Runloop本身的控制很少。你可以添加或删除输入源和定时器，但是退出Runloop的唯一方法是杀死它。没有任何办法可以让这Runloop运行在自定义模式下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[NSRunLoop currentRunLoop] run];</span><br></pre></td></tr></table></figure></p>
+<p>2.设置超时时间—-替代无条件进入Runloop更好的办法是用预设超时时间来运行Runloop，这样Runloop运作直到某一事件到达或者规定的时间已经到期。如果是事件到达，消息会被传递给相应的处理程序来处理，然后Runloop退出。你可以重新启动Runloop来等待下一事件。如果是规定时间到期了，你只需简单的重启Runloop或使用此段时间来做任何的其他工作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:2]]; 2 秒钟之后结束</span><br></pre></td></tr></table></figure></p>
+<p>3.特定的模式—-除了超时机制，你也可以使用特定的模式来运行你的Runloop。模式和超时不是互斥的，他们可以在启动RunLoop的时候同时使用。模式限制了可以传递事件给Runloop的输入源的类型。暂停当前处理的流程，转而处理其他输入源，当date设置为<a href="将来，基本不会到达的时间">NSDate distantFuture</a>，所以除非处理其他输入源结束，否则永不退出处理暂停的当前处理的流程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];</span><br></pre></td></tr></table></figure>
+<h4 id="FIXME-8-运行循环-结束"><a href="#FIXME-8-运行循环-结束" class="headerlink" title="FIXME:8.运行循环 结束"></a>FIXME:8.运行循环 结束</h4><p>结束的三种方式：</p>
+<p>1.给RunLoop设置超时时间</p>
+<p>2.通知RunLoop停止—-如果可以配置的话，推荐使用第一种方法。指定一个超时时间可以使RunLoop退出前完成所有正常操作，包括发送消息给RunLoop观察者。</p>
+<p>3.使用CFRunLoopStop来显式的停止RunLoop和使用超时时间产生的结果相似。RunLoop把所有剩余的通知发送出去再退出。与设置超时的不同的是你可以在无条件启动的RunLoop里面使用该技术。</p>
+<h4 id="FIXME-9-运行循环-添加输入源"><a href="#FIXME-9-运行循环-添加输入源" class="headerlink" title="FIXME:9.运行循环 添加输入源"></a>FIXME:9.运行循环 添加输入源</h4><p>具体查看《NSRunLoop【例子<em>输入源</em>】》</p>
+<h4 id="FIXME-10-运行循环-移除输入源"><a href="#FIXME-10-运行循环-移除输入源" class="headerlink" title="FIXME:10.运行循环 移除输入源"></a>FIXME:10.运行循环 移除输入源</h4><p>1.输入源被注册到RunLoop中时会有方法进行remove。但是定时器没有remove，但是它的invalidate方法可以将其从RunLoop中移除。invalidate是重要的也是唯一的将定时器从RunLoop中注销的方法，所以如果我们创建了定时器，就一定要再不适用的时候调用invalidate方法。</p>
+<p>2.自动释放池,什么时候创建和释放 ?<br>(1)第一次创建:是在runloop进入的时候创建 对应的状态 = KCFRunLoopEntry<br>(2)最后一个退出,是在runloop退出的时候 对应的状态 = KCFRunLoopExit<br>(3)其他的创建和释放<br>每次睡觉的时候会释放前自动释放池,再创建一个新的<br>即将进入睡眠的时候,先释放上一次创建的自动释放池,然后再创建一个新的释放池</p>
+<h4 id="FIXME-11-运行循环-能运行的关键"><a href="#FIXME-11-运行循环-能运行的关键" class="headerlink" title="FIXME:11.运行循环 能运行的关键"></a>FIXME:11.运行循环 能运行的关键</h4><p>1.每次运行一个RunLoop，你指定（显式或隐式）RunLoop的运行模式。当相应的模式传递给RunLoop时，只有与该模式对应的Input Source才被监控并允许RunLoop对事件进行处理（与此类似，也只有与该模式对应的Observers才会被通知）</p>
+<p>2.上面的对应关系是：</p>
+<p>RunLoop—-模式—-<br>模式—-Input Sources<br>模式—-Observers</p>
+<h4 id="FIXME-12-运行循环-可以对运行循环做的操作"><a href="#FIXME-12-运行循环-可以对运行循环做的操作" class="headerlink" title="FIXME:12.运行循环 可以对运行循环做的操作"></a>FIXME:12.运行循环 可以对运行循环做的操作</h4><p>1.添加输入源；添加定时源；添加观察者；</p>
+<h4 id="FIXME-13-运行循环-获得RunLoop对象"><a href="#FIXME-13-运行循环-获得RunLoop对象" class="headerlink" title="FIXME:13.运行循环 获得RunLoop对象"></a>FIXME:13.运行循环 获得RunLoop对象</h4><p>Foundation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[NSRunLoop currentRunLoop];   // 获得当前线程的RunLoop对象</span><br><span class="line">[NSRunLoop mainRunLoop];      // 获得主线程的RunLoop对象</span><br></pre></td></tr></table></figure>
+<p>Core Foundation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CFRunLoopGetCurrent();       // 获得当前线程的RunLoop对象</span><br><span class="line">CFRunLoopGetMain();          // 获得主线程的RunLoop对象</span><br></pre></td></tr></table></figure>
+<h4 id="FIXME-13-RunLoop是否有效的关键是？"><a href="#FIXME-13-RunLoop是否有效的关键是？" class="headerlink" title="FIXME:13.RunLoop是否有效的关键是？"></a>FIXME:13.RunLoop是否有效的关键是？</h4><p>1.关键是有没有事件源或者定时源；</p>
+<h2 id="RunLoop模式"><a href="#RunLoop模式" class="headerlink" title="RunLoop模式"></a>RunLoop模式</h2><p>1.NS开头(Cocoa)</p>
+<ul>
+<li><p>NSDefaultRunLoopMode    默认模式（最常用的循环模式） 默认Mode, 通常主线程在这个模式下运行处理modal panels（The mode to deal with input sources other than NSConnection objects. This is the most commonly used run-loop mode. Available in iOS 2.0 and later.）,</p>
+</li>
+<li><p>NSRunLoopCommonModes    普通模式（一组模式的集合,包括NSDefaultRunLoopMode和UITrackingRunLoopMode）（Objects added to a run loop using this value as the mode are monitored by all run loop modes that have been declared as a member of the set of “common” modes; see the description of CFRunLoopAddCommonMode for details.）</p>
+</li>
+<li><p>NSConnectionReplyMode    此模式用于处理NSConnection的回调事件,：处理NSConnection事件，属于系统内部，用户基本不用</p>
+</li>
+<li><p>NSModalPanelRunLoopMode    模态模式，此模式下，RunLoop只对处理模态相关事件</p>
+</li>
+<li><p>NSEventTrackingRunLoopMode    此模式下用于处理窗口事件,鼠标事件等,如组件拖动输入源 UITrackingRunLoopModes 不处理定时事件</p>
+</li>
+</ul>
+<p>2.CF开头(Core Foundation)</p>
+<p>1）系统默认注册了5中mode</p>
+<ul>
+<li><p>kCFRunLoopDefaultMode    App的默认Mode，通常主线程是在这个Mode下运行；缺省情况下，将包含所有操作，并且大多数情况下都会使用此模式,几乎包括所有输入源(除NSConnection),对应NSDefaultRunLoopMode</p>
+</li>
+<li><p>UITrackingRunLoopMode    界面跟踪 Mode，用于 ScrollView 追踪触摸滑动，保证界面滑动时不受其他 Mode 影响</p>
+</li>
+<li><p>UIInitializationRunLoopMode    在刚启动 App 时第进入的第一个 Mode，启动完成后就不再使用</p>
+</li>
+<li><p>GSEventReceiveRunLoopMode    接受系统事件的内部 Mode，通常用不到</p>
+</li>
+<li><p>kCFRunLoopCommonModes    这是一个占位用的Mode，不是一种真正的Mode</p>
+</li>
+</ul>
+<p>3.RunLoop模式介绍</p>
+<p>1）RunLoopMode是一个集合，包括监听：事件源，定时器，以及需通知的RunLoop observers</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/07/23/hexo-部署/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          hexo 部署
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/06/提升自己/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">提升自己</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="iOS-RunLoop" data-title="iOS-RunLoop" data-url="williamliuwen.cn/2016/07/23/iOS-RunLoop/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"williamliuwen"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 刘 小汶
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

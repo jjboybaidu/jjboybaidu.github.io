@@ -14,7 +14,7 @@ Tip2 设置与状态栏间距（没有导航栏）123456If you are doing thins p
 <meta property="og:site_name" content="太阳在的地方">
 <meta property="og:description" content="Tip1 隐藏状态栏1234- (BOOL)prefersStatusBarHidden&amp;#123;    return  YES;&amp;#125;
 Tip2 设置与状态栏间距（没有导航栏）123456If you are doing thins programatically and are using a UITableViewController without a UINavigationCo">
-<meta property="og:updated_time" content="2016-08-08T22:15:04.000Z">
+<meta property="og:updated_time" content="2016-08-09T13:23:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS-Tips">
 <meta name="twitter:description" content="Tip1 隐藏状态栏1234- (BOOL)prefersStatusBarHidden&amp;#123;    return  YES;&amp;#125;
@@ -188,6 +188,11 @@ Tip2 设置与状态栏间距（没有导航栏）123456If you are doing thins p
 <ul>
 <li>僵尸模式的作用是：用来接收错误信息（错误信息可以指一个错误的内存访问就会变成一条无法识别的消息,这条无法识别的信息就是错误信息）</li>
 </ul>
+<h6 id="Tip15-优化加载图片"><a href="#Tip15-优化加载图片" class="headerlink" title="Tip15 优化加载图片"></a>Tip15 优化加载图片</h6><p>1.imageWithContentsOfFile则仅只加载图片,不缓存；</p>
+<p>2.imageNamed默认加载图片成功后会内存中缓存图片</p>
+<p>3.最佳实践是：当应用程序需要加载一张比较大的图片并且使用一次性，那么其实是没有必要去缓存这个图片的，用imageWithContentsOfFile是最为经济的方式,这样不会因为UIImage元素较多情况下，CPU会被逐个分散在不必要缓存上浪费过多时间</p>
+<h6 id="Tip16-优化viewWillAppear"><a href="#Tip16-优化viewWillAppear" class="headerlink" title="Tip16 优化viewWillAppear"></a>Tip16 优化viewWillAppear</h6><p>1.在这个方法中不要处理复杂费时的事情</p>
+<p>2.只应该在这个方法设置 view 的显示属性之类的简单事情，比如背景色，字体等。不然，用户会明显感觉到 view 显示迟钝.</p>
 
       
     </div>

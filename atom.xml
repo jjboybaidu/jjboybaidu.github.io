@@ -325,7 +325,7 @@
     <link href="williamliuwen.cn/2016/08/04/iOS-Tips/"/>
     <id>williamliuwen.cn/2016/08/04/iOS-Tips/</id>
     <published>2016-08-04T11:53:15.000Z</published>
-    <updated>2016-08-08T22:15:04.000Z</updated>
+    <updated>2016-08-09T13:23:30.000Z</updated>
     
     <content type="html">&lt;h6 id=&quot;Tip1-隐藏状态栏&quot;&gt;&lt;a href=&quot;#Tip1-隐藏状态栏&quot; class=&quot;headerlink&quot; title=&quot;Tip1 隐藏状态栏&quot;&gt;&lt;/a&gt;Tip1 隐藏状态栏&lt;/h6&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (BOOL)prefersStatusBarHidden&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return  YES;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h6 id=&quot;Tip2-设置与状态栏间距（没有导航栏）&quot;&gt;&lt;a href=&quot;#Tip2-设置与状态栏间距（没有导航栏）&quot; class=&quot;headerlink&quot; title=&quot;Tip2 设置与状态栏间距（没有导航栏）&quot;&gt;&lt;/a&gt;Tip2 设置与状态栏间距（没有导航栏）&lt;/h6&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;If you are doing thins programatically and are using a UITableViewController without a UINavigationController your best bet is to do the following in viewDidLoad:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;The UITableViewController will still scroll behind the status bar but won&amp;apos;t be under it when scrolled to the top.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;self.tableView.contentInset = UIEdgeInsetsMake(20.0f,0.0f,0.0f,0.0f);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -354,6 +354,11 @@
 &lt;ul&gt;
 &lt;li&gt;僵尸模式的作用是：用来接收错误信息（错误信息可以指一个错误的内存访问就会变成一条无法识别的消息,这条无法识别的信息就是错误信息）&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h6 id=&quot;Tip15-优化加载图片&quot;&gt;&lt;a href=&quot;#Tip15-优化加载图片&quot; class=&quot;headerlink&quot; title=&quot;Tip15 优化加载图片&quot;&gt;&lt;/a&gt;Tip15 优化加载图片&lt;/h6&gt;&lt;p&gt;1.imageWithContentsOfFile则仅只加载图片,不缓存；&lt;/p&gt;
+&lt;p&gt;2.imageNamed默认加载图片成功后会内存中缓存图片&lt;/p&gt;
+&lt;p&gt;3.最佳实践是：当应用程序需要加载一张比较大的图片并且使用一次性，那么其实是没有必要去缓存这个图片的，用imageWithContentsOfFile是最为经济的方式,这样不会因为UIImage元素较多情况下，CPU会被逐个分散在不必要缓存上浪费过多时间&lt;/p&gt;
+&lt;h6 id=&quot;Tip16-优化viewWillAppear&quot;&gt;&lt;a href=&quot;#Tip16-优化viewWillAppear&quot; class=&quot;headerlink&quot; title=&quot;Tip16 优化viewWillAppear&quot;&gt;&lt;/a&gt;Tip16 优化viewWillAppear&lt;/h6&gt;&lt;p&gt;1.在这个方法中不要处理复杂费时的事情&lt;/p&gt;
+&lt;p&gt;2.只应该在这个方法设置 view 的显示属性之类的简单事情，比如背景色，字体等。不然，用户会明显感觉到 view 显示迟钝.&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1327,11 +1332,11 @@
   </entry>
   
   <entry>
-    <title>NSRunLoop</title>
-    <link href="williamliuwen.cn/2016/07/23/NSRunLoop/"/>
-    <id>williamliuwen.cn/2016/07/23/NSRunLoop/</id>
+    <title>iOS-RunLoop</title>
+    <link href="williamliuwen.cn/2016/07/23/iOS-RunLoop/"/>
+    <id>williamliuwen.cn/2016/07/23/iOS-RunLoop/</id>
     <published>2016-07-23T00:35:55.000Z</published>
-    <updated>2016-08-07T22:23:35.000Z</updated>
+    <updated>2016-08-09T13:24:46.000Z</updated>
     
     <content type="html">&lt;hr&gt;
 &lt;h4 id=&quot;运行循环本质&quot;&gt;&lt;a href=&quot;#运行循环本质&quot; class=&quot;headerlink&quot; title=&quot;运行循环本质&quot;&gt;&lt;/a&gt;运行循环本质&lt;/h4&gt;&lt;p&gt;1.从字面上看，就是运行循环跑圈&lt;/p&gt;
@@ -1382,6 +1387,35 @@
 &lt;p&gt;Core Foundation&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;CFRunLoopGetCurrent();       // 获得当前线程的RunLoop对象&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CFRunLoopGetMain();          // 获得主线程的RunLoop对象&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h4 id=&quot;FIXME-13-RunLoop是否有效的关键是？&quot;&gt;&lt;a href=&quot;#FIXME-13-RunLoop是否有效的关键是？&quot; class=&quot;headerlink&quot; title=&quot;FIXME:13.RunLoop是否有效的关键是？&quot;&gt;&lt;/a&gt;FIXME:13.RunLoop是否有效的关键是？&lt;/h4&gt;&lt;p&gt;1.关键是有没有事件源或者定时源；&lt;/p&gt;
+&lt;h2 id=&quot;RunLoop模式&quot;&gt;&lt;a href=&quot;#RunLoop模式&quot; class=&quot;headerlink&quot; title=&quot;RunLoop模式&quot;&gt;&lt;/a&gt;RunLoop模式&lt;/h2&gt;&lt;p&gt;1.NS开头(Cocoa)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;NSDefaultRunLoopMode    默认模式（最常用的循环模式） 默认Mode, 通常主线程在这个模式下运行处理modal panels（The mode to deal with input sources other than NSConnection objects. This is the most commonly used run-loop mode. Available in iOS 2.0 and later.）,&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;NSRunLoopCommonModes    普通模式（一组模式的集合,包括NSDefaultRunLoopMode和UITrackingRunLoopMode）（Objects added to a run loop using this value as the mode are monitored by all run loop modes that have been declared as a member of the set of “common” modes; see the description of CFRunLoopAddCommonMode for details.）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;NSConnectionReplyMode    此模式用于处理NSConnection的回调事件,：处理NSConnection事件，属于系统内部，用户基本不用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;NSModalPanelRunLoopMode    模态模式，此模式下，RunLoop只对处理模态相关事件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;NSEventTrackingRunLoopMode    此模式下用于处理窗口事件,鼠标事件等,如组件拖动输入源 UITrackingRunLoopModes 不处理定时事件&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2.CF开头(Core Foundation)&lt;/p&gt;
+&lt;p&gt;1）系统默认注册了5中mode&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;kCFRunLoopDefaultMode    App的默认Mode，通常主线程是在这个Mode下运行；缺省情况下，将包含所有操作，并且大多数情况下都会使用此模式,几乎包括所有输入源(除NSConnection),对应NSDefaultRunLoopMode&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;UITrackingRunLoopMode    界面跟踪 Mode，用于 ScrollView 追踪触摸滑动，保证界面滑动时不受其他 Mode 影响&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;UIInitializationRunLoopMode    在刚启动 App 时第进入的第一个 Mode，启动完成后就不再使用&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;GSEventReceiveRunLoopMode    接受系统事件的内部 Mode，通常用不到&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;kCFRunLoopCommonModes    这是一个占位用的Mode，不是一种真正的Mode&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;3.RunLoop模式介绍&lt;/p&gt;
+&lt;p&gt;1）RunLoopMode是一个集合，包括监听：事件源，定时器，以及需通知的RunLoop observers&lt;/p&gt;
 </content>
     
     <summary type="html">

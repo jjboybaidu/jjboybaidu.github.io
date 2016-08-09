@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>williamliuwen.cn/2016/07/23/iOS-RunLoop/</loc>
+    
+    <lastmod>2016-08-09T13:24:46.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>williamliuwen.cn/2016/08/04/iOS-Tips/</loc>
     
-    <lastmod>2016-08-08T22:15:04.000Z</lastmod>
+    <lastmod>2016-08-09T13:23:30.000Z</lastmod>
     
   </url>
   
@@ -40,13 +47,6 @@
     <loc>williamliuwen.cn/2016/08/08/SVN-Git/</loc>
     
     <lastmod>2016-08-07T22:24:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>williamliuwen.cn/2016/07/23/NSRunLoop/</loc>
-    
-    <lastmod>2016-08-07T22:23:35.000Z</lastmod>
     
   </url>
   
