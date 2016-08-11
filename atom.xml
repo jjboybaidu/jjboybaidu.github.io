@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="williamliuwen.cn/"/>
-  <updated>2016-08-11T12:46:58.000Z</updated>
+  <updated>2016-08-11T13:52:13.000Z</updated>
   <id>williamliuwen.cn/</id>
   
   <author>
@@ -14,6 +14,194 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS-Quartz2D</title>
+    <link href="williamliuwen.cn/2016/08/11/iOS-Quartz2D/"/>
+    <id>williamliuwen.cn/2016/08/11/iOS-Quartz2D/</id>
+    <published>2016-08-11T13:51:16.000Z</published>
+    <updated>2016-08-11T13:52:13.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Quartz2D可以用来做什么？&quot;&gt;&lt;a href=&quot;#Quartz2D可以用来做什么？&quot; class=&quot;headerlink&quot; title=&quot;Quartz2D可以用来做什么？&quot;&gt;&lt;/a&gt;Quartz2D可以用来做什么？&lt;/h2&gt;&lt;p&gt;1.什么是Quartz2D？（用来绘图的）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Quartz 2D是一个二维绘图引擎，同时支持iOS和Mac系统（所以代码可以在ios和mac系统运行）；Quartz 2D 是基于C语言的API接口；数据类型和函数基本都以CG作为前缀&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2.实际中怎么应用Quartz2D？&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;可以自定义UI控件，iOS中大部分控件的内容都是通过Quartz2D画出来的，&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;绘制图形 : 线条\三角形\矩形\圆\弧等；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;绘制文字；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;绘制\生成图片(图像)；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;读取\生成PDF；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;截图\裁剪图片；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;手势开锁&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;3.Quartz2D常用名词&lt;/p&gt;
+&lt;p&gt;1）图形上下文&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;图形上下文是一个CGContextRef类型的数据；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;图形上下文的作用：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;保存绘图信息、绘图状态；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;决定绘制的输出目标（绘制到什么地方去？）（输出目标可以是PDF文件、Bitmap或者显示器的窗口上）相同的一套绘图序列，指定不同的Graphics Context，就可将相同的图像绘制到不同的目标上&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;五种图形上下文：1. Bitmap Graphics Context 2. PDF Graphics Context 3. Window Graphics Context 4. Layer Graphics Context 5. Printer Graphics Context&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;图形上下文必须跟view相关联，才能将内容绘制到view上面&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;绘图顺序（如果在同一个图形上下文上，后绘制的图形会覆盖前面绘制的图形上面）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2）图形上下文栈&lt;/p&gt;
+&lt;p&gt;3）Quartz2D的内存管理&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;使用含有“Create”或“Copy”或”retain”的函数创建的对象，使用完后必须释放，否则将导致内存泄露&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用不含有“Create”或“Copy”的函数获取的对象，则不需要释放&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如果retain了一个对象，不再使用时，需要将其release掉&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;以使用Quartz 2D的函数来指定retain和release一个对象。例如，如果创建了一个CGColorSpace对象，则使用函数CGColorSpaceRetain和CGColorSpaceRelease来retain和release对象。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;也可以使用Core Foundation的CFRetain和CFRelease。注意不能传递NULL值给这些函数&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;drawRect-方法的作用？&quot;&gt;&lt;a href=&quot;#drawRect-方法的作用？&quot; class=&quot;headerlink&quot; title=&quot;drawRect:方法的作用？&quot;&gt;&lt;/a&gt;drawRect:方法的作用？&lt;/h2&gt;&lt;p&gt;1.在drawRect:方法中才能取得跟view相关联的图形上下文&lt;/p&gt;
+&lt;p&gt;2.View内部有个layer（图层）属性，drawRect:方法中取得的是一个Layer Graphics Context，因此，绘制的东西其实是绘制到view的layer上去了；&lt;/p&gt;
+&lt;p&gt;3.View之所以能显示东西，完全是因为它内部的layer&lt;/p&gt;
+&lt;p&gt;4.drawRect方法调用的时机：（当view第一次显示到屏幕上时（被加到UIWindow上显示出来）调用view的setNeedsDisplay或者setNeedsDisplayInRect:时）&lt;/p&gt;
+&lt;h2 id=&quot;Quartz2D绘图步骤&quot;&gt;&lt;a href=&quot;#Quartz2D绘图步骤&quot; class=&quot;headerlink&quot; title=&quot;Quartz2D绘图步骤&quot;&gt;&lt;/a&gt;Quartz2D绘图步骤&lt;/h2&gt;&lt;p&gt;1.拼接路径函数&lt;/p&gt;
+&lt;p&gt;2.绘制路径函数&lt;/p&gt;
+&lt;p&gt;3.例子:创建一条线段&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 第一步：新建一个类，继承自UIView&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 第二步：实现&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-(void)drawRect:(CGRect)rect&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 第三步：获取图形上下文（Graphics Context）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGContextRef ctx = UIGraphicsGetCurrentContext();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 第四步：拼接路径（下面代码是搞一条线段）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGContextMoveToPoint(ctx, 10, 10);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGContextAddLineToPoint(ctx, 100, 100);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 第五步：渲染图形，显示到view上&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGContextStrokePath(ctx);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 或者填充&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGContextFillPath(ctx);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;Quartz2D绘图–拼接路径函数&quot;&gt;&lt;a href=&quot;#Quartz2D绘图–拼接路径函数&quot; class=&quot;headerlink&quot; title=&quot;Quartz2D绘图–拼接路径函数&quot;&gt;&lt;/a&gt;Quartz2D绘图–拼接路径函数&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 新建一个起点&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void CGContextMoveToPoint(CGContextRef c, CGFloat x, CGFloat y)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 添加新的线段到某个点(到某个点的一条线)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void CGContextAddLineToPoint(CGContextRef c, CGFloat x, CGFloat y)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 添加一个矩形&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void CGContextAddRect(CGContextRef c, CGRect rect)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 添加一个椭圆&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void CGContextAddEllipseInRect(CGContextRef context, CGRect rect)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 添加一个圆弧&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void CGContextAddArc(CGContextRef c, CGFloat x, CGFloat y, CGFloat radius, CGFloat startAngle, CGFloat endAngle, int clockwise)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;Quartz2D绘图–绘制路径函数&quot;&gt;&lt;a href=&quot;#Quartz2D绘图–绘制路径函数&quot; class=&quot;headerlink&quot; title=&quot;Quartz2D绘图–绘制路径函数&quot;&gt;&lt;/a&gt;Quartz2D绘图–绘制路径函数&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// Mode参数决定绘制的模式&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void CGContextDrawPath(CGContextRef c, CGPathDrawingMode mode)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 绘制空心路径&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void CGContextStrokePath(CGContextRef c)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 绘制实心路径&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void CGContextFillPath(CGContextRef c)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;提示：一般以CGContextDraw、CGContextStroke、CGContextFill开头的函数，都是用来绘制路径的&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;Quartz2D绘图–transform属性&quot;&gt;&lt;a href=&quot;#Quartz2D绘图–transform属性&quot; class=&quot;headerlink&quot; title=&quot;Quartz2D绘图–transform属性&quot;&gt;&lt;/a&gt;Quartz2D绘图–transform属性&lt;/h2&gt;&lt;p&gt;1.利用transform属性可以修改控件的位移（位置）、缩放、旋转&lt;/p&gt;
+&lt;p&gt;2.创建一个transform属性&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGAffineTransform CGAffineTransformMakeTranslation(CGFloat tx,CGFloat ty);位移&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGAffineTransform CGAffineTransformMakeScale(CGFloat sx,CGFloat sy);缩放&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGAffineTransform CGAffineTransformMakeRotation(CGFloat angel);旋转&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;注意：这里angle是弧度制，不是角度制，就用用pi值表示，一个pi就是180度；45度就是4分之1 pi；在代码中用M_PI_4表示&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;3.在某个transform的基础上进行叠加；&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGAffineTransform CGAffineTransformTranslation(CGAffineTransform,CGFloat tx,CGFloat ty);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGAffineTransform CGAffineTransformScale(CGAffineTransform,CGFloat sx,CGFloat sy);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGAffineTransform CGAffineTransformRotation(CGAffineTransform ,CGFloat angel);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;注意这里的方法比上面少了Make在里面；&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;4.transform常用的3个方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;对控件进行缩放： CGAffineTransformScale&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;对控件进行位移； CGAffineTransformTranslate&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;对控件进行旋转； CGAffineTransformRotate&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Quartz2D绘图–CGRect-CGPoint-CGSize-属性&quot;&gt;&lt;a href=&quot;#Quartz2D绘图–CGRect-CGPoint-CGSize-属性&quot; class=&quot;headerlink&quot; title=&quot;Quartz2D绘图–CGRect \ CGPoint \ CGSize 属性&quot;&gt;&lt;/a&gt;Quartz2D绘图–CGRect \ CGPoint \ CGSize 属性&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;CGRect=NSRect&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;CGPoint=NSPoint&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;CGSize=NSSize 修改控件的位置和尺寸&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修改控件位置的有: frame.origin 、 center&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;修改控件尺寸的有: frame.size 、 bounds.size&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;1.CGRect、NSRect&lt;/p&gt;
+&lt;p&gt;1) NSRect\CGRect是NSPoint\CGPoint和NSSize\CGSize的一个组合；表示的是坐标和尺寸； NSRect(NSPoint NSSize)、CGRect(CGPoint CGSize)&lt;/p&gt;
+&lt;p&gt;2) 可以通过CGRectMake和NSMakeRect方法创建CGRect和NSRect对象；&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGRect rect = CGRectMake(0,0,100,50); // 表示原点的位置和元素上下的尺寸；&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;3) 通过结构体成员变量打印CGRect的成员数值：CGRect rect = CGRectMake(0,0,100,50);&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSLog(@&amp;quot;x=%f,y=%f,width=%f,height=%f&amp;quot;,rect.origin.x,rect.origin.y,rect.size.width,rect.size.height);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;4) 创建CGRect对象的其他方式：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGRect rect = &amp;#123;&amp;#123;0,0&amp;#125;,&amp;#123;100,50&amp;#125;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;或者&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGRect rect = &amp;#123;point1,size1&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;5) 比较两个CGRect是否相等：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGRectEqualToRect(CGRect rect1,CGRect rect2);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;6) 判断CGPoint中是否在CGRect的范围中：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;BOOL b = CGRectContainsPoint(CGRect rect,CGPoint point);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//  这个方法包含在CoreGraphics framework框架中,所以需要引入这个框架； #import &amp;lt;CoreGraphics/CoreGraphics.h&amp;gt;;注意： 方法的声明都在Foundation框架里面但是定义都在CoreGraphics的框架里面&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;7) 将结构体转换为字符串的操作：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSString *str = NSStringFromPoint(point1);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSString *str = NSStringFromSize(size1);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSString *str = NSStringFromRect(rect1);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;2.CGPoint、NSPoint&lt;/p&gt;
+&lt;p&gt;1) 本质上是表示点元素坐标位置的结构体；其中CGPoint比较常用，因为它具有跨平台性；&lt;/p&gt;
+&lt;p&gt;2) 创建对象的方法有：NSMakePoint 、 CGPointMake;开发中CGPointMake比较常用；&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSPoint p2 = NSMakePoint(20,20)/CGPointMake(20,20);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;3) 比较两个点是否相同：BOOL b = CGPoingEqualToPoint(CGPointMake(10,10),CGPointMake(10,10));&lt;/p&gt;
+&lt;p&gt;4) 注意：在iOS开发中，原点的坐标是在左上角；使用CGPoingZero可以表示；相当于CGPoingMake(0,0);&lt;/p&gt;
+&lt;p&gt;3.CGSize、NSSize&lt;/p&gt;
+&lt;p&gt;1) 表示用户界面元素的尺寸；&lt;/p&gt;
+&lt;p&gt;2) 创建对象的方法是：CGSizeMake和NSMakeSize方法；开发中主要使用CGSizeMake;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSSize s1/CGSize s1= CGSizeMake(100,50)/NSMakeSize(100,50);//左面数值是宽，右面是高&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;3) 比较两个元素尺寸是否相等：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;BOOL a = CGSizeEqualToSize(CGSize size1,CGSize size2);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;4)  CGSizeZero表示CGSizeMake(0,0),表示这个对象的上下尺寸都是0。&lt;/p&gt;
+&lt;h2 id=&quot;Quartz2D绘图–简单用法&quot;&gt;&lt;a href=&quot;#Quartz2D绘图–简单用法&quot; class=&quot;headerlink&quot; title=&quot;Quartz2D绘图–简单用法&quot;&gt;&lt;/a&gt;Quartz2D绘图–简单用法&lt;/h2&gt;&lt;p&gt;1.创建一个点&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// Points：指定一个点成为current point，Quartz会跟踪current point一般执行完一个相关函数后，current point都会相应的改变.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void CGContextMoveToPoint (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGContextRef c,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat x,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat y&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;2.创建一条线&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// Lines：相关的几个函数，创建一条直线，从current point到 (x,y)，然后current point会变成(x,y)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void CGContextAddLineToPoint (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGContextRef c,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat x,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat y&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;3.创建多条线&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 创建多条直线，比如points有两个点，那么会画两条直线 从current point到 (x1,y1),然后是(x1,y1)到(x2,y2)，然后current point会变成points中的最后一个点&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void CGContextAddLines (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGContextRef c,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;const CGPoint points[],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;size_t count&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;4.画一条圆弧&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;两种方法创建弧度&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 第一种: 假如想创建一个完整的圆圈，那么 开始弧度就是0 结束弧度是 2pi， 因为圆周长是 2pir.最后，函数执行完后，current point就被重置为(x,y).还有一点要注意的是，假如当前path已经存在一个subpath，那么这个函数执行的另外一个效果是会有一条直线，从current point到弧的起点&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void CGContextAddArc (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGContextRef c,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat x,             //圆心的x坐标&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat y,    //圆心的x坐标&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat radius,   //圆的半径&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat startAngle,    //开始弧度&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat endAngle,   //结束弧度&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;int clockwise          //0表示顺时针，1表示逆时针&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 第二种: 首先画两条线，这两条线分别是 current point to (x1,y1) 和(x1,y1) to (x2,y2).这样就是出现一个以(x1,y1)为顶点的两条射线，然后定义半径长度，这个半径是垂直于两条射线的，这样就能决定一个圆了，更好的理解看下图，不过个人认为下图所标的 tangent point 1的位置是错误的.最后，函数执行完后，current point就被重置为(x2,y2).还有一点要注意的是，假如当前path已经存在一个subpath，那么这个函数执行的另外一个效果是会有一条直线，从current point到(x1,y1)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void CGContextAddArcToPoint (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGContextRef c,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat x1,  //端点1的x坐标&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat y1,  //端点1的y坐标&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat x2,  //端点2的x坐标&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat y2,  //端点2的y坐标&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat radius //半径&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;5.画曲线&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// Curves:画曲线，一般是一条直线，然后定义几个控制点，使直线变弯曲。三次曲线函数;假如第二个控制点（cp2x，cp2y）比（cp1x,cp1y） 更接近current point，那么会形成一个封闭的曲线&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void CGContextAddCurveToPoint (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGContextRef c,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat cp1x, //控制点1 x坐标&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat cp1y, //控制点1 y坐标&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat cp2x, //控制点2 x坐标&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat cp2y, //控制点2 y坐标&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat x,  //直线的终点 x坐标&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat y  //直线的终点 y坐标&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 二次曲线函数;执行完函数貌似current point不会变化，没有具体测试过&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void CGContextAddQuadCurveToPoint (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGContextRef c,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat cpx,  //控制点 x坐标&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat cpy,  //控制点 y坐标&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat x,  //直线的终点 x坐标&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGFloat y  //直线的终点 y坐标&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;6.画圆&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// Ellipses：如果矩形是一个正方形，那么画出来就是一个圆，执行完函数貌似current point不会变化，没有具体测试过&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void CGContextAddEllipseInRect (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGContextRef context,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGRect rect  //一矩形&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;7.画三角形&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// Rectangles&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void CGContextAddRect (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGContextRef c,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGRect rect&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 一次性画出多个矩形：需要注意的是，画矩形有一些特别，current point没有发生变化&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;void CGContextAddRects (&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;CGContextRef c,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;const CGRect rects[],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;size_t count&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;Quartz2D绘图–CALayer&quot;&gt;&lt;a href=&quot;#Quartz2D绘图–CALayer&quot; class=&quot;headerlink&quot; title=&quot;Quartz2D绘图–CALayer&quot;&gt;&lt;/a&gt;Quartz2D绘图–CALayer&lt;/h2&gt;&lt;p&gt;1.CALayer图层的组成&lt;/p&gt;
+&lt;p&gt;1）CAMediaTiming&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;.duration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2）CAAnimation&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;.timing Function&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;.delegate&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;3) CAAnimationGroup&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;.animations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;4) CAPropertyAnimation&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;.keypath&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;5) CABasicAnimation&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;.fromValue&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;.toValue&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;6) CAKeyFramAnimation&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;.Values&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;.Path&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;.KeyTimes&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;7) CATransition&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;.filter&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Quartz2D可以用来做什么？&quot;&gt;&lt;a href=&quot;#Quartz2D可以用来做什么？&quot; class=&quot;headerlink&quot; title=&quot;Quartz2D可以用来做什么？&quot;&gt;&lt;/a&gt;Quartz2D可以用来做什么？&lt;/h2&gt;&lt;p&gt;1.什么是Quartz2D？
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>iOS-Wifi</title>
@@ -1938,48 +2126,6 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;行动：&quot;&gt;&lt;a href=&quot;#行动：&quot; class=&quot;headerlink&quot; title=&quot;行动：&quot;&gt;&lt;/a&gt;行动：&lt;/h3&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>GitHub命令小结</title>
-    <link href="williamliuwen.cn/2016/06/03/GitHub%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93/"/>
-    <id>williamliuwen.cn/2016/06/03/GitHub命令小结/</id>
-    <published>2016-06-03T11:57:34.000Z</published>
-    <updated>2016-06-03T12:00:56.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;如果你是初学者，可以按照步骤来，这是一个记录贴，方便查询代码；&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;初步建立GitHub仓库的一些命令：&quot;&gt;&lt;a href=&quot;#初步建立GitHub仓库的一些命令：&quot; class=&quot;headerlink&quot; title=&quot;初步建立GitHub仓库的一些命令：&quot;&gt;&lt;/a&gt;初步建立GitHub仓库的一些命令：&lt;/h3&gt;&lt;p&gt;touch README.md  // 新建说明文件&lt;br&gt;ssh-keygen -t rsa -C “your_email@youremail.com” // 创建本地的keygen&lt;br&gt;cd ~/.ssh // 进入创建好keygen的文件，用cat id_rsa.pub来查看keygen，然后再把它复制到你的github&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;ssh -T git@github.com // 这个是测试一下连接；&lt;br&gt;git config –global user.name “your name”&lt;br&gt;git config –global user.email “your_email@youremail.com”&lt;br&gt;git init //在当前项目目录中生成本地git管理,并建立一个隐藏.git目录&lt;br&gt;git add . //添加当前目录中的所有文件到索引&lt;br&gt;git commit -m “first commit”  // 提交到本地源码库，并附加提交注释&lt;br&gt;git remote add origin https: // github.com/chape/test.git //添加到远程项目，别名为origin&lt;br&gt;git push -u origin master  // 把本地源码库push到github 别名为origin的远程项目中，确认提交&lt;/p&gt;
-&lt;h3 id=&quot;每次更改完本地仓库之后，使用更新语句提交到远程仓库：&quot;&gt;&lt;a href=&quot;#每次更改完本地仓库之后，使用更新语句提交到远程仓库：&quot; class=&quot;headerlink&quot; title=&quot;每次更改完本地仓库之后，使用更新语句提交到远程仓库：&quot;&gt;&lt;/a&gt;每次更改完本地仓库之后，使用更新语句提交到远程仓库：&lt;/h3&gt;&lt;p&gt;cd /到你要更新的目录下&lt;/p&gt;
-&lt;p&gt;git add .&lt;/p&gt;
-&lt;p&gt;git commit -m “update test” //检测文件改动并附加提交注释&lt;/p&gt;
-&lt;p&gt;git push -u origin master //提交修改到项目主线&lt;/p&gt;
-&lt;h3 id=&quot;如果你在家又更新代码；回到公司的本地代码库没有更新到最新，就需要从远程仓库pull下最新的代码到本地：&quot;&gt;&lt;a href=&quot;#如果你在家又更新代码；回到公司的本地代码库没有更新到最新，就需要从远程仓库pull下最新的代码到本地：&quot; class=&quot;headerlink&quot; title=&quot;如果你在家又更新代码；回到公司的本地代码库没有更新到最新，就需要从远程仓库pull下最新的代码到本地：&quot;&gt;&lt;/a&gt;如果你在家又更新代码；回到公司的本地代码库没有更新到最新，就需要从远程仓库pull下最新的代码到本地：&lt;/h3&gt;&lt;p&gt;git pull origin master //从Github上pull到本地源码库&lt;/p&gt;
-&lt;h3 id=&quot;后期进阶用到的GitHub命令：&quot;&gt;&lt;a href=&quot;#后期进阶用到的GitHub命令：&quot; class=&quot;headerlink&quot; title=&quot;后期进阶用到的GitHub命令：&quot;&gt;&lt;/a&gt;后期进阶用到的GitHub命令：&lt;/h3&gt;&lt;p&gt;git push origin master //把本地源码库push到Github&lt;br&gt;git config –list //查看配置信息&lt;br&gt;git status //查看项目状态信息&lt;br&gt;git branch //查看项目分支&lt;br&gt;git checkout -b host//添加一个名为host的分支&lt;br&gt;git checkout master //切换到主干&lt;br&gt;git merge host //合并分支host到主干&lt;br&gt;git branch -d host //删除分支host&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;持续更新,逐步完善…&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&quot;最近更新说明：&quot;&gt;&lt;a href=&quot;#最近更新说明：&quot; class=&quot;headerlink&quot; title=&quot;最近更新说明：&quot;&gt;&lt;/a&gt;最近更新说明：&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;2015.10.16 终于知道了怎么同步远程仓库到本地。&lt;/li&gt;
-&lt;li&gt;2016.06.03 把文章迁移过来&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;/pic/0603.jpg&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;桃之夭夭，灼灼其华，之子于归，宜其室家。 —— 《诗经‧周南‧桃夭》&lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;如果你是初学者，可以按照步骤来，这是一个记录贴，方便查询代码；&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;初步建立GitHub仓库的一些命令：&quot;&gt;&lt;a href=&quot;#初步建立GitHub仓库的一些命令：&quot; class=&quot;headerlink&quot; title=&quot;初步建立GitHub仓库的一些命令：&quot;&gt;&lt;/a&gt;初步建立GitHub仓库的一些命令：&lt;/h3&gt;&lt;p&gt;touch README.md  // 新建说明文件&lt;br&gt;ssh-keygen -t rsa -C “your_email@youremail.com” // 创建本地的keygen&lt;br&gt;cd ~/.ssh // 进入创建好keygen的文件，用cat id_rsa.pub来查看keygen，然后再把它复制到你的github&lt;/p&gt;
     
     </summary>
     
