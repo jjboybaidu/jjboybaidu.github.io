@@ -126,6 +126,74 @@
 
       <div class="body-wrap">
   
+    <article id="post-iOS-Wifi" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/11/iOS-Wifi/" class="article-date">
+  	<time datetime="2016-08-11T12:45:03.000Z" itemprop="datePublished">2016-08-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/11/iOS-Wifi/">iOS-Wifi</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Wifi介绍"><a href="#Wifi介绍" class="headerlink" title="Wifi介绍"></a>Wifi介绍</h2><p>1.是一个创建于IEEE 802.11标准的无线局域网技术</p>
+<p>2.利用wifi连接的设备处在一个局域网内，通过IP地址互相通信</p>
+<p>3.wifi能上网，是因为提供wifi的路由器具有路由网关的功能</p>
+<p>4.Ad hoc，Wi-Fi无线通信也可以不需通过接入点，直接从一台电脑传出到另一台。</p>
+<p>5.IOS下的Ad Hoc是指在不发布到App Store的情况下，可以将发布状态下的App装在指定的一些真机上进行测试，但是这里指定的设备数量是有限的（99台）是解决如何在不提交app应用的情况下，使用ad-hoc模式来验证消息推送(push notifications).</p>
+<p>6.Ad Hoc Distribution: 针对测试设备, 每个应用不能发不到超过100个设备上,发布前需要将每个设备的唯一编码打包进去</p>
+<p>7.Wi-Fi的设置至少需要一个接入点（Access Point，AP）和一个或一个以上的客户端用户（client）。</p>
+<p>8.无线AP每100ms将SSID（Service Set Identifier）经由beacons（信号台）数据包广播一次，beacons数据包的传输速率是1 Mbit/s，并且长度相当的短，所以这个广播动作对网络性能的影响不大。</p>
+<p>9.因为Wi-Fi规定的最低传输速率是1 Mbit/s，所以确保所有的Wi-Fi client端都能收到这个SSID广播数据包，client可以借此决定是否要和这一个SSID的AP连接。</p>
+<p>10.用户可以设置要连接到哪一个SSID。Wi-Fi系统开放对客户端的连接并支持漫游，这就是Wi-Fi的好处。但亦意味着，一个无线适配器有可能在性能上优于其他的适配器。由于Wi-Fi通过空气传送信号，所以和非交换以太网路有相同的特点。</p>
+<p>11.近两年，出现一种WIFI over cable的新方案。此方案属于EOC（ethernet over cable）中的一种技术。通过将2.4G wifi射频降频后在cable中传输。此种方案已经在中国小范围内测试商用。</p>
+<h2 id="Wifi在智能家居上的应用"><a href="#Wifi在智能家居上的应用" class="headerlink" title="Wifi在智能家居上的应用"></a>Wifi在智能家居上的应用</h2><p>1.智能家居接入路由。手机接入同一个路由，这是前提。然后 手机和家居分别上报自己接入路由的bssid 和ssid ，由服务器进行匹配.</p>
+<p>2.实际上bssid 就是mac地址，这玩意儿不会重复。ssid 就是名称，这样经服务器匹配之后，下发给手机，然后显示同一路由下的接入的目标设备，并把设备的ip以及相关信息比如设备名下发给手机端显示</p>
+<p>3.手机—–路由器——智能设备</p>
+<p>4.iOS设备间可以使用AirDrop (UIActivityViewController类)</p>
+<p>5.MultipeerConnectivity 框架，距离较近的Apple设备（iMac/iPad/iPhone）之间可基于蓝牙和WiFi（P2P WiFi）技术进行发现和连接实现近场通信</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-iOS-Instruments" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -426,58 +494,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">__weak __typeof(self)weakSelf = self;</span><br><span class="line">[self executeBlock:^(NSData *data, NSError *error) &#123;</span><br><span class="line">[weakSelf doSomethingWithData:data];</span><br><span class="line">[weakSelf doSomethingWithData:data];</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.weakSelf和strongSelf的选择是：如果block不是属性则使用self；是属性但block中调用单个self的方法时用weakSelf；多个方法用strongSelf</p>
 
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-iOS-Notification" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/09/iOS-Notification/" class="article-date">
-  	<time datetime="2016-08-08T22:01:34.000Z" itemprop="datePublished">2016-08-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/09/iOS-Notification/">iOS-Notification</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
       
     </div>
     

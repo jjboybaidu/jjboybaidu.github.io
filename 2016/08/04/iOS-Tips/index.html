@@ -14,7 +14,7 @@ Tip2 设置与状态栏间距（没有导航栏）123456If you are doing thins p
 <meta property="og:site_name" content="太阳在的地方">
 <meta property="og:description" content="Tip1 隐藏状态栏1234- (BOOL)prefersStatusBarHidden&amp;#123;    return  YES;&amp;#125;
 Tip2 设置与状态栏间距（没有导航栏）123456If you are doing thins programatically and are using a UITableViewController without a UINavigationCo">
-<meta property="og:updated_time" content="2016-08-11T11:35:34.000Z">
+<meta property="og:updated_time" content="2016-08-11T12:44:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS-Tips">
 <meta name="twitter:description" content="Tip1 隐藏状态栏1234- (BOOL)prefersStatusBarHidden&amp;#123;    return  YES;&amp;#125;
@@ -242,7 +242,62 @@ Tip2 设置与状态栏间距（没有导航栏）123456If you are doing thins p
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">po [[[UIWindow keyWindow] rootViewController] _printHierarchy]</span><br></pre></td></tr></table></figure>
 <h6 id="Tip28-将NSLog打印信息输出到手机上"><a href="#Tip28-将NSLog打印信息输出到手机上" class="headerlink" title="Tip28 将NSLog打印信息输出到手机上"></a>Tip28 将NSLog打印信息输出到手机上</h6><p>1.当使用NSLog的时候，就使用printLogScreen方法输出日志到手机上；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// textView是放在屏幕上的输出日志控件；</span><br><span class="line"></span><br><span class="line">- (void)printLogScreen:(NSString *)string&#123;</span><br><span class="line">[self.textView setText:[NSString stringWithFormat:@&quot;来自系统打印日志：%@&quot;,string]];</span><br><span class="line">count++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="Tip29-获取手机已经连接的wifi列表"><a href="#Tip29-获取手机已经连接的wifi列表" class="headerlink" title="Tip29 获取手机已经连接的wifi列表"></a>Tip29 获取手机已经连接的wifi列表</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#import &lt;SystemConfiguration/CaptiveNetwork.h&gt;</span><br><span class="line"></span><br><span class="line">- (id)fetchSSIDInfo &#123;</span><br><span class="line">NSArray *ifs = (__bridge_transfer id)CNCopySupportedInterfaces();</span><br><span class="line">NSLog(@&quot;Supported interfaces: %@&quot;, ifs);</span><br><span class="line">id info = nil;</span><br><span class="line">for (NSString *ifnam in ifs) &#123;</span><br><span class="line">info = (__bridge_transfer id)CNCopyCurrentNetworkInfo((__bridge CFStringRef)ifnam);</span><br><span class="line">NSLog(@&quot;%@ =&gt; %@&quot;, ifnam, info);</span><br><span class="line">if (info &amp;&amp; [info count]) &#123; break; &#125;</span><br><span class="line">&#125;</span><br><span class="line">return info;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="Tip30-iOS应用跳转到设置界面"><a href="#Tip30-iOS应用跳转到设置界面" class="headerlink" title="Tip30 iOS应用跳转到设置界面"></a>Tip30 iOS应用跳转到设置界面</h6><p>1.经典步骤: 以跳到设置wifi界面为例</p>
+<ul>
+<li><p>在项目中的info.plist中，添加 URL types</p>
+</li>
+<li><p>并设置一项URL Schemes为prefs（如果没有URL Schemes，就添加一个，在URL Schemes里面在添加一个items，在items的string里面填入prefs）</p>
+</li>
+<li><p>在指定要跳转到设置界面的地方写下面的代码：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">NSURL *url = [NSURL URLWithString:@&quot;prefs:root=WIFI&quot;];</span><br><span class="line">if ([[UIApplication sharedApplication] canOpenURL:url])&#123;</span><br><span class="line">[[UIApplication sharedApplication] openURL:url];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.iOS应用跳转到设置界面URL Scheme参考</p>
+<p>About                  — prefs:root=General&amp;path=About</p>
+<p>Accessibility          — prefs:root=General&amp;path=ACCESSIBILITY</p>
+<p>Airplane Mode On       — prefs:root=AIRPLANE_MODE</p>
+<p>Auto-Lock              — prefs:root=General&amp;path=AUTOLOCK</p>
+<p>Brightness             — prefs:root=Brightness</p>
+<p>Bluetooth              — prefs:root=General&amp;path=Bluetooth</p>
+<p>Date &amp; Time            — prefs:root=General&amp;path=DATE_AND_TIME</p>
+<p>FaceTime               — prefs:root=FACETIME</p>
+<p>General                — prefs:root=General</p>
+<p>Keyboard               — prefs:root=General&amp;path=Keyboard</p>
+<p>iCloud                 — prefs:root=CASTLE</p>
+<p>iCloud Storage &amp; Backup      — prefs:root=CASTLE&amp;path=STORAGE_AND_BACKUP</p>
+<p>International           — prefs:root=General&amp;path=INTERNATIONAL</p>
+<p>Location Services       — prefs:root=LOCATION_SERVICES</p>
+<p>Music                   — prefs:root=MUSIC</p>
+<p>Music Equalizer         — prefs:root=MUSIC&amp;path=EQ</p>
+<p>Music Volume Limit      — prefs:root=MUSIC&amp;path=VolumeLimit</p>
+<p>Network                 — prefs:root=General&amp;path=Network</p>
+<p>Nike + iPod             — prefs:root=NIKE_PLUS_IPOD</p>
+<p>Notes                   — prefs:root=NOTES</p>
+<p>Notification            — prefs:root=NOTIFICATIONS_ID</p>
+<p>Phone                   — prefs:root=Phone</p>
+<p>Photos                  — prefs:root=Photos</p>
+<p>Profile                 — prefs:root=General&amp;path=ManagedConfigurationList</p>
+<p>Reset                   — prefs:root=General&amp;path=Reset</p>
+<p>Safari                  — prefs:root=Safari</p>
+<p>Siri                    — prefs:root=General&amp;path=Assistant</p>
+<p>Sounds                  — prefs:root=Sounds</p>
+<p>Software Update         — prefs:root=General&amp;path=SOFTWARE_UPDATE_LINK</p>
+<p>Store                   — prefs:root=STORE</p>
+<p>Twitter                 — prefs:root=TWITTER</p>
+<p>Usage                   — prefs:root=General&amp;path=USAGE</p>
+<p>VPN                     — prefs:root=General&amp;path=Network/VPN</p>
+<p>Wallpaper               — prefs:root=Wallpaper</p>
+<p>Location                — prefs:root=LOCATION_SERVICES</p>
 <h6 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h6><p>1.<a href="http://casatwy.com/shi-yong-lldbdiao-shi-cheng-xu.html" target="_blank" rel="external">http://casatwy.com/shi-yong-lldbdiao-shi-cheng-xu.html</a></p>
+<p>2.<a href="http://00red.com/blog/2015/01/14/teacher-wifi-solution/" target="_blank" rel="external">http://00red.com/blog/2015/01/14/teacher-wifi-solution/</a></p>
+<p>3.<a href="http://www.superqq.com/blog/2015/11/30/jump-to-setting-wifi/" target="_blank" rel="external">http://www.superqq.com/blog/2015/11/30/jump-to-setting-wifi/</a> 从应用跳到wifi设置</p>
+<p>4.<a href="http://www.jianshu.com/p/19602f48309b" target="_blank" rel="external">http://www.jianshu.com/p/19602f48309b</a></p>
+<p>5.<a href="http://worldligang.baijia.baidu.com/article/255351" target="_blank" rel="external">http://worldligang.baijia.baidu.com/article/255351</a></p>
+<p>6.<a href="http://blog.csdn.net/xyt8023y/article/details/50365140" target="_blank" rel="external">http://blog.csdn.net/xyt8023y/article/details/50365140</a></p>
+<p>7.<a href="https://github.com/devinshively/wifiAssociate" target="_blank" rel="external">https://github.com/devinshively/wifiAssociate</a> 越狱设备，通过ssid和password连接设备</p>
+<p>8.<a href="https://www.douban.com/note/293551961/" target="_blank" rel="external">https://www.douban.com/note/293551961/</a> wifi私有api</p>
+<p>9.<a href="http://www.ppios.com/cydia-tweak-thor-automatically-turn-on-wifi.html//" target="_blank" rel="external">http://www.ppios.com/cydia-tweak-thor-automatically-turn-on-wifi.html//</a> 打开应用wifi自动打开</p>
 
       
     </div>

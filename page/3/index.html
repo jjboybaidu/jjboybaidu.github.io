@@ -126,6 +126,72 @@
 
       <div class="body-wrap">
   
+    <article id="post-iOS规范" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/03/iOS规范/" class="article-date">
+  	<time datetime="2016-08-03T13:22:13.000Z" itemprop="datePublished">2016-08-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/03/iOS规范/">iOS规范</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>1.iOS命名原则</p>
+<ul>
+<li>可读性高、可复用、易维护、可扩展</li>
+<li>防止命名冲突(通过加前缀来保证)</li>
+<li>每个模块都要加上自己的前缀, 前缀在编程接口中非常重要, 可以区分软件的功能范畴并防止不同文件或者类之间命名发生冲突, 比如相册模块(PhotoGallery)的代码都以PG作为前缀: PGAlbumViewController, PGDataManager.</li>
+<li>可扩展则是要求写代码时要考虑后面的扩展需求, 这个属于架构层面的东东, 利用对应的设计模式来保证</li>
+</ul>
+<p>2.iOS常量命令</p>
+<p>1）对于常量的命名最好在前面加上字母k作为标记. 如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">static const NSTimeInterval kAnimationDuration = 0.3;</span><br></pre></td></tr></table></figure></p>
+<p>2）定义作为NSDictionary或者Notification等的Key值字符串时加上const关键字, 以防止被修改. 如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *const UIApplicationDidEnterBackgroundNotification</span><br></pre></td></tr></table></figure></p>
+<p>3）若常量作用域超出编译单元(实现文件), 需要在类外可见时, 使用extern关键字, 并加上该类名作为前缀. 如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extern NSString *const PGThumbnailSize</span><br></pre></td></tr></table></figure></p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/03/iOS规范/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-iOS报错" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -347,71 +413,6 @@
       
       
 
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-iOS-Location" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/31/iOS-Location/" class="article-date">
-  	<time datetime="2016-07-31T03:07:55.000Z" itemprop="datePublished">2016-07-31</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/31/iOS-Location/">iOS-Location</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-Location常识？"><a href="#1-Location常识？" class="headerlink" title="1.Location常识？"></a>1.Location常识？</h2><p>1)基于GPS/基站/wifi定位</p>
-<p>3种区别是：iOS不像Android系统在定位服务编程时，可以指定采用哪种途径进行定位。iOS的API把底层这些细节屏蔽掉了，开发人员和用户并不知道现在设备是采用哪种方式进行定位的，iOS系统会根据设备的情况和周围的环境，采用一套最佳的解决方案。这个方案是这样的，如果能够接收GPS信息，那么设备优先采用GPS定位，否则采用Wifi或蜂窝基站定位，在Wifi和蜂窝基站之间优先使用Wifi，如果无法连接Wifi才使用蜂窝基站定位。总体来说GPS定位优点是准确、覆盖面广阔，缺点是不能被遮挡（例如：在建筑物里面收不到GPS卫星信号）、GPS开启后比较费电。蜂窝基站不仅误差比较大，而且会耗费用户流量费。而Wifi定位是最经济实惠的。</p>
-<p>2)如果使用基站进行定位,必须要求设备有电话模块</p>
-<ul>
-<li><p>2.1 当app被完全关闭时,也可以接收到位置通知,并让app进入到后台处理 </p>
-</li>
-<li><p>2.2 定位精度相比于上面,精度不大,所以耗电小,而且定位更新频率依据基站密度而定</p>
-</li>
-</ul>
-<p>3)必须开启手机位置服务</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/07/31/iOS-Location/#more">more >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>

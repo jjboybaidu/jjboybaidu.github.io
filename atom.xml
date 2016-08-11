@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="williamliuwen.cn/"/>
-  <updated>2016-08-11T11:38:02.000Z</updated>
+  <updated>2016-08-11T12:46:58.000Z</updated>
   <id>williamliuwen.cn/</id>
   
   <author>
@@ -14,6 +14,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS-Wifi</title>
+    <link href="williamliuwen.cn/2016/08/11/iOS-Wifi/"/>
+    <id>williamliuwen.cn/2016/08/11/iOS-Wifi/</id>
+    <published>2016-08-11T12:45:03.000Z</published>
+    <updated>2016-08-11T12:46:58.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;Wifi介绍&quot;&gt;&lt;a href=&quot;#Wifi介绍&quot; class=&quot;headerlink&quot; title=&quot;Wifi介绍&quot;&gt;&lt;/a&gt;Wifi介绍&lt;/h2&gt;&lt;p&gt;1.是一个创建于IEEE 802.11标准的无线局域网技术&lt;/p&gt;
+&lt;p&gt;2.利用wifi连接的设备处在一个局域网内，通过IP地址互相通信&lt;/p&gt;
+&lt;p&gt;3.wifi能上网，是因为提供wifi的路由器具有路由网关的功能&lt;/p&gt;
+&lt;p&gt;4.Ad hoc，Wi-Fi无线通信也可以不需通过接入点，直接从一台电脑传出到另一台。&lt;/p&gt;
+&lt;p&gt;5.IOS下的Ad Hoc是指在不发布到App Store的情况下，可以将发布状态下的App装在指定的一些真机上进行测试，但是这里指定的设备数量是有限的（99台）是解决如何在不提交app应用的情况下，使用ad-hoc模式来验证消息推送(push notifications).&lt;/p&gt;
+&lt;p&gt;6.Ad Hoc Distribution: 针对测试设备, 每个应用不能发不到超过100个设备上,发布前需要将每个设备的唯一编码打包进去&lt;/p&gt;
+&lt;p&gt;7.Wi-Fi的设置至少需要一个接入点（Access Point，AP）和一个或一个以上的客户端用户（client）。&lt;/p&gt;
+&lt;p&gt;8.无线AP每100ms将SSID（Service Set Identifier）经由beacons（信号台）数据包广播一次，beacons数据包的传输速率是1 Mbit/s，并且长度相当的短，所以这个广播动作对网络性能的影响不大。&lt;/p&gt;
+&lt;p&gt;9.因为Wi-Fi规定的最低传输速率是1 Mbit/s，所以确保所有的Wi-Fi client端都能收到这个SSID广播数据包，client可以借此决定是否要和这一个SSID的AP连接。&lt;/p&gt;
+&lt;p&gt;10.用户可以设置要连接到哪一个SSID。Wi-Fi系统开放对客户端的连接并支持漫游，这就是Wi-Fi的好处。但亦意味着，一个无线适配器有可能在性能上优于其他的适配器。由于Wi-Fi通过空气传送信号，所以和非交换以太网路有相同的特点。&lt;/p&gt;
+&lt;p&gt;11.近两年，出现一种WIFI over cable的新方案。此方案属于EOC（ethernet over cable）中的一种技术。通过将2.4G wifi射频降频后在cable中传输。此种方案已经在中国小范围内测试商用。&lt;/p&gt;
+&lt;h2 id=&quot;Wifi在智能家居上的应用&quot;&gt;&lt;a href=&quot;#Wifi在智能家居上的应用&quot; class=&quot;headerlink&quot; title=&quot;Wifi在智能家居上的应用&quot;&gt;&lt;/a&gt;Wifi在智能家居上的应用&lt;/h2&gt;&lt;p&gt;1.智能家居接入路由。手机接入同一个路由，这是前提。然后 手机和家居分别上报自己接入路由的bssid 和ssid ，由服务器进行匹配.&lt;/p&gt;
+&lt;p&gt;2.实际上bssid 就是mac地址，这玩意儿不会重复。ssid 就是名称，这样经服务器匹配之后，下发给手机，然后显示同一路由下的接入的目标设备，并把设备的ip以及相关信息比如设备名下发给手机端显示&lt;/p&gt;
+&lt;p&gt;3.手机—–路由器——智能设备&lt;/p&gt;
+&lt;p&gt;4.iOS设备间可以使用AirDrop (UIActivityViewController类)&lt;/p&gt;
+&lt;p&gt;5.MultipeerConnectivity 框架，距离较近的Apple设备（iMac/iPad/iPhone）之间可基于蓝牙和WiFi（P2P WiFi）技术进行发现和连接实现近场通信&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Wifi介绍&quot;&gt;&lt;a href=&quot;#Wifi介绍&quot; class=&quot;headerlink&quot; title=&quot;Wifi介绍&quot;&gt;&lt;/a&gt;Wifi介绍&lt;/h2&gt;&lt;p&gt;1.是一个创建于IEEE 802.11标准的无线局域网技术&lt;/p&gt;
+&lt;p&gt;2.利用wifi连接的设备处在一个
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>iOS-Instruments</title>
@@ -484,7 +519,7 @@
     <link href="williamliuwen.cn/2016/08/04/iOS-Tips/"/>
     <id>williamliuwen.cn/2016/08/04/iOS-Tips/</id>
     <published>2016-08-04T11:53:15.000Z</published>
-    <updated>2016-08-11T11:35:34.000Z</updated>
+    <updated>2016-08-11T12:44:28.000Z</updated>
     
     <content type="html">&lt;h6 id=&quot;Tip1-隐藏状态栏&quot;&gt;&lt;a href=&quot;#Tip1-隐藏状态栏&quot; class=&quot;headerlink&quot; title=&quot;Tip1 隐藏状态栏&quot;&gt;&lt;/a&gt;Tip1 隐藏状态栏&lt;/h6&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (BOOL)prefersStatusBarHidden&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return  YES;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h6 id=&quot;Tip2-设置与状态栏间距（没有导航栏）&quot;&gt;&lt;a href=&quot;#Tip2-设置与状态栏间距（没有导航栏）&quot; class=&quot;headerlink&quot; title=&quot;Tip2 设置与状态栏间距（没有导航栏）&quot;&gt;&lt;/a&gt;Tip2 设置与状态栏间距（没有导航栏）&lt;/h6&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;If you are doing thins programatically and are using a UITableViewController without a UINavigationController your best bet is to do the following in viewDidLoad:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;The UITableViewController will still scroll behind the status bar but won&amp;apos;t be under it when scrolled to the top.&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;self.tableView.contentInset = UIEdgeInsetsMake(20.0f,0.0f,0.0f,0.0f);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -567,7 +602,62 @@
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;po [[[UIWindow keyWindow] rootViewController] _printHierarchy]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h6 id=&quot;Tip28-将NSLog打印信息输出到手机上&quot;&gt;&lt;a href=&quot;#Tip28-将NSLog打印信息输出到手机上&quot; class=&quot;headerlink&quot; title=&quot;Tip28 将NSLog打印信息输出到手机上&quot;&gt;&lt;/a&gt;Tip28 将NSLog打印信息输出到手机上&lt;/h6&gt;&lt;p&gt;1.当使用NSLog的时候，就使用printLogScreen方法输出日志到手机上；&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// textView是放在屏幕上的输出日志控件；&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (void)printLogScreen:(NSString *)string&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[self.textView setText:[NSString stringWithFormat:@&amp;quot;来自系统打印日志：%@&amp;quot;,string]];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;count++;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h6 id=&quot;Tip29-获取手机已经连接的wifi列表&quot;&gt;&lt;a href=&quot;#Tip29-获取手机已经连接的wifi列表&quot; class=&quot;headerlink&quot; title=&quot;Tip29 获取手机已经连接的wifi列表&quot;&gt;&lt;/a&gt;Tip29 获取手机已经连接的wifi列表&lt;/h6&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;lt;SystemConfiguration/CaptiveNetwork.h&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (id)fetchSSIDInfo &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSArray *ifs = (__bridge_transfer id)CNCopySupportedInterfaces();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSLog(@&amp;quot;Supported interfaces: %@&amp;quot;, ifs);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;id info = nil;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;for (NSString *ifnam in ifs) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;info = (__bridge_transfer id)CNCopyCurrentNetworkInfo((__bridge CFStringRef)ifnam);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSLog(@&amp;quot;%@ =&amp;gt; %@&amp;quot;, ifnam, info);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;if (info &amp;amp;&amp;amp; [info count]) &amp;#123; break; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;return info;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h6 id=&quot;Tip30-iOS应用跳转到设置界面&quot;&gt;&lt;a href=&quot;#Tip30-iOS应用跳转到设置界面&quot; class=&quot;headerlink&quot; title=&quot;Tip30 iOS应用跳转到设置界面&quot;&gt;&lt;/a&gt;Tip30 iOS应用跳转到设置界面&lt;/h6&gt;&lt;p&gt;1.经典步骤: 以跳到设置wifi界面为例&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;在项目中的info.plist中，添加 URL types&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;并设置一项URL Schemes为prefs（如果没有URL Schemes，就添加一个，在URL Schemes里面在添加一个items，在items的string里面填入prefs）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在指定要跳转到设置界面的地方写下面的代码：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSURL *url = [NSURL URLWithString:@&amp;quot;prefs:root=WIFI&amp;quot;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;if ([[UIApplication sharedApplication] canOpenURL:url])&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[[UIApplication sharedApplication] openURL:url];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;2.iOS应用跳转到设置界面URL Scheme参考&lt;/p&gt;
+&lt;p&gt;About                  — prefs:root=General&amp;amp;path=About&lt;/p&gt;
+&lt;p&gt;Accessibility          — prefs:root=General&amp;amp;path=ACCESSIBILITY&lt;/p&gt;
+&lt;p&gt;Airplane Mode On       — prefs:root=AIRPLANE_MODE&lt;/p&gt;
+&lt;p&gt;Auto-Lock              — prefs:root=General&amp;amp;path=AUTOLOCK&lt;/p&gt;
+&lt;p&gt;Brightness             — prefs:root=Brightness&lt;/p&gt;
+&lt;p&gt;Bluetooth              — prefs:root=General&amp;amp;path=Bluetooth&lt;/p&gt;
+&lt;p&gt;Date &amp;amp; Time            — prefs:root=General&amp;amp;path=DATE_AND_TIME&lt;/p&gt;
+&lt;p&gt;FaceTime               — prefs:root=FACETIME&lt;/p&gt;
+&lt;p&gt;General                — prefs:root=General&lt;/p&gt;
+&lt;p&gt;Keyboard               — prefs:root=General&amp;amp;path=Keyboard&lt;/p&gt;
+&lt;p&gt;iCloud                 — prefs:root=CASTLE&lt;/p&gt;
+&lt;p&gt;iCloud Storage &amp;amp; Backup      — prefs:root=CASTLE&amp;amp;path=STORAGE_AND_BACKUP&lt;/p&gt;
+&lt;p&gt;International           — prefs:root=General&amp;amp;path=INTERNATIONAL&lt;/p&gt;
+&lt;p&gt;Location Services       — prefs:root=LOCATION_SERVICES&lt;/p&gt;
+&lt;p&gt;Music                   — prefs:root=MUSIC&lt;/p&gt;
+&lt;p&gt;Music Equalizer         — prefs:root=MUSIC&amp;amp;path=EQ&lt;/p&gt;
+&lt;p&gt;Music Volume Limit      — prefs:root=MUSIC&amp;amp;path=VolumeLimit&lt;/p&gt;
+&lt;p&gt;Network                 — prefs:root=General&amp;amp;path=Network&lt;/p&gt;
+&lt;p&gt;Nike + iPod             — prefs:root=NIKE_PLUS_IPOD&lt;/p&gt;
+&lt;p&gt;Notes                   — prefs:root=NOTES&lt;/p&gt;
+&lt;p&gt;Notification            — prefs:root=NOTIFICATIONS_ID&lt;/p&gt;
+&lt;p&gt;Phone                   — prefs:root=Phone&lt;/p&gt;
+&lt;p&gt;Photos                  — prefs:root=Photos&lt;/p&gt;
+&lt;p&gt;Profile                 — prefs:root=General&amp;amp;path=ManagedConfigurationList&lt;/p&gt;
+&lt;p&gt;Reset                   — prefs:root=General&amp;amp;path=Reset&lt;/p&gt;
+&lt;p&gt;Safari                  — prefs:root=Safari&lt;/p&gt;
+&lt;p&gt;Siri                    — prefs:root=General&amp;amp;path=Assistant&lt;/p&gt;
+&lt;p&gt;Sounds                  — prefs:root=Sounds&lt;/p&gt;
+&lt;p&gt;Software Update         — prefs:root=General&amp;amp;path=SOFTWARE_UPDATE_LINK&lt;/p&gt;
+&lt;p&gt;Store                   — prefs:root=STORE&lt;/p&gt;
+&lt;p&gt;Twitter                 — prefs:root=TWITTER&lt;/p&gt;
+&lt;p&gt;Usage                   — prefs:root=General&amp;amp;path=USAGE&lt;/p&gt;
+&lt;p&gt;VPN                     — prefs:root=General&amp;amp;path=Network/VPN&lt;/p&gt;
+&lt;p&gt;Wallpaper               — prefs:root=Wallpaper&lt;/p&gt;
+&lt;p&gt;Location                — prefs:root=LOCATION_SERVICES&lt;/p&gt;
 &lt;h6 id=&quot;参考链接&quot;&gt;&lt;a href=&quot;#参考链接&quot; class=&quot;headerlink&quot; title=&quot;参考链接&quot;&gt;&lt;/a&gt;参考链接&lt;/h6&gt;&lt;p&gt;1.&lt;a href=&quot;http://casatwy.com/shi-yong-lldbdiao-shi-cheng-xu.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://casatwy.com/shi-yong-lldbdiao-shi-cheng-xu.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2.&lt;a href=&quot;http://00red.com/blog/2015/01/14/teacher-wifi-solution/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://00red.com/blog/2015/01/14/teacher-wifi-solution/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;3.&lt;a href=&quot;http://www.superqq.com/blog/2015/11/30/jump-to-setting-wifi/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.superqq.com/blog/2015/11/30/jump-to-setting-wifi/&lt;/a&gt; 从应用跳到wifi设置&lt;/p&gt;
+&lt;p&gt;4.&lt;a href=&quot;http://www.jianshu.com/p/19602f48309b&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.jianshu.com/p/19602f48309b&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;5.&lt;a href=&quot;http://worldligang.baijia.baidu.com/article/255351&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://worldligang.baijia.baidu.com/article/255351&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;6.&lt;a href=&quot;http://blog.csdn.net/xyt8023y/article/details/50365140&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/xyt8023y/article/details/50365140&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;7.&lt;a href=&quot;https://github.com/devinshively/wifiAssociate&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/devinshively/wifiAssociate&lt;/a&gt; 越狱设备，通过ssid和password连接设备&lt;/p&gt;
+&lt;p&gt;8.&lt;a href=&quot;https://www.douban.com/note/293551961/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.douban.com/note/293551961/&lt;/a&gt; wifi私有api&lt;/p&gt;
+&lt;p&gt;9.&lt;a href=&quot;http://www.ppios.com/cydia-tweak-thor-automatically-turn-on-wifi.html//&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.ppios.com/cydia-tweak-thor-automatically-turn-on-wifi.html//&lt;/a&gt; 打开应用wifi自动打开&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1890,79 +1980,6 @@
 &lt;p&gt;如果你是初学者，可以按照步骤来，这是一个记录贴，方便查询代码；&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;初步建立GitHub仓库的一些命令：&quot;&gt;&lt;a href=&quot;#初步建立GitHub仓库的一些命令：&quot; class=&quot;headerlink&quot; title=&quot;初步建立GitHub仓库的一些命令：&quot;&gt;&lt;/a&gt;初步建立GitHub仓库的一些命令：&lt;/h3&gt;&lt;p&gt;touch README.md  // 新建说明文件&lt;br&gt;ssh-keygen -t rsa -C “your_email@youremail.com” // 创建本地的keygen&lt;br&gt;cd ~/.ssh // 进入创建好keygen的文件，用cat id_rsa.pub来查看keygen，然后再把它复制到你的github&lt;/p&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>衣物极简原则</title>
-    <link href="williamliuwen.cn/2016/06/01/%E8%A1%A3%E7%89%A9%E6%9E%81%E7%AE%80%E5%8E%9F%E5%88%99/"/>
-    <id>williamliuwen.cn/2016/06/01/衣物极简原则/</id>
-    <published>2016-06-01T12:09:33.000Z</published>
-    <updated>2016-06-01T12:15:52.000Z</updated>
-    
-    <content type="html">&lt;h3 id=&quot;每日给自己一句话：超抵抗力最大的路径前进！&quot;&gt;&lt;a href=&quot;#每日给自己一句话：超抵抗力最大的路径前进！&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：超抵抗力最大的路径前进！&quot;&gt;&lt;/a&gt;每日给自己一句话：超抵抗力最大的路径前进！&lt;/h3&gt;&lt;p&gt;转自：豆瓣：Oscar&lt;/p&gt;
-&lt;h4 id=&quot;我的精简心得之一：-衣物精简原则&quot;&gt;&lt;a href=&quot;#我的精简心得之一：-衣物精简原则&quot; class=&quot;headerlink&quot; title=&quot;我的精简心得之一： 衣物精简原则&quot;&gt;&lt;/a&gt;我的精简心得之一： 衣物精简原则&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;有不少人问我是怎么精简我的物品的，有哪些经验或者哪些物品值得推荐。其实在精简的过程中，我确实感受到这里面还是有一定的原则可循的，那就写一篇文字和大家分享。声明：以下文字只是个人总结，没有经过普遍性验证，仅供参考。在精简物品的过程中，个人衣物是重头戏，我们就先来谈谈这个话题。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h4 id=&quot;精简原则：&quot;&gt;&lt;a href=&quot;#精简原则：&quot; class=&quot;headerlink&quot; title=&quot;精简原则：&quot;&gt;&lt;/a&gt;精简原则：&lt;/h4&gt;&lt;p&gt;1、功能性&amp;gt;适合性&amp;gt;个人喜好&lt;br&gt;我们平时在选购物品的时候，经常以个人喜好为主要标准。但是我认为要以功能性优先。比如你有很多喜欢的牛仔裤，但是如果公司要求正装出席某些场合的时候，你是否有合适的服装？&lt;br&gt;在满足功能性的前提下，其次要考虑的是适合性。穿在模特身上好看的衣服，一定适合自己吗？绝大多数情况之下，答案让人沮丧。我们的喜好经常受到媒体潜移默化地引导。最好的办法还是要了解自己的特质，身材比例，体型，肤色，气质，等等。网上有很多这类的电子书，大家可以参阅。&lt;br&gt;最后，在功能性和适合性都得到满足的前提下，我们再去考虑个人喜好。&lt;/p&gt;
-&lt;p&gt;2、 基本款&amp;gt;流行款&lt;br&gt;基本款的另一个名字叫经典。相对于流行款，它的适用范围更广，可搭配程度更高，并且不需要经常升级和更新。基本款的颜色最好选择纯色，相对于花色或多色的衣服，纯色的衣服更加高雅和容易搭配。&lt;/p&gt;
-&lt;p&gt;3、外衣偏深色，内衣偏浅色。&lt;br&gt;投资了经典设计和高质量的基本款之后，衣服升级的频率就会显著地下降。但是在这里要说明，外衣选择深色，即使很长时间之后也不会显得很旧；而内衣则不然，由于是贴身的衣服，应该选择浅色，一旦颜色泛黄显旧就要更新升级，以保证衣物的功能性，防止影响健康。&lt;/p&gt;
-&lt;p&gt;4、选择可以承受范围内最好的。&lt;br&gt;便宜的东西未必不好，但好东西肯定不便宜。从经济学的角度来说，非常容易理解。好的衣服，需要好的设计人员，优质的原材料，高超的制作工艺，等等…这些成本都要分摊到我们购买的价格中。但是，由于适合我们自己的东西不多（因为个人特征的独特性），所以在购买数量小的前提下，我们可以追求那些设计和质量更好的衣服，当然价钱会更高。需要说明的是，我们要鉴别价格高的原因，如果是出于品牌定位的话，我就觉得没有必要了。&lt;/p&gt;
-&lt;p&gt;5、去标签化。&lt;br&gt;我们已经为商品付出了成本，不再需要变成商家的移动广告，我买的是商品本身而不是它的品牌效应。在同等质量的情况下，我会选择没有标签的，或者标签非常小的，或者标签不起眼的品牌。&lt;/p&gt;
-&lt;p&gt;6、精明选择，标准化更替。&lt;br&gt;由于成年之后，我们的特征相对稳定。所以按照上面的原则选择的衣服应该是比较适合自己的，那么接下来就对这些衣物进行标准化，也就是说在衣物需要更替的时候，尽量选择同品牌同款同色的衣服。&lt;/p&gt;
-&lt;h4 id=&quot;我的精简心得之二-内衣篇&quot;&gt;&lt;a href=&quot;#我的精简心得之二-内衣篇&quot; class=&quot;headerlink&quot; title=&quot;我的精简心得之二 内衣篇&quot;&gt;&lt;/a&gt;我的精简心得之二 内衣篇&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;在第一篇心得中，曾经有一条原则涉及到内衣的选择，就是内衣要选择浅色。其他的就看个人的偏好了，而且在这个方面，男生女生的选择差异巨大。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;对于我这样的男生而言，选择相对简单：&lt;/p&gt;
-&lt;p&gt;1、 V领白色短袖打底衫－优衣库 AIRism系列&lt;br&gt;这个主要是温暖季节为衬衣打底，不至于衬衣因为出汗而贴到后背上。另外，穿白衬衣的时候也不至于太透。由于白色打底，会让白衬衣看上去更加洁白。&lt;/p&gt;
-&lt;p&gt;2、V领白色长袖打底衫－优衣库 HEATTECH系列&lt;/p&gt;
-&lt;p&gt;3、白色紧身裤 －HEATTECH系列&lt;br&gt;这两件基本上应对冬季，除非特别冷的天气，平时足够了。&lt;/p&gt;
-&lt;p&gt;4、黑色五指袜 - 优衣库&lt;br&gt;五指袜能够有效保持脚趾间部位的干爽，达到保暖，抑菌的作用，对足部健康非常有益。对于袜子，我只选择黑色，因为百搭。&lt;/p&gt;
-&lt;h4 id=&quot;我的精简心得之三：中衣篇&quot;&gt;&lt;a href=&quot;#我的精简心得之三：中衣篇&quot; class=&quot;headerlink&quot; title=&quot;我的精简心得之三：中衣篇&quot;&gt;&lt;/a&gt;我的精简心得之三：中衣篇&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;选择功能性较强的内衣可以很大程度上削弱中衣的重要性，而中衣的选择则更多地关注百搭。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;1、纯色精致牛津纺衬衣 - 优衣库&lt;br&gt;衬衣主要在工作场合穿着，所以纯色的衬衣更百搭。精致牛津纺面料容易打理，由于我衬衣和衣架一一对应，所以洗过晾干的衬衣也不用叠，直接挂到衣橱里面，没有什么褶皱和折痕，避免了熨烫的麻烦。&lt;/p&gt;
-&lt;p&gt;2、V领浅灰色羊毛衫 - 无印良品&lt;br&gt;灰色是高雅色，也属于百搭系列。和西裤衬衣组合就非常商务，而和牛仔裤搭配就非常休闲。&lt;/p&gt;
-&lt;p&gt;3、Columbia Men’s Expedition Long Sleeve 1/2 Zip Shirt - Black&lt;/p&gt;
-&lt;p&gt;4、Columbia Men’s Extreme Fleece Tight - Black&lt;br&gt;哥伦比亚这一身保暖效果非常好，使用了OMNI-HEAT THERMAL REFLECTIVE技术，能够反射人体自身散发的热量，通过自身的热量循环减少热量损失，最终达到保暖的作用，同时兼顾透气，排汗，速干和抑菌。这个套装对我非常重要，它们使我不借助臃肿的羽绒服轻松度过华北的寒冬。&lt;/p&gt;
-&lt;p&gt;5、浅灰色长袖T恤衫 - 优衣库&lt;br&gt;百搭休闲。&lt;/p&gt;
-&lt;h4 id=&quot;我的精简心得之四：外衣篇&quot;&gt;&lt;a href=&quot;#我的精简心得之四：外衣篇&quot; class=&quot;headerlink&quot; title=&quot;我的精简心得之四：外衣篇&quot;&gt;&lt;/a&gt;我的精简心得之四：外衣篇&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;如果不是意外损坏的话，外衣的使用寿命一般都是很长的，更新换代的频率也非常慢。所以，选择的标准是经典款式。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;1、短款黑色羊绒大衣。&lt;br&gt;即使再极简，我也觉得这件外衣不能少。和西裤搭配，那就是商务着装的代表；和牛仔裤搭配，那就休闲衣着的经典。&lt;/p&gt;
-&lt;p&gt;2、黑色商务套装。&lt;br&gt;其实，炭灰色也许比黑色更经典。不论怎样，西装是功能性第一的服装，不过一套足矣。&lt;/p&gt;
-&lt;p&gt;3、黑色西裤。&lt;br&gt;主要是工作着装。&lt;/p&gt;
-&lt;p&gt;4、牛仔裤。&lt;br&gt;无需赘述，一条就好。&lt;/p&gt;
-&lt;h4 id=&quot;我的精简心得之五-APP管理篇&quot;&gt;&lt;a href=&quot;#我的精简心得之五-APP管理篇&quot; class=&quot;headerlink&quot; title=&quot;我的精简心得之五 APP管理篇&quot;&gt;&lt;/a&gt;我的精简心得之五 APP管理篇&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;现在智能设备大行其道，确实给我们带来了方便，但同时也带来了烦恼。如何找到自己需要的App呢？我也没有灵丹妙药，还是要根据自己的需要不断尝试，去粗取精。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;经过了长时间的体验，我最终选择了这几个App, 和大家分享一下，如果你也一直在寻找这类的App, 不妨体验一下，或者有更好的推荐也可以分享给我。那我就在这里抛个砖引个玉吧。&lt;/p&gt;
-&lt;p&gt;1、Kindle: Mobi格式电子书阅读利器。&lt;/p&gt;
-&lt;p&gt;2、Pocket: 优秀文章一键保存。&lt;/p&gt;
-&lt;p&gt;3、Adobe Reader: PDF格式电子书阅读。&lt;/p&gt;
-&lt;p&gt;4、WeChat: 关闭朋友圈功能，主要用于《逻辑思维》语音推荐和推荐文章阅读。&lt;/p&gt;
-&lt;p&gt;5、WhatsApp: 和国外朋友和同事日常联系。&lt;/p&gt;
-&lt;p&gt;6、 LinkedIn: 商务应用。&lt;/p&gt;
-&lt;p&gt;7、MindNode: 思维的导图工具。&lt;/p&gt;
-&lt;p&gt;8、Evernote: 知识管理工具。&lt;/p&gt;
-&lt;p&gt;9、Eidetic: 记忆增强工具。&lt;/p&gt;
-&lt;p&gt;10、Bible: 电子版圣经。&lt;br&gt;其它日常需要都能够被系统自带App满足。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/pic/0601.jpg&quot;&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;只有小孩知道他们在寻找什么。 —— 《小王子》    &lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;每日给自己一句话：超抵抗力最大的路径前进！&quot;&gt;&lt;a href=&quot;#每日给自己一句话：超抵抗力最大的路径前进！&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：超抵抗力最大的路径前进！&quot;&gt;&lt;/a&gt;每日给自己一句话：超抵抗力最大的路径前进！&lt;/h3&gt;&lt;p&gt;转自：豆瓣：Oscar&lt;/p&gt;
-&lt;h4 id=&quot;我的精简心得之一：-衣物精简原则&quot;&gt;&lt;a href=&quot;#我的精简心得之一：-衣物精简原则&quot; class=&quot;headerlink&quot; title=&quot;我的精简心得之一： 衣物精简原则&quot;&gt;&lt;/a&gt;我的精简心得之一： 衣物精简原则&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;有不少人问我是怎么精简我的物品的，有哪些经验或者哪些物品值得推荐。其实在精简的过程中，我确实感受到这里面还是有一定的原则可循的，那就写一篇文字和大家分享。声明：以下文字只是个人总结，没有经过普遍性验证，仅供参考。在精简物品的过程中，个人衣物是重头戏，我们就先来谈谈这个话题。&lt;/li&gt;
-&lt;/ul&gt;
     
     </summary>
     
