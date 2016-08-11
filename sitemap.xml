@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>williamliuwen.cn/2016/08/09/iOS-RunTime/</loc>
+    
+    <lastmod>2016-08-11T11:40:40.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>williamliuwen.cn/2016/08/11/iOS-NSLog/</loc>
+    
+    <lastmod>2016-08-11T11:39:28.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>williamliuwen.cn/2016/08/11/iOS-Instruments/</loc>
+    
+    <lastmod>2016-08-11T11:38:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>williamliuwen.cn/2016/08/09/iOS-Block/</loc>
+    
+    <lastmod>2016-08-11T11:37:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>williamliuwen.cn/2016/08/04/iOS-Tips/</loc>
+    
+    <lastmod>2016-08-11T11:35:34.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>williamliuwen.cn/2016/07/23/iOS-RunLoop/</loc>
     
     <lastmod>2016-08-10T12:35:41.000Z</lastmod>
@@ -9,30 +44,9 @@
   </url>
   
   <url>
-    <loc>williamliuwen.cn/2016/08/04/iOS-Tips/</loc>
-    
-    <lastmod>2016-08-10T12:33:59.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>williamliuwen.cn/2016/07/31/iOS-Location/</loc>
     
     <lastmod>2016-08-10T12:33:20.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>williamliuwen.cn/2016/08/09/iOS-RunTime/</loc>
-    
-    <lastmod>2016-08-08T22:02:46.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>williamliuwen.cn/2016/08/09/iOS-Block/</loc>
-    
-    <lastmod>2016-08-08T22:02:38.000Z</lastmod>
     
   </url>
   

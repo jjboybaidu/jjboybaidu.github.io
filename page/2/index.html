@@ -126,6 +126,135 @@
 
       <div class="body-wrap">
   
+    <article id="post-SVN-Git" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/08/SVN-Git/" class="article-date">
+  	<time datetime="2016-08-07T22:24:02.000Z" itemprop="datePublished">2016-08-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/08/SVN-Git/">SVN-Git</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="显示和隐藏文件"><a href="#显示和隐藏文件" class="headerlink" title="显示和隐藏文件"></a>显示和隐藏文件</h2><p>1.显示系统隐藏文件命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.finder AppleShowAllFiles -bool true</span><br></pre></td></tr></table></figure>
+<h2 id="为什么要使用Git"><a href="#为什么要使用Git" class="headerlink" title="为什么要使用Git"></a>为什么要使用Git</h2><p>1.Git的常用命令</p>
+<ul>
+<li>git version : 查看电脑GIT的版本</li>
+</ul>
+<p>2.Git工具安装</p>
+<p>1）如果你下载了Xcode，直接检查Git的版本</p>
+<p>2）如果你没有Xcode，直接单独下载Git</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/08/SVN-Git/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-iOS分类-协议-扩展-代理-数据源" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/04/iOS分类-协议-扩展-代理-数据源/" class="article-date">
+  	<time datetime="2016-08-04T12:37:24.000Z" itemprop="datePublished">2016-08-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/04/iOS分类-协议-扩展-代理-数据源/">iOS分类/协议/扩展/代理/数据源</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>1.分类原则</p>
+<ul>
+<li>分类可以访问原类中的成员变量，但是在分类不能添加任何变量。若需要添加变量可以考虑创建子类</li>
+<li>分类中的方法名可以与原类的某个方法名相同（即重载），但是原类的同名方法将失效，不能访问</li>
+<li>通过分类添加的方法是可以被子类继承的</li>
+<li>不必实现分类的所有方法。可以在分类中声明所有的方法，但不实现，在需要的时候再去实现</li>
+</ul>
+<p>2.</p>
+<p>3.</p>
+<p>4.</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/04/iOS分类-协议-扩展-代理-数据源/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-iOS-Tips" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -292,122 +421,6 @@
         <p class="article-more-link">
           <a  href="/2016/08/03/iOS规范/#more">more >></a>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-iOS报错" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/03/iOS报错/" class="article-date">
-  	<time datetime="2016-08-03T13:21:40.000Z" itemprop="datePublished">2016-08-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/03/iOS报错/">iOS报错</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h6 id="报错1-duplicate-symbol-OBJCMETACLASS-类名-in-？？"><a href="#报错1-duplicate-symbol-OBJCMETACLASS-类名-in-？？" class="headerlink" title="报错1 duplicate symbol _OBJCMETACLASS$_类名 in: ？？"></a>报错1 duplicate symbol _OBJC<em>METACLASS</em>$_类名 in: ？？</h6><blockquote>
-<p>思路1 90%都是因为#import了.m文件; 思路2 其他可能是因为项目中存在了2个一样的.m文件</p>
-</blockquote>
-<h6 id="报错2-could-not-inspect-the-application-package-？？"><a href="#报错2-could-not-inspect-the-application-package-？？" class="headerlink" title="报错2 could not inspect the application package ？？"></a>报错2 could not inspect the application package ？？</h6><blockquote>
-<p>思路1 按中Option的时候，进入菜单Product | Clean Build Folder …进行Clean后再运行</p>
-</blockquote>
-<h6 id="报错3-Outlets-cannot-be-connected-to-repeating-content-？？"><a href="#报错3-Outlets-cannot-be-connected-to-repeating-content-？？" class="headerlink" title="报错3 Outlets cannot be connected to repeating content ？？"></a>报错3 Outlets cannot be connected to repeating content ？？</h6><blockquote>
-<p>思路1 直接使用静态cell可以解决</p>
-</blockquote>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/08/03/iOS报错/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-iOS最佳实践" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/03/iOS最佳实践/" class="article-date">
-  	<time datetime="2016-08-03T13:19:56.000Z" itemprop="datePublished">2016-08-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/03/iOS最佳实践/">iOS最佳实践</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
       
       <div class="clearfix"></div>
     </div>
