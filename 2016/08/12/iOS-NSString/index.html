@@ -45,7 +45,7 @@ NSString 删除所有的空格">
 				<h1 class="site-name"><a href="/" title="JJBoy">JJBoy</a></h1>
 				<h2 class="blog-motto">知我者谓我心忧，不知我者谓我何求。</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -61,7 +61,7 @@ NSString 删除所有的空格">
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:williamliuwen.cn">
 					</form>
 					
@@ -84,14 +84,14 @@ NSString 删除所有的空格">
 		<a href="/about" title="JJBoy" target="_blank" itemprop="author">JJBoy</a>
 		
   <p class="article-time">
-    <time datetime="2016-08-12T12:25:49.000Z" itemprop="datePublished"> 发表于 2016-08-12</time>
+    <time datetime="2016-08-12T12:25:49.000Z" itemprop="datePublished"> Published 2016-08-12</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NSString功能介绍"><span class="toc-number">1.</span> <span class="toc-text">NSString功能介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NSString常用代码"><span class="toc-number">2.</span> <span class="toc-text">NSString常用代码</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-NSString-截取"><span class="toc-number">2.0.0.0.1.</span> <span class="toc-text">1.NSString 截取</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-NSString-删除所有的空格"><span class="toc-number">2.0.0.0.2.</span> <span class="toc-text">2.NSString 删除所有的空格</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-NSString-拼接"><span class="toc-number">2.0.0.0.3.</span> <span class="toc-text">3.NSString 拼接</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-NSString-判断空-相等"><span class="toc-number">2.0.0.0.4.</span> <span class="toc-text">4.NSString 判断空 相等</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-NSString-前缀-后缀"><span class="toc-number">2.0.0.0.5.</span> <span class="toc-text">5.NSString 前缀 后缀</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6-NSString-替换"><span class="toc-number">2.0.0.0.6.</span> <span class="toc-text">6.NSString 替换</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7-NSString-多行书写"><span class="toc-number">2.0.0.0.7.</span> <span class="toc-text">7.NSString 多行书写</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#8-NSString-删除首尾的空格和换行符"><span class="toc-number">2.0.0.0.8.</span> <span class="toc-text">8.NSString 删除首尾的空格和换行符</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#9-NSString-写入文件"><span class="toc-number">2.0.0.0.9.</span> <span class="toc-text">9.NSString 写入文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#10-NSString-大写-小写"><span class="toc-number">2.0.0.0.10.</span> <span class="toc-text">10.NSString 大写 小写</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#11-NSString-文件扩展名"><span class="toc-number">2.0.0.0.11.</span> <span class="toc-text">11.NSString 文件扩展名</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#12-NSString-判断是否为整型"><span class="toc-number">2.0.0.0.12.</span> <span class="toc-text">12.NSString 判断是否为整型</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#13-NSString-判断是否为浮点型"><span class="toc-number">2.0.0.0.13.</span> <span class="toc-text">13.NSString 判断是否为浮点型</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#14-NSString-将URL内容字符串"><span class="toc-number">2.0.0.0.14.</span> <span class="toc-text">14.NSString 将URL内容字符串</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#15-NSMutableString-拼接"><span class="toc-number">2.0.0.0.15.</span> <span class="toc-text">15.NSMutableString 拼接</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#16-NSMutableString-截取"><span class="toc-number">2.0.0.0.16.</span> <span class="toc-text">16.NSMutableString 截取</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#17-NSMutableString-删除"><span class="toc-number">2.0.0.0.17.</span> <span class="toc-text">17.NSMutableString 删除</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#18-NSMutableString-插入"><span class="toc-number">2.0.0.0.18.</span> <span class="toc-text">18.NSMutableString 插入</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#19-NSMutableString-替换"><span class="toc-number">2.0.0.0.19.</span> <span class="toc-text">19.NSMutableString 替换</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
 		
@@ -168,17 +168,17 @@ NSString 删除所有的空格">
 	
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NSString功能介绍"><span class="toc-number">1.</span> <span class="toc-text">NSString功能介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NSString常用代码"><span class="toc-number">2.</span> <span class="toc-text">NSString常用代码</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-NSString-截取"><span class="toc-number">2.0.0.0.1.</span> <span class="toc-text">1.NSString 截取</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-NSString-删除所有的空格"><span class="toc-number">2.0.0.0.2.</span> <span class="toc-text">2.NSString 删除所有的空格</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-NSString-拼接"><span class="toc-number">2.0.0.0.3.</span> <span class="toc-text">3.NSString 拼接</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-NSString-判断空-相等"><span class="toc-number">2.0.0.0.4.</span> <span class="toc-text">4.NSString 判断空 相等</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-NSString-前缀-后缀"><span class="toc-number">2.0.0.0.5.</span> <span class="toc-text">5.NSString 前缀 后缀</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6-NSString-替换"><span class="toc-number">2.0.0.0.6.</span> <span class="toc-text">6.NSString 替换</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7-NSString-多行书写"><span class="toc-number">2.0.0.0.7.</span> <span class="toc-text">7.NSString 多行书写</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#8-NSString-删除首尾的空格和换行符"><span class="toc-number">2.0.0.0.8.</span> <span class="toc-text">8.NSString 删除首尾的空格和换行符</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#9-NSString-写入文件"><span class="toc-number">2.0.0.0.9.</span> <span class="toc-text">9.NSString 写入文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#10-NSString-大写-小写"><span class="toc-number">2.0.0.0.10.</span> <span class="toc-text">10.NSString 大写 小写</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#11-NSString-文件扩展名"><span class="toc-number">2.0.0.0.11.</span> <span class="toc-text">11.NSString 文件扩展名</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#12-NSString-判断是否为整型"><span class="toc-number">2.0.0.0.12.</span> <span class="toc-text">12.NSString 判断是否为整型</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#13-NSString-判断是否为浮点型"><span class="toc-number">2.0.0.0.13.</span> <span class="toc-text">13.NSString 判断是否为浮点型</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#14-NSString-将URL内容字符串"><span class="toc-number">2.0.0.0.14.</span> <span class="toc-text">14.NSString 将URL内容字符串</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#15-NSMutableString-拼接"><span class="toc-number">2.0.0.0.15.</span> <span class="toc-text">15.NSMutableString 拼接</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#16-NSMutableString-截取"><span class="toc-number">2.0.0.0.16.</span> <span class="toc-text">16.NSMutableString 截取</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#17-NSMutableString-删除"><span class="toc-number">2.0.0.0.17.</span> <span class="toc-text">17.NSMutableString 删除</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#18-NSMutableString-插入"><span class="toc-number">2.0.0.0.18.</span> <span class="toc-text">18.NSMutableString 插入</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#19-NSMutableString-替换"><span class="toc-number">2.0.0.0.19.</span> <span class="toc-text">19.NSMutableString 替换</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -189,7 +189,7 @@ NSString 删除所有的空格">
   
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -211,12 +211,12 @@ NSString 删除所有的空格">
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
-    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
 </div>
 
 
@@ -226,14 +226,7 @@ NSString 删除所有的空格">
     <footer><div id="footer" >
 	
 	
-	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
-	</section>
-	 
 	<div class="social-font" class="clearfix">
-		
-		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
 		
 		
 		
@@ -437,7 +430,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
