@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>iOS-NSLog | JJBoy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="为什么使用NSLog，而不用Printf()1.打印输出使用 NSLog() 而不是 println() 呢？
+2.原因是使用 print() / println() 输出的话，它会简单地使用 流（stream） 的概念，学过 C++ 的都知道。
+3.print()会把需要输出的每个字符一个一个的输出到控制台
+4.普通使用并没有问题，可是当多线程同步输出的时候问题就来了，由于很多 println(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-NSLog">
+<meta property="og:url" content="williamliuwen.cn/2016/08/11/iOS-NSLog/index.html">
+<meta property="og:site_name" content="JJBoy">
+<meta property="og:description" content="为什么使用NSLog，而不用Printf()1.打印输出使用 NSLog() 而不是 println() 呢？
+2.原因是使用 print() / println() 输出的话，它会简单地使用 流（stream） 的概念，学过 C++ 的都知道。
+3.print()会把需要输出的每个字符一个一个的输出到控制台
+4.普通使用并没有问题，可是当多线程同步输出的时候问题就来了，由于很多 println(">
+<meta property="og:updated_time" content="2016-08-11T11:39:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-NSLog">
+<meta name="twitter:description" content="为什么使用NSLog，而不用Printf()1.打印输出使用 NSLog() 而不是 println() 呢？
+2.原因是使用 print() / println() 输出的话，它会简单地使用 流（stream） 的概念，学过 C++ 的都知道。
+3.print()会把需要输出的每个字符一个一个的输出到控制台
+4.普通使用并没有问题，可是当多线程同步输出的时候问题就来了，由于很多 println(">
+  
+  
+    <link rel="icon" href="img/favicon.gif">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">JJBoy</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">知我者谓我心忧，不知我者谓我何求。</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于小汶</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/williamliuwen" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">JJBoy</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="img/avatar.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">JJBoy</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">知我者谓我心忧，不知我者谓我何求。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于小汶</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/williamliuwen" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-iOS-NSLog" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/11/iOS-NSLog/" class="article-date">
+  	<time datetime="2016-08-11T11:33:15.000Z" itemprop="datePublished">2016-08-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS-NSLog
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="为什么使用NSLog，而不用Printf"><a href="#为什么使用NSLog，而不用Printf" class="headerlink" title="为什么使用NSLog，而不用Printf()"></a>为什么使用NSLog，而不用Printf()</h2><p>1.打印输出使用 NSLog() 而不是 println() 呢？</p>
+<p>2.原因是使用 print() / println() 输出的话，它会简单地使用 流（stream） 的概念，学过 C++ 的都知道。</p>
+<p>3.print()会把需要输出的每个字符一个一个的输出到控制台</p>
+<p>4.普通使用并没有问题，可是当多线程同步输出的时候问题就来了，由于很多 println() 同时打印，就会导致控制台上的字符混乱的堆在一起，而NSLog() 就没有这个问题</p>
+<h2 id="NSLog格式"><a href="#NSLog格式" class="headerlink" title="NSLog格式"></a>NSLog格式</h2><p>%@     对象</p>
+<p>%i     整数</p>
+<p>%d,    double</p>
+<p>%u     无符整形</p>
+<p>%f     浮点/双字</p>
+<p>%x, %X 二进制整数</p>
+<p>%o     八进制整数</p>
+<p>%zu    size_t</p>
+<p>%p     指针</p>
+<p>%e     浮点/双字 （科学计算）</p>
+<p>%g     浮点/双字</p>
+<p>%s     short</p>
+<p>%.*s   Pascal字符串</p>
+<p>%c     字符 char</p>
+<p>%C     unichar</p>
+<p>%lld   64位长整数（long long）</p>
+<p>%llu   无符64位长整数</p>
+<p>%Lf    64位双字</p>
+<p>%zu       size_t</p>
+<p>%#     A class object (Class)</p>
+<p>%:     A method selector (SEL)</p>
+<p>%%     打印百分号</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/11/iOS-Instruments/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          iOS-Instruments
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/09/iOS-RunTime/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS-RunTime</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="iOS-NSLog" data-title="iOS-NSLog" data-url="williamliuwen.cn/2016/08/11/iOS-NSLog/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"williamliuwen"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 JJBoy
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>iOS-Quartz2D | JJBoy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Quartz2D可以用来做什么？1.什么是Quartz2D？（用来绘图的）
+
+Quartz 2D是一个二维绘图引擎，同时支持iOS和Mac系统（所以代码可以在ios和mac系统运行）；Quartz 2D 是基于C语言的API接口；数据类型和函数基本都以CG作为前缀
+
+2.实际中怎么应用Quartz2D？
+
+可以自定义UI控件，iOS中大部分控件的内容都是通过Quartz2D画出来的，
+
+绘制图形">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-Quartz2D">
+<meta property="og:url" content="williamliuwen.cn/2016/08/11/iOS-Quartz2D/index.html">
+<meta property="og:site_name" content="JJBoy">
+<meta property="og:description" content="Quartz2D可以用来做什么？1.什么是Quartz2D？（用来绘图的）
+
+Quartz 2D是一个二维绘图引擎，同时支持iOS和Mac系统（所以代码可以在ios和mac系统运行）；Quartz 2D 是基于C语言的API接口；数据类型和函数基本都以CG作为前缀
+
+2.实际中怎么应用Quartz2D？
+
+可以自定义UI控件，iOS中大部分控件的内容都是通过Quartz2D画出来的，
+
+绘制图形">
+<meta property="og:updated_time" content="2016-08-11T13:52:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-Quartz2D">
+<meta name="twitter:description" content="Quartz2D可以用来做什么？1.什么是Quartz2D？（用来绘图的）
+
+Quartz 2D是一个二维绘图引擎，同时支持iOS和Mac系统（所以代码可以在ios和mac系统运行）；Quartz 2D 是基于C语言的API接口；数据类型和函数基本都以CG作为前缀
+
+2.实际中怎么应用Quartz2D？
+
+可以自定义UI控件，iOS中大部分控件的内容都是通过Quartz2D画出来的，
+
+绘制图形">
+  
+  
+    <link rel="icon" href="img/favicon.gif">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">JJBoy</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">知我者谓我心忧，不知我者谓我何求。</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/about">关于小汶</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/williamliuwen" title="github">github</a>
+					        
+								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">JJBoy</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="img/avatar.jpg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">JJBoy</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">知我者谓我心忧，不知我者谓我何求。</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/about">关于小汶</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/williamliuwen" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-iOS-Quartz2D" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/11/iOS-Quartz2D/" class="article-date">
+  	<time datetime="2016-08-11T13:51:16.000Z" itemprop="datePublished">2016-08-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS-Quartz2D
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Quartz2D可以用来做什么？"><a href="#Quartz2D可以用来做什么？" class="headerlink" title="Quartz2D可以用来做什么？"></a>Quartz2D可以用来做什么？</h2><p>1.什么是Quartz2D？（用来绘图的）</p>
+<ul>
+<li>Quartz 2D是一个二维绘图引擎，同时支持iOS和Mac系统（所以代码可以在ios和mac系统运行）；Quartz 2D 是基于C语言的API接口；数据类型和函数基本都以CG作为前缀</li>
+</ul>
+<p>2.实际中怎么应用Quartz2D？</p>
+<ul>
+<li><p>可以自定义UI控件，iOS中大部分控件的内容都是通过Quartz2D画出来的，</p>
+</li>
+<li><p>绘制图形 : 线条\三角形\矩形\圆\弧等；</p>
+</li>
+<li><p>绘制文字；</p>
+</li>
+<li><p>绘制\生成图片(图像)；</p>
+</li>
+<li><p>读取\生成PDF；</p>
+</li>
+<li><p>截图\裁剪图片；</p>
+</li>
+<li><p>手势开锁</p>
+</li>
+</ul>
+<p>3.Quartz2D常用名词</p>
+<p>1）图形上下文</p>
+<ul>
+<li><p>图形上下文是一个CGContextRef类型的数据；</p>
+</li>
+<li><p>图形上下文的作用：</p>
+</li>
+<li><p>保存绘图信息、绘图状态；</p>
+</li>
+<li><p>决定绘制的输出目标（绘制到什么地方去？）（输出目标可以是PDF文件、Bitmap或者显示器的窗口上）相同的一套绘图序列，指定不同的Graphics Context，就可将相同的图像绘制到不同的目标上</p>
+</li>
+<li><p>五种图形上下文：1. Bitmap Graphics Context 2. PDF Graphics Context 3. Window Graphics Context 4. Layer Graphics Context 5. Printer Graphics Context</p>
+</li>
+<li><p>图形上下文必须跟view相关联，才能将内容绘制到view上面</p>
+</li>
+<li><p>绘图顺序（如果在同一个图形上下文上，后绘制的图形会覆盖前面绘制的图形上面）</p>
+</li>
+</ul>
+<p>2）图形上下文栈</p>
+<p>3）Quartz2D的内存管理</p>
+<ul>
+<li><p>使用含有“Create”或“Copy”或”retain”的函数创建的对象，使用完后必须释放，否则将导致内存泄露</p>
+</li>
+<li><p>使用不含有“Create”或“Copy”的函数获取的对象，则不需要释放</p>
+</li>
+<li><p>如果retain了一个对象，不再使用时，需要将其release掉</p>
+</li>
+<li><p>以使用Quartz 2D的函数来指定retain和release一个对象。例如，如果创建了一个CGColorSpace对象，则使用函数CGColorSpaceRetain和CGColorSpaceRelease来retain和release对象。</p>
+</li>
+<li><p>也可以使用Core Foundation的CFRetain和CFRelease。注意不能传递NULL值给这些函数</p>
+</li>
+</ul>
+<h2 id="drawRect-方法的作用？"><a href="#drawRect-方法的作用？" class="headerlink" title="drawRect:方法的作用？"></a>drawRect:方法的作用？</h2><p>1.在drawRect:方法中才能取得跟view相关联的图形上下文</p>
+<p>2.View内部有个layer（图层）属性，drawRect:方法中取得的是一个Layer Graphics Context，因此，绘制的东西其实是绘制到view的layer上去了；</p>
+<p>3.View之所以能显示东西，完全是因为它内部的layer</p>
+<p>4.drawRect方法调用的时机：（当view第一次显示到屏幕上时（被加到UIWindow上显示出来）调用view的setNeedsDisplay或者setNeedsDisplayInRect:时）</p>
+<h2 id="Quartz2D绘图步骤"><a href="#Quartz2D绘图步骤" class="headerlink" title="Quartz2D绘图步骤"></a>Quartz2D绘图步骤</h2><p>1.拼接路径函数</p>
+<p>2.绘制路径函数</p>
+<p>3.例子:创建一条线段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 第一步：新建一个类，继承自UIView</span><br><span class="line"></span><br><span class="line">// 第二步：实现</span><br><span class="line">-(void)drawRect:(CGRect)rect</span><br><span class="line"></span><br><span class="line">// 第三步：获取图形上下文（Graphics Context）</span><br><span class="line">CGContextRef ctx = UIGraphicsGetCurrentContext();</span><br><span class="line"></span><br><span class="line">// 第四步：拼接路径（下面代码是搞一条线段）</span><br><span class="line">CGContextMoveToPoint(ctx, 10, 10);</span><br><span class="line">CGContextAddLineToPoint(ctx, 100, 100);</span><br><span class="line"></span><br><span class="line">// 第五步：渲染图形，显示到view上</span><br><span class="line">CGContextStrokePath(ctx);</span><br><span class="line">// 或者填充</span><br><span class="line">CGContextFillPath(ctx);</span><br></pre></td></tr></table></figure>
+<h2 id="Quartz2D绘图–拼接路径函数"><a href="#Quartz2D绘图–拼接路径函数" class="headerlink" title="Quartz2D绘图–拼接路径函数"></a>Quartz2D绘图–拼接路径函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 新建一个起点</span><br><span class="line">void CGContextMoveToPoint(CGContextRef c, CGFloat x, CGFloat y)</span><br><span class="line"></span><br><span class="line">// 添加新的线段到某个点(到某个点的一条线)</span><br><span class="line">void CGContextAddLineToPoint(CGContextRef c, CGFloat x, CGFloat y)</span><br><span class="line"></span><br><span class="line">// 添加一个矩形</span><br><span class="line">void CGContextAddRect(CGContextRef c, CGRect rect)</span><br><span class="line"></span><br><span class="line">// 添加一个椭圆</span><br><span class="line">void CGContextAddEllipseInRect(CGContextRef context, CGRect rect)</span><br><span class="line"></span><br><span class="line">// 添加一个圆弧</span><br><span class="line">void CGContextAddArc(CGContextRef c, CGFloat x, CGFloat y, CGFloat radius, CGFloat startAngle, CGFloat endAngle, int clockwise)</span><br></pre></td></tr></table></figure>
+<h2 id="Quartz2D绘图–绘制路径函数"><a href="#Quartz2D绘图–绘制路径函数" class="headerlink" title="Quartz2D绘图–绘制路径函数"></a>Quartz2D绘图–绘制路径函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// Mode参数决定绘制的模式</span><br><span class="line">void CGContextDrawPath(CGContextRef c, CGPathDrawingMode mode)</span><br><span class="line"></span><br><span class="line">// 绘制空心路径</span><br><span class="line">void CGContextStrokePath(CGContextRef c)</span><br><span class="line"></span><br><span class="line">// 绘制实心路径</span><br><span class="line">void CGContextFillPath(CGContextRef c)</span><br><span class="line"></span><br><span class="line">提示：一般以CGContextDraw、CGContextStroke、CGContextFill开头的函数，都是用来绘制路径的</span><br></pre></td></tr></table></figure>
+<h2 id="Quartz2D绘图–transform属性"><a href="#Quartz2D绘图–transform属性" class="headerlink" title="Quartz2D绘图–transform属性"></a>Quartz2D绘图–transform属性</h2><p>1.利用transform属性可以修改控件的位移（位置）、缩放、旋转</p>
+<p>2.创建一个transform属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">CGAffineTransform CGAffineTransformMakeTranslation(CGFloat tx,CGFloat ty);位移</span><br><span class="line"></span><br><span class="line">CGAffineTransform CGAffineTransformMakeScale(CGFloat sx,CGFloat sy);缩放</span><br><span class="line"></span><br><span class="line">CGAffineTransform CGAffineTransformMakeRotation(CGFloat angel);旋转</span><br><span class="line"></span><br><span class="line">注意：这里angle是弧度制，不是角度制，就用用pi值表示，一个pi就是180度；45度就是4分之1 pi；在代码中用M_PI_4表示</span><br></pre></td></tr></table></figure>
+<p>3.在某个transform的基础上进行叠加；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">CGAffineTransform CGAffineTransformTranslation(CGAffineTransform,CGFloat tx,CGFloat ty);</span><br><span class="line"></span><br><span class="line">CGAffineTransform CGAffineTransformScale(CGAffineTransform,CGFloat sx,CGFloat sy);</span><br><span class="line"></span><br><span class="line">CGAffineTransform CGAffineTransformRotation(CGAffineTransform ,CGFloat angel);</span><br><span class="line"></span><br><span class="line">注意这里的方法比上面少了Make在里面；</span><br></pre></td></tr></table></figure>
+<p>4.transform常用的3个方法</p>
+<ul>
+<li><p>对控件进行缩放： CGAffineTransformScale</p>
+</li>
+<li><p>对控件进行位移； CGAffineTransformTranslate</p>
+</li>
+<li><p>对控件进行旋转； CGAffineTransformRotate</p>
+</li>
+</ul>
+<h2 id="Quartz2D绘图–CGRect-CGPoint-CGSize-属性"><a href="#Quartz2D绘图–CGRect-CGPoint-CGSize-属性" class="headerlink" title="Quartz2D绘图–CGRect \ CGPoint \ CGSize 属性"></a>Quartz2D绘图–CGRect \ CGPoint \ CGSize 属性</h2><ul>
+<li><p>CGRect=NSRect</p>
+</li>
+<li><p>CGPoint=NSPoint</p>
+</li>
+<li><p>CGSize=NSSize 修改控件的位置和尺寸</p>
+</li>
+<li><p>修改控件位置的有: frame.origin 、 center</p>
+</li>
+<li><p>修改控件尺寸的有: frame.size 、 bounds.size</p>
+</li>
+</ul>
+<p>1.CGRect、NSRect</p>
+<p>1) NSRect\CGRect是NSPoint\CGPoint和NSSize\CGSize的一个组合；表示的是坐标和尺寸； NSRect(NSPoint NSSize)、CGRect(CGPoint CGSize)</p>
+<p>2) 可以通过CGRectMake和NSMakeRect方法创建CGRect和NSRect对象；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">CGRect rect = CGRectMake(0,0,100,50); // 表示原点的位置和元素上下的尺寸；</span><br></pre></td></tr></table></figure>
+<p>3) 通过结构体成员变量打印CGRect的成员数值：CGRect rect = CGRectMake(0,0,100,50);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">NSLog(@&quot;x=%f,y=%f,width=%f,height=%f&quot;,rect.origin.x,rect.origin.y,rect.size.width,rect.size.height);</span><br></pre></td></tr></table></figure>
+<p>4) 创建CGRect对象的其他方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">CGRect rect = &#123;&#123;0,0&#125;,&#123;100,50&#125;&#125;;</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">CGRect rect = &#123;point1,size1&#125;;</span><br></pre></td></tr></table></figure>
+<p>5) 比较两个CGRect是否相等：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">CGRectEqualToRect(CGRect rect1,CGRect rect2);</span><br></pre></td></tr></table></figure>
+<p>6) 判断CGPoint中是否在CGRect的范围中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">BOOL b = CGRectContainsPoint(CGRect rect,CGPoint point);</span><br><span class="line"></span><br><span class="line">//  这个方法包含在CoreGraphics framework框架中,所以需要引入这个框架； #import &lt;CoreGraphics/CoreGraphics.h&gt;;注意： 方法的声明都在Foundation框架里面但是定义都在CoreGraphics的框架里面</span><br></pre></td></tr></table></figure>
+<p>7) 将结构体转换为字符串的操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">NSString *str = NSStringFromPoint(point1);</span><br><span class="line"></span><br><span class="line">NSString *str = NSStringFromSize(size1);</span><br><span class="line"></span><br><span class="line">NSString *str = NSStringFromRect(rect1);</span><br></pre></td></tr></table></figure>
+<p>2.CGPoint、NSPoint</p>
+<p>1) 本质上是表示点元素坐标位置的结构体；其中CGPoint比较常用，因为它具有跨平台性；</p>
+<p>2) 创建对象的方法有：NSMakePoint 、 CGPointMake;开发中CGPointMake比较常用；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">NSPoint p2 = NSMakePoint(20,20)/CGPointMake(20,20);</span><br></pre></td></tr></table></figure>
+<p>3) 比较两个点是否相同：BOOL b = CGPoingEqualToPoint(CGPointMake(10,10),CGPointMake(10,10));</p>
+<p>4) 注意：在iOS开发中，原点的坐标是在左上角；使用CGPoingZero可以表示；相当于CGPoingMake(0,0);</p>
+<p>3.CGSize、NSSize</p>
+<p>1) 表示用户界面元素的尺寸；</p>
+<p>2) 创建对象的方法是：CGSizeMake和NSMakeSize方法；开发中主要使用CGSizeMake;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">NSSize s1/CGSize s1= CGSizeMake(100,50)/NSMakeSize(100,50);//左面数值是宽，右面是高</span><br></pre></td></tr></table></figure>
+<p>3) 比较两个元素尺寸是否相等：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">BOOL a = CGSizeEqualToSize(CGSize size1,CGSize size2);</span><br></pre></td></tr></table></figure>
+<p>4)  CGSizeZero表示CGSizeMake(0,0),表示这个对象的上下尺寸都是0。</p>
+<h2 id="Quartz2D绘图–简单用法"><a href="#Quartz2D绘图–简单用法" class="headerlink" title="Quartz2D绘图–简单用法"></a>Quartz2D绘图–简单用法</h2><p>1.创建一个点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// Points：指定一个点成为current point，Quartz会跟踪current point一般执行完一个相关函数后，current point都会相应的改变.</span><br><span class="line"></span><br><span class="line">void CGContextMoveToPoint (</span><br><span class="line">CGContextRef c,</span><br><span class="line">CGFloat x,</span><br><span class="line">CGFloat y</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>2.创建一条线</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// Lines：相关的几个函数，创建一条直线，从current point到 (x,y)，然后current point会变成(x,y)</span><br><span class="line"></span><br><span class="line">void CGContextAddLineToPoint (</span><br><span class="line">CGContextRef c,</span><br><span class="line">CGFloat x,</span><br><span class="line">CGFloat y</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>3.创建多条线</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 创建多条直线，比如points有两个点，那么会画两条直线 从current point到 (x1,y1),然后是(x1,y1)到(x2,y2)，然后current point会变成points中的最后一个点</span><br><span class="line"></span><br><span class="line">void CGContextAddLines (</span><br><span class="line">CGContextRef c,</span><br><span class="line">const CGPoint points[],</span><br><span class="line">size_t count</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>4.画一条圆弧</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">两种方法创建弧度</span><br><span class="line"></span><br><span class="line">// 第一种: 假如想创建一个完整的圆圈，那么 开始弧度就是0 结束弧度是 2pi， 因为圆周长是 2pir.最后，函数执行完后，current point就被重置为(x,y).还有一点要注意的是，假如当前path已经存在一个subpath，那么这个函数执行的另外一个效果是会有一条直线，从current point到弧的起点</span><br><span class="line"></span><br><span class="line">void CGContextAddArc (</span><br><span class="line">CGContextRef c,</span><br><span class="line">CGFloat x,             //圆心的x坐标</span><br><span class="line">CGFloat y,    //圆心的x坐标</span><br><span class="line">CGFloat radius,   //圆的半径</span><br><span class="line">CGFloat startAngle,    //开始弧度</span><br><span class="line">CGFloat endAngle,   //结束弧度</span><br><span class="line">int clockwise          //0表示顺时针，1表示逆时针</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">// 第二种: 首先画两条线，这两条线分别是 current point to (x1,y1) 和(x1,y1) to (x2,y2).这样就是出现一个以(x1,y1)为顶点的两条射线，然后定义半径长度，这个半径是垂直于两条射线的，这样就能决定一个圆了，更好的理解看下图，不过个人认为下图所标的 tangent point 1的位置是错误的.最后，函数执行完后，current point就被重置为(x2,y2).还有一点要注意的是，假如当前path已经存在一个subpath，那么这个函数执行的另外一个效果是会有一条直线，从current point到(x1,y1)</span><br><span class="line"></span><br><span class="line">void CGContextAddArcToPoint (</span><br><span class="line">CGContextRef c,</span><br><span class="line">CGFloat x1,  //端点1的x坐标</span><br><span class="line">CGFloat y1,  //端点1的y坐标</span><br><span class="line">CGFloat x2,  //端点2的x坐标</span><br><span class="line">CGFloat y2,  //端点2的y坐标</span><br><span class="line">CGFloat radius //半径</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>5.画曲线</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// Curves:画曲线，一般是一条直线，然后定义几个控制点，使直线变弯曲。三次曲线函数;假如第二个控制点（cp2x，cp2y）比（cp1x,cp1y） 更接近current point，那么会形成一个封闭的曲线</span><br><span class="line"></span><br><span class="line">void CGContextAddCurveToPoint (</span><br><span class="line">CGContextRef c,</span><br><span class="line">CGFloat cp1x, //控制点1 x坐标</span><br><span class="line">CGFloat cp1y, //控制点1 y坐标</span><br><span class="line">CGFloat cp2x, //控制点2 x坐标</span><br><span class="line">CGFloat cp2y, //控制点2 y坐标</span><br><span class="line">CGFloat x,  //直线的终点 x坐标</span><br><span class="line">CGFloat y  //直线的终点 y坐标</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 二次曲线函数;执行完函数貌似current point不会变化，没有具体测试过</span><br><span class="line"></span><br><span class="line">void CGContextAddQuadCurveToPoint (</span><br><span class="line">CGContextRef c,</span><br><span class="line">CGFloat cpx,  //控制点 x坐标</span><br><span class="line">CGFloat cpy,  //控制点 y坐标</span><br><span class="line">CGFloat x,  //直线的终点 x坐标</span><br><span class="line">CGFloat y  //直线的终点 y坐标</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>6.画圆</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// Ellipses：如果矩形是一个正方形，那么画出来就是一个圆，执行完函数貌似current point不会变化，没有具体测试过</span><br><span class="line"></span><br><span class="line">void CGContextAddEllipseInRect (</span><br><span class="line">CGContextRef context,</span><br><span class="line">CGRect rect  //一矩形</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>7.画三角形</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// Rectangles</span><br><span class="line"></span><br><span class="line">void CGContextAddRect (</span><br><span class="line">CGContextRef c,</span><br><span class="line">CGRect rect</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 一次性画出多个矩形：需要注意的是，画矩形有一些特别，current point没有发生变化</span><br><span class="line"></span><br><span class="line">void CGContextAddRects (</span><br><span class="line">CGContextRef c,</span><br><span class="line">const CGRect rects[],</span><br><span class="line">size_t count</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="Quartz2D绘图–CALayer"><a href="#Quartz2D绘图–CALayer" class="headerlink" title="Quartz2D绘图–CALayer"></a>Quartz2D绘图–CALayer</h2><p>1.CALayer图层的组成</p>
+<p>1）CAMediaTiming</p>
+<ul>
+<li>.duration</li>
+</ul>
+<p>2）CAAnimation</p>
+<ul>
+<li><p>.timing Function</p>
+</li>
+<li><p>.delegate</p>
+</li>
+</ul>
+<p>3) CAAnimationGroup</p>
+<ul>
+<li>.animations</li>
+</ul>
+<p>4) CAPropertyAnimation</p>
+<ul>
+<li>.keypath</li>
+</ul>
+<p>5) CABasicAnimation</p>
+<ul>
+<li><p>.fromValue</p>
+</li>
+<li><p>.toValue</p>
+</li>
+</ul>
+<p>6) CAKeyFramAnimation</p>
+<ul>
+<li><p>.Values</p>
+</li>
+<li><p>.Path</p>
+</li>
+<li><p>.KeyTimes</p>
+</li>
+</ul>
+<p>7) CATransition</p>
+<ul>
+<li>.filter</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/12/iOS-AddressBook-AddressBookUI-Contacts/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          iOS-AddressBook/AddressBookUI/Contacts
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/11/iOS-Wifi/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS-Wifi</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="iOS-Quartz2D" data-title="iOS-Quartz2D" data-url="williamliuwen.cn/2016/08/11/iOS-Quartz2D/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"williamliuwen"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 JJBoy
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
