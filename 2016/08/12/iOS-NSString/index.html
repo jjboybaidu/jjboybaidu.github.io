@@ -13,26 +13,20 @@
     
     <meta name="description" content="NSString功能介绍
 NSString 截取
-NSString 删除所有的空格
-
-NSString常用代码1.NSString 截取12345NSString *id1String = [self.localid.text substringWithRange:NSMakeRange(0, 2)];NSRange range = [string rangeOfString:subString]">
+NSString 删除所有的空格">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS-NSString">
 <meta property="og:url" content="williamliuwen.cn/2016/08/12/iOS-NSString/index.html">
 <meta property="og:site_name" content="JJBoy">
 <meta property="og:description" content="NSString功能介绍
 NSString 截取
-NSString 删除所有的空格
-
-NSString常用代码1.NSString 截取12345NSString *id1String = [self.localid.text substringWithRange:NSMakeRange(0, 2)];NSRange range = [string rangeOfString:subString]">
-<meta property="og:updated_time" content="2016-08-12T12:26:43.000Z">
+NSString 删除所有的空格">
+<meta property="og:updated_time" content="2016-08-12T22:06:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS-NSString">
 <meta name="twitter:description" content="NSString功能介绍
 NSString 截取
-NSString 删除所有的空格
-
-NSString常用代码1.NSString 截取12345NSString *id1String = [self.localid.text substringWithRange:NSMakeRange(0, 2)];NSRange range = [string rangeOfString:subString]">
+NSString 删除所有的空格">
 
     
     <link rel="alternative" href="/atom.xml" title="JJBoy" type="application/atom+xml">
@@ -60,7 +54,7 @@ NSString常用代码1.NSString 截取12345NSString *id1String = [self.localid.te
 				<h1 class="site-name"><a href="/" title="JJBoy">JJBoy</a></h1>
 				<h2 class="blog-motto">知我者谓我心忧，不知我者谓我何求。</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -76,7 +70,7 @@ NSString常用代码1.NSString 截取12345NSString *id1String = [self.localid.te
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:williamliuwen.cn">
 					</form>
 					
@@ -99,14 +93,14 @@ NSString常用代码1.NSString 截取12345NSString *id1String = [self.localid.te
 		<a href="/about" title="JJBoy" target="_blank" itemprop="author">JJBoy</a>
 		
   <p class="article-time">
-    <time datetime="2016-08-12T12:25:49.000Z" itemprop="datePublished"> Published 2016-08-12</time>
+    <time datetime="2016-08-12T12:25:49.000Z" itemprop="datePublished"> 发表于 2016-08-12</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NSString功能介绍"><span class="toc-number">1.</span> <span class="toc-text">NSString功能介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NSString常用代码"><span class="toc-number">2.</span> <span class="toc-text">NSString常用代码</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-NSString-截取"><span class="toc-number">2.0.0.0.1.</span> <span class="toc-text">1.NSString 截取</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-NSString-删除所有的空格"><span class="toc-number">2.0.0.0.2.</span> <span class="toc-text">2.NSString 删除所有的空格</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-NSString-拼接"><span class="toc-number">2.0.0.0.3.</span> <span class="toc-text">3.NSString 拼接</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-NSString-判断空-相等"><span class="toc-number">2.0.0.0.4.</span> <span class="toc-text">4.NSString 判断空 相等</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-NSString-前缀-后缀"><span class="toc-number">2.0.0.0.5.</span> <span class="toc-text">5.NSString 前缀 后缀</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6-NSString-替换"><span class="toc-number">2.0.0.0.6.</span> <span class="toc-text">6.NSString 替换</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7-NSString-多行书写"><span class="toc-number">2.0.0.0.7.</span> <span class="toc-text">7.NSString 多行书写</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#8-NSString-删除首尾的空格和换行符"><span class="toc-number">2.0.0.0.8.</span> <span class="toc-text">8.NSString 删除首尾的空格和换行符</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#9-NSString-写入文件"><span class="toc-number">2.0.0.0.9.</span> <span class="toc-text">9.NSString 写入文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#10-NSString-大写-小写"><span class="toc-number">2.0.0.0.10.</span> <span class="toc-text">10.NSString 大写 小写</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#11-NSString-文件扩展名"><span class="toc-number">2.0.0.0.11.</span> <span class="toc-text">11.NSString 文件扩展名</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#12-NSString-判断是否为整型"><span class="toc-number">2.0.0.0.12.</span> <span class="toc-text">12.NSString 判断是否为整型</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#13-NSString-判断是否为浮点型"><span class="toc-number">2.0.0.0.13.</span> <span class="toc-text">13.NSString 判断是否为浮点型</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#14-NSString-将URL内容字符串"><span class="toc-number">2.0.0.0.14.</span> <span class="toc-text">14.NSString 将URL内容字符串</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#15-NSMutableString-拼接"><span class="toc-number">2.0.0.0.15.</span> <span class="toc-text">15.NSMutableString 拼接</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#16-NSMutableString-截取"><span class="toc-number">2.0.0.0.16.</span> <span class="toc-text">16.NSMutableString 截取</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#17-NSMutableString-删除"><span class="toc-number">2.0.0.0.17.</span> <span class="toc-text">17.NSMutableString 删除</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#18-NSMutableString-插入"><span class="toc-number">2.0.0.0.18.</span> <span class="toc-text">18.NSMutableString 插入</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#19-NSMutableString-替换"><span class="toc-number">2.0.0.0.19.</span> <span class="toc-text">19.NSMutableString 替换</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
 		
@@ -116,6 +110,7 @@ NSString常用代码1.NSString 截取12345NSString *id1String = [self.localid.te
 <li>NSString 截取</li>
 <li>NSString 删除所有的空格</li>
 </ul>
+<a id="more"></a>
 <h2 id="NSString常用代码"><a href="#NSString常用代码" class="headerlink" title="NSString常用代码"></a>NSString常用代码</h2><h6 id="1-NSString-截取"><a href="#1-NSString-截取" class="headerlink" title="1.NSString 截取"></a>1.NSString 截取</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NSString *id1String = [self.localid.text substringWithRange:NSMakeRange(0, 2)];</span><br><span class="line">NSRange range = [string rangeOfString:subString]; //返回&#123;-1,0&#125;表示找不到</span><br><span class="line"></span><br><span class="line">NSString  *a = @&quot;i like long dress&quot;;</span><br><span class="line">NSString *C = [a substringToIndex:4];</span><br></pre></td></tr></table></figure>
 <h6 id="2-NSString-删除所有的空格"><a href="#2-NSString-删除所有的空格" class="headerlink" title="2.NSString 删除所有的空格"></a>2.NSString 删除所有的空格</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (NSString *)deleteSpace&#123;</span><br><span class="line">NSMutableString *strM = [NSMutableString stringWithString:self];</span><br><span class="line">[strM replaceOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot; options:NSLiteralSearch range:NSMakeRange(0, strM.length)];</span><br><span class="line"></span><br><span class="line">return [strM copy];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h6 id="3-NSString-拼接"><a href="#3-NSString-拼接" class="headerlink" title="3.NSString 拼接"></a>3.NSString 拼接</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NSString *string = it;</span><br><span class="line">NSString *newString = [string stringByAppendingString:@&quot;Love&quot;]</span><br><span class="line"></span><br><span class="line">newString = [NSString stringWithFormat:@&quot;%@%@&quot;, string1, string2];</span><br><span class="line"></span><br><span class="line">newString = [NSString stringByAppendingFormat:@&quot;%@ %@&quot;, str1, str2];</span><br></pre></td></tr></table></figure>
@@ -182,17 +177,17 @@ NSString常用代码1.NSString 截取12345NSString *id1String = [self.localid.te
 	
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NSString功能介绍"><span class="toc-number">1.</span> <span class="toc-text">NSString功能介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NSString常用代码"><span class="toc-number">2.</span> <span class="toc-text">NSString常用代码</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-NSString-截取"><span class="toc-number">2.0.0.0.1.</span> <span class="toc-text">1.NSString 截取</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-NSString-删除所有的空格"><span class="toc-number">2.0.0.0.2.</span> <span class="toc-text">2.NSString 删除所有的空格</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-NSString-拼接"><span class="toc-number">2.0.0.0.3.</span> <span class="toc-text">3.NSString 拼接</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-NSString-判断空-相等"><span class="toc-number">2.0.0.0.4.</span> <span class="toc-text">4.NSString 判断空 相等</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-NSString-前缀-后缀"><span class="toc-number">2.0.0.0.5.</span> <span class="toc-text">5.NSString 前缀 后缀</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6-NSString-替换"><span class="toc-number">2.0.0.0.6.</span> <span class="toc-text">6.NSString 替换</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#7-NSString-多行书写"><span class="toc-number">2.0.0.0.7.</span> <span class="toc-text">7.NSString 多行书写</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#8-NSString-删除首尾的空格和换行符"><span class="toc-number">2.0.0.0.8.</span> <span class="toc-text">8.NSString 删除首尾的空格和换行符</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#9-NSString-写入文件"><span class="toc-number">2.0.0.0.9.</span> <span class="toc-text">9.NSString 写入文件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#10-NSString-大写-小写"><span class="toc-number">2.0.0.0.10.</span> <span class="toc-text">10.NSString 大写 小写</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#11-NSString-文件扩展名"><span class="toc-number">2.0.0.0.11.</span> <span class="toc-text">11.NSString 文件扩展名</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#12-NSString-判断是否为整型"><span class="toc-number">2.0.0.0.12.</span> <span class="toc-text">12.NSString 判断是否为整型</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#13-NSString-判断是否为浮点型"><span class="toc-number">2.0.0.0.13.</span> <span class="toc-text">13.NSString 判断是否为浮点型</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#14-NSString-将URL内容字符串"><span class="toc-number">2.0.0.0.14.</span> <span class="toc-text">14.NSString 将URL内容字符串</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#15-NSMutableString-拼接"><span class="toc-number">2.0.0.0.15.</span> <span class="toc-text">15.NSMutableString 拼接</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#16-NSMutableString-截取"><span class="toc-number">2.0.0.0.16.</span> <span class="toc-text">16.NSMutableString 截取</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#17-NSMutableString-删除"><span class="toc-number">2.0.0.0.17.</span> <span class="toc-text">17.NSMutableString 删除</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#18-NSMutableString-插入"><span class="toc-number">2.0.0.0.18.</span> <span class="toc-text">18.NSMutableString 插入</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#19-NSMutableString-替换"><span class="toc-number">2.0.0.0.19.</span> <span class="toc-text">19.NSMutableString 替换</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
@@ -203,7 +198,7 @@ NSString常用代码1.NSString 截取12345NSString *id1String = [self.localid.te
   
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -225,11 +220,11 @@ NSString常用代码1.NSString 截取12345NSString *id1String = [self.localid.te
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -456,7 +451,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

@@ -102,12 +102,13 @@
     <link href="williamliuwen.cn/2016/08/12/iOS-NSString/"/>
     <id>williamliuwen.cn/2016/08/12/iOS-NSString/</id>
     <published>2016-08-12T12:25:49.000Z</published>
-    <updated>2016-08-12T12:26:43.000Z</updated>
+    <updated>2016-08-12T22:06:21.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;NSString功能介绍&quot;&gt;&lt;a href=&quot;#NSString功能介绍&quot; class=&quot;headerlink&quot; title=&quot;NSString功能介绍&quot;&gt;&lt;/a&gt;NSString功能介绍&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;NSString 截取&lt;/li&gt;
 &lt;li&gt;NSString 删除所有的空格&lt;/li&gt;
 &lt;/ul&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h2 id=&quot;NSString常用代码&quot;&gt;&lt;a href=&quot;#NSString常用代码&quot; class=&quot;headerlink&quot; title=&quot;NSString常用代码&quot;&gt;&lt;/a&gt;NSString常用代码&lt;/h2&gt;&lt;h6 id=&quot;1-NSString-截取&quot;&gt;&lt;a href=&quot;#1-NSString-截取&quot; class=&quot;headerlink&quot; title=&quot;1.NSString 截取&quot;&gt;&lt;/a&gt;1.NSString 截取&lt;/h6&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSString *id1String = [self.localid.text substringWithRange:NSMakeRange(0, 2)];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSRange range = [string rangeOfString:subString]; //返回&amp;#123;-1,0&amp;#125;表示找不到&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSString  *a = @&amp;quot;i like long dress&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSString *C = [a substringToIndex:4];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h6 id=&quot;2-NSString-删除所有的空格&quot;&gt;&lt;a href=&quot;#2-NSString-删除所有的空格&quot; class=&quot;headerlink&quot; title=&quot;2.NSString 删除所有的空格&quot;&gt;&lt;/a&gt;2.NSString 删除所有的空格&lt;/h6&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- (NSString *)deleteSpace&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSMutableString *strM = [NSMutableString stringWithString:self];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[strM replaceOccurrencesOfString:@&amp;quot; &amp;quot; withString:@&amp;quot;&amp;quot; options:NSLiteralSearch range:NSMakeRange(0, strM.length)];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;return [strM copy];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h6 id=&quot;3-NSString-拼接&quot;&gt;&lt;a href=&quot;#3-NSString-拼接&quot; class=&quot;headerlink&quot; title=&quot;3.NSString 拼接&quot;&gt;&lt;/a&gt;3.NSString 拼接&lt;/h6&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSString *string = it;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSString *newString = [string stringByAppendingString:@&amp;quot;Love&amp;quot;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;newString = [NSString stringWithFormat:@&amp;quot;%@%@&amp;quot;, string1, string2];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;newString = [NSString stringByAppendingFormat:@&amp;quot;%@ %@&amp;quot;, str1, str2];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -133,7 +134,8 @@
     
       &lt;h2 id=&quot;NSString功能介绍&quot;&gt;&lt;a href=&quot;#NSString功能介绍&quot; class=&quot;headerlink&quot; title=&quot;NSString功能介绍&quot;&gt;&lt;/a&gt;NSString功能介绍&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;NSString 截取&lt;/li&gt;
-&lt;li&gt;NSS
+&lt;li&gt;NSString 删除所有的空格&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -495,11 +497,12 @@
     <link href="williamliuwen.cn/2016/08/11/iOS-NSLog/"/>
     <id>williamliuwen.cn/2016/08/11/iOS-NSLog/</id>
     <published>2016-08-11T11:33:15.000Z</published>
-    <updated>2016-08-11T11:39:28.000Z</updated>
+    <updated>2016-08-12T22:06:31.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;为什么使用NSLog，而不用Printf&quot;&gt;&lt;a href=&quot;#为什么使用NSLog，而不用Printf&quot; class=&quot;headerlink&quot; title=&quot;为什么使用NSLog，而不用Printf()&quot;&gt;&lt;/a&gt;为什么使用NSLog，而不用Printf()&lt;/h2&gt;&lt;p&gt;1.打印输出使用 NSLog() 而不是 println() 呢？&lt;/p&gt;
 &lt;p&gt;2.原因是使用 print() / println() 输出的话，它会简单地使用 流（stream） 的概念，学过 C++ 的都知道。&lt;/p&gt;
 &lt;p&gt;3.print()会把需要输出的每个字符一个一个的输出到控制台&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;4.普通使用并没有问题，可是当多线程同步输出的时候问题就来了，由于很多 println() 同时打印，就会导致控制台上的字符混乱的堆在一起，而NSLog() 就没有这个问题&lt;/p&gt;
 &lt;h2 id=&quot;NSLog格式&quot;&gt;&lt;a href=&quot;#NSLog格式&quot; class=&quot;headerlink&quot; title=&quot;NSLog格式&quot;&gt;&lt;/a&gt;NSLog格式&lt;/h2&gt;&lt;p&gt;%@     对象&lt;/p&gt;
 &lt;p&gt;%i     整数&lt;/p&gt;
@@ -527,7 +530,9 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;为什么使用NSLog，而不用Printf&quot;&gt;&lt;a href=&quot;#为什么使用NSLog，而不用Printf&quot; class=&quot;headerlink&quot; title=&quot;为什么使用NSLog，而不用Printf()&quot;&gt;&lt;/a&gt;为什么使用NSLog，而不用Printf()&lt;/
+      &lt;h2 id=&quot;为什么使用NSLog，而不用Printf&quot;&gt;&lt;a href=&quot;#为什么使用NSLog，而不用Printf&quot; class=&quot;headerlink&quot; title=&quot;为什么使用NSLog，而不用Printf()&quot;&gt;&lt;/a&gt;为什么使用NSLog，而不用Printf()&lt;/h2&gt;&lt;p&gt;1.打印输出使用 NSLog() 而不是 println() 呢？&lt;/p&gt;
+&lt;p&gt;2.原因是使用 print() / println() 输出的话，它会简单地使用 流（stream） 的概念，学过 C++ 的都知道。&lt;/p&gt;
+&lt;p&gt;3.print()会把需要输出的每个字符一个一个的输出到控制台&lt;/p&gt;
     
     </summary>
     
