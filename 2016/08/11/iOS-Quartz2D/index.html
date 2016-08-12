@@ -1,188 +1,188 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<!-- Head tag -->
 <head>
-  <meta charset="utf-8">
-  
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>iOS-Quartz2D | 太阳在的地方</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Quartz2D可以用来做什么？1.什么是Quartz2D？（用来绘图的）
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="null">
+    <meta name="keyword"  content="undefined">
+    <meta name="theme-color" content="#600090">
+    <meta name="msapplication-navbutton-color" content="#600090">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#60090">
+    <link rel="shortcut icon" href="/img/coffee.png">
 
-Quartz 2D是一个二维绘图引擎，同时支持iOS和Mac系统（所以代码可以在ios和mac系统运行）；Quartz 2D 是基于C语言的API接口；数据类型和函数基本都以CG作为前缀
+    <title>
+        
+          iOS-Quartz2D｜undefined
+        
+    </title>
 
-2.实际中怎么应用Quartz2D？
+    <link rel="canonical" href="williamliuwen.cn/2016/08/11/iOS-Quartz2D/">
 
-可以自定义UI控件，iOS中大部分控件的内容都是通过Quartz2D画出来的，
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-绘制图形">
-<meta property="og:type" content="article">
-<meta property="og:title" content="iOS-Quartz2D">
-<meta property="og:url" content="williamliuwen.cn/2016/08/11/iOS-Quartz2D/index.html">
-<meta property="og:site_name" content="太阳在的地方">
-<meta property="og:description" content="Quartz2D可以用来做什么？1.什么是Quartz2D？（用来绘图的）
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
 
-Quartz 2D是一个二维绘图引擎，同时支持iOS和Mac系统（所以代码可以在ios和mac系统运行）；Quartz 2D 是基于C语言的API接口；数据类型和函数基本都以CG作为前缀
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
 
-2.实际中怎么应用Quartz2D？
+    <!-- Custom Fonts -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-可以自定义UI控件，iOS中大部分控件的内容都是通过Quartz2D画出来的，
 
-绘制图形">
-<meta property="og:updated_time" content="2016-08-11T13:52:13.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS-Quartz2D">
-<meta name="twitter:description" content="Quartz2D可以用来做什么？1.什么是Quartz2D？（用来绘图的）
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-Quartz 2D是一个二维绘图引擎，同时支持iOS和Mac系统（所以代码可以在ios和mac系统运行）；Quartz 2D 是基于C语言的API接口；数据类型和函数基本都以CG作为前缀
-
-2.实际中怎么应用Quartz2D？
-
-可以自定义UI控件，iOS中大部分控件的内容都是通过Quartz2D画出来的，
-
-绘制图形">
-  
-  
-    <link rel="icon" href="img/favicon.gif">
-  
-  <link rel="stylesheet" href="/css/style.css">
+    <!-- ga & ba script hoook -->
+    <script></script>
 </head>
 
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img lazy-src="img/avatar.jpg" class="js-avatar">
-			
-		</a>
+<style>
 
-		<hgroup>
-		  <h1 class="header-author"><a href="/">刘 小汶</a></h1>
-		</hgroup>
+    header.intro-header{
+        background-image: url('undefined')
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " id="nav-top" data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <span class="brand-logo">
+                    太阳在的地方
+                </span>
+                's Blog
+            </a>
+        </div>
 
-		
-		<p class="header-subtitle">知我者谓我心忧，不知我者谓我何求。</p>
-		
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
 
-		
+                    
+                        
+                        <li>
+                            <a href="/about/">小汶履历</a>
+                        </li>
+                        
+                    
 
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">所有文章</a></li>
-				        
-							<li><a href="/about">关于小汶</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-								<a class="github" target="_blank" href="https://github.com/williamliuwen" title="github">github</a>
-					        
-								<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-					        
-						</div>
-					</nav>
-				</section>
-				
-				
-				
-				
-
-				
-			</div>
-		</div>
-	</header>				
-</div>
-
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">刘 小汶</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-			
-				<img lazy-src="img/avatar.jpg" class="js-avatar">
-			
-			</div>
-			<hgroup>
-			  <h1 class="header-author">刘 小汶</h1>
-			</hgroup>
-			
-			<p class="header-subtitle">知我者谓我心忧，不知我者谓我何求。</p>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">所有文章</a></li>
-		        
-					<li><a href="/about">关于小汶</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/williamliuwen" title="github">github</a>
-			        
-						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
+    <!-- /.container -->
 </nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
 
-      <div class="body-wrap"><article id="post-iOS-Quartz2D" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/11/iOS-Quartz2D/" class="article-date">
-  	<time datetime="2016-08-11T13:51:16.000Z" itemprop="datePublished">2016-08-11</time>
-</a>
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!--only post-->
+
+    
+        <img class="wechat-title-img" src="">
+    
+
+<style>
+
+    header.intro-header{
+        background-image: url('')
+    }
+
+</style>
+
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>iOS-Quartz2D</h1>
+                    
+                    <span class="meta">
+                         作者 刘 小汶
+                         <span>
+                          日期 2016-08-11
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      iOS-Quartz2D
-    </h1>
-  
+    <div class="post-title-haojen">
+        <span>
+            iOS-Quartz2D
+        </span>
+    </div>
+</header>
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-        
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+                <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
 
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Quartz2D可以用来做什么？"><a href="#Quartz2D可以用来做什么？" class="headerlink" title="Quartz2D可以用来做什么？"></a>Quartz2D可以用来做什么？</h2><p>1.什么是Quartz2D？（用来绘图的）</p>
+                <h2 id="Quartz2D可以用来做什么？"><a href="#Quartz2D可以用来做什么？" class="headerlink" title="Quartz2D可以用来做什么？"></a>Quartz2D可以用来做什么？</h2><p>1.什么是Quartz2D？（用来绘图的）</p>
 <ul>
 <li>Quartz 2D是一个二维绘图引擎，同时支持iOS和Mac系统（所以代码可以在ios和mac系统运行）；Quartz 2D 是基于C语言的API接口；数据类型和函数基本都以CG作为前缀</li>
 </ul>
@@ -353,140 +353,163 @@ Quartz 2D是一个二维绘图引擎，同时支持iOS和Mac系统（所以代�
 <li>.filter</li>
 </ul>
 
-      
-    </div>
-    
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/08/12/iOS-AddressBook-AddressBookUI-Contacts/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          iOS-AddressBook/AddressBookUI/Contacts
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/08/11/iOS-Wifi/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">iOS-Wifi</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
 
-  
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2016/08/12/iOS-AddressBook-AddressBookUI-Contacts/" data-toggle="tooltip" data-placement="top" title="iOS-AddressBook/AddressBookUI/Contacts">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/08/11/iOS-Wifi/" data-toggle="tooltip" data-placement="top" title="iOS-Wifi">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col" >
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quartz2D可以用来做什么？"><span class="toc-text">Quartz2D可以用来做什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#drawRect-方法的作用？"><span class="toc-text">drawRect:方法的作用？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Quartz2D绘图步骤"><span class="toc-text">Quartz2D绘图步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Quartz2D绘图–拼接路径函数"><span class="toc-text">Quartz2D绘图–拼接路径函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Quartz2D绘图–绘制路径函数"><span class="toc-text">Quartz2D绘图–绘制路径函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Quartz2D绘图–transform属性"><span class="toc-text">Quartz2D绘图–transform属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Quartz2D绘图–CGRect-CGPoint-CGSize-属性"><span class="toc-text">Quartz2D绘图–CGRect \ CGPoint \ CGSize 属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Quartz2D绘图–简单用法"><span class="toc-text">Quartz2D绘图–简单用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Quartz2D绘图–CALayer"><span class="toc-text">Quartz2D绘图–CALayer</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
 </article>
 
 
-<div class="share_jia">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">Share to: &nbsp; </span>
-		<a class="jiathis_button_facebook"></a> 
-    <a class="jiathis_button_twitter"></a>
-    <a class="jiathis_button_plus"></a> 
-    <a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
 
 
 
 
 
 
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="iOS-Quartz2D" data-title="iOS-Quartz2D" data-url="williamliuwen.cn/2016/08/11/iOS-Quartz2D/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"williamliuwen"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <span class="text-muted"style="font-size: 14px">双击导航条返回顶部</span>
+                <br>
+                <ul class="list-inline text-center">
+                
+                
+                
 
+                
 
+                
 
+                
 
-</div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2016 刘 小汶
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 太阳在的地方 2016
+                    <br>
+                    <span id="busuanzi_container_site_pv" style="font-size: 12px;">PV: <span id="busuanzi_value_site_pv"></span> Times</span>
+                    <br>
+                    Theme by <a href="https://haojen.github.io/">Haojen Ma</a>
+                </p>
+
+            </div>
+        </div>
     </div>
-  </div>
 </footer>
-    </div>
-    
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
 
 
+<!-- async load function -->
 <script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: true,
-		animate: true,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false
-	}
-</script>
-<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
-<script src="/js/main.js"></script>
-
-
-
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
     }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
 </script>
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("williamliuwen.cn/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
 </script>
 
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
 
-  </div>
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- swiftype -->
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','undefined','2.0.0');
+</script>
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <!--wechat title img-->
+    <img class="wechat-title-img" src="undefined">
 </body>
+
 </html>
