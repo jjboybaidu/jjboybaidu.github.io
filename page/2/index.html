@@ -126,6 +126,154 @@
 
       <div class="body-wrap">
   
+    <article id="post-iOS-Instruments" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/11/iOS-Instruments/" class="article-date">
+  	<time datetime="2016-08-11T11:37:04.000Z" itemprop="datePublished">2016-08-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/11/iOS-Instruments/">iOS-Instruments</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="测试工具Instruments"><a href="#测试工具Instruments" class="headerlink" title="测试工具Instruments"></a>测试工具Instruments</h2><h2 id="测试分类"><a href="#测试分类" class="headerlink" title="测试分类"></a>测试分类</h2><p>一、单元测试：某方法函数的测试；</p>
+<ul>
+<li><p>1.继承类；</p>
+</li>
+<li><p>2.写测试代码；</p>
+</li>
+<li><p>3.重要概念：断言/猜测/估计（XCTAssertEqual断言等于；XCTAssertTrue断言为真；XCTAssertNil断言为空；除了上面两个方法还有更多）；</p>
+</li>
+<li><p>4.单元测试颜色：红色失败，绿色通过；</p>
+</li>
+<li><p>5.单元测试好处：a.轻量级测试，针对某个方法；b.发布程序的时候不会被打包；c.不需要启动程序；d.可以给每一个类创建一个继承单元测试类的测试方法；</p>
+</li>
+<li><p>6.单元测试用处：一般用在业务逻辑</p>
+</li>
+</ul>
+<p>二、集群测试：所有功能的测试；</p>
+<p>三、压力测试：大批量用户的测试；</p>
+<h2 id="测试APP"><a href="#测试APP" class="headerlink" title="测试APP"></a>测试APP</h2><p>1.使用苹果自带的TestFlight</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-iOS-NSLog" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/11/iOS-NSLog/" class="article-date">
+  	<time datetime="2016-08-11T11:33:15.000Z" itemprop="datePublished">2016-08-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/11/iOS-NSLog/">iOS-NSLog</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="为什么使用NSLog，而不用Printf"><a href="#为什么使用NSLog，而不用Printf" class="headerlink" title="为什么使用NSLog，而不用Printf()"></a>为什么使用NSLog，而不用Printf()</h2><p>1.打印输出使用 NSLog() 而不是 println() 呢？</p>
+<p>2.原因是使用 print() / println() 输出的话，它会简单地使用 流（stream） 的概念，学过 C++ 的都知道。</p>
+<p>3.print()会把需要输出的每个字符一个一个的输出到控制台</p>
+<p>4.普通使用并没有问题，可是当多线程同步输出的时候问题就来了，由于很多 println() 同时打印，就会导致控制台上的字符混乱的堆在一起，而NSLog() 就没有这个问题</p>
+<h2 id="NSLog格式"><a href="#NSLog格式" class="headerlink" title="NSLog格式"></a>NSLog格式</h2><p>%@     对象</p>
+<p>%i     整数</p>
+<p>%d,    double</p>
+<p>%u     无符整形</p>
+<p>%f     浮点/双字</p>
+<p>%x, %X 二进制整数</p>
+<p>%o     八进制整数</p>
+<p>%zu    size_t</p>
+<p>%p     指针</p>
+<p>%e     浮点/双字 （科学计算）</p>
+<p>%g     浮点/双字</p>
+<p>%s     short</p>
+<p>%.*s   Pascal字符串</p>
+<p>%c     字符 char</p>
+<p>%C     unichar</p>
+<p>%lld   64位长整数（long long）</p>
+<p>%llu   无符64位长整数</p>
+<p>%Lf    64位双字</p>
+<p>%zu       size_t</p>
+<p>%#     A class object (Class)</p>
+<p>%:     A method selector (SEL)</p>
+<p>%%     打印百分号</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-iOS-RunTime" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -338,135 +486,6 @@
       
       
 
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-SVN-Git" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/08/SVN-Git/" class="article-date">
-  	<time datetime="2016-08-07T22:24:02.000Z" itemprop="datePublished">2016-08-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/08/SVN-Git/">SVN-Git</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="显示和隐藏文件"><a href="#显示和隐藏文件" class="headerlink" title="显示和隐藏文件"></a>显示和隐藏文件</h2><p>1.显示系统隐藏文件命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.finder AppleShowAllFiles -bool true</span><br></pre></td></tr></table></figure>
-<h2 id="为什么要使用Git"><a href="#为什么要使用Git" class="headerlink" title="为什么要使用Git"></a>为什么要使用Git</h2><p>1.Git的常用命令</p>
-<ul>
-<li>git version : 查看电脑GIT的版本</li>
-</ul>
-<p>2.Git工具安装</p>
-<p>1）如果你下载了Xcode，直接检查Git的版本</p>
-<p>2）如果你没有Xcode，直接单独下载Git</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/08/08/SVN-Git/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-iOS分类-协议-扩展-代理-数据源" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/04/iOS分类-协议-扩展-代理-数据源/" class="article-date">
-  	<time datetime="2016-08-04T12:37:24.000Z" itemprop="datePublished">2016-08-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/04/iOS分类-协议-扩展-代理-数据源/">iOS分类/协议/扩展/代理/数据源</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>1.分类原则</p>
-<ul>
-<li>分类可以访问原类中的成员变量，但是在分类不能添加任何变量。若需要添加变量可以考虑创建子类</li>
-<li>分类中的方法名可以与原类的某个方法名相同（即重载），但是原类的同名方法将失效，不能访问</li>
-<li>通过分类添加的方法是可以被子类继承的</li>
-<li>不必实现分类的所有方法。可以在分类中声明所有的方法，但不实现，在需要的时候再去实现</li>
-</ul>
-<p>2.</p>
-<p>3.</p>
-<p>4.</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/08/04/iOS分类-协议-扩展-代理-数据源/#more">more >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>

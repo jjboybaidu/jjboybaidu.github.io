@@ -126,6 +126,179 @@
 
       <div class="body-wrap">
   
+    <article id="post-iOS-AVFoundation" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/12/iOS-AVFoundation/" class="article-date">
+  	<time datetime="2016-08-12T12:29:05.000Z" itemprop="datePublished">2016-08-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/12/iOS-AVFoundation/">iOS-AVFoundation</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="音频采样"><a href="#音频采样" class="headerlink" title="音频采样"></a>音频采样</h2><p>1）低采样率</p>
+<p>2）高采样率</p>
+<p>3）采样率（采样的次数）越高，波形越接近原波形，不过采样的次数增多，必然会导致存储的数据量要增加，所以我们不可能无限提升采样率。</p>
+<p>4）奈奎斯特频率：当采样率等于波形中最高频率的2倍时，已经足够将波形还原到可接受的程度了；比如：人耳能接受的最高频率为20kHz，所以只要采样率超过40kHz，就可以呈现出可接受的声音。目前常见的CD采样率为44.1kHz。</p>
+<p>5）音频文件的体积，体积=采样率<em>音频位元深度</em>音道数*时间</p>
+<p>6）音频的位元深度。表示用多少位(bit)定义线性维度上的离散度来保存一个音频样本。位数越高，离散度越多，表示的声音越精确（音质越好）。一般来说16bit比较常见，可以表示65536个离散度。</p>
+<h2 id="音频压缩"><a href="#音频压缩" class="headerlink" title="音频压缩"></a>音频压缩</h2><p>1）脉冲编码调制（Pulse Code Modulation）</p>
+<ul>
+<li>对声音进行采样、量化过程被称为脉冲编码调制</li>
+</ul>
+<p>2）直接脉冲编码调制(Linear Pulse Code Modulation)（ Linear PCM ）</p>
+<ul>
+<li>LPCM数据是最原始的音频数据完全无损，但是他的体积非常大，比如一个44.1kHz，16bit，双音道的音频文件，每分钟的数据量为44.1<em>16</em>2*60kbit=10.3M。一个普通5分钟的音乐就得50M</li>
+</ul>
+<p>3）解决数据量大的问题：压缩算法</p>
+<ul>
+<li><p>有损压缩（MP3、AAC、OGG、WMA）</p>
+</li>
+<li><p>无损压缩（ALAC、APE、FLAC）</p>
+</li>
+<li><p>压缩算法对应AVFoundtaion框架里面的AudioFormatID</p>
+</li>
+</ul>
+<h2 id="色彩二次抽样"><a href="#色彩二次抽样" class="headerlink" title="色彩二次抽样"></a>色彩二次抽样</h2><p>1）色彩二次抽样的目的是减少图片体积（通过减少样本数来实现）</p>
+<p>2）色彩二次抽样原理：人的眼睛对亮度非常敏感，但是对色彩信息比较迟钝。色彩二次抽样是指在原有的图片样本中，二次抽样，减少对色彩信息的抽样，而达到减小图片体积（样本数减小），又不怎么影响图片质量（眼睛对色彩不敏感）的效果。</p>
+<p>3）颜色模型：视频数据使用的是YCbCr</p>
+<p>4）YCbCr也称为YUV。其中Y表示亮度分量，Cb表示蓝色分量，Cr表示红色分量。</p>
+<p>5）常用的YCbCr有4:4:4、4:2:2、4:2:0、4:1:1。</p>
+<ul>
+<li><p>4:4:4 亮度和色彩信息的比值为1:1，所有色彩信息都会被抽样，也就是全彩。</p>
+</li>
+<li><p>4:2:2 亮度和色彩信息的比值为2:1，只有1/2的色彩信息被抽样</p>
+</li>
+<li><p>4:2:0和4:1:1 亮度和色彩信息比值为4:1，只有1/4的色彩信息被抽样（这种体积应该是最小）</p>
+</li>
+</ul>
+<p>6）色彩二次抽样对应AVFoundtaion框架里面的CVImageBuffer</p>
+<p>7）实际应用：一些特别专业的相机可能会用到4:4:4参数捕捉图片，大部分情况下会用4:2:2参数，普通的摄像头（如：iPhone摄像头）一般都是4:2:0、4:1:1</p>
+<h2 id="H-264"><a href="#H-264" class="headerlink" title="H.264"></a>H.264</h2><p>1) H.264是编解码器的标准；编解码器是用来进行压缩和解压的；是用来压缩音视频体积的；</p>
+<p>2）H.264对应AVFoundtaion框架里面的AVVideoSettings</p>
+<p>3）H.264实现原理：H.264通过空间和时间2个维度来压缩体积：</p>
+<ul>
+<li>空间：空间上的压缩独立于视频帧，也称为帧内压缩。主要通过压缩图片的方式（如色彩二次抽样等）来减小体积，帧内压缩一般为有损压缩</li>
+</ul>
+<p>*</p>
+<h6 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h6><p>1.<a href="http://www.jianshu.com/p/485e946f80b4" target="_blank" rel="external">http://www.jianshu.com/p/485e946f80b4</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-iOS-NSString" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/12/iOS-NSString/" class="article-date">
+  	<time datetime="2016-08-12T12:25:49.000Z" itemprop="datePublished">2016-08-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/12/iOS-NSString/">iOS-NSString</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="NSString功能介绍"><a href="#NSString功能介绍" class="headerlink" title="NSString功能介绍"></a>NSString功能介绍</h2><ul>
+<li>NSString 截取</li>
+<li>NSString 删除所有的空格</li>
+</ul>
+<h2 id="NSString常用代码"><a href="#NSString常用代码" class="headerlink" title="NSString常用代码"></a>NSString常用代码</h2><h6 id="1-NSString-截取"><a href="#1-NSString-截取" class="headerlink" title="1.NSString 截取"></a>1.NSString 截取</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NSString *id1String = [self.localid.text substringWithRange:NSMakeRange(0, 2)];</span><br><span class="line">NSRange range = [string rangeOfString:subString]; //返回&#123;-1,0&#125;表示找不到</span><br><span class="line"></span><br><span class="line">NSString  *a = @&quot;i like long dress&quot;;</span><br><span class="line">NSString *C = [a substringToIndex:4];</span><br></pre></td></tr></table></figure>
+<h6 id="2-NSString-删除所有的空格"><a href="#2-NSString-删除所有的空格" class="headerlink" title="2.NSString 删除所有的空格"></a>2.NSString 删除所有的空格</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (NSString *)deleteSpace&#123;</span><br><span class="line">NSMutableString *strM = [NSMutableString stringWithString:self];</span><br><span class="line">[strM replaceOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot; options:NSLiteralSearch range:NSMakeRange(0, strM.length)];</span><br><span class="line"></span><br><span class="line">return [strM copy];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="3-NSString-拼接"><a href="#3-NSString-拼接" class="headerlink" title="3.NSString 拼接"></a>3.NSString 拼接</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NSString *string = it;</span><br><span class="line">NSString *newString = [string stringByAppendingString:@&quot;Love&quot;]</span><br><span class="line"></span><br><span class="line">newString = [NSString stringWithFormat:@&quot;%@%@&quot;, string1, string2];</span><br><span class="line"></span><br><span class="line">newString = [NSString stringByAppendingFormat:@&quot;%@ %@&quot;, str1, str2];</span><br></pre></td></tr></table></figure>
+<h6 id="4-NSString-判断空-相等"><a href="#4-NSString-判断空-相等" class="headerlink" title="4.NSString 判断空 相等"></a>4.NSString 判断空 相等</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if ([text lenght] == 0);</span><br><span class="line"></span><br><span class="line">BOOL isEqual = [str1 isEqualToString:str2];</span><br></pre></td></tr></table></figure>
+<h6 id="5-NSString-前缀-后缀"><a href="#5-NSString-前缀-后缀" class="headerlink" title="5.NSString 前缀 后缀"></a>5.NSString 前缀 后缀</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BOOL isPrefix = [webSite hasPrefix: @&quot;www.&quot;];</span><br><span class="line"></span><br><span class="line">BOOL isSubfix = [website hasSuffix: @&quot;.cn&quot;];</span><br></pre></td></tr></table></figure>
+<h6 id="6-NSString-替换"><a href="#6-NSString-替换" class="headerlink" title="6.NSString 替换"></a>6.NSString 替换</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSString *newString =</span><br><span class="line">[string stringByReplacingOccurrencesOfString:@&quot;a&quot; withString:@&quot;b&quot;];</span><br></pre></td></tr></table></figure>
+<h6 id="7-NSString-多行书写"><a href="#7-NSString-多行书写" class="headerlink" title="7.NSString 多行书写"></a>7.NSString 多行书写</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">NSString *str1 = @&quot;SELECT [CustomerID], [CustomerName] &quot;</span><br><span class="line">&quot;FROM [Customer] &quot;</span><br><span class="line">&quot;WHERE [CustomerID] = 1234&quot;;</span><br><span class="line"></span><br><span class="line">NSString *str2 = @&quot;SELECT [CustomerID], [CustomerName] \</span><br><span class="line">FROM [Customer] \</span><br><span class="line">WHERE [CustomerID] = 1234&quot;;</span><br><span class="line"></span><br><span class="line">结果都是：SELECT [CustomerID], [CustomerName] FROM [Customer] WHERE [CustomerID] = 1234</span><br></pre></td></tr></table></figure>
+<h6 id="8-NSString-删除首尾的空格和换行符"><a href="#8-NSString-删除首尾的空格和换行符" class="headerlink" title="8.NSString 删除首尾的空格和换行符"></a>8.NSString 删除首尾的空格和换行符</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//whitespaceAndNewlineCharacterSet去除前后的空格和换行符</span><br><span class="line">//whitespaceCharacterSet 去除前后的空格,实际效果来看只实现了去除首字母前面的空格</span><br><span class="line">NSString *theString = @&quot;   one     two three  &quot;;</span><br><span class="line">NSString *trimmed1 = [theString stringByTrimmingCharactersInSet:</span><br><span class="line">[NSCharacterSetwhitespaceAndNewlineCharacterSet]];</span><br><span class="line">NSString *trimmed2 = [theString stringByTrimmingCharactersInSet:</span><br><span class="line">[NSCharacterSetwhitespaceCharacterSet]];</span><br></pre></td></tr></table></figure>
+<h6 id="9-NSString-写入文件"><a href="#9-NSString-写入文件" class="headerlink" title="9.NSString 写入文件"></a>9.NSString 写入文件</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">NSString *string = @&quot;JackJack989878&quot;;</span><br><span class="line">NSString *filePath = @&quot;/Users/apple/Desktop/my.txt&quot;;</span><br><span class="line">[string writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];</span><br><span class="line">//  其中的yes表示如果传入的过程中出现错误则撤销,不会生成my.txt文件，如果是NO，则会继续生成文件my.txt</span><br><span class="line"></span><br><span class="line">NSURL *url = [NSURL fileURLWithPath:@&quot;/Users/apple/Desktop/my2.txt&quot;];</span><br><span class="line">[string writeToURL:url atomically:YES encoding:NSUTF8StringEncoding error:nil];</span><br></pre></td></tr></table></figure>
+<h6 id="10-NSString-大写-小写"><a href="#10-NSString-大写-小写" class="headerlink" title="10.NSString 大写 小写"></a>10.NSString 大写 小写</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">NSString * str8 = @&quot;baidu&quot;;</span><br><span class="line">NSString * str9 = [str8 uppercaseString];</span><br><span class="line"></span><br><span class="line">NSString * str10 = @&quot;CHINA&quot;;</span><br><span class="line">NSString * str11 = [str10 lowercaseString];</span><br><span class="line"></span><br><span class="line">NSString * str12 = @&quot;i386&quot;;</span><br><span class="line">NSString * str12 = [str10 capitalizedString];</span><br></pre></td></tr></table></figure>
+<h6 id="11-NSString-文件扩展名"><a href="#11-NSString-文件扩展名" class="headerlink" title="11.NSString 文件扩展名"></a>11.NSString 文件扩展名</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSString *filename = @&quot;11111.txt&quot;;</span><br><span class="line">NSString *fileExtension = [filename pathExtension];</span><br></pre></td></tr></table></figure>
+<h6 id="12-NSString-判断是否为整型"><a href="#12-NSString-判断是否为整型" class="headerlink" title="12.NSString 判断是否为整型"></a>12.NSString 判断是否为整型</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)isPureInt:(NSString*)string&#123;</span><br><span class="line">NSScanner* scan = [NSScanner scannerWithString:string];</span><br><span class="line">int val;</span><br><span class="line">return[scan scanInt:&amp;val] &amp;&amp; [scan isAtEnd];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="13-NSString-判断是否为浮点型"><a href="#13-NSString-判断是否为浮点型" class="headerlink" title="13.NSString 判断是否为浮点型"></a>13.NSString 判断是否为浮点型</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)isPureFloat:(NSString*)string&#123;</span><br><span class="line">NSScanner* scan = [NSScanner scannerWithString:string];</span><br><span class="line">float val;</span><br><span class="line"></span><br><span class="line">return[scan scanFloat:&amp;val] &amp;&amp; [scan isAtEnd];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="14-NSString-将URL内容字符串"><a href="#14-NSString-将URL内容字符串" class="headerlink" title="14.NSString 将URL内容字符串"></a>14.NSString 将URL内容字符串</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSURL *url = [NSURLURLWithString:@&quot;http://www.baidu.com&quot;];</span><br><span class="line">NSString *pageContents  = [NSString stringWithContentsOfURL:url];</span><br></pre></td></tr></table></figure>
+<h6 id="15-NSMutableString-拼接"><a href="#15-NSMutableString-拼接" class="headerlink" title="15.NSMutableString 拼接"></a>15.NSMutableString 拼接</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[mutableString appendString:@&quot;11 12 13&quot;];</span><br><span class="line">[mutableString appendString:string2];</span><br><span class="line">//注意：NSString使用的是stringByAppendString:</span><br><span class="line">//NSMutableString使用的是appendString:</span><br></pre></td></tr></table></figure>
+<h6 id="16-NSMutableString-截取"><a href="#16-NSMutableString-截取" class="headerlink" title="16.NSMutableString 截取"></a>16.NSMutableString 截取</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSRange *range = [mutableString rangeOfString:@&quot;is&quot;];</span><br></pre></td></tr></table></figure>
+<h6 id="17-NSMutableString-删除"><a href="#17-NSMutableString-删除" class="headerlink" title="17.NSMutableString 删除"></a>17.NSMutableString 删除</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[mutableString deleteCharactersInRange:range];</span><br></pre></td></tr></table></figure>
+<h6 id="18-NSMutableString-插入"><a href="#18-NSMutableString-插入" class="headerlink" title="18.NSMutableString 插入"></a>18.NSMutableString 插入</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[mutableString insetString:@&quot;15&quot; atIndex:4];</span><br></pre></td></tr></table></figure>
+<h6 id="19-NSMutableString-替换"><a href="#19-NSMutableString-替换" class="headerlink" title="19.NSMutableString 替换"></a>19.NSMutableString 替换</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">NSMutableString * str=[[NSMutableString alloc]initWithFormat:@&quot;1,1,1,1,1,1&quot;];</span><br><span class="line">NSMutableArray * array=[NSMutableArray arrayWithArray:[str componentsSeparatedByString:@&quot;,&quot;]];</span><br><span class="line">[array replaceObjectAtIndex:4 withObject:@&quot;2&quot;];</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-iOS-AddressBook-AddressBookUI-Contacts" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -515,154 +688,6 @@
 <p>3.手机—–路由器——智能设备</p>
 <p>4.iOS设备间可以使用AirDrop (UIActivityViewController类)</p>
 <p>5.MultipeerConnectivity 框架，距离较近的Apple设备（iMac/iPad/iPhone）之间可基于蓝牙和WiFi（P2P WiFi）技术进行发现和连接实现近场通信</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-iOS-Instruments" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/11/iOS-Instruments/" class="article-date">
-  	<time datetime="2016-08-11T11:37:04.000Z" itemprop="datePublished">2016-08-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/11/iOS-Instruments/">iOS-Instruments</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="测试工具Instruments"><a href="#测试工具Instruments" class="headerlink" title="测试工具Instruments"></a>测试工具Instruments</h2><h2 id="测试分类"><a href="#测试分类" class="headerlink" title="测试分类"></a>测试分类</h2><p>一、单元测试：某方法函数的测试；</p>
-<ul>
-<li><p>1.继承类；</p>
-</li>
-<li><p>2.写测试代码；</p>
-</li>
-<li><p>3.重要概念：断言/猜测/估计（XCTAssertEqual断言等于；XCTAssertTrue断言为真；XCTAssertNil断言为空；除了上面两个方法还有更多）；</p>
-</li>
-<li><p>4.单元测试颜色：红色失败，绿色通过；</p>
-</li>
-<li><p>5.单元测试好处：a.轻量级测试，针对某个方法；b.发布程序的时候不会被打包；c.不需要启动程序；d.可以给每一个类创建一个继承单元测试类的测试方法；</p>
-</li>
-<li><p>6.单元测试用处：一般用在业务逻辑</p>
-</li>
-</ul>
-<p>二、集群测试：所有功能的测试；</p>
-<p>三、压力测试：大批量用户的测试；</p>
-<h2 id="测试APP"><a href="#测试APP" class="headerlink" title="测试APP"></a>测试APP</h2><p>1.使用苹果自带的TestFlight</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-iOS-NSLog" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/11/iOS-NSLog/" class="article-date">
-  	<time datetime="2016-08-11T11:33:15.000Z" itemprop="datePublished">2016-08-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/11/iOS-NSLog/">iOS-NSLog</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="为什么使用NSLog，而不用Printf"><a href="#为什么使用NSLog，而不用Printf" class="headerlink" title="为什么使用NSLog，而不用Printf()"></a>为什么使用NSLog，而不用Printf()</h2><p>1.打印输出使用 NSLog() 而不是 println() 呢？</p>
-<p>2.原因是使用 print() / println() 输出的话，它会简单地使用 流（stream） 的概念，学过 C++ 的都知道。</p>
-<p>3.print()会把需要输出的每个字符一个一个的输出到控制台</p>
-<p>4.普通使用并没有问题，可是当多线程同步输出的时候问题就来了，由于很多 println() 同时打印，就会导致控制台上的字符混乱的堆在一起，而NSLog() 就没有这个问题</p>
-<h2 id="NSLog格式"><a href="#NSLog格式" class="headerlink" title="NSLog格式"></a>NSLog格式</h2><p>%@     对象</p>
-<p>%i     整数</p>
-<p>%d,    double</p>
-<p>%u     无符整形</p>
-<p>%f     浮点/双字</p>
-<p>%x, %X 二进制整数</p>
-<p>%o     八进制整数</p>
-<p>%zu    size_t</p>
-<p>%p     指针</p>
-<p>%e     浮点/双字 （科学计算）</p>
-<p>%g     浮点/双字</p>
-<p>%s     short</p>
-<p>%.*s   Pascal字符串</p>
-<p>%c     字符 char</p>
-<p>%C     unichar</p>
-<p>%lld   64位长整数（long long）</p>
-<p>%llu   无符64位长整数</p>
-<p>%Lf    64位双字</p>
-<p>%zu       size_t</p>
-<p>%#     A class object (Class)</p>
-<p>%:     A method selector (SEL)</p>
-<p>%%     打印百分号</p>
 
       
     </div>

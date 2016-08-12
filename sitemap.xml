@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>williamliuwen.cn/2016/08/12/iOS-AVFoundation/</loc>
+    
+    <lastmod>2016-08-12T12:29:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>williamliuwen.cn/2016/08/04/iOS-Tips/</loc>
+    
+    <lastmod>2016-08-12T12:28:13.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>williamliuwen.cn/2016/08/12/iOS-NSString/</loc>
+    
+    <lastmod>2016-08-12T12:26:43.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>williamliuwen.cn/2016/08/02/iOS-Thread/</loc>
+    
+    <lastmod>2016-08-12T12:24:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>williamliuwen.cn/2016/08/12/iOS-AddressBook-AddressBookUI-Contacts/</loc>
     
     <lastmod>2016-08-12T12:18:17.000Z</lastmod>
@@ -19,13 +47,6 @@
     <loc>williamliuwen.cn/2016/08/11/iOS-Wifi/</loc>
     
     <lastmod>2016-08-11T12:46:58.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>williamliuwen.cn/2016/08/04/iOS-Tips/</loc>
-    
-    <lastmod>2016-08-11T12:44:28.000Z</lastmod>
     
   </url>
   
@@ -103,13 +124,6 @@
     <loc>williamliuwen.cn/2016/08/04/iOS%E4%BA%BA%E6%9C%BA%E4%BA%A4%E4%BA%92/</loc>
     
     <lastmod>2016-08-04T11:52:30.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>williamliuwen.cn/2016/08/02/iOS-Thread/</loc>
-    
-    <lastmod>2016-08-04T11:49:39.000Z</lastmod>
     
   </url>
   
