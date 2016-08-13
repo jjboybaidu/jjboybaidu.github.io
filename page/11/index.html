@@ -79,7 +79,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="williamliuwen.cn/2016/04/12/AWblog/2016/4/iOS-AddressBook-AddressBookUI-Contacts/" data-id="cirt8czwf000e6wi0t1dk3i9a" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="williamliuwen.cn/2016/04/12/AWblog/2016/4/iOS-AddressBook-AddressBookUI-Contacts/" data-id="cirt9dq5r000ef2i0gk63gch8" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -179,7 +179,7 @@
 
 
   
-    <article id="post-AWblog/2016/4/iOS-Tips" class="post-AWblog/2016/4/iOS-Tips post type-post status-publish format-standard hentry">
+    <article id="post-AWblog/2016/4/iOS-Delegate" class="post-AWblog/2016/4/iOS-Delegate post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -187,34 +187,70 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2016/04/04/AWblog/2016/4/iOS-Tips/">iOS-Tips</a>
+      <a class="article-title" href="/2016/04/10/AWblog/2016/4/iOS-Delegate/">iOS-Delegate</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="williamliuwen.cn/2016/04/04/AWblog/2016/4/iOS-Tips/" data-id="cirt8czwg000f6wi0isjkfkfu" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="williamliuwen.cn/2016/04/10/AWblog/2016/4/iOS-Delegate/" data-id="cirt9dq5s000ff2i0q0eivvvw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <h6 id="Tip1-隐藏状态栏"><a href="#Tip1-隐藏状态栏" class="headerlink" title="Tip1 隐藏状态栏"></a>Tip1 隐藏状态栏</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- (BOOL)prefersStatusBarHidden&#123;</span><br><span class="line">    return  YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="Tip2-设置与状态栏间距（没有导航栏）"><a href="#Tip2-设置与状态栏间距（没有导航栏）" class="headerlink" title="Tip2 设置与状态栏间距（没有导航栏）"></a>Tip2 设置与状态栏间距（没有导航栏）</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">If you are doing thins programatically and are using a UITableViewController without a UINavigationController your best bet is to do the following in viewDidLoad:</span><br><span class="line"></span><br><span class="line">The UITableViewController will still scroll behind the status bar but won&apos;t be under it when scrolled to the top.</span><br><span class="line"></span><br><span class="line">self.tableView.contentInset = UIEdgeInsetsMake(20.0f,0.0f,0.0f,0.0f);</span><br></pre></td></tr></table></figure>
-<h6 id="Tip3-修改状态栏颜色"><a href="#Tip3-修改状态栏颜色" class="headerlink" title="Tip3 修改状态栏颜色"></a>Tip3 修改状态栏颜色</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">第一步：在info.plist中添加一个字段：UIViewControllerBasedStatusBarAppearance 设置值为 NO</span><br><span class="line">第二步，设置状态栏颜色为白色:</span><br><span class="line">UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2016/04/04/AWblog/2016/4/iOS-Tips/#more" class="more-link">More <span class="meta-nav">→</span></a>
-          </p>
-        
+        <h2 id="代理基本理解"><a href="#代理基本理解" class="headerlink" title="代理基本理解"></a>代理基本理解</h2><p>1.Delegate的使用场合</p>
+<ul>
+<li>对象A内部发生了一些事情,想通知对象B **</li>
+<li>对象B想监听对象A内部发生了什么事情</li>
+<li>对象A想在自己的方法内部调用对象B的某个方法,并且对象A不能对对象B有耦合依赖</li>
+<li>对象A想传递数据给对象B</li>
+<li>以上情况,结果都一样:对象B是对象A的代理(delegate)</li>
+</ul>
+<p>2.使用delegate的步骤</p>
+<ul>
+<li><ol>
+<li>先搞清楚谁是谁的代理(delegate)</li>
+</ol>
+</li>
+<li><ol>
+<li>定义代理协议,协议名称的命名规范:控件类名 + Delegate</li>
+</ol>
+</li>
+<li><ol>
+<li>定义代理方法 代理方法一般都定义为@optional</li>
+</ol>
+</li>
+<li>代理方法名都以控件名开头</li>
+<li>代理方法至少有1个参数,将控件本身传递出去</li>
+<li><ol>
+<li>设置代理(delegate)对象  (比如myView.delegate = xxxx;) 代理对象遵守协议</li>
+</ol>
+</li>
+<li>代理对象实现协议里面该实现的方法</li>
+<li><ol>
+<li>在恰当的时刻调用代理对象(delegate)的代理方法,通知代理发生了什么事情(在调用之前判断代理是否实现了该代理方法)</li>
+</ol>
+</li>
+</ul>
+<p>3.代理传值核心原理</p>
+<ul>
+<li>值由我来提供给代理显示；</li>
+<li>或者值由我来提供给代理用；</li>
+<li>代理会遵守我定义的协议，我的协议内容就是一个方法；</li>
+<li>我的协议方法里面会有一个参数，就是使用这个方法必须传入一个参数；</li>
+<li>参数是我来提供，方法有代理来实现；</li>
+<li>过程是：我通知代理来实现由我给参数的方法，参数我提供给你，看你自己怎么用了；这就是代理传值的核心原理</li>
+</ul>
+
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2016/04/04/AWblog/2016/4/iOS-Tips/">
-    <time datetime="2016-04-04T11:53:15.000Z" class="entry-date">
-        2016-04-04
+    <a href="/2016/04/10/AWblog/2016/4/iOS-Delegate/">
+    <time datetime="2016-04-10T14:31:01.000Z" class="entry-date">
+        2016-04-10
     </time>
 </a>
     
