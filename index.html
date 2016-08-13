@@ -72,23 +72,33 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/08/12/iOS-数据持久化/" title="iOS-数据持久化" itemprop="url">iOS-数据持久化</a>
+      <a href="/2016/06/06/提升自己/" title="提升自己" itemprop="url">提升自己</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="JJBoy" target="_blank" itemprop="author">JJBoy</a>
 		
   <p class="article-time">
-    <time datetime="2016-08-12T12:48:41.000Z" itemprop="datePublished"> Published 2016-08-12</time>
+    <time datetime="2016-06-06T12:02:32.000Z" itemprop="datePublished"> Published 2016-06-06</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        
+        <h3 id="疑问："><a href="#疑问：" class="headerlink" title="疑问："></a>疑问：</h3><ul>
+<li><p>1.为什么要学这些？</p>
+</li>
+<li><p>2.什么是系统性的目标？</p>
+</li>
+<li><p>3.如何利用有限时间最大化自己的长期收益</p>
+</li>
+</ul>
+<h3 id="行动："><a href="#行动：" class="headerlink" title="行动："></a>行动：</h3>
         
         
         <p class="article-more-link">
+          
+            <a href="/2016/06/06/提升自己/#more">Read More</a>
           
        </p>
     </div>
@@ -121,69 +131,28 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/08/12/iOS-AVFoundation/" title="iOS-AVFoundation" itemprop="url">iOS-AVFoundation</a>
+      <a href="/2016/06/03/GitHub命令小结/" title="GitHub命令小结" itemprop="url">GitHub命令小结</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="JJBoy" target="_blank" itemprop="author">JJBoy</a>
 		
   <p class="article-time">
-    <time datetime="2016-08-12T12:29:05.000Z" itemprop="datePublished"> Published 2016-08-12</time>
+    <time datetime="2016-06-03T11:57:34.000Z" itemprop="datePublished"> Published 2016-06-03</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h2 id="音频采样"><a href="#音频采样" class="headerlink" title="音频采样"></a>音频采样</h2><p>1）低采样率</p>
-<p>2）高采样率</p>
-<p>3）采样率（采样的次数）越高，波形越接近原波形，不过采样的次数增多，必然会导致存储的数据量要增加，所以我们不可能无限提升采样率。</p>
-<p>4）奈奎斯特频率：当采样率等于波形中最高频率的2倍时，已经足够将波形还原到可接受的程度了；比如：人耳能接受的最高频率为20kHz，所以只要采样率超过40kHz，就可以呈现出可接受的声音。目前常见的CD采样率为44.1kHz。</p>
-<p>5）音频文件的体积，体积=采样率<em>音频位元深度</em>音道数*时间</p>
-<p>6）音频的位元深度。表示用多少位(bit)定义线性维度上的离散度来保存一个音频样本。位数越高，离散度越多，表示的声音越精确（音质越好）。一般来说16bit比较常见，可以表示65536个离散度。</p>
-<h2 id="音频压缩"><a href="#音频压缩" class="headerlink" title="音频压缩"></a>音频压缩</h2><p>1）脉冲编码调制（Pulse Code Modulation）</p>
-<ul>
-<li>对声音进行采样、量化过程被称为脉冲编码调制</li>
-</ul>
-<p>2）直接脉冲编码调制(Linear Pulse Code Modulation)（ Linear PCM ）</p>
-<ul>
-<li>LPCM数据是最原始的音频数据完全无损，但是他的体积非常大，比如一个44.1kHz，16bit，双音道的音频文件，每分钟的数据量为44.1<em>16</em>2*60kbit=10.3M。一个普通5分钟的音乐就得50M</li>
-</ul>
-<p>3）解决数据量大的问题：压缩算法</p>
-<ul>
-<li><p>有损压缩（MP3、AAC、OGG、WMA）</p>
-</li>
-<li><p>无损压缩（ALAC、APE、FLAC）</p>
-</li>
-<li><p>压缩算法对应AVFoundtaion框架里面的AudioFormatID</p>
-</li>
-</ul>
-<h2 id="色彩二次抽样"><a href="#色彩二次抽样" class="headerlink" title="色彩二次抽样"></a>色彩二次抽样</h2><p>1）色彩二次抽样的目的是减少图片体积（通过减少样本数来实现）</p>
-<p>2）色彩二次抽样原理：人的眼睛对亮度非常敏感，但是对色彩信息比较迟钝。色彩二次抽样是指在原有的图片样本中，二次抽样，减少对色彩信息的抽样，而达到减小图片体积（样本数减小），又不怎么影响图片质量（眼睛对色彩不敏感）的效果。</p>
-<p>3）颜色模型：视频数据使用的是YCbCr</p>
-<p>4）YCbCr也称为YUV。其中Y表示亮度分量，Cb表示蓝色分量，Cr表示红色分量。</p>
-<p>5）常用的YCbCr有4:4:4、4:2:2、4:2:0、4:1:1。</p>
-<ul>
-<li><p>4:4:4 亮度和色彩信息的比值为1:1，所有色彩信息都会被抽样，也就是全彩。</p>
-</li>
-<li><p>4:2:2 亮度和色彩信息的比值为2:1，只有1/2的色彩信息被抽样</p>
-</li>
-<li><p>4:2:0和4:1:1 亮度和色彩信息比值为4:1，只有1/4的色彩信息被抽样（这种体积应该是最小）</p>
-</li>
-</ul>
-<p>6）色彩二次抽样对应AVFoundtaion框架里面的CVImageBuffer</p>
-<p>7）实际应用：一些特别专业的相机可能会用到4:4:4参数捕捉图片，大部分情况下会用4:2:2参数，普通的摄像头（如：iPhone摄像头）一般都是4:2:0、4:1:1</p>
-<h2 id="H-264"><a href="#H-264" class="headerlink" title="H.264"></a>H.264</h2><p>1) H.264是编解码器的标准；编解码器是用来进行压缩和解压的；是用来压缩音视频体积的；</p>
-<p>2）H.264对应AVFoundtaion框架里面的AVVideoSettings</p>
-<p>3）H.264实现原理：H.264通过空间和时间2个维度来压缩体积：</p>
-<ul>
-<li>空间：空间上的压缩独立于视频帧，也称为帧内压缩。主要通过压缩图片的方式（如色彩二次抽样等）来减小体积，帧内压缩一般为有损压缩</li>
-</ul>
-<p>*</p>
-<h6 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h6><p>1.<a href="http://www.jianshu.com/p/485e946f80b4" target="_blank" rel="external">http://www.jianshu.com/p/485e946f80b4</a></p>
-
+        <blockquote>
+<p>如果你是初学者，可以按照步骤来，这是一个记录贴，方便查询代码；</p>
+</blockquote>
+<h3 id="初步建立GitHub仓库的一些命令："><a href="#初步建立GitHub仓库的一些命令：" class="headerlink" title="初步建立GitHub仓库的一些命令："></a>初步建立GitHub仓库的一些命令：</h3><p>touch README.md  // 新建说明文件<br>ssh-keygen -t rsa -C “your_email@youremail.com” // 创建本地的keygen<br>cd ~/.ssh // 进入创建好keygen的文件，用cat id_rsa.pub来查看keygen，然后再把它复制到你的github</p>
         
         
         <p class="article-more-link">
+          
+            <a href="/2016/06/03/GitHub命令小结/#more">Read More</a>
           
        </p>
     </div>
@@ -216,150 +185,28 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/08/12/iOS-NSString/" title="iOS-NSString" itemprop="url">iOS-NSString</a>
+      <a href="/2016/06/01/衣物极简原则/" title="衣物极简原则" itemprop="url">衣物极简原则</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="JJBoy" target="_blank" itemprop="author">JJBoy</a>
 		
   <p class="article-time">
-    <time datetime="2016-08-12T12:25:49.000Z" itemprop="datePublished"> Published 2016-08-12</time>
+    <time datetime="2016-06-01T12:09:33.000Z" itemprop="datePublished"> Published 2016-06-01</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h2 id="NSString功能介绍"><a href="#NSString功能介绍" class="headerlink" title="NSString功能介绍"></a>NSString功能介绍</h2><ul>
-<li>NSString 截取</li>
-<li>NSString 删除所有的空格</li>
+        <h3 id="每日给自己一句话：超抵抗力最大的路径前进！"><a href="#每日给自己一句话：超抵抗力最大的路径前进！" class="headerlink" title="每日给自己一句话：超抵抗力最大的路径前进！"></a>每日给自己一句话：超抵抗力最大的路径前进！</h3><p>转自：豆瓣：Oscar</p>
+<h4 id="我的精简心得之一：-衣物精简原则"><a href="#我的精简心得之一：-衣物精简原则" class="headerlink" title="我的精简心得之一： 衣物精简原则"></a>我的精简心得之一： 衣物精简原则</h4><ul>
+<li>有不少人问我是怎么精简我的物品的，有哪些经验或者哪些物品值得推荐。其实在精简的过程中，我确实感受到这里面还是有一定的原则可循的，那就写一篇文字和大家分享。声明：以下文字只是个人总结，没有经过普遍性验证，仅供参考。在精简物品的过程中，个人衣物是重头戏，我们就先来谈谈这个话题。</li>
 </ul>
         
         
         <p class="article-more-link">
           
-            <a href="/2016/08/12/iOS-NSString/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/08/12/iOS-AddressBook-AddressBookUI-Contacts/" title="iOS-AddressBook/AddressBookUI/Contacts" itemprop="url">iOS-AddressBook/AddressBookUI/Contacts</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="JJBoy" target="_blank" itemprop="author">JJBoy</a>
-		
-  <p class="article-time">
-    <time datetime="2016-08-12T12:18:04.000Z" itemprop="datePublished"> Published 2016-08-12</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="读取手机通讯录一共经历了几个版本的API"><a href="#读取手机通讯录一共经历了几个版本的API" class="headerlink" title="读取手机通讯录一共经历了几个版本的API"></a>读取手机通讯录一共经历了几个版本的API</h2><p>1.AddressBook.Framework</p>
-<p>2.AddressBookUI.Framework</p>
-<p>3.Contacts.Framework</p>
-<h2 id="ABAddressBook基本知识"><a href="#ABAddressBook基本知识" class="headerlink" title="ABAddressBook基本知识"></a>ABAddressBook基本知识</h2><p>1.ABAddressBookRef</p>
-<ul>
-<li>addressBook是通讯录对象，要查找通讯录，必须通过这个对象，所以每次调用手机的通讯录都要先创建这个对象，然后去赋值通讯录的信息，显示在你的table上面；通过该对象开发人员不用过多的关注通讯录的存储方式，可以直接以透明的方式去访问、保存（在使用AddressBook.framework操作联系人时，所有的增加、删除、修改后都必须执行保存操作，类似于Core Data）等。</li>
-</ul>
-<p>2.ABRecordCopyValue</p>
-<ul>
-<li>ABRecordCopyValue用来addressbook里面的各种属性，单值属性，多值属性；</li>
-<li>CFTypeRef ABRecordCopyValue (ABRecordRef record,ABPropertyID property);</li>
-</ul>
-<p>3.ABRecordRef</p>
-<ul>
-<li>是记录对象，代表一个通用的记录对象，可以是一条联系人信息，也可以是一个群组，可以通过ABRecordGetRecordType()函数获得具体类型。如果作为联系人（事实上也经常使用它作为联系人），那么这个记录记录了一个完整的联系人信息（姓名、性别、电话、邮件等），每条记录都有一个唯一的ID标示这条记录（可以通过ABRecordGetRecordID()函数获得）。</li>
-</ul>
-<p>4.ABPropertyID</p>
-<ul>
-<li>ABPropertyID是属性ID，就是上面的常量kABPersonFirstNameProperty等。返回值类型是CFTypeRef，它是Core Foundation类型的“泛型”，可以代表任何的Core Foundation类型。</li>
-</ul>
-<p>5.CFRelease</p>
-<ul>
-<li>CFRelease函数就是相当于Foundation框架中的release（或autorelease）方法。</li>
-</ul>
-<p>6.CFBridgingRelease</p>
-<ul>
-<li>CFBridgingRelease函数实现的是Core Foundation类型到Foundation类型转化并把对象所有权转让ARC（自动管理引用计数），因此不需要释放属性listContacts对应的成员变量。</li>
-</ul>
-<p>7.CFBridgingRetain</p>
-<ul>
-<li>CFBridgingRetain 把NSString类型转换为CFString类型，实现的是Foundation类型到Core Foundation类型转化, 并把对象所有权转让调用者，因此需要释放这个对象，</li>
-</ul>
-<p>8.ABMultiValueRef</p>
-<ul>
-<li>ABMultiValueRef是多值属性访问返回值</li>
-</ul>
-<p>9.ABMultiValueCopyArrayOfAllValues</p>
-<ul>
-<li>使用ABMultiValueCopyArrayOfAllValues函数从ABMultiValueRef对象中获取数组CFArrayRef集合；就相当于取单值属性时一样，使用aABRecordCopyVlue从ABRecordRef中获取数组；</li>
-</ul>
-<p>10.AddressBook授权状态：</p>
-<ul>
-<li>kABAuthorizationStatusNotDetermined = 0,    // 未进行授权选择</li>
-<li>kABAuthorizationStatusRestricted,           // 未授权，且用户无法更新，如家长控制情况下</li>
-<li>kABAuthorizationStatusDenied,               // 用户拒绝App使用</li>
-<li>kABAuthorizationStatusAuthorized            // 已授权，可使用</li>
-</ul>
-<p>11.当我们需要访问手机通讯录的时候，需要用到框架：AddressBook.framework；由于iOS的权限设计，开发人员是不允许直接访问通讯录数据库的，必须依靠AddressBook提供的标准API来实现通讯录操作。</p>
-<p>12.ABPersonRef</p>
-<ul>
-<li>代表联系人信息，很少直接使用，实际开发过程中通常会使用类型为“kABPersonType”的ABRecordRef来表示联系人（由此可见ABPersonRef其实是一种类型为“kABPersonType”的ABRecordRef）</li>
-</ul>
-<p>13.ABGroupRef</p>
-<ul>
-<li>代表群组，与ABPersonRef类似，很少直接使用ABGroupRef，而是使用类型为“kABGroupType”的ABRecordRef来表示群组，一个群组可以包含多个联系人，一个联系人也同样可以多个群组。</li>
-</ul>
-<p>14.常用的操作通讯录记录的方法</p>
-<ul>
-<li>ABPersonCreate():创建一个类型为“kABPersonType”的ABRecordRef。</li>
-<li>ABRecordCopyValue():取得指定属性的值。</li>
-<li>ABRecordCopyCompositeName():取得联系人（或群组）的复合信息（对于联系人则包括：姓、名、公司等信息，对于群组则返回组名称）。</li>
-<li>ABRecordSetValue():设置ABRecordRef的属性值。注意在设置ABRecordRef的值时又分为单值属性和多值属性：单值属性设置只要通过ABRecordSetValue()方法指定属性名和值即可；多值属性则要先通过创建一个ABMutableMultiValueRef类型的变量，然后通过ABMultiValueAddValueAndLabel()方法依次添加属性值，最后通过ABRecordSetValue()方法将ABMutableMultiValueRef类型的变量设置为记录值。</li>
-<li>ABRecordRemoveValue():删除指定的属性值。</li>
-</ul>
-<p>15.通讯录的访问步骤一般如下：</p>
-<ul>
-<li>调用ABAddressBookCreateWithOptions()方法创建通讯录对象ABAddressBookRef。</li>
-<li>调用ABAddressBookRequestAccessWithCompletion()方法获得用户授权访问通讯录。</li>
-<li>调用ABAddressBookCopyArrayOfAllPeople()、ABAddressBookCopyPeopleWithName()方法查询联系人信息。</li>
-<li>读取联系人后如果要显示联系人信息则可以调用ABRecord相关方法读取相应的数据；如果要进行修改联系人信息，则可以使用对应的方法修改ABRecord信息，然后调用ABAddressBookSave()方法提交修改；如果要删除联系人，则可以调用ABAddressBookRemoveRecord()方法删除，然后调用ABAddressBookSave()提交修改操作。</li>
-<li>也就是说如果要修改或者删除都需要首先查询对应的联系人，然后修改或删除后提交更改。如果用户要增加一个联系人则不用进行查询，直接调用ABPersonCreate()方法创建一个ABRecord然后设置具体的属性，调用ABAddressBookAddRecord方法添加即可。</li>
-</ul>
-<h6 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h6><p>1.<a href="http://www.cnblogs.com/kenshincui/p/4220402.html#contact" target="_blank" rel="external">http://www.cnblogs.com/kenshincui/p/4220402.html#contact</a></p>
-
-        
-        
-        <p class="article-more-link">
+            <a href="/2016/06/01/衣物极简原则/#more">Read More</a>
           
        </p>
     </div>
@@ -392,193 +239,82 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/08/11/iOS-Quartz2D/" title="iOS-Quartz2D" itemprop="url">iOS-Quartz2D</a>
+      <a href="/2016/05/31/极简消费观/" title="极简消费观" itemprop="url">极简消费观</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="JJBoy" target="_blank" itemprop="author">JJBoy</a>
 		
   <p class="article-time">
-    <time datetime="2016-08-11T13:51:16.000Z" itemprop="datePublished"> Published 2016-08-11</time>
+    <time datetime="2016-05-31T12:17:55.000Z" itemprop="datePublished"> Published 2016-05-31</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h2 id="Quartz2D可以用来做什么？"><a href="#Quartz2D可以用来做什么？" class="headerlink" title="Quartz2D可以用来做什么？"></a>Quartz2D可以用来做什么？</h2><p>1.什么是Quartz2D？（用来绘图的）</p>
-<ul>
-<li>Quartz 2D是一个二维绘图引擎，同时支持iOS和Mac系统（所以代码可以在ios和mac系统运行）；Quartz 2D 是基于C语言的API接口；数据类型和函数基本都以CG作为前缀</li>
-</ul>
-<p>2.实际中怎么应用Quartz2D？</p>
-<ul>
-<li><p>可以自定义UI控件，iOS中大部分控件的内容都是通过Quartz2D画出来的，</p>
-</li>
-<li><p>绘制图形 : 线条\三角形\矩形\圆\弧等；</p>
-</li>
-<li><p>绘制文字；</p>
-</li>
-<li><p>绘制\生成图片(图像)；</p>
-</li>
-<li><p>读取\生成PDF；</p>
-</li>
-<li><p>截图\裁剪图片；</p>
-</li>
-<li><p>手势开锁</p>
-</li>
-</ul>
-<p>3.Quartz2D常用名词</p>
-<p>1）图形上下文</p>
-<ul>
-<li><p>图形上下文是一个CGContextRef类型的数据；</p>
-</li>
-<li><p>图形上下文的作用：</p>
-</li>
-<li><p>保存绘图信息、绘图状态；</p>
-</li>
-<li><p>决定绘制的输出目标（绘制到什么地方去？）（输出目标可以是PDF文件、Bitmap或者显示器的窗口上）相同的一套绘图序列，指定不同的Graphics Context，就可将相同的图像绘制到不同的目标上</p>
-</li>
-<li><p>五种图形上下文：1. Bitmap Graphics Context 2. PDF Graphics Context 3. Window Graphics Context 4. Layer Graphics Context 5. Printer Graphics Context</p>
-</li>
-<li><p>图形上下文必须跟view相关联，才能将内容绘制到view上面</p>
-</li>
-<li><p>绘图顺序（如果在同一个图形上下文上，后绘制的图形会覆盖前面绘制的图形上面）</p>
-</li>
-</ul>
-<p>2）图形上下文栈</p>
-<p>3）Quartz2D的内存管理</p>
-<ul>
-<li><p>使用含有“Create”或“Copy”或”retain”的函数创建的对象，使用完后必须释放，否则将导致内存泄露</p>
-</li>
-<li><p>使用不含有“Create”或“Copy”的函数获取的对象，则不需要释放</p>
-</li>
-<li><p>如果retain了一个对象，不再使用时，需要将其release掉</p>
-</li>
-<li><p>以使用Quartz 2D的函数来指定retain和release一个对象。例如，如果创建了一个CGColorSpace对象，则使用函数CGColorSpaceRetain和CGColorSpaceRelease来retain和release对象。</p>
-</li>
-<li><p>也可以使用Core Foundation的CFRetain和CFRelease。注意不能传递NULL值给这些函数</p>
-</li>
-</ul>
-<h2 id="drawRect-方法的作用？"><a href="#drawRect-方法的作用？" class="headerlink" title="drawRect:方法的作用？"></a>drawRect:方法的作用？</h2><p>1.在drawRect:方法中才能取得跟view相关联的图形上下文</p>
-<p>2.View内部有个layer（图层）属性，drawRect:方法中取得的是一个Layer Graphics Context，因此，绘制的东西其实是绘制到view的layer上去了；</p>
-<p>3.View之所以能显示东西，完全是因为它内部的layer</p>
-<p>4.drawRect方法调用的时机：（当view第一次显示到屏幕上时（被加到UIWindow上显示出来）调用view的setNeedsDisplay或者setNeedsDisplayInRect:时）</p>
-<h2 id="Quartz2D绘图步骤"><a href="#Quartz2D绘图步骤" class="headerlink" title="Quartz2D绘图步骤"></a>Quartz2D绘图步骤</h2><p>1.拼接路径函数</p>
-<p>2.绘制路径函数</p>
-<p>3.例子:创建一条线段</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 第一步：新建一个类，继承自UIView</span><br><span class="line"></span><br><span class="line">// 第二步：实现</span><br><span class="line">-(void)drawRect:(CGRect)rect</span><br><span class="line"></span><br><span class="line">// 第三步：获取图形上下文（Graphics Context）</span><br><span class="line">CGContextRef ctx = UIGraphicsGetCurrentContext();</span><br><span class="line"></span><br><span class="line">// 第四步：拼接路径（下面代码是搞一条线段）</span><br><span class="line">CGContextMoveToPoint(ctx, 10, 10);</span><br><span class="line">CGContextAddLineToPoint(ctx, 100, 100);</span><br><span class="line"></span><br><span class="line">// 第五步：渲染图形，显示到view上</span><br><span class="line">CGContextStrokePath(ctx);</span><br><span class="line">// 或者填充</span><br><span class="line">CGContextFillPath(ctx);</span><br></pre></td></tr></table></figure>
-<h2 id="Quartz2D绘图–拼接路径函数"><a href="#Quartz2D绘图–拼接路径函数" class="headerlink" title="Quartz2D绘图–拼接路径函数"></a>Quartz2D绘图–拼接路径函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 新建一个起点</span><br><span class="line">void CGContextMoveToPoint(CGContextRef c, CGFloat x, CGFloat y)</span><br><span class="line"></span><br><span class="line">// 添加新的线段到某个点(到某个点的一条线)</span><br><span class="line">void CGContextAddLineToPoint(CGContextRef c, CGFloat x, CGFloat y)</span><br><span class="line"></span><br><span class="line">// 添加一个矩形</span><br><span class="line">void CGContextAddRect(CGContextRef c, CGRect rect)</span><br><span class="line"></span><br><span class="line">// 添加一个椭圆</span><br><span class="line">void CGContextAddEllipseInRect(CGContextRef context, CGRect rect)</span><br><span class="line"></span><br><span class="line">// 添加一个圆弧</span><br><span class="line">void CGContextAddArc(CGContextRef c, CGFloat x, CGFloat y, CGFloat radius, CGFloat startAngle, CGFloat endAngle, int clockwise)</span><br></pre></td></tr></table></figure>
-<h2 id="Quartz2D绘图–绘制路径函数"><a href="#Quartz2D绘图–绘制路径函数" class="headerlink" title="Quartz2D绘图–绘制路径函数"></a>Quartz2D绘图–绘制路径函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// Mode参数决定绘制的模式</span><br><span class="line">void CGContextDrawPath(CGContextRef c, CGPathDrawingMode mode)</span><br><span class="line"></span><br><span class="line">// 绘制空心路径</span><br><span class="line">void CGContextStrokePath(CGContextRef c)</span><br><span class="line"></span><br><span class="line">// 绘制实心路径</span><br><span class="line">void CGContextFillPath(CGContextRef c)</span><br><span class="line"></span><br><span class="line">提示：一般以CGContextDraw、CGContextStroke、CGContextFill开头的函数，都是用来绘制路径的</span><br></pre></td></tr></table></figure>
-<h2 id="Quartz2D绘图–transform属性"><a href="#Quartz2D绘图–transform属性" class="headerlink" title="Quartz2D绘图–transform属性"></a>Quartz2D绘图–transform属性</h2><p>1.利用transform属性可以修改控件的位移（位置）、缩放、旋转</p>
-<p>2.创建一个transform属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">CGAffineTransform CGAffineTransformMakeTranslation(CGFloat tx,CGFloat ty);位移</span><br><span class="line"></span><br><span class="line">CGAffineTransform CGAffineTransformMakeScale(CGFloat sx,CGFloat sy);缩放</span><br><span class="line"></span><br><span class="line">CGAffineTransform CGAffineTransformMakeRotation(CGFloat angel);旋转</span><br><span class="line"></span><br><span class="line">注意：这里angle是弧度制，不是角度制，就用用pi值表示，一个pi就是180度；45度就是4分之1 pi；在代码中用M_PI_4表示</span><br></pre></td></tr></table></figure>
-<p>3.在某个transform的基础上进行叠加；</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">CGAffineTransform CGAffineTransformTranslation(CGAffineTransform,CGFloat tx,CGFloat ty);</span><br><span class="line"></span><br><span class="line">CGAffineTransform CGAffineTransformScale(CGAffineTransform,CGFloat sx,CGFloat sy);</span><br><span class="line"></span><br><span class="line">CGAffineTransform CGAffineTransformRotation(CGAffineTransform ,CGFloat angel);</span><br><span class="line"></span><br><span class="line">注意这里的方法比上面少了Make在里面；</span><br></pre></td></tr></table></figure>
-<p>4.transform常用的3个方法</p>
-<ul>
-<li><p>对控件进行缩放： CGAffineTransformScale</p>
-</li>
-<li><p>对控件进行位移； CGAffineTransformTranslate</p>
-</li>
-<li><p>对控件进行旋转； CGAffineTransformRotate</p>
-</li>
-</ul>
-<h2 id="Quartz2D绘图–CGRect-CGPoint-CGSize-属性"><a href="#Quartz2D绘图–CGRect-CGPoint-CGSize-属性" class="headerlink" title="Quartz2D绘图–CGRect \ CGPoint \ CGSize 属性"></a>Quartz2D绘图–CGRect \ CGPoint \ CGSize 属性</h2><ul>
-<li><p>CGRect=NSRect</p>
-</li>
-<li><p>CGPoint=NSPoint</p>
-</li>
-<li><p>CGSize=NSSize 修改控件的位置和尺寸</p>
-</li>
-<li><p>修改控件位置的有: frame.origin 、 center</p>
-</li>
-<li><p>修改控件尺寸的有: frame.size 、 bounds.size</p>
-</li>
-</ul>
-<p>1.CGRect、NSRect</p>
-<p>1) NSRect\CGRect是NSPoint\CGPoint和NSSize\CGSize的一个组合；表示的是坐标和尺寸； NSRect(NSPoint NSSize)、CGRect(CGPoint CGSize)</p>
-<p>2) 可以通过CGRectMake和NSMakeRect方法创建CGRect和NSRect对象；</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">CGRect rect = CGRectMake(0,0,100,50); // 表示原点的位置和元素上下的尺寸；</span><br></pre></td></tr></table></figure>
-<p>3) 通过结构体成员变量打印CGRect的成员数值：CGRect rect = CGRectMake(0,0,100,50);</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">NSLog(@&quot;x=%f,y=%f,width=%f,height=%f&quot;,rect.origin.x,rect.origin.y,rect.size.width,rect.size.height);</span><br></pre></td></tr></table></figure>
-<p>4) 创建CGRect对象的其他方式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">CGRect rect = &#123;&#123;0,0&#125;,&#123;100,50&#125;&#125;;</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">CGRect rect = &#123;point1,size1&#125;;</span><br></pre></td></tr></table></figure>
-<p>5) 比较两个CGRect是否相等：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">CGRectEqualToRect(CGRect rect1,CGRect rect2);</span><br></pre></td></tr></table></figure>
-<p>6) 判断CGPoint中是否在CGRect的范围中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">BOOL b = CGRectContainsPoint(CGRect rect,CGPoint point);</span><br><span class="line"></span><br><span class="line">//  这个方法包含在CoreGraphics framework框架中,所以需要引入这个框架； #import &lt;CoreGraphics/CoreGraphics.h&gt;;注意： 方法的声明都在Foundation框架里面但是定义都在CoreGraphics的框架里面</span><br></pre></td></tr></table></figure>
-<p>7) 将结构体转换为字符串的操作：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">NSString *str = NSStringFromPoint(point1);</span><br><span class="line"></span><br><span class="line">NSString *str = NSStringFromSize(size1);</span><br><span class="line"></span><br><span class="line">NSString *str = NSStringFromRect(rect1);</span><br></pre></td></tr></table></figure>
-<p>2.CGPoint、NSPoint</p>
-<p>1) 本质上是表示点元素坐标位置的结构体；其中CGPoint比较常用，因为它具有跨平台性；</p>
-<p>2) 创建对象的方法有：NSMakePoint 、 CGPointMake;开发中CGPointMake比较常用；</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">NSPoint p2 = NSMakePoint(20,20)/CGPointMake(20,20);</span><br></pre></td></tr></table></figure>
-<p>3) 比较两个点是否相同：BOOL b = CGPoingEqualToPoint(CGPointMake(10,10),CGPointMake(10,10));</p>
-<p>4) 注意：在iOS开发中，原点的坐标是在左上角；使用CGPoingZero可以表示；相当于CGPoingMake(0,0);</p>
-<p>3.CGSize、NSSize</p>
-<p>1) 表示用户界面元素的尺寸；</p>
-<p>2) 创建对象的方法是：CGSizeMake和NSMakeSize方法；开发中主要使用CGSizeMake;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">NSSize s1/CGSize s1= CGSizeMake(100,50)/NSMakeSize(100,50);//左面数值是宽，右面是高</span><br></pre></td></tr></table></figure>
-<p>3) 比较两个元素尺寸是否相等：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">BOOL a = CGSizeEqualToSize(CGSize size1,CGSize size2);</span><br></pre></td></tr></table></figure>
-<p>4)  CGSizeZero表示CGSizeMake(0,0),表示这个对象的上下尺寸都是0。</p>
-<h2 id="Quartz2D绘图–简单用法"><a href="#Quartz2D绘图–简单用法" class="headerlink" title="Quartz2D绘图–简单用法"></a>Quartz2D绘图–简单用法</h2><p>1.创建一个点</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// Points：指定一个点成为current point，Quartz会跟踪current point一般执行完一个相关函数后，current point都会相应的改变.</span><br><span class="line"></span><br><span class="line">void CGContextMoveToPoint (</span><br><span class="line">CGContextRef c,</span><br><span class="line">CGFloat x,</span><br><span class="line">CGFloat y</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>2.创建一条线</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// Lines：相关的几个函数，创建一条直线，从current point到 (x,y)，然后current point会变成(x,y)</span><br><span class="line"></span><br><span class="line">void CGContextAddLineToPoint (</span><br><span class="line">CGContextRef c,</span><br><span class="line">CGFloat x,</span><br><span class="line">CGFloat y</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>3.创建多条线</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 创建多条直线，比如points有两个点，那么会画两条直线 从current point到 (x1,y1),然后是(x1,y1)到(x2,y2)，然后current point会变成points中的最后一个点</span><br><span class="line"></span><br><span class="line">void CGContextAddLines (</span><br><span class="line">CGContextRef c,</span><br><span class="line">const CGPoint points[],</span><br><span class="line">size_t count</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>4.画一条圆弧</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">两种方法创建弧度</span><br><span class="line"></span><br><span class="line">// 第一种: 假如想创建一个完整的圆圈，那么 开始弧度就是0 结束弧度是 2pi， 因为圆周长是 2pir.最后，函数执行完后，current point就被重置为(x,y).还有一点要注意的是，假如当前path已经存在一个subpath，那么这个函数执行的另外一个效果是会有一条直线，从current point到弧的起点</span><br><span class="line"></span><br><span class="line">void CGContextAddArc (</span><br><span class="line">CGContextRef c,</span><br><span class="line">CGFloat x,             //圆心的x坐标</span><br><span class="line">CGFloat y,    //圆心的x坐标</span><br><span class="line">CGFloat radius,   //圆的半径</span><br><span class="line">CGFloat startAngle,    //开始弧度</span><br><span class="line">CGFloat endAngle,   //结束弧度</span><br><span class="line">int clockwise          //0表示顺时针，1表示逆时针</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">// 第二种: 首先画两条线，这两条线分别是 current point to (x1,y1) 和(x1,y1) to (x2,y2).这样就是出现一个以(x1,y1)为顶点的两条射线，然后定义半径长度，这个半径是垂直于两条射线的，这样就能决定一个圆了，更好的理解看下图，不过个人认为下图所标的 tangent point 1的位置是错误的.最后，函数执行完后，current point就被重置为(x2,y2).还有一点要注意的是，假如当前path已经存在一个subpath，那么这个函数执行的另外一个效果是会有一条直线，从current point到(x1,y1)</span><br><span class="line"></span><br><span class="line">void CGContextAddArcToPoint (</span><br><span class="line">CGContextRef c,</span><br><span class="line">CGFloat x1,  //端点1的x坐标</span><br><span class="line">CGFloat y1,  //端点1的y坐标</span><br><span class="line">CGFloat x2,  //端点2的x坐标</span><br><span class="line">CGFloat y2,  //端点2的y坐标</span><br><span class="line">CGFloat radius //半径</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>5.画曲线</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// Curves:画曲线，一般是一条直线，然后定义几个控制点，使直线变弯曲。三次曲线函数;假如第二个控制点（cp2x，cp2y）比（cp1x,cp1y） 更接近current point，那么会形成一个封闭的曲线</span><br><span class="line"></span><br><span class="line">void CGContextAddCurveToPoint (</span><br><span class="line">CGContextRef c,</span><br><span class="line">CGFloat cp1x, //控制点1 x坐标</span><br><span class="line">CGFloat cp1y, //控制点1 y坐标</span><br><span class="line">CGFloat cp2x, //控制点2 x坐标</span><br><span class="line">CGFloat cp2y, //控制点2 y坐标</span><br><span class="line">CGFloat x,  //直线的终点 x坐标</span><br><span class="line">CGFloat y  //直线的终点 y坐标</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 二次曲线函数;执行完函数貌似current point不会变化，没有具体测试过</span><br><span class="line"></span><br><span class="line">void CGContextAddQuadCurveToPoint (</span><br><span class="line">CGContextRef c,</span><br><span class="line">CGFloat cpx,  //控制点 x坐标</span><br><span class="line">CGFloat cpy,  //控制点 y坐标</span><br><span class="line">CGFloat x,  //直线的终点 x坐标</span><br><span class="line">CGFloat y  //直线的终点 y坐标</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>6.画圆</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// Ellipses：如果矩形是一个正方形，那么画出来就是一个圆，执行完函数貌似current point不会变化，没有具体测试过</span><br><span class="line"></span><br><span class="line">void CGContextAddEllipseInRect (</span><br><span class="line">CGContextRef context,</span><br><span class="line">CGRect rect  //一矩形</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>7.画三角形</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// Rectangles</span><br><span class="line"></span><br><span class="line">void CGContextAddRect (</span><br><span class="line">CGContextRef c,</span><br><span class="line">CGRect rect</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 一次性画出多个矩形：需要注意的是，画矩形有一些特别，current point没有发生变化</span><br><span class="line"></span><br><span class="line">void CGContextAddRects (</span><br><span class="line">CGContextRef c,</span><br><span class="line">const CGRect rects[],</span><br><span class="line">size_t count</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h2 id="Quartz2D绘图–CALayer"><a href="#Quartz2D绘图–CALayer" class="headerlink" title="Quartz2D绘图–CALayer"></a>Quartz2D绘图–CALayer</h2><p>1.CALayer图层的组成</p>
-<p>1）CAMediaTiming</p>
-<ul>
-<li>.duration</li>
-</ul>
-<p>2）CAAnimation</p>
-<ul>
-<li><p>.timing Function</p>
-</li>
-<li><p>.delegate</p>
-</li>
-</ul>
-<p>3) CAAnimationGroup</p>
-<ul>
-<li>.animations</li>
-</ul>
-<p>4) CAPropertyAnimation</p>
-<ul>
-<li>.keypath</li>
-</ul>
-<p>5) CABasicAnimation</p>
-<ul>
-<li><p>.fromValue</p>
-</li>
-<li><p>.toValue</p>
-</li>
-</ul>
-<p>6) CAKeyFramAnimation</p>
-<ul>
-<li><p>.Values</p>
-</li>
-<li><p>.Path</p>
-</li>
-<li><p>.KeyTimes</p>
-</li>
-</ul>
-<p>7) CATransition</p>
-<ul>
-<li>.filter</li>
-</ul>
-
+        <h3 id="每日给自己一段话："><a href="#每日给自己一段话：" class="headerlink" title="每日给自己一段话："></a>每日给自己一段话：</h3><p>生活就像逆水行舟，想活得有意义，还是要走抵抗力最大的那条路。看书学习抵抗力大，刷微博微信抵抗力小；坚持锻炼身体抵抗力大，窝在沙发里上网看电视抵抗力小；吃清淡健康食物抵抗力大，喝啤酒吃炸鸡抵抗力小；精简生活抵抗力大，囤积、消费抵抗力小。<br>抵抗力最大的路和抵抗力最小的路有共同的起点，可终点不啻霄壤。</p>
         
         
         <p class="article-more-link">
+          
+            <a href="/2016/05/31/极简消费观/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/05/30/极简生活/" title="极简生活" itemprop="url">极简生活</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="JJBoy" target="_blank" itemprop="author">JJBoy</a>
+		
+  <p class="article-time">
+    <time datetime="2016-05-30T11:43:26.000Z" itemprop="datePublished"> Published 2016-05-30</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="关键词："><a href="#关键词：" class="headerlink" title="关键词："></a>关键词：</h3><ul>
+<li>仓库(住所)</li>
+<li>现在当下（快活）</li>
+<li>未来过去（不快活）</li>
+<li>需要，合适，舒服</li>
+<li>不增加衣物，不增加卡片</li>
+</ul>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/05/30/极简生活/#more">Read More</a>
           
        </p>
     </div>
@@ -607,7 +343,7 @@
 
 
   <nav id="page-nav" class="clearfix">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
   </nav>
 
 </div>
