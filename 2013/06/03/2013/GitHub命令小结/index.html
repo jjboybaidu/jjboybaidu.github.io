@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="每日给自己一句话：逝者长已矣,生者永存悲。——语意出自《论语·微子》和《石壕吏》" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>GitHub命令小结 | 阿汶的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="每日给自己一句话：逝者长已矣,生者永存悲。——语意出自《论语·微子》和《石壕吏》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GitHub命令小结">
+<meta property="og:url" content="williamliuwen.cn/2013/06/03/2013/GitHub命令小结/index.html">
+<meta property="og:site_name" content="阿汶的博客">
+<meta property="og:description" content="每日给自己一句话：逝者长已矣,生者永存悲。——语意出自《论语·微子》和《石壕吏》">
+<meta property="og:image" content="williamliuwen.cn/pic/0603.jpg">
+<meta property="og:updated_time" content="2016-08-13T13:18:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GitHub命令小结">
+<meta name="twitter:description" content="每日给自己一句话：逝者长已矣,生者永存悲。——语意出自《论语·微子》和《石壕吏》">
+<meta name="twitter:image" content="williamliuwen.cn/pic/0603.jpg">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="阿汶的博客" rel="home">阿汶的博客</a>
+      </h1>
+      
+        <h2 class="site-description">
+          <a href="/" id="subtitle">知我者谓我心忧 不知我者谓我何求</a>
+        </h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-2013/GitHub命令小结" class="post-2013/GitHub命令小结 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      GitHub命令小结
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="williamliuwen.cn/2013/06/03/2013/GitHub命令小结/" data-id="cirt7rw330002wxi02cm7mu2t" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>每日给自己一句话：逝者长已矣,生者永存悲。——语意出自《论语·微子》和《石壕吏》</p>
+<a id="more"></a>
+<blockquote>
+<p>如果你是初学者，可以按照步骤来，这是一个记录贴，方便查询代码；</p>
+</blockquote>
+<h3 id="初步建立GitHub仓库的一些命令："><a href="#初步建立GitHub仓库的一些命令：" class="headerlink" title="初步建立GitHub仓库的一些命令："></a>初步建立GitHub仓库的一些命令：</h3><p>touch README.md  // 新建说明文件<br>ssh-keygen -t rsa -C “your_email@youremail.com” // 创建本地的keygen<br>cd ~/.ssh // 进入创建好keygen的文件，用cat id_rsa.pub来查看keygen，然后再把它复制到你的github</p>
+<p>ssh -T git@github.com // 这个是测试一下连接；<br>git config –global user.name “your name”<br>git config –global user.email “your_email@youremail.com”<br>git init //在当前项目目录中生成本地git管理,并建立一个隐藏.git目录<br>git add . //添加当前目录中的所有文件到索引<br>git commit -m “first commit”  // 提交到本地源码库，并附加提交注释<br>git remote add origin https: // github.com/chape/test.git //添加到远程项目，别名为origin<br>git push -u origin master  // 把本地源码库push到github 别名为origin的远程项目中，确认提交</p>
+<h3 id="每次更改完本地仓库之后，使用更新语句提交到远程仓库："><a href="#每次更改完本地仓库之后，使用更新语句提交到远程仓库：" class="headerlink" title="每次更改完本地仓库之后，使用更新语句提交到远程仓库："></a>每次更改完本地仓库之后，使用更新语句提交到远程仓库：</h3><p>cd /到你要更新的目录下</p>
+<p>git add .</p>
+<p>git commit -m “update test” //检测文件改动并附加提交注释</p>
+<p>git push -u origin master //提交修改到项目主线</p>
+<h3 id="如果你在家又更新代码；回到公司的本地代码库没有更新到最新，就需要从远程仓库pull下最新的代码到本地："><a href="#如果你在家又更新代码；回到公司的本地代码库没有更新到最新，就需要从远程仓库pull下最新的代码到本地：" class="headerlink" title="如果你在家又更新代码；回到公司的本地代码库没有更新到最新，就需要从远程仓库pull下最新的代码到本地："></a>如果你在家又更新代码；回到公司的本地代码库没有更新到最新，就需要从远程仓库pull下最新的代码到本地：</h3><p>git pull origin master //从Github上pull到本地源码库</p>
+<h3 id="后期进阶用到的GitHub命令："><a href="#后期进阶用到的GitHub命令：" class="headerlink" title="后期进阶用到的GitHub命令："></a>后期进阶用到的GitHub命令：</h3><p>git push origin master //把本地源码库push到Github<br>git config –list //查看配置信息<br>git status //查看项目状态信息<br>git branch //查看项目分支<br>git checkout -b host//添加一个名为host的分支<br>git checkout master //切换到主干<br>git merge host //合并分支host到主干<br>git branch -d host //删除分支host</p>
+<p><em>持续更新,逐步完善…</em></p>
+<h3 id="最近更新说明："><a href="#最近更新说明：" class="headerlink" title="最近更新说明："></a>最近更新说明：</h3><ul>
+<li>2015.10.16 终于知道了怎么同步远程仓库到本地。</li>
+<li>2016.06.03 把文章迁移过来</li>
+</ul>
+<p><img src="/pic/0603.jpg"></p>
+<blockquote>
+<p>桃之夭夭，灼灼其华，之子于归，宜其室家。 —— 《诗经‧周南‧桃夭》</p>
+</blockquote>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2013/06/03/2013/GitHub命令小结/">
+    <time datetime="2013-06-03T11:57:34.000Z" class="entry-date">
+        2013-06-03
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2013/06/06/2013/提升自己/" rel="prev"><span class="meta-nav">←</span> 提升自己</a></span>
+    
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2015/06/01/2015/极简衣物观/">极简衣物观</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/31/2015/极简消费观/">极简消费观</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/30/2015/极简生活/">极简生活</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/23/2015/番茄工作法实践/">番茄工作法实践</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/22/2015/番茄工作法介绍/">番茄工作法介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2016 阿汶
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>
