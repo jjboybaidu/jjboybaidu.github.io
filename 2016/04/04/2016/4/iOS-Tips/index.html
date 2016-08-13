@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="Tip1 隐藏状态栏1234- (BOOL)prefersStatusBarHidden&amp;#123;    return  YES;&amp;#125;
+Tip2 设置与状态栏间距（没有导航栏）123456If you are doing thins programatically and are using a UITableViewController without a UINavigationController your best bet is to do the following in viewDidLoad:The UITableViewController will still scroll behind the status bar but won&amp;apos;t be under it when scrolled to the top.self.tableView.contentInset = UIEdgeInsetsMake(20.0f,0.0f,0.0f,0.0f);
+Tip3 修改状态栏颜色1234第一步：在info.plist中添加一个字段：UIViewControllerBasedStatusBarAppearance 设置值为 NO第二步，设置状态栏颜色为白色:UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>iOS-Tips | 阿汶的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Tip1 隐藏状态栏1234- (BOOL)prefersStatusBarHidden&amp;#123;    return  YES;&amp;#125;
+Tip2 设置与状态栏间距（没有导航栏）123456If you are doing thins programatically and are using a UITableViewController without a UINavigationCo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-Tips">
+<meta property="og:url" content="williamliuwen.cn/2016/04/04/2016/4/iOS-Tips/index.html">
+<meta property="og:site_name" content="阿汶的博客">
+<meta property="og:description" content="Tip1 隐藏状态栏1234- (BOOL)prefersStatusBarHidden&amp;#123;    return  YES;&amp;#125;
+Tip2 设置与状态栏间距（没有导航栏）123456If you are doing thins programatically and are using a UITableViewController without a UINavigationCo">
+<meta property="og:updated_time" content="2016-08-13T13:33:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-Tips">
+<meta name="twitter:description" content="Tip1 隐藏状态栏1234- (BOOL)prefersStatusBarHidden&amp;#123;    return  YES;&amp;#125;
+Tip2 设置与状态栏间距（没有导航栏）123456If you are doing thins programatically and are using a UITableViewController without a UINavigationCo">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="阿汶的博客" rel="home">阿汶的博客</a>
+      </h1>
+      
+        <h2 class="site-description">
+          <a href="/" id="subtitle">知我者谓我心忧 不知我者谓我何求</a>
+        </h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-2016/4/iOS-Tips" class="post-2016/4/iOS-Tips post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      iOS-Tips
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="williamliuwen.cn/2016/04/04/2016/4/iOS-Tips/" data-id="cirt883ph000f5ki06d0zr5ep" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h6 id="Tip1-隐藏状态栏"><a href="#Tip1-隐藏状态栏" class="headerlink" title="Tip1 隐藏状态栏"></a>Tip1 隐藏状态栏</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- (BOOL)prefersStatusBarHidden&#123;</span><br><span class="line">    return  YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="Tip2-设置与状态栏间距（没有导航栏）"><a href="#Tip2-设置与状态栏间距（没有导航栏）" class="headerlink" title="Tip2 设置与状态栏间距（没有导航栏）"></a>Tip2 设置与状态栏间距（没有导航栏）</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">If you are doing thins programatically and are using a UITableViewController without a UINavigationController your best bet is to do the following in viewDidLoad:</span><br><span class="line"></span><br><span class="line">The UITableViewController will still scroll behind the status bar but won&apos;t be under it when scrolled to the top.</span><br><span class="line"></span><br><span class="line">self.tableView.contentInset = UIEdgeInsetsMake(20.0f,0.0f,0.0f,0.0f);</span><br></pre></td></tr></table></figure>
+<h6 id="Tip3-修改状态栏颜色"><a href="#Tip3-修改状态栏颜色" class="headerlink" title="Tip3 修改状态栏颜色"></a>Tip3 修改状态栏颜色</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">第一步：在info.plist中添加一个字段：UIViewControllerBasedStatusBarAppearance 设置值为 NO</span><br><span class="line">第二步，设置状态栏颜色为白色:</span><br><span class="line">UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h6 id="Tip4-快速设置UIWindows根控制器"><a href="#Tip4-快速设置UIWindows根控制器" class="headerlink" title="Tip4 快速设置UIWindows根控制器"></a>Tip4 快速设置UIWindows根控制器</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions &#123;</span><br><span class="line">    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];</span><br><span class="line">    DefineTabBarController *tabBarVc = [[DefineTabBarController alloc] init];</span><br><span class="line">    self.window.rootViewController = tabBarVc;</span><br><span class="line">    [self.window makeKeyAndVisible];</span><br><span class="line"></span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="Tip5-修改APP显示名称"><a href="#Tip5-修改APP显示名称" class="headerlink" title="Tip5 修改APP显示名称"></a>Tip5 修改APP显示名称</h6><ul>
+<li>Bundle name           - 简单来说就是App安装到iOS机子里的App文件夹名</li>
+<li>Executable name       –  执行程序名,默认与PRODUCT_NAME一致</li>
+<li>Bundle display name   –  真正显示到用户屏幕上的App名称<h6 id="Tip6-逻辑删除代码比注释代码好"><a href="#Tip6-逻辑删除代码比注释代码好" class="headerlink" title="Tip6 逻辑删除代码比注释代码好"></a>Tip6 逻辑删除代码比注释代码好</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#if 0</span><br><span class="line">//CODE</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h6 id="Tip6-设置应用间跳转：A应用–-gt-B应用"><a href="#Tip6-设置应用间跳转：A应用–-gt-B应用" class="headerlink" title="Tip6 设置应用间跳转：A应用–&gt;B应用"></a>Tip6 设置应用间跳转：A应用–&gt;B应用</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@&quot;%@BundleID&quot;, UIApplicationOpenSettingsURLString]]];</span><br></pre></td></tr></table></figure>
+<h6 id="Tip7-iOS监听亮屏灭屏代码"><a href="#Tip7-iOS监听亮屏灭屏代码" class="headerlink" title="Tip7 iOS监听亮屏灭屏代码"></a>Tip7 iOS监听亮屏灭屏代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-(void)registerAppforDetectBrightState &#123;</span><br><span class="line">    int notify_token;</span><br><span class="line">    notify_register_dispatch(&quot;com.apple.springboard.hasBlankedScreen&quot;,&amp;notify_token,dispatch_get_main_queue(), ^(int token) &#123;</span><br><span class="line">    uint64_t state = UINT64_MAX;</span><br><span class="line">    notify_get_state(token, &amp;state);</span><br><span class="line"></span><br><span class="line">    if(state == 0) &#123;</span><br><span class="line">            NSLog(@&quot;亮屏&quot;);</span><br><span class="line">            // do what you want to do</span><br><span class="line"></span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            NSLog(@&quot;灭屏&quot;);</span><br><span class="line">            // do what you want to do</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="Tip8-iOS获取手机版本"><a href="#Tip8-iOS获取手机版本" class="headerlink" title="Tip8 iOS获取手机版本"></a>Tip8 iOS获取手机版本</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#define iOS8 ([[UIDevice currentDevice].systemVersion floatValue] &gt;= 8.0)</span><br></pre></td></tr></table></figure>
+<h6 id="Tip9-TableViewCell重用代码"><a href="#Tip9-TableViewCell重用代码" class="headerlink" title="Tip9 TableViewCell重用代码"></a>Tip9 TableViewCell重用代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">static NSString * cellIdentifer = @&quot;cell&quot;;</span><br><span class="line">UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifer];</span><br><span class="line">if (cell == nil) &#123;</span><br><span class="line">    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifer];</span><br><span class="line">&#125;</span><br><span class="line">cell.textLabel.text = array[indexPath.row];</span><br><span class="line">return cell;</span><br></pre></td></tr></table></figure>
+<h6 id="Tip10-多线程同步问题"><a href="#Tip10-多线程同步问题" class="headerlink" title="Tip10 多线程同步问题"></a>Tip10 多线程同步问题</h6><p>1.对于数据源或model类一定要注意多线程同时访问的情况</p>
+<h6 id="Tip11-移除Observer"><a href="#Tip11-移除Observer" class="headerlink" title="Tip11 移除Observer"></a>Tip11 移除Observer</h6><p>1.现在的代码里面很多需要用到Observer, 根据被观察对象的状态来相应的Update UI或者执行某个操作. 注册observer很简单, 但是移除的时候就出问题了, 要么是忘记移除observer了, 要么是移除的时机不对. 如果某个被观察对象已经被释放了, observer还在, 那结果只能是crash了, 所以切记至少在dealloc里面移除一下observer</p>
+<h6 id="Tip12-NSArray-NSDictionary成员的判空保护"><a href="#Tip12-NSArray-NSDictionary成员的判空保护" class="headerlink" title="Tip12 NSArray, NSDictionary成员的判空保护"></a>Tip12 NSArray, NSDictionary成员的判空保护</h6><p>1.在addObject或insertObject到NSArray或者NSDictionary时最好加一下判空保护, 尤其是网络相关的逻辑, 如果网络返回为空(jason解析出来为空), 但你还是毅然决然的add到array里面</p>
+<h6 id="Tip13-单例代码块"><a href="#Tip13-单例代码块" class="headerlink" title="Tip13 单例代码块"></a>Tip13 单例代码块</h6><p>1.单例代码块a–初始化属性比较多的情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+ (instancetype)shareInstance &#123;</span><br><span class="line">    // dispatch_once_t表示只执行一次</span><br><span class="line"></span><br><span class="line">    static AppNetworkingClient *_instance = nil;</span><br><span class="line"></span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line"></span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">        // 初始化属性比较多，还可以更多，只要是一次性的</span><br><span class="line">        _instance = [[AppNetworkingClient alloc] initWithBaseURL:[NSURL URLWithString:baseUrlString]];</span><br><span class="line">        _instance.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];</span><br><span class="line">        _instance.requestSerializer.timeoutInterval = 10;</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    return _instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.单例代码块b–初始化属性少的情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">+ (instancetype *)shareInstance &#123;</span><br><span class="line"></span><br><span class="line">    static AccountManager *_instance = nil;</span><br><span class="line"></span><br><span class="line">    // predicate和上面例子中的onceToken一个作用，可以自由替换，不是常量</span><br><span class="line">    static dispatch_once_t predicate;</span><br><span class="line"></span><br><span class="line">    dispatch_once(&amp;predicate, ^&#123;</span><br><span class="line"></span><br><span class="line">        _instance = [[self alloc] init];</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    return _instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="Tip14-僵尸模式"><a href="#Tip14-僵尸模式" class="headerlink" title="Tip14 僵尸模式"></a>Tip14 僵尸模式</h6><p>1.NSZombie僵尸，僵尸对象；</p>
+<p>2.僵尸模式：NSZombieEnable</p>
+<ul>
+<li>僵尸模式的作用是：用来接收错误信息（错误信息可以指一个错误的内存访问就会变成一条无法识别的消息,这条无法识别的信息就是错误信息）</li>
+</ul>
+<h6 id="Tip15-优化加载图片"><a href="#Tip15-优化加载图片" class="headerlink" title="Tip15 优化加载图片"></a>Tip15 优化加载图片</h6><p>1.imageWithContentsOfFile则仅只加载图片,不缓存；</p>
+<p>2.imageNamed默认加载图片成功后会内存中缓存图片</p>
+<p>3.最佳实践是：当应用程序需要加载一张比较大的图片并且使用一次性，那么其实是没有必要去缓存这个图片的，用imageWithContentsOfFile是最为经济的方式,这样不会因为UIImage元素较多情况下，CPU会被逐个分散在不必要缓存上浪费过多时间</p>
+<h6 id="Tip16-优化viewWillAppear"><a href="#Tip16-优化viewWillAppear" class="headerlink" title="Tip16 优化viewWillAppear"></a>Tip16 优化viewWillAppear</h6><p>1.在这个方法中不要处理复杂费时的事情</p>
+<p>2.只应该在这个方法设置 view 的显示属性之类的简单事情，比如背景色，字体等。不然，用户会明显感觉到 view 显示迟钝.</p>
+<h6 id="Tip16-Lifecycle代码块"><a href="#Tip16-Lifecycle代码块" class="headerlink" title="Tip16 Lifecycle代码块"></a>Tip16 Lifecycle代码块</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">[super viewDidLoad];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewWillAppear:(BOOL)animated &#123;</span><br><span class="line">[super viewWillAppear:animated];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewDidAppear:(BOOL)animated &#123;</span><br><span class="line">[super viewDidAppear:animated];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewWillDisappear:(BOOL)animated &#123;</span><br><span class="line">[super viewWillDisappear:animated];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)viewDidDisappear:(BOOL)animated &#123;</span><br><span class="line">[super viewDidDisappear:animated];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)didReceiveMemoryWarning &#123;</span><br><span class="line">[super didReceiveMemoryWarning];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="Tip17-mark代码块"><a href="#Tip17-mark代码块" class="headerlink" title="Tip17 mark代码块"></a>Tip17 mark代码块</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#pragma mark - &lt;#Section#&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="Tip18-多线程常用代码块"><a href="#Tip18-多线程常用代码块" class="headerlink" title="Tip18 多线程常用代码块"></a>Tip18 多线程常用代码块</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">dispatch_async(dispatch_get_global_queue(&lt;#dispatch_queue_priority_t priority#&gt;, &lt;#unsigned long flags#&gt;), ^(void) &#123;</span><br><span class="line">&lt;#code#&gt;</span><br><span class="line"></span><br><span class="line">dispatch_async(dispatch_get_main_queue(), ^(void) &#123;</span><br><span class="line">&lt;#code#&gt;</span><br><span class="line">&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h6 id="Tip19-strong-self代码块"><a href="#Tip19-strong-self代码块" class="headerlink" title="Tip19 __strong self代码块"></a>Tip19 __strong self代码块</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">__strong __typeof(&lt;#weakSelf#&gt;)strongSelf = &lt;#weakSelf#&gt;;</span><br></pre></td></tr></table></figure>
+<h6 id="Tip20-weak-self代码块"><a href="#Tip20-weak-self代码块" class="headerlink" title="Tip20 __weak self代码块"></a>Tip20 __weak self代码块</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">__weak typeof(self)weakSelf = self;</span><br></pre></td></tr></table></figure>
+<h6 id="Tip21-NSCoding代码块"><a href="#Tip21-NSCoding代码块" class="headerlink" title="Tip21 NSCoding代码块"></a>Tip21 NSCoding代码块</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- (instancetype)initWithCoder:(NSCoder *)decoder &#123;</span><br><span class="line">self = [super init];</span><br><span class="line">if (!self) &#123;</span><br><span class="line">return nil;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;# implementation #&gt;</span><br><span class="line"></span><br><span class="line">return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)encodeWithCoder:(NSCoder *)coder &#123;</span><br><span class="line">&lt;# implementation #&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="Tip22-互斥锁"><a href="#Tip22-互斥锁" class="headerlink" title="Tip22 互斥锁"></a>Tip22 互斥锁</h6><p>1.互斥锁作用：给需要同步的代码块加一个互斥锁，就可以保证每次只有一个线程访问此代码块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@synchronized(self) &#123;// OC</span><br><span class="line">//code</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="Tip23-使用const关键字"><a href="#Tip23-使用const关键字" class="headerlink" title="Tip23 使用const关键字"></a>Tip23 使用const关键字</h6><p>1.使用const关键字作用是：保证编译的时候不能更改变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const CGFloat redValue = 0.6;</span><br><span class="line">extern const CGFloat redValue;</span><br><span class="line">// 或者</span><br><span class="line">NSString * const name = @&quot;jjbai&quot;;</span><br><span class="line">extern NSString * const name;</span><br></pre></td></tr></table></figure>
+<h6 id="Tip24-常用PCH（Percompile-Prefix-Header，预编译）"><a href="#Tip24-常用PCH（Percompile-Prefix-Header，预编译）" class="headerlink" title="Tip24 常用PCH（Percompile Prefix Header，预编译）"></a>Tip24 常用PCH（Percompile Prefix Header，预编译）</h6><p>1.调试模式打印，非调试模式不打印</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#ifdef __OBJC__</span><br><span class="line"></span><br><span class="line">#ifdef DEBUG</span><br><span class="line">#define FBLog(...) NSLog(__VA_ARGS__)</span><br><span class="line">#else</span><br><span class="line">#define FBLog(...)</span><br><span class="line"></span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p>2.判断真机还是模拟器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 判断是真机</span><br><span class="line">#if TARGET_OS_IPHONE</span><br><span class="line">//iPhone Device</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">// 判断是模拟器</span><br><span class="line">#if TARGET_IPHONE_SIMULATOR</span><br><span class="line">// iPhone Simulator</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p>3.判断是否使用ARC或者MRC</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 使用ARC和不使用ARC</span><br><span class="line">#if __has_feature(objc_arc)</span><br><span class="line">// compiling with ARC</span><br><span class="line">#else</span><br><span class="line">// compiling without ARC</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<h6 id="Tip25-常用define"><a href="#Tip25-常用define" class="headerlink" title="Tip25 常用define"></a>Tip25 常用define</h6><ul>
+<li>宏的优点</li>
+</ul>
+<p>1）最主要还是帮你省点事，少写点代码</p>
+<p>2）实现一些高级的功能</p>
+<ul>
+<li>宏的缺点</li>
+</ul>
+<p>1）swift不支持</p>
+<p>2）名称没起好很容易造成歧义</p>
+<p>3）代码不是很易读</p>
+<p>4）宏没写好容易导致未知的bug</p>
+<p>1.关于颜色的define</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 自定义透明度</span><br><span class="line">#define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]</span><br><span class="line"></span><br><span class="line">// 不透明RGB</span><br><span class="line">#define RGB_COLOR(r,g,b) RGBA(r,g,b,1.0f)</span><br><span class="line"></span><br><span class="line">// RGB颜色转换（16进制-&gt;10进制） 变量是rgbValue</span><br><span class="line">#define UICOLORFROMRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue &amp; 0xFF0000) &gt;&gt; 16))/255.0  green:((float)((rgbValue &amp; 0xFF00) &gt;&gt; 8))/255.0  blue:((float)(rgbValue &amp; 0xFF))/255.0  alpha:1.0]</span><br><span class="line"></span><br><span class="line">// 背景色</span><br><span class="line">#define BACKGROUND_COLOR [UIColor colorWithRed:242.0/255.0 green:236.0/255.0 blue:231.0/255.0 alpha:1.0]</span><br><span class="line"></span><br><span class="line">// 清除背景色</span><br><span class="line">#define CLEAR_COLOR [UIColor clearColor]</span><br><span class="line"></span><br><span class="line">// 随机颜色</span><br><span class="line">#define RANDOM_COLOR RGB_COLOR(arc4random_uniform(256),arc4random_uniform(256), arc4random_uniform(256))</span><br></pre></td></tr></table></figure>
+<p>2.关于系统的define</p>
+<p>1）判断手机系统版本和手机型号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#define ios6x [[[UIDevice currentDevice] systemVersion] floatValue] &lt; 7.0f</span><br><span class="line"></span><br><span class="line">#define iosNot6x [[[UIDevice currentDevice] systemVersion] floatValue] &gt;= 7.0f</span><br><span class="line"></span><br><span class="line">#define iOS7 ( [ [ [ UIDevice currentDevice ] systemVersion ] floatValue ] &gt;= 7.0 )</span><br><span class="line"></span><br><span class="line">#define ios7x ([[[UIDevice currentDevice] systemVersion] floatValue] &gt;= 7.0f) &amp;&amp; ([[[UIDevice currentDevice] systemVersion] floatValue] &lt; 8.0f)</span><br><span class="line"></span><br><span class="line">#define ios8x [[[UIDevice currentDevice] systemVersion] floatValue] &gt;=8.0f</span><br><span class="line"></span><br><span class="line">#define ios9x [[[UIDevice currentDevice] systemVersion] floatValue] &gt;=9.0f</span><br><span class="line"></span><br><span class="line">// 判断是否为iphone4</span><br><span class="line">#define iphone4x_3_5 ([UIScreen mainScreen].bounds.size.height==480.0f)</span><br><span class="line"></span><br><span class="line">#define iphone5x_4_0 ([UIScreen mainScreen].bounds.size.height==568.0f)</span><br><span class="line"></span><br><span class="line">#define iphone6_4_7 ([UIScreen mainScreen].bounds.size.height==667.0f)</span><br><span class="line"></span><br><span class="line">#define iphone6Plus_5_5 ([UIScreen mainScreen].bounds.size.height==736.0f || [UIScreen mainScreen].bounds.size.height==414.0f)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 判断是否为视网膜屏幕</span><br><span class="line">#define isRetina ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)</span><br><span class="line"></span><br><span class="line">#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)</span><br><span class="line"></span><br><span class="line">#define isPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)</span><br></pre></td></tr></table></figure>
+<p>2）另外一种方法获得系统版本（留着备用）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)</span><br><span class="line"></span><br><span class="line">#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)</span><br><span class="line"></span><br><span class="line">#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)</span><br><span class="line"></span><br><span class="line">#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)</span><br><span class="line"></span><br><span class="line">#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)</span><br><span class="line"></span><br><span class="line">#define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]</span><br><span class="line"></span><br><span class="line">#define IOS_VERSION [[UIDevice currentDevice] systemVersion]</span><br></pre></td></tr></table></figure>
+<p>3) 获取当前语言</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#define CURRENT_LANGUAGE ([[NSLocale preferredLanguages] objectAtIndex:0])</span><br></pre></td></tr></table></figure>
+<p>4）获取屏幕高度、宽度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)</span><br><span class="line"></span><br><span class="line">#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)</span><br></pre></td></tr></table></figure>
+<p>3.关于图片的define</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 读取本地图片</span><br><span class="line">#define LOADIMAGE(file,ext) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:file ofType:ext]]</span><br><span class="line"></span><br><span class="line">// 定义UIImage对象</span><br><span class="line">#define IMAGE(A) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:A ofType:nil]]</span><br><span class="line"></span><br><span class="line">// 定义UIImage对象，建议使用前两种宏定义,性能高于后者</span><br><span class="line">#define ImageNamed(_pointer) [UIImage imageNamed:[UIUtil imageName:_pointer]]</span><br></pre></td></tr></table></figure>
+<h6 id="Tip26-系统工具方法"><a href="#Tip26-系统工具方法" class="headerlink" title="Tip26 系统工具方法"></a>Tip26 系统工具方法</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">__COUNTER__ 无重复的计数器，从程序启动开始每次调用都会++，常用语宏中定义无重复的参数名称</span><br><span class="line"></span><br><span class="line">__FILE__：当前文件的绝对路径,常见于log中</span><br><span class="line"></span><br><span class="line">__LINE__：展开该宏时在文件中的行数,常见于log中</span><br><span class="line"></span><br><span class="line">__func__：所在scope的函数名称,常见于log中；这个常用来打印调用方法的函数名</span><br></pre></td></tr></table></figure>
+<h6 id="Tip27-LLDB"><a href="#Tip27-LLDB" class="headerlink" title="Tip27 LLDB"></a>Tip27 LLDB</h6><p>1.po命令</p>
+<p>1) 打印出完整的视图层次结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">po [[UIWindow keyWindow] recursiveDescription]</span><br></pre></td></tr></table></figure>
+<p>2)检查视图控制器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">po [[[UIWindow keyWindow] rootViewController] _printHierarchy]</span><br></pre></td></tr></table></figure>
+<h6 id="Tip28-将NSLog打印信息输出到手机上"><a href="#Tip28-将NSLog打印信息输出到手机上" class="headerlink" title="Tip28 将NSLog打印信息输出到手机上"></a>Tip28 将NSLog打印信息输出到手机上</h6><p>1.当使用NSLog的时候，就使用printLogScreen方法输出日志到手机上；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// textView是放在屏幕上的输出日志控件；</span><br><span class="line"></span><br><span class="line">- (void)printLogScreen:(NSString *)string&#123;</span><br><span class="line">[self.textView setText:[NSString stringWithFormat:@&quot;来自系统打印日志：%@&quot;,string]];</span><br><span class="line">count++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="Tip29-获取手机已经连接的wifi列表"><a href="#Tip29-获取手机已经连接的wifi列表" class="headerlink" title="Tip29 获取手机已经连接的wifi列表"></a>Tip29 获取手机已经连接的wifi列表</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#import &lt;SystemConfiguration/CaptiveNetwork.h&gt;</span><br><span class="line"></span><br><span class="line">- (id)fetchSSIDInfo &#123;</span><br><span class="line">NSArray *ifs = (__bridge_transfer id)CNCopySupportedInterfaces();</span><br><span class="line">NSLog(@&quot;Supported interfaces: %@&quot;, ifs);</span><br><span class="line">id info = nil;</span><br><span class="line">for (NSString *ifnam in ifs) &#123;</span><br><span class="line">info = (__bridge_transfer id)CNCopyCurrentNetworkInfo((__bridge CFStringRef)ifnam);</span><br><span class="line">NSLog(@&quot;%@ =&gt; %@&quot;, ifnam, info);</span><br><span class="line">if (info &amp;&amp; [info count]) &#123; break; &#125;</span><br><span class="line">&#125;</span><br><span class="line">return info;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="Tip30-iOS应用跳转到设置界面"><a href="#Tip30-iOS应用跳转到设置界面" class="headerlink" title="Tip30 iOS应用跳转到设置界面"></a>Tip30 iOS应用跳转到设置界面</h6><p>1.经典步骤: 以跳到设置wifi界面为例</p>
+<ul>
+<li><p>在项目中的info.plist中，添加 URL types</p>
+</li>
+<li><p>并设置一项URL Schemes为prefs（如果没有URL Schemes，就添加一个，在URL Schemes里面在添加一个items，在items的string里面填入prefs）</p>
+</li>
+<li><p>在指定要跳转到设置界面的地方写下面的代码：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">NSURL *url = [NSURL URLWithString:@&quot;prefs:root=WIFI&quot;];</span><br><span class="line">if ([[UIApplication sharedApplication] canOpenURL:url])&#123;</span><br><span class="line">[[UIApplication sharedApplication] openURL:url];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.iOS应用跳转到设置界面URL Scheme参考</p>
+<p>About                  — prefs:root=General&amp;path=About</p>
+<p>Accessibility          — prefs:root=General&amp;path=ACCESSIBILITY</p>
+<p>Airplane Mode On       — prefs:root=AIRPLANE_MODE</p>
+<p>Auto-Lock              — prefs:root=General&amp;path=AUTOLOCK</p>
+<p>Brightness             — prefs:root=Brightness</p>
+<p>Bluetooth              — prefs:root=General&amp;path=Bluetooth</p>
+<p>Date &amp; Time            — prefs:root=General&amp;path=DATE_AND_TIME</p>
+<p>FaceTime               — prefs:root=FACETIME</p>
+<p>General                — prefs:root=General</p>
+<p>Keyboard               — prefs:root=General&amp;path=Keyboard</p>
+<p>iCloud                 — prefs:root=CASTLE</p>
+<p>iCloud Storage &amp; Backup      — prefs:root=CASTLE&amp;path=STORAGE_AND_BACKUP</p>
+<p>International           — prefs:root=General&amp;path=INTERNATIONAL</p>
+<p>Location Services       — prefs:root=LOCATION_SERVICES</p>
+<p>Music                   — prefs:root=MUSIC</p>
+<p>Music Equalizer         — prefs:root=MUSIC&amp;path=EQ</p>
+<p>Music Volume Limit      — prefs:root=MUSIC&amp;path=VolumeLimit</p>
+<p>Network                 — prefs:root=General&amp;path=Network</p>
+<p>Nike + iPod             — prefs:root=NIKE_PLUS_IPOD</p>
+<p>Notes                   — prefs:root=NOTES</p>
+<p>Notification            — prefs:root=NOTIFICATIONS_ID</p>
+<p>Phone                   — prefs:root=Phone</p>
+<p>Photos                  — prefs:root=Photos</p>
+<p>Profile                 — prefs:root=General&amp;path=ManagedConfigurationList</p>
+<p>Reset                   — prefs:root=General&amp;path=Reset</p>
+<p>Safari                  — prefs:root=Safari</p>
+<p>Siri                    — prefs:root=General&amp;path=Assistant</p>
+<p>Sounds                  — prefs:root=Sounds</p>
+<p>Software Update         — prefs:root=General&amp;path=SOFTWARE_UPDATE_LINK</p>
+<p>Store                   — prefs:root=STORE</p>
+<p>Twitter                 — prefs:root=TWITTER</p>
+<p>Usage                   — prefs:root=General&amp;path=USAGE</p>
+<p>VPN                     — prefs:root=General&amp;path=Network/VPN</p>
+<p>Wallpaper               — prefs:root=Wallpaper</p>
+<p>Location                — prefs:root=LOCATION_SERVICES</p>
+<h6 id="Tip31-ABAddressBook-获取权限代码块"><a href="#Tip31-ABAddressBook-获取权限代码块" class="headerlink" title="Tip31 ABAddressBook 获取权限代码块"></a>Tip31 ABAddressBook 获取权限代码块</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions&#123;</span><br><span class="line"></span><br><span class="line">ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();</span><br><span class="line"></span><br><span class="line">if (status == kABAuthorizationStatusNotDetermined) &#123;</span><br><span class="line">ABAddressBookRef book = ABAddressBookCreateWithOptions(NULL, NULL);</span><br><span class="line">ABAddressBookRequestAccessWithCompletion(book, ^(bool granted, CFErrorRef error) &#123;</span><br><span class="line">if (granted == YES) &#123;</span><br><span class="line">NSLog(@&quot;---允许&quot;);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">NSLog(@&quot;---不允许&quot;);</span><br><span class="line">&#125;</span><br><span class="line">CFRelease(book);</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br><span class="line">return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h6><p>1.<a href="http://casatwy.com/shi-yong-lldbdiao-shi-cheng-xu.html" target="_blank" rel="external">http://casatwy.com/shi-yong-lldbdiao-shi-cheng-xu.html</a></p>
+<p>2.<a href="http://00red.com/blog/2015/01/14/teacher-wifi-solution/" target="_blank" rel="external">http://00red.com/blog/2015/01/14/teacher-wifi-solution/</a></p>
+<p>3.<a href="http://www.superqq.com/blog/2015/11/30/jump-to-setting-wifi/" target="_blank" rel="external">http://www.superqq.com/blog/2015/11/30/jump-to-setting-wifi/</a> 从应用跳到wifi设置</p>
+<p>4.<a href="http://www.jianshu.com/p/19602f48309b" target="_blank" rel="external">http://www.jianshu.com/p/19602f48309b</a></p>
+<p>5.<a href="http://worldligang.baijia.baidu.com/article/255351" target="_blank" rel="external">http://worldligang.baijia.baidu.com/article/255351</a></p>
+<p>6.<a href="http://blog.csdn.net/xyt8023y/article/details/50365140" target="_blank" rel="external">http://blog.csdn.net/xyt8023y/article/details/50365140</a></p>
+<p>7.<a href="https://github.com/devinshively/wifiAssociate" target="_blank" rel="external">https://github.com/devinshively/wifiAssociate</a> 越狱设备，通过ssid和password连接设备</p>
+<p>8.<a href="https://www.douban.com/note/293551961/" target="_blank" rel="external">https://www.douban.com/note/293551961/</a> wifi私有api</p>
+<p>9.<a href="http://www.ppios.com/cydia-tweak-thor-automatically-turn-on-wifi.html//" target="_blank" rel="external">http://www.ppios.com/cydia-tweak-thor-automatically-turn-on-wifi.html//</a> 打开应用wifi自动打开</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2016/04/04/2016/4/iOS-Tips/">
+    <time datetime="2016-04-04T11:53:15.000Z" class="entry-date">
+        2016-04-04
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2016/04/12/2016/4/iOS-AddressBook-AddressBookUI-Contacts/" rel="prev"><span class="meta-nav">←</span> iOS-AddressBook/AddressBookUI/Contacts</a></span>
+    
+    
+        <span class="nav-next"><a href="/2016/04/03/2016/4/iOS报错/" rel="next">iOS报错 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/10/2016/8/iOS-Map/">iOS-Map</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/01/2016/8/iOS-Location/">iOS-Location</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/23/2016/7/iOS-RunLoop/">iOS-RunLoop</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/12/2016/7/iOS-数据持久化/">iOS-数据持久化</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/09/2016/7/iOS-RunTime/">iOS-RunTime</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2016 阿汶
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

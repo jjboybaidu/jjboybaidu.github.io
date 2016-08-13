@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="为什么使用NSLog，而不用Printf()1.打印输出使用 NSLog() 而不是 println() 呢？
+2.原因是使用 print() / println() 输出的话，它会简单地使用 流（stream） 的概念，学过 C++ 的都知道。
+3.print()会把需要输出的每个字符一个一个的输出到控制台" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>iOS-NSLog | 阿汶的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="为什么使用NSLog，而不用Printf()1.打印输出使用 NSLog() 而不是 println() 呢？
+2.原因是使用 print() / println() 输出的话，它会简单地使用 流（stream） 的概念，学过 C++ 的都知道。
+3.print()会把需要输出的每个字符一个一个的输出到控制台">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-NSLog">
+<meta property="og:url" content="williamliuwen.cn/2016/05/11/2016/5/iOS-NSLog/index.html">
+<meta property="og:site_name" content="阿汶的博客">
+<meta property="og:description" content="为什么使用NSLog，而不用Printf()1.打印输出使用 NSLog() 而不是 println() 呢？
+2.原因是使用 print() / println() 输出的话，它会简单地使用 流（stream） 的概念，学过 C++ 的都知道。
+3.print()会把需要输出的每个字符一个一个的输出到控制台">
+<meta property="og:updated_time" content="2016-08-13T13:33:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-NSLog">
+<meta name="twitter:description" content="为什么使用NSLog，而不用Printf()1.打印输出使用 NSLog() 而不是 println() 呢？
+2.原因是使用 print() / println() 输出的话，它会简单地使用 流（stream） 的概念，学过 C++ 的都知道。
+3.print()会把需要输出的每个字符一个一个的输出到控制台">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="阿汶的博客" rel="home">阿汶的博客</a>
+      </h1>
+      
+        <h2 class="site-description">
+          <a href="/" id="subtitle">知我者谓我心忧 不知我者谓我何求</a>
+        </h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-2016/5/iOS-NSLog" class="post-2016/5/iOS-NSLog post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      iOS-NSLog
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="williamliuwen.cn/2016/05/11/2016/5/iOS-NSLog/" data-id="cirt883pp000k5ki0ro0kfzz7" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="为什么使用NSLog，而不用Printf"><a href="#为什么使用NSLog，而不用Printf" class="headerlink" title="为什么使用NSLog，而不用Printf()"></a>为什么使用NSLog，而不用Printf()</h2><p>1.打印输出使用 NSLog() 而不是 println() 呢？</p>
+<p>2.原因是使用 print() / println() 输出的话，它会简单地使用 流（stream） 的概念，学过 C++ 的都知道。</p>
+<p>3.print()会把需要输出的每个字符一个一个的输出到控制台</p>
+<a id="more"></a>
+<p>4.普通使用并没有问题，可是当多线程同步输出的时候问题就来了，由于很多 println() 同时打印，就会导致控制台上的字符混乱的堆在一起，而NSLog() 就没有这个问题</p>
+<h2 id="NSLog格式"><a href="#NSLog格式" class="headerlink" title="NSLog格式"></a>NSLog格式</h2><p>%@     对象</p>
+<p>%i     整数</p>
+<p>%d,    double</p>
+<p>%u     无符整形</p>
+<p>%f     浮点/双字</p>
+<p>%x, %X 二进制整数</p>
+<p>%o     八进制整数</p>
+<p>%zu    size_t</p>
+<p>%p     指针</p>
+<p>%e     浮点/双字 （科学计算）</p>
+<p>%g     浮点/双字</p>
+<p>%s     short</p>
+<p>%.*s   Pascal字符串</p>
+<p>%c     字符 char</p>
+<p>%C     unichar</p>
+<p>%lld   64位长整数（long long）</p>
+<p>%llu   无符64位长整数</p>
+<p>%Lf    64位双字</p>
+<p>%zu       size_t</p>
+<p>%#     A class object (Class)</p>
+<p>%:     A method selector (SEL)</p>
+<p>%%     打印百分号</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2016/05/11/2016/5/iOS-NSLog/">
+    <time datetime="2016-05-11T11:33:15.000Z" class="entry-date">
+        2016-05-11
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2016/05/11/2016/5/iOS-Instruments/" rel="prev"><span class="meta-nav">←</span> iOS-Instruments</a></span>
+    
+    
+        <span class="nav-next"><a href="/2016/04/23/2016/4/hexo-部署/" rel="next">hexo 部署 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/10/2016/8/iOS-Map/">iOS-Map</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/01/2016/8/iOS-Location/">iOS-Location</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/23/2016/7/iOS-RunLoop/">iOS-RunLoop</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/12/2016/7/iOS-数据持久化/">iOS-数据持久化</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/09/2016/7/iOS-RunTime/">iOS-RunTime</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2016 阿汶
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

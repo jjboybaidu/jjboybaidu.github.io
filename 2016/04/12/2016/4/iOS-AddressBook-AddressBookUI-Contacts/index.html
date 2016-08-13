@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="读取手机通讯录一共经历了几个版本的API1.AddressBook.Framework
+2.AddressBookUI.Framework
+3.Contacts.Framework
+ABAddressBook基本知识1.ABAddressBookRef
+
+addressBook是通讯录对象，要查找通" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>iOS-AddressBook/AddressBookUI/Contacts | 阿汶的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="读取手机通讯录一共经历了几个版本的API1.AddressBook.Framework
+2.AddressBookUI.Framework
+3.Contacts.Framework
+ABAddressBook基本知识1.ABAddressBookRef
+
+addressBook是通讯录对象，要查找通讯录，必须通过这个对象，所以每次调用手机的通讯录都要先创建这个对象，然后去赋值通讯录的信息，显示在你">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-AddressBook/AddressBookUI/Contacts">
+<meta property="og:url" content="williamliuwen.cn/2016/04/12/2016/4/iOS-AddressBook-AddressBookUI-Contacts/index.html">
+<meta property="og:site_name" content="阿汶的博客">
+<meta property="og:description" content="读取手机通讯录一共经历了几个版本的API1.AddressBook.Framework
+2.AddressBookUI.Framework
+3.Contacts.Framework
+ABAddressBook基本知识1.ABAddressBookRef
+
+addressBook是通讯录对象，要查找通讯录，必须通过这个对象，所以每次调用手机的通讯录都要先创建这个对象，然后去赋值通讯录的信息，显示在你">
+<meta property="og:updated_time" content="2016-08-13T13:33:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-AddressBook/AddressBookUI/Contacts">
+<meta name="twitter:description" content="读取手机通讯录一共经历了几个版本的API1.AddressBook.Framework
+2.AddressBookUI.Framework
+3.Contacts.Framework
+ABAddressBook基本知识1.ABAddressBookRef
+
+addressBook是通讯录对象，要查找通讯录，必须通过这个对象，所以每次调用手机的通讯录都要先创建这个对象，然后去赋值通讯录的信息，显示在你">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="阿汶的博客" rel="home">阿汶的博客</a>
+      </h1>
+      
+        <h2 class="site-description">
+          <a href="/" id="subtitle">知我者谓我心忧 不知我者谓我何求</a>
+        </h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-2016/4/iOS-AddressBook-AddressBookUI-Contacts" class="post-2016/4/iOS-AddressBook-AddressBookUI-Contacts post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      iOS-AddressBook/AddressBookUI/Contacts
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="williamliuwen.cn/2016/04/12/2016/4/iOS-AddressBook-AddressBookUI-Contacts/" data-id="cirt883pf000e5ki0cwkd3kgw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="读取手机通讯录一共经历了几个版本的API"><a href="#读取手机通讯录一共经历了几个版本的API" class="headerlink" title="读取手机通讯录一共经历了几个版本的API"></a>读取手机通讯录一共经历了几个版本的API</h2><p>1.AddressBook.Framework</p>
+<p>2.AddressBookUI.Framework</p>
+<p>3.Contacts.Framework</p>
+<h2 id="ABAddressBook基本知识"><a href="#ABAddressBook基本知识" class="headerlink" title="ABAddressBook基本知识"></a>ABAddressBook基本知识</h2><p>1.ABAddressBookRef</p>
+<ul>
+<li>addressBook是通讯录对象，要查找通讯录，必须通过这个对象，所以每次调用手机的通讯录都要先创建这个对象，然后去赋值通讯录的信息，显示在你的table上面；通过该对象开发人员不用过多的关注通讯录的存储方式，可以直接以透明的方式去访问、保存（在使用AddressBook.framework操作联系人时，所有的增加、删除、修改后都必须执行保存操作，类似于Core Data）等。</li>
+</ul>
+<p>2.ABRecordCopyValue</p>
+<ul>
+<li>ABRecordCopyValue用来addressbook里面的各种属性，单值属性，多值属性；</li>
+<li>CFTypeRef ABRecordCopyValue (ABRecordRef record,ABPropertyID property);</li>
+</ul>
+<p>3.ABRecordRef</p>
+<ul>
+<li>是记录对象，代表一个通用的记录对象，可以是一条联系人信息，也可以是一个群组，可以通过ABRecordGetRecordType()函数获得具体类型。如果作为联系人（事实上也经常使用它作为联系人），那么这个记录记录了一个完整的联系人信息（姓名、性别、电话、邮件等），每条记录都有一个唯一的ID标示这条记录（可以通过ABRecordGetRecordID()函数获得）。</li>
+</ul>
+<p>4.ABPropertyID</p>
+<ul>
+<li>ABPropertyID是属性ID，就是上面的常量kABPersonFirstNameProperty等。返回值类型是CFTypeRef，它是Core Foundation类型的“泛型”，可以代表任何的Core Foundation类型。</li>
+</ul>
+<p>5.CFRelease</p>
+<ul>
+<li>CFRelease函数就是相当于Foundation框架中的release（或autorelease）方法。</li>
+</ul>
+<p>6.CFBridgingRelease</p>
+<ul>
+<li>CFBridgingRelease函数实现的是Core Foundation类型到Foundation类型转化并把对象所有权转让ARC（自动管理引用计数），因此不需要释放属性listContacts对应的成员变量。</li>
+</ul>
+<p>7.CFBridgingRetain</p>
+<ul>
+<li>CFBridgingRetain 把NSString类型转换为CFString类型，实现的是Foundation类型到Core Foundation类型转化, 并把对象所有权转让调用者，因此需要释放这个对象，</li>
+</ul>
+<p>8.ABMultiValueRef</p>
+<ul>
+<li>ABMultiValueRef是多值属性访问返回值</li>
+</ul>
+<p>9.ABMultiValueCopyArrayOfAllValues</p>
+<ul>
+<li>使用ABMultiValueCopyArrayOfAllValues函数从ABMultiValueRef对象中获取数组CFArrayRef集合；就相当于取单值属性时一样，使用aABRecordCopyVlue从ABRecordRef中获取数组；</li>
+</ul>
+<p>10.AddressBook授权状态：</p>
+<ul>
+<li>kABAuthorizationStatusNotDetermined = 0,    // 未进行授权选择</li>
+<li>kABAuthorizationStatusRestricted,           // 未授权，且用户无法更新，如家长控制情况下</li>
+<li>kABAuthorizationStatusDenied,               // 用户拒绝App使用</li>
+<li>kABAuthorizationStatusAuthorized            // 已授权，可使用</li>
+</ul>
+<p>11.当我们需要访问手机通讯录的时候，需要用到框架：AddressBook.framework；由于iOS的权限设计，开发人员是不允许直接访问通讯录数据库的，必须依靠AddressBook提供的标准API来实现通讯录操作。</p>
+<p>12.ABPersonRef</p>
+<ul>
+<li>代表联系人信息，很少直接使用，实际开发过程中通常会使用类型为“kABPersonType”的ABRecordRef来表示联系人（由此可见ABPersonRef其实是一种类型为“kABPersonType”的ABRecordRef）</li>
+</ul>
+<p>13.ABGroupRef</p>
+<ul>
+<li>代表群组，与ABPersonRef类似，很少直接使用ABGroupRef，而是使用类型为“kABGroupType”的ABRecordRef来表示群组，一个群组可以包含多个联系人，一个联系人也同样可以多个群组。</li>
+</ul>
+<p>14.常用的操作通讯录记录的方法</p>
+<ul>
+<li>ABPersonCreate():创建一个类型为“kABPersonType”的ABRecordRef。</li>
+<li>ABRecordCopyValue():取得指定属性的值。</li>
+<li>ABRecordCopyCompositeName():取得联系人（或群组）的复合信息（对于联系人则包括：姓、名、公司等信息，对于群组则返回组名称）。</li>
+<li>ABRecordSetValue():设置ABRecordRef的属性值。注意在设置ABRecordRef的值时又分为单值属性和多值属性：单值属性设置只要通过ABRecordSetValue()方法指定属性名和值即可；多值属性则要先通过创建一个ABMutableMultiValueRef类型的变量，然后通过ABMultiValueAddValueAndLabel()方法依次添加属性值，最后通过ABRecordSetValue()方法将ABMutableMultiValueRef类型的变量设置为记录值。</li>
+<li>ABRecordRemoveValue():删除指定的属性值。</li>
+</ul>
+<p>15.通讯录的访问步骤一般如下：</p>
+<ul>
+<li>调用ABAddressBookCreateWithOptions()方法创建通讯录对象ABAddressBookRef。</li>
+<li>调用ABAddressBookRequestAccessWithCompletion()方法获得用户授权访问通讯录。</li>
+<li>调用ABAddressBookCopyArrayOfAllPeople()、ABAddressBookCopyPeopleWithName()方法查询联系人信息。</li>
+<li>读取联系人后如果要显示联系人信息则可以调用ABRecord相关方法读取相应的数据；如果要进行修改联系人信息，则可以使用对应的方法修改ABRecord信息，然后调用ABAddressBookSave()方法提交修改；如果要删除联系人，则可以调用ABAddressBookRemoveRecord()方法删除，然后调用ABAddressBookSave()提交修改操作。</li>
+<li>也就是说如果要修改或者删除都需要首先查询对应的联系人，然后修改或删除后提交更改。如果用户要增加一个联系人则不用进行查询，直接调用ABPersonCreate()方法创建一个ABRecord然后设置具体的属性，调用ABAddressBookAddRecord方法添加即可。</li>
+</ul>
+<h6 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h6><p>1.<a href="http://www.cnblogs.com/kenshincui/p/4220402.html#contact" target="_blank" rel="external">http://www.cnblogs.com/kenshincui/p/4220402.html#contact</a></p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2016/04/12/2016/4/iOS-AddressBook-AddressBookUI-Contacts/">
+    <time datetime="2016-04-12T12:18:04.000Z" class="entry-date">
+        2016-04-12
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2016/04/23/2016/4/hexo-部署/" rel="prev"><span class="meta-nav">←</span> hexo 部署</a></span>
+    
+    
+        <span class="nav-next"><a href="/2016/04/04/2016/4/iOS-Tips/" rel="next">iOS-Tips <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/10/2016/8/iOS-Map/">iOS-Map</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/01/2016/8/iOS-Location/">iOS-Location</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/23/2016/7/iOS-RunLoop/">iOS-RunLoop</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/12/2016/7/iOS-数据持久化/">iOS-数据持久化</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/09/2016/7/iOS-RunTime/">iOS-RunTime</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2016 阿汶
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

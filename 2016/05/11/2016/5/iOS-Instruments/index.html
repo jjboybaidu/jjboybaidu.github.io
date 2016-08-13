@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="测试工具Instruments测试分类一、单元测试：某方法函数的测试；
+
+1.继承类；
+
+2.写测试代码；
+
+3.重要概念：断言/猜测/估计（XCTAssertEqual断言等于；XCTAssertTrue断言为真；XCTAssertNil断言为空；除了上面两个方法还有更多）；
+
+4.单元测试颜色：" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>iOS-Instruments | 阿汶的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="测试工具Instruments测试分类一、单元测试：某方法函数的测试；
+
+1.继承类；
+
+2.写测试代码；
+
+3.重要概念：断言/猜测/估计（XCTAssertEqual断言等于；XCTAssertTrue断言为真；XCTAssertNil断言为空；除了上面两个方法还有更多）；
+
+4.单元测试颜色：红色失败，绿色通过；
+
+5.单元测试好处：a.轻量级测试，针对某个方法；b.发布程序的时候不会被打包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-Instruments">
+<meta property="og:url" content="williamliuwen.cn/2016/05/11/2016/5/iOS-Instruments/index.html">
+<meta property="og:site_name" content="阿汶的博客">
+<meta property="og:description" content="测试工具Instruments测试分类一、单元测试：某方法函数的测试；
+
+1.继承类；
+
+2.写测试代码；
+
+3.重要概念：断言/猜测/估计（XCTAssertEqual断言等于；XCTAssertTrue断言为真；XCTAssertNil断言为空；除了上面两个方法还有更多）；
+
+4.单元测试颜色：红色失败，绿色通过；
+
+5.单元测试好处：a.轻量级测试，针对某个方法；b.发布程序的时候不会被打包">
+<meta property="og:updated_time" content="2016-08-13T13:33:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-Instruments">
+<meta name="twitter:description" content="测试工具Instruments测试分类一、单元测试：某方法函数的测试；
+
+1.继承类；
+
+2.写测试代码；
+
+3.重要概念：断言/猜测/估计（XCTAssertEqual断言等于；XCTAssertTrue断言为真；XCTAssertNil断言为空；除了上面两个方法还有更多）；
+
+4.单元测试颜色：红色失败，绿色通过；
+
+5.单元测试好处：a.轻量级测试，针对某个方法；b.发布程序的时候不会被打包">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="阿汶的博客" rel="home">阿汶的博客</a>
+      </h1>
+      
+        <h2 class="site-description">
+          <a href="/" id="subtitle">知我者谓我心忧 不知我者谓我何求</a>
+        </h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-2016/5/iOS-Instruments" class="post-2016/5/iOS-Instruments post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      iOS-Instruments
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="williamliuwen.cn/2016/05/11/2016/5/iOS-Instruments/" data-id="cirt883pl000i5ki08gk2n0rw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="测试工具Instruments"><a href="#测试工具Instruments" class="headerlink" title="测试工具Instruments"></a>测试工具Instruments</h2><h2 id="测试分类"><a href="#测试分类" class="headerlink" title="测试分类"></a>测试分类</h2><p>一、单元测试：某方法函数的测试；</p>
+<ul>
+<li><p>1.继承类；</p>
+</li>
+<li><p>2.写测试代码；</p>
+</li>
+<li><p>3.重要概念：断言/猜测/估计（XCTAssertEqual断言等于；XCTAssertTrue断言为真；XCTAssertNil断言为空；除了上面两个方法还有更多）；</p>
+</li>
+<li><p>4.单元测试颜色：红色失败，绿色通过；</p>
+</li>
+<li><p>5.单元测试好处：a.轻量级测试，针对某个方法；b.发布程序的时候不会被打包；c.不需要启动程序；d.可以给每一个类创建一个继承单元测试类的测试方法；</p>
+</li>
+<li><p>6.单元测试用处：一般用在业务逻辑</p>
+</li>
+</ul>
+<p>二、集群测试：所有功能的测试；</p>
+<p>三、压力测试：大批量用户的测试；</p>
+<h2 id="测试APP"><a href="#测试APP" class="headerlink" title="测试APP"></a>测试APP</h2><p>1.使用苹果自带的TestFlight</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2016/05/11/2016/5/iOS-Instruments/">
+    <time datetime="2016-05-11T11:37:04.000Z" class="entry-date">
+        2016-05-11
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2016/05/11/2016/5/iOS-Wifi/" rel="prev"><span class="meta-nav">←</span> iOS-Wifi</a></span>
+    
+    
+        <span class="nav-next"><a href="/2016/05/11/2016/5/iOS-NSLog/" rel="next">iOS-NSLog <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/10/2016/8/iOS-Map/">iOS-Map</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/01/2016/8/iOS-Location/">iOS-Location</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/23/2016/7/iOS-RunLoop/">iOS-RunLoop</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/12/2016/7/iOS-数据持久化/">iOS-数据持久化</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/09/2016/7/iOS-RunTime/">iOS-RunTime</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2016 阿汶
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

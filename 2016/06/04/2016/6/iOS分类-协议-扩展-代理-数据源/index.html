@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="分类1.分类原则
+
+分类可以访问原类中的成员变量，但是在分类不能添加任何变量。若需要添加变量可以考虑创建子类
+分类中的方法名可以与原类的某个方法名相同（即重载），但是原类的同名方法将失效，不能访问
+通过分类添加的方法是可以被子类继承的
+不必实现分类的所有方法。可以在分类中声明所有的方法，但不实现，在需要的时候再去实现
+
+2.
+3.
+4." />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>iOS分类/协议/扩展/代理/数据源 | 阿汶的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="分类1.分类原则
+
+分类可以访问原类中的成员变量，但是在分类不能添加任何变量。若需要添加变量可以考虑创建子类
+分类中的方法名可以与原类的某个方法名相同（即重载），但是原类的同名方法将失效，不能访问
+通过分类添加的方法是可以被子类继承的
+不必实现分类的所有方法。可以在分类中声明所有的方法，但不实现，在需要的时候再去实现
+
+2.
+3.
+4.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS分类/协议/扩展/代理/数据源">
+<meta property="og:url" content="williamliuwen.cn/2016/06/04/2016/6/iOS分类-协议-扩展-代理-数据源/index.html">
+<meta property="og:site_name" content="阿汶的博客">
+<meta property="og:description" content="分类1.分类原则
+
+分类可以访问原类中的成员变量，但是在分类不能添加任何变量。若需要添加变量可以考虑创建子类
+分类中的方法名可以与原类的某个方法名相同（即重载），但是原类的同名方法将失效，不能访问
+通过分类添加的方法是可以被子类继承的
+不必实现分类的所有方法。可以在分类中声明所有的方法，但不实现，在需要的时候再去实现
+
+2.
+3.
+4.">
+<meta property="og:updated_time" content="2016-08-13T13:34:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS分类/协议/扩展/代理/数据源">
+<meta name="twitter:description" content="分类1.分类原则
+
+分类可以访问原类中的成员变量，但是在分类不能添加任何变量。若需要添加变量可以考虑创建子类
+分类中的方法名可以与原类的某个方法名相同（即重载），但是原类的同名方法将失效，不能访问
+通过分类添加的方法是可以被子类继承的
+不必实现分类的所有方法。可以在分类中声明所有的方法，但不实现，在需要的时候再去实现
+
+2.
+3.
+4.">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="阿汶的博客" rel="home">阿汶的博客</a>
+      </h1>
+      
+        <h2 class="site-description">
+          <a href="/" id="subtitle">知我者谓我心忧 不知我者谓我何求</a>
+        </h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-2016/6/iOS分类-协议-扩展-代理-数据源" class="post-2016/6/iOS分类-协议-扩展-代理-数据源 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      iOS分类/协议/扩展/代理/数据源
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="williamliuwen.cn/2016/06/04/2016/6/iOS分类-协议-扩展-代理-数据源/" data-id="cirt883pt000q5ki0i992wsej" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>1.分类原则</p>
+<ul>
+<li>分类可以访问原类中的成员变量，但是在分类不能添加任何变量。若需要添加变量可以考虑创建子类</li>
+<li>分类中的方法名可以与原类的某个方法名相同（即重载），但是原类的同名方法将失效，不能访问</li>
+<li>通过分类添加的方法是可以被子类继承的</li>
+<li>不必实现分类的所有方法。可以在分类中声明所有的方法，但不实现，在需要的时候再去实现</li>
+</ul>
+<p>2.</p>
+<p>3.</p>
+<p>4.</p>
+<a id="more"></a>
+<h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><p>1.协议的原则</p>
+<ul>
+<li>实现此协议的类必须实现对应的方法</li>
+<li>协议中方法是否必须实现，通过关键字进行@required和@optional进行设置</li>
+<li>如果不设置则默认是@required（注意ObjC是弱语法，即使不实现必选方法编译运行也不会报错）</li>
+<li>一个类可以同时实现多个协议，中间通过逗号分隔</li>
+<li>协议的实现只能在类的声明上,不能放到类的实现上（也就是说必须写成@interface Person:NSObject<animaldelegate>而不能写成@implementation Person<animaldelegate>）</animaldelegate></animaldelegate></li>
+<li>协议中不能定义属性、成员变量等,只能定义方法</li>
+<li></li>
+</ul>
+<p>2.例如定义一个动物协议，其中有吃的方法；人对象实现这个动物这个协议，不要遵守动物的方法；</p>
+<p>3.代理模式的出现</p>
+<ul>
+<li>事实上在ObjC中协议的更多作用是用于约束一个类必须实现某些方法，而从面向对象的角度而言这个类跟接口并不一定存在某种自然关系，可能是两个完全不同意义上的事物,这种模式我们称之为代理模式（Delegation）。在Cocoa框架中大量采用这种模式实现数据和UI的分离，而且基本上所有的协议都是以Delegate结尾。</li>
+</ul>
+<p>4.协议和代理</p>
+<ul>
+<li>协议和代理是模块化开发和封装的产物</li>
+<li></li>
+<li></li>
+</ul>
+<p>5.模块间通信（举例）</p>
+<ul>
+<li>大厨类只做菜 但是菜做好了怎么办，必须及时的上菜，让顾客享用。但是大厨自己不能上菜，所以大厨必须抛出菜做好了的信号，具体这个菜上不上，怎么上，就不是大厨关心的了</li>
+<li>这里的喊一声就实现了通信（抽象点就是用协议）</li>
+</ul>
+<p>// 第一步：大厨把菜做好了，通知自己的代理把菜拿走<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">DaChu.h</span><br><span class="line"></span><br><span class="line">@protocol DaChuDelegate &lt;NSObject&gt;</span><br><span class="line">- (void)doSomethingAftercaiZuohaole;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@interface DaChu : NSObject</span><br><span class="line">/**</span><br><span class="line">*  delegate 是dachu类的一个属性，weak 关键字是为了避免循环引用，&lt;DaChuDelegate&gt;表示遵守DaChuDelegate协议</span><br><span class="line">*  更加直白点：在大厨心里有一个人接受他的菜好了的信号去做一些事情，具体这个人是谁，大厨不关心，这个人的代号是delegate</span><br><span class="line">*/</span><br><span class="line">@property (nonatomic, weak) id &lt;DaChuDelegate&gt; delegate;</span><br><span class="line">- (void)kaiShiZuoCai;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Dachu.m</span><br><span class="line">#import &quot;DaChu.h&quot;</span><br><span class="line"></span><br><span class="line">@implementation DaChu</span><br><span class="line">- (void)kaiShiZuoCai&#123;</span><br><span class="line">NSLog(@&quot;开始做菜&quot;);</span><br><span class="line">sleep(2);</span><br><span class="line">NSLog(@&quot;做好菜了，该上菜了&quot;);</span><br><span class="line"></span><br><span class="line">//下面这句是判断 一下delegate是否实现了doSomethingAftercaiZuohaole方法，如果delegate没有实现</span><br><span class="line">//直接[self.delegate doSomethingAftercaiZuohaole];会crash</span><br><span class="line">if ([self.delegate respondsToSelector:@selector(doSomethingAftercaiZuohaole)]) &#123;</span><br><span class="line">[self.delegate doSomethingAftercaiZuohaole];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>// 第二步：代理小二遵守大厨的拿菜方法，等大厨通知，把菜拿走<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;XiaoEr.h&quot;</span><br><span class="line">#import &quot;DaChu.h&quot;</span><br><span class="line"></span><br><span class="line">@interface XiaoEr ()&lt;DaChuDelegate&gt;//&lt;DaChuDelegate&gt;表示遵守DaChuDelegate协议，并且实现协议里面的方法</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation XiaoEr</span><br><span class="line">- (void)XiaoErZhunBei&#123;</span><br><span class="line"></span><br><span class="line">DaChu *dachu1 = [[DaChu alloc] init];</span><br><span class="line">dachu1.delegate = self;//说明小二充当代理的角色，负责接收菜好了的信号。</span><br><span class="line">[dachu1 kaiShiZuoCai];//大厨开始做菜</span><br><span class="line">&#125;</span><br><span class="line">- (void)doSomethingAftercaiZuohaole&#123;</span><br><span class="line">NSLog(@&quot;小二知道了&quot;);</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure></p>
+<p>6.分类也可以遵守协议<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@interface Person(chinaPerson) &lt;NSCopying,NSCoding&gt;</span><br><span class="line">说明Person类拥有一个分类chinaPerson，这个分类遵守NSCopying 和NSCoding协议</span><br></pre></td></tr></table></figure></p>
+<p>7.定义协议的类和遵守协议的类之间不存在自然关系</p>
+<p>8.协议真正的作用是约束一个类必须实现某些方法；<br>就是说定义协议的类A是用来约束另一个遵守协议的类B必须实现某些方法；<br>并且类A和类B通常不存在关系；可能类A和类B是两个完全不同意义上的东西；<br>而我们把类A和类B这种关系模式称为“代理关系模式”；而“代理关系模式”大量<br>应用在Cocoa框架中，主要解决数据和UI的分离；</p>
+<p>9.按钮点击–&gt;事件机制（非OC语言）</p>
+<p>满足事件机制条件</p>
+<ul>
+<li>使用者订阅了点击事件</li>
+<li>点击的时候会触发这个事件</li>
+<li>OC中没有事件定义，用“代理关系模式”代替</li>
+<li>首先在按钮中，定义按钮的代理，同时使用协议约束这个代理</li>
+<li>（事件的触发者 = 点击按钮的）必须实现协议中的某些方法；</li>
+<li>实现方法的过程中，按钮的处理流程是：</li>
+<li>先检查代理是否实现了按钮定义的协议方法，如果实现了，则调用</li>
+<li>MyListener作为事件触发者，它实现了KCButtonDelegate代理</li>
+<li>事件触发者 = 代理</li>
+<li>使用respondsToSelector方法可以判断一个对象是否实现了某个方法（需要注意方法名不是”onClick”而是“onClick:”，冒号也是方法名的一部分）；</li>
+<li>看下面例子</li>
+</ul>
+<p>10.例子代码解析</p>
+<p>1）@property (nonatomic,retain) id<kcbuttondelegate> delegate;<br>//id可以表示任何一个ObjC对象类型，类型后面的”&lt;协议名&gt;“用于约束作为<br>这个属性的对象必须实现该协议(注意：使用id定义的对象类型不需要加“*”)；</kcbuttondelegate></p>
+<p>11.@class或@protocol</p>
+<p>1）在.h文件中如果使用了另一个文件的类或协议我们可以通过@class或者@protocol进行声明，<br>而不必导入这个文件，这样可以提高编译效率（注意有些情况必须使用@class或@protocol，<br>例如上面KCButton.h中上面声明的KCButtonDelegate协议中用到了KCButton类，<br>而此文件下方的KCButton类声明中又使用了KCButtonDelegate，<br>从而形成在一个文件中互相引用关系，此时必须使用@class或者@protocol声明，<br>否则编译阶段会报错），但是在.m文件中则必须导入对应的类声明文件或协议文件<br>（如果不导入虽然语法检查可以通过但是编译链接会报错）；</p>
+<p>12.一个协议类，一个遵守协议类；</p>
+<ul>
+<li>多个类定义了一个相同的协议，可以把这个协议抽出来</li>
+<li>能不能把全部东西都抽出来不留任何东西，目前要保留@property(atomic) id<xxdelegate> delegate;</xxdelegate></li>
+<li>方法可以抽出来</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">KCButton.h</span><br><span class="line"></span><br><span class="line">@class KCButton;</span><br><span class="line">//一个协议可以扩展另一个协议，例如KCButtonDelegate扩展了NSObject协议</span><br><span class="line">@protocol KCButtonDelegate &lt;NSObject&gt;</span><br><span class="line">@required                              //@required修饰的方法必须实现</span><br><span class="line">-(void)onClick:(KCButton *)button;</span><br><span class="line">@optional                             //@optional修饰的方法是可选实现的</span><br><span class="line">-(void)onMouseover:(KCButton *)button;</span><br><span class="line">-(void)onMouseout:(KCButton *)button;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@interface KCButton : NSObject</span><br><span class="line">//代理属性，同时约定作为代理的对象必须实现KCButtonDelegate协议</span><br><span class="line">@property (nonatomic,retain) id&lt;KCButtonDelegate&gt; delegate;</span><br><span class="line">//点击方法</span><br><span class="line">-(void)click;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">KCButton.m</span><br><span class="line"></span><br><span class="line">#import &quot;KCButton.h&quot;</span><br><span class="line">@implementation KCButton</span><br><span class="line">-(void)click&#123;</span><br><span class="line">NSLog(@&quot;Invoke KCButton&apos;s click method.&quot;);</span><br><span class="line">//判断_delegate实例是否实现了onClick:方法（注意方法名是&quot;onClick:&quot;,后面有个:）</span><br><span class="line">//避免未实现ButtonDelegate的类也作为KCButton的监听</span><br><span class="line">if([_delegate respondsToSelector:@selector(onClick:)])&#123;</span><br><span class="line">[_delegate onClick:self];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">MyListener.h</span><br><span class="line"></span><br><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line">@class KCButton;</span><br><span class="line">@protocol KCButtonDelegate;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@interface MyListener : NSObject&lt;KCButtonDelegate&gt;</span><br><span class="line">-(void)onClick:(KCButton *)button;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">MyListener.m</span><br><span class="line"></span><br><span class="line">#import &quot;MyListener.h&quot;</span><br><span class="line">#import &quot;KCButton.h&quot;</span><br><span class="line"></span><br><span class="line">@implementation MyListener</span><br><span class="line">-(void)onClick:(KCButton *)button&#123;</span><br><span class="line">NSLog(@&quot;Invoke MyListener&apos;s onClick method.The button is:%@.&quot;,button);</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">main.m</span><br><span class="line"></span><br><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line">#import &quot;KCButton.h&quot;</span><br><span class="line">#import &quot;MyListener.h&quot;</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">@autoreleasepool &#123;</span><br><span class="line"></span><br><span class="line">KCButton *button=[[KCButton alloc]init];</span><br><span class="line">MyListener *listener=[[MyListener alloc]init];</span><br><span class="line">//button的delegate属性对象是id任意类型；把listener赋值给它，那listener必须遵守delegate属性规定的协议；</span><br><span class="line">button.delegate=listener;</span><br><span class="line">[button click];</span><br><span class="line">/* 结果：</span><br><span class="line">Invoke KCButton&apos;s click method.</span><br><span class="line">Invoke MyListener&apos;s onClick method.The button is:&lt;KCButton: 0x1001034c0&gt;.</span><br><span class="line">*/</span><br><span class="line">&#125;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>1.</p>
+<p>2.</p>
+<h6 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h6><p>1.<a href="http://blog.csdn.net/jianxin160/article/details/47753189" target="_blank" rel="external">http://blog.csdn.net/jianxin160/article/details/47753189</a></p>
+<p>2.<a href="http://www.cnblogs.com/iyou/p/3636848.html" target="_blank" rel="external">http://www.cnblogs.com/iyou/p/3636848.html</a></p>
+<p>3.</p>
+<p>4.</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2016/06/04/2016/6/iOS分类-协议-扩展-代理-数据源/">
+    <time datetime="2016-06-04T12:37:24.000Z" class="entry-date">
+        2016-06-04
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2016/06/08/2016/6/SVN-Git/" rel="prev"><span class="meta-nav">←</span> SVN-Git</a></span>
+    
+    
+        <span class="nav-next"><a href="/2016/06/04/2016/6/iOS人机交互/" rel="next">iOS人机交互 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/10/2016/8/iOS-Map/">iOS-Map</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/01/2016/8/iOS-Location/">iOS-Location</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/23/2016/7/iOS-RunLoop/">iOS-RunLoop</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/12/2016/7/iOS-数据持久化/">iOS-数据持久化</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/09/2016/7/iOS-RunTime/">iOS-RunTime</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2016 阿汶
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

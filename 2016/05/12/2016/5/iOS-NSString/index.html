@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="NSString功能介绍
+NSString 截取
+NSString 删除所有的空格" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>iOS-NSString | 阿汶的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="NSString功能介绍
+NSString 截取
+NSString 删除所有的空格">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-NSString">
+<meta property="og:url" content="williamliuwen.cn/2016/05/12/2016/5/iOS-NSString/index.html">
+<meta property="og:site_name" content="阿汶的博客">
+<meta property="og:description" content="NSString功能介绍
+NSString 截取
+NSString 删除所有的空格">
+<meta property="og:updated_time" content="2016-08-13T13:34:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-NSString">
+<meta name="twitter:description" content="NSString功能介绍
+NSString 截取
+NSString 删除所有的空格">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="阿汶的博客" rel="home">阿汶的博客</a>
+      </h1>
+      
+        <h2 class="site-description">
+          <a href="/" id="subtitle">知我者谓我心忧 不知我者谓我何求</a>
+        </h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-2016/5/iOS-NSString" class="post-2016/5/iOS-NSString post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      iOS-NSString
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="williamliuwen.cn/2016/05/12/2016/5/iOS-NSString/" data-id="cirt883pn000j5ki00w4cw3ll" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h2 id="NSString功能介绍"><a href="#NSString功能介绍" class="headerlink" title="NSString功能介绍"></a>NSString功能介绍</h2><ul>
+<li>NSString 截取</li>
+<li>NSString 删除所有的空格</li>
+</ul>
+<a id="more"></a>
+<h2 id="NSString常用代码"><a href="#NSString常用代码" class="headerlink" title="NSString常用代码"></a>NSString常用代码</h2><h6 id="1-NSString-截取"><a href="#1-NSString-截取" class="headerlink" title="1.NSString 截取"></a>1.NSString 截取</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NSString *id1String = [self.localid.text substringWithRange:NSMakeRange(0, 2)];</span><br><span class="line">NSRange range = [string rangeOfString:subString]; //返回&#123;-1,0&#125;表示找不到</span><br><span class="line"></span><br><span class="line">NSString  *a = @&quot;i like long dress&quot;;</span><br><span class="line">NSString *C = [a substringToIndex:4];</span><br></pre></td></tr></table></figure>
+<h6 id="2-NSString-删除所有的空格"><a href="#2-NSString-删除所有的空格" class="headerlink" title="2.NSString 删除所有的空格"></a>2.NSString 删除所有的空格</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (NSString *)deleteSpace&#123;</span><br><span class="line">NSMutableString *strM = [NSMutableString stringWithString:self];</span><br><span class="line">[strM replaceOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot; options:NSLiteralSearch range:NSMakeRange(0, strM.length)];</span><br><span class="line"></span><br><span class="line">return [strM copy];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="3-NSString-拼接"><a href="#3-NSString-拼接" class="headerlink" title="3.NSString 拼接"></a>3.NSString 拼接</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NSString *string = it;</span><br><span class="line">NSString *newString = [string stringByAppendingString:@&quot;Love&quot;]</span><br><span class="line"></span><br><span class="line">newString = [NSString stringWithFormat:@&quot;%@%@&quot;, string1, string2];</span><br><span class="line"></span><br><span class="line">newString = [NSString stringByAppendingFormat:@&quot;%@ %@&quot;, str1, str2];</span><br></pre></td></tr></table></figure>
+<h6 id="4-NSString-判断空-相等"><a href="#4-NSString-判断空-相等" class="headerlink" title="4.NSString 判断空 相等"></a>4.NSString 判断空 相等</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if ([text lenght] == 0);</span><br><span class="line"></span><br><span class="line">BOOL isEqual = [str1 isEqualToString:str2];</span><br></pre></td></tr></table></figure>
+<h6 id="5-NSString-前缀-后缀"><a href="#5-NSString-前缀-后缀" class="headerlink" title="5.NSString 前缀 后缀"></a>5.NSString 前缀 后缀</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BOOL isPrefix = [webSite hasPrefix: @&quot;www.&quot;];</span><br><span class="line"></span><br><span class="line">BOOL isSubfix = [website hasSuffix: @&quot;.cn&quot;];</span><br></pre></td></tr></table></figure>
+<h6 id="6-NSString-替换"><a href="#6-NSString-替换" class="headerlink" title="6.NSString 替换"></a>6.NSString 替换</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSString *newString =</span><br><span class="line">[string stringByReplacingOccurrencesOfString:@&quot;a&quot; withString:@&quot;b&quot;];</span><br></pre></td></tr></table></figure>
+<h6 id="7-NSString-多行书写"><a href="#7-NSString-多行书写" class="headerlink" title="7.NSString 多行书写"></a>7.NSString 多行书写</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">NSString *str1 = @&quot;SELECT [CustomerID], [CustomerName] &quot;</span><br><span class="line">&quot;FROM [Customer] &quot;</span><br><span class="line">&quot;WHERE [CustomerID] = 1234&quot;;</span><br><span class="line"></span><br><span class="line">NSString *str2 = @&quot;SELECT [CustomerID], [CustomerName] \</span><br><span class="line">FROM [Customer] \</span><br><span class="line">WHERE [CustomerID] = 1234&quot;;</span><br><span class="line"></span><br><span class="line">结果都是：SELECT [CustomerID], [CustomerName] FROM [Customer] WHERE [CustomerID] = 1234</span><br></pre></td></tr></table></figure>
+<h6 id="8-NSString-删除首尾的空格和换行符"><a href="#8-NSString-删除首尾的空格和换行符" class="headerlink" title="8.NSString 删除首尾的空格和换行符"></a>8.NSString 删除首尾的空格和换行符</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//whitespaceAndNewlineCharacterSet去除前后的空格和换行符</span><br><span class="line">//whitespaceCharacterSet 去除前后的空格,实际效果来看只实现了去除首字母前面的空格</span><br><span class="line">NSString *theString = @&quot;   one     two three  &quot;;</span><br><span class="line">NSString *trimmed1 = [theString stringByTrimmingCharactersInSet:</span><br><span class="line">[NSCharacterSetwhitespaceAndNewlineCharacterSet]];</span><br><span class="line">NSString *trimmed2 = [theString stringByTrimmingCharactersInSet:</span><br><span class="line">[NSCharacterSetwhitespaceCharacterSet]];</span><br></pre></td></tr></table></figure>
+<h6 id="9-NSString-写入文件"><a href="#9-NSString-写入文件" class="headerlink" title="9.NSString 写入文件"></a>9.NSString 写入文件</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">NSString *string = @&quot;JackJack989878&quot;;</span><br><span class="line">NSString *filePath = @&quot;/Users/apple/Desktop/my.txt&quot;;</span><br><span class="line">[string writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];</span><br><span class="line">//  其中的yes表示如果传入的过程中出现错误则撤销,不会生成my.txt文件，如果是NO，则会继续生成文件my.txt</span><br><span class="line"></span><br><span class="line">NSURL *url = [NSURL fileURLWithPath:@&quot;/Users/apple/Desktop/my2.txt&quot;];</span><br><span class="line">[string writeToURL:url atomically:YES encoding:NSUTF8StringEncoding error:nil];</span><br></pre></td></tr></table></figure>
+<h6 id="10-NSString-大写-小写"><a href="#10-NSString-大写-小写" class="headerlink" title="10.NSString 大写 小写"></a>10.NSString 大写 小写</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">NSString * str8 = @&quot;baidu&quot;;</span><br><span class="line">NSString * str9 = [str8 uppercaseString];</span><br><span class="line"></span><br><span class="line">NSString * str10 = @&quot;CHINA&quot;;</span><br><span class="line">NSString * str11 = [str10 lowercaseString];</span><br><span class="line"></span><br><span class="line">NSString * str12 = @&quot;i386&quot;;</span><br><span class="line">NSString * str12 = [str10 capitalizedString];</span><br></pre></td></tr></table></figure>
+<h6 id="11-NSString-文件扩展名"><a href="#11-NSString-文件扩展名" class="headerlink" title="11.NSString 文件扩展名"></a>11.NSString 文件扩展名</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSString *filename = @&quot;11111.txt&quot;;</span><br><span class="line">NSString *fileExtension = [filename pathExtension];</span><br></pre></td></tr></table></figure>
+<h6 id="12-NSString-判断是否为整型"><a href="#12-NSString-判断是否为整型" class="headerlink" title="12.NSString 判断是否为整型"></a>12.NSString 判断是否为整型</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)isPureInt:(NSString*)string&#123;</span><br><span class="line">NSScanner* scan = [NSScanner scannerWithString:string];</span><br><span class="line">int val;</span><br><span class="line">return[scan scanInt:&amp;val] &amp;&amp; [scan isAtEnd];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="13-NSString-判断是否为浮点型"><a href="#13-NSString-判断是否为浮点型" class="headerlink" title="13.NSString 判断是否为浮点型"></a>13.NSString 判断是否为浮点型</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)isPureFloat:(NSString*)string&#123;</span><br><span class="line">NSScanner* scan = [NSScanner scannerWithString:string];</span><br><span class="line">float val;</span><br><span class="line"></span><br><span class="line">return[scan scanFloat:&amp;val] &amp;&amp; [scan isAtEnd];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="14-NSString-将URL内容字符串"><a href="#14-NSString-将URL内容字符串" class="headerlink" title="14.NSString 将URL内容字符串"></a>14.NSString 将URL内容字符串</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSURL *url = [NSURLURLWithString:@&quot;http://www.baidu.com&quot;];</span><br><span class="line">NSString *pageContents  = [NSString stringWithContentsOfURL:url];</span><br></pre></td></tr></table></figure>
+<h6 id="15-NSMutableString-拼接"><a href="#15-NSMutableString-拼接" class="headerlink" title="15.NSMutableString 拼接"></a>15.NSMutableString 拼接</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[mutableString appendString:@&quot;11 12 13&quot;];</span><br><span class="line">[mutableString appendString:string2];</span><br><span class="line">//注意：NSString使用的是stringByAppendString:</span><br><span class="line">//NSMutableString使用的是appendString:</span><br></pre></td></tr></table></figure>
+<h6 id="16-NSMutableString-截取"><a href="#16-NSMutableString-截取" class="headerlink" title="16.NSMutableString 截取"></a>16.NSMutableString 截取</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSRange *range = [mutableString rangeOfString:@&quot;is&quot;];</span><br></pre></td></tr></table></figure>
+<h6 id="17-NSMutableString-删除"><a href="#17-NSMutableString-删除" class="headerlink" title="17.NSMutableString 删除"></a>17.NSMutableString 删除</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[mutableString deleteCharactersInRange:range];</span><br></pre></td></tr></table></figure>
+<h6 id="18-NSMutableString-插入"><a href="#18-NSMutableString-插入" class="headerlink" title="18.NSMutableString 插入"></a>18.NSMutableString 插入</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[mutableString insetString:@&quot;15&quot; atIndex:4];</span><br></pre></td></tr></table></figure>
+<h6 id="19-NSMutableString-替换"><a href="#19-NSMutableString-替换" class="headerlink" title="19.NSMutableString 替换"></a>19.NSMutableString 替换</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">NSMutableString * str=[[NSMutableString alloc]initWithFormat:@&quot;1,1,1,1,1,1&quot;];</span><br><span class="line">NSMutableArray * array=[NSMutableArray arrayWithArray:[str componentsSeparatedByString:@&quot;,&quot;]];</span><br><span class="line">[array replaceObjectAtIndex:4 withObject:@&quot;2&quot;];</span><br></pre></td></tr></table></figure>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2016/05/12/2016/5/iOS-NSString/">
+    <time datetime="2016-05-12T12:25:49.000Z" class="entry-date">
+        2016-05-12
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2016/05/12/2016/5/iOS-AVFoundation/" rel="prev"><span class="meta-nav">←</span> iOS-AVFoundation</a></span>
+    
+    
+        <span class="nav-next"><a href="/2016/05/11/2016/5/iOS-Quartz2D/" rel="next">iOS-Quartz2D <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/10/2016/8/iOS-Map/">iOS-Map</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/01/2016/8/iOS-Location/">iOS-Location</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/23/2016/7/iOS-RunLoop/">iOS-RunLoop</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/12/2016/7/iOS-数据持久化/">iOS-数据持久化</a>
+          </li>
+        
+          <li>
+            <a href="/2016/07/09/2016/7/iOS-RunTime/">iOS-RunTime</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2016 阿汶
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>
