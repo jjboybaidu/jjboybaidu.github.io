@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>JJBoy</title>
-  <subtitle>知我者谓我心忧，不知我者谓我何求。</subtitle>
+  <title>阿汶的博客</title>
+  <subtitle>知我者谓我心忧 不知我者谓我何求</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="williamliuwen.cn/"/>
@@ -9,7 +9,7 @@
   <id>williamliuwen.cn/</id>
   
   <author>
-    <name>JJBoy</name>
+    <name>阿汶</name>
     
   </author>
   
