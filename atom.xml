@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="williamliuwen.cn/"/>
-  <updated>2016-06-06T12:24:08.000Z</updated>
+  <updated>2016-08-13T12:22:24.000Z</updated>
   <id>williamliuwen.cn/</id>
   
   <author>
@@ -20,9 +20,11 @@
     <link href="williamliuwen.cn/2016/06/06/%E6%8F%90%E5%8D%87%E8%87%AA%E5%B7%B1/"/>
     <id>williamliuwen.cn/2016/06/06/提升自己/</id>
     <published>2016-06-06T12:02:32.000Z</published>
-    <updated>2016-06-06T12:24:08.000Z</updated>
+    <updated>2016-08-13T12:22:24.000Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;疑问：&quot;&gt;&lt;a href=&quot;#疑问：&quot; class=&quot;headerlink&quot; title=&quot;疑问：&quot;&gt;&lt;/a&gt;疑问：&lt;/h3&gt;&lt;ul&gt;
+    <content type="html">&lt;p&gt;每日给自己一句话：生若夏花之绚丽，死如秋叶之静美。——(印度)泰戈尔&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;疑问：&quot;&gt;&lt;a href=&quot;#疑问：&quot; class=&quot;headerlink&quot; title=&quot;疑问：&quot;&gt;&lt;/a&gt;疑问：&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;1.为什么要学这些？&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;2.什么是系统性的目标？&lt;/p&gt;
@@ -30,8 +32,7 @@
 &lt;li&gt;&lt;p&gt;3.如何利用有限时间最大化自己的长期收益&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;行动：&quot;&gt;&lt;a href=&quot;#行动：&quot; class=&quot;headerlink&quot; title=&quot;行动：&quot;&gt;&lt;/a&gt;行动：&lt;/h3&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;第一：打造你的工具箱&lt;br&gt;    如果程序员是侠客，编缉器则是他手中的剑。建议你花足够多的时间来思考如何组织你的个人知识库；做到长期从事的任务（往往不随技术而改变，也不随公司而改变）&lt;br&gt;工具：Emacs&lt;br&gt;信息采集器：用来收集别人产生的信息&lt;br&gt;键盘：HHKB键盘&lt;/p&gt;
+&lt;h3 id=&quot;行动：&quot;&gt;&lt;a href=&quot;#行动：&quot; class=&quot;headerlink&quot; title=&quot;行动：&quot;&gt;&lt;/a&gt;行动：&lt;/h3&gt;&lt;p&gt;第一：打造你的工具箱&lt;br&gt;    如果程序员是侠客，编缉器则是他手中的剑。建议你花足够多的时间来思考如何组织你的个人知识库；做到长期从事的任务（往往不随技术而改变，也不随公司而改变）&lt;br&gt;工具：Emacs&lt;br&gt;信息采集器：用来收集别人产生的信息&lt;br&gt;键盘：HHKB键盘&lt;/p&gt;
 &lt;p&gt;第二：目标要够大，这样你才能看到更多的风景。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;1.“我要成为iOS developer中的达人” “我要成为前端应用开发的专家” 两者区别？前者学到深处你可能会去钻研iOS framework里各种奇技淫巧；后者你会开始关注视觉与交互设计，研究各平台间的差异与共同趋势；后者更有助于你的个人发展。&lt;/p&gt;
@@ -58,15 +59,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;疑问：&quot;&gt;&lt;a href=&quot;#疑问：&quot; class=&quot;headerlink&quot; title=&quot;疑问：&quot;&gt;&lt;/a&gt;疑问：&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;1.为什么要学这些？&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;2.什么是系统性的目标？&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;3.如何利用有限时间最大化自己的长期收益&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;行动：&quot;&gt;&lt;a href=&quot;#行动：&quot; class=&quot;headerlink&quot; title=&quot;行动：&quot;&gt;&lt;/a&gt;行动：&lt;/h3&gt;
+      &lt;p&gt;每日给自己一句话：生若夏花之绚丽，死如秋叶之静美。——(印度)泰戈尔&lt;/p&gt;
     
     </summary>
     
@@ -78,13 +71,14 @@
     <link href="williamliuwen.cn/2016/06/03/GitHub%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93/"/>
     <id>williamliuwen.cn/2016/06/03/GitHub命令小结/</id>
     <published>2016-06-03T11:57:34.000Z</published>
-    <updated>2016-06-03T12:00:56.000Z</updated>
+    <updated>2016-08-13T12:24:30.000Z</updated>
     
-    <content type="html">&lt;blockquote&gt;
+    <content type="html">&lt;p&gt;逝者长已矣,生者永存悲。——语意出自《论语·微子》和《石壕吏》&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;blockquote&gt;
 &lt;p&gt;如果你是初学者，可以按照步骤来，这是一个记录贴，方便查询代码；&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&quot;初步建立GitHub仓库的一些命令：&quot;&gt;&lt;a href=&quot;#初步建立GitHub仓库的一些命令：&quot; class=&quot;headerlink&quot; title=&quot;初步建立GitHub仓库的一些命令：&quot;&gt;&lt;/a&gt;初步建立GitHub仓库的一些命令：&lt;/h3&gt;&lt;p&gt;touch README.md  // 新建说明文件&lt;br&gt;ssh-keygen -t rsa -C “your_email@youremail.com” // 创建本地的keygen&lt;br&gt;cd ~/.ssh // 进入创建好keygen的文件，用cat id_rsa.pub来查看keygen，然后再把它复制到你的github&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;ssh -T git@github.com // 这个是测试一下连接；&lt;br&gt;git config –global user.name “your name”&lt;br&gt;git config –global user.email “your_email@youremail.com”&lt;br&gt;git init //在当前项目目录中生成本地git管理,并建立一个隐藏.git目录&lt;br&gt;git add . //添加当前目录中的所有文件到索引&lt;br&gt;git commit -m “first commit”  // 提交到本地源码库，并附加提交注释&lt;br&gt;git remote add origin https: // github.com/chape/test.git //添加到远程项目，别名为origin&lt;br&gt;git push -u origin master  // 把本地源码库push到github 别名为origin的远程项目中，确认提交&lt;/p&gt;
 &lt;h3 id=&quot;每次更改完本地仓库之后，使用更新语句提交到远程仓库：&quot;&gt;&lt;a href=&quot;#每次更改完本地仓库之后，使用更新语句提交到远程仓库：&quot; class=&quot;headerlink&quot; title=&quot;每次更改完本地仓库之后，使用更新语句提交到远程仓库：&quot;&gt;&lt;/a&gt;每次更改完本地仓库之后，使用更新语句提交到远程仓库：&lt;/h3&gt;&lt;p&gt;cd /到你要更新的目录下&lt;/p&gt;
 &lt;p&gt;git add .&lt;/p&gt;
@@ -105,10 +99,7 @@
     
     <summary type="html">
     
-      &lt;blockquote&gt;
-&lt;p&gt;如果你是初学者，可以按照步骤来，这是一个记录贴，方便查询代码；&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;初步建立GitHub仓库的一些命令：&quot;&gt;&lt;a href=&quot;#初步建立GitHub仓库的一些命令：&quot; class=&quot;headerlink&quot; title=&quot;初步建立GitHub仓库的一些命令：&quot;&gt;&lt;/a&gt;初步建立GitHub仓库的一些命令：&lt;/h3&gt;&lt;p&gt;touch README.md  // 新建说明文件&lt;br&gt;ssh-keygen -t rsa -C “your_email@youremail.com” // 创建本地的keygen&lt;br&gt;cd ~/.ssh // 进入创建好keygen的文件，用cat id_rsa.pub来查看keygen，然后再把它复制到你的github&lt;/p&gt;
+      &lt;p&gt;逝者长已矣,生者永存悲。——语意出自《论语·微子》和《石壕吏》&lt;/p&gt;
     
     </summary>
     
@@ -120,13 +111,13 @@
     <link href="williamliuwen.cn/2016/06/01/%E8%A1%A3%E7%89%A9%E6%9E%81%E7%AE%80%E5%8E%9F%E5%88%99/"/>
     <id>williamliuwen.cn/2016/06/01/衣物极简原则/</id>
     <published>2016-06-01T12:09:33.000Z</published>
-    <updated>2016-06-01T12:15:52.000Z</updated>
+    <updated>2016-08-13T12:23:52.000Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;每日给自己一句话：超抵抗力最大的路径前进！&quot;&gt;&lt;a href=&quot;#每日给自己一句话：超抵抗力最大的路径前进！&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：超抵抗力最大的路径前进！&quot;&gt;&lt;/a&gt;每日给自己一句话：超抵抗力最大的路径前进！&lt;/h3&gt;&lt;p&gt;转自：豆瓣：Oscar&lt;/p&gt;
+    <content type="html">&lt;p&gt;每日给自己一句话：超抵抗力最大的路径前进！&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h4 id=&quot;我的精简心得之一：-衣物精简原则&quot;&gt;&lt;a href=&quot;#我的精简心得之一：-衣物精简原则&quot; class=&quot;headerlink&quot; title=&quot;我的精简心得之一： 衣物精简原则&quot;&gt;&lt;/a&gt;我的精简心得之一： 衣物精简原则&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;有不少人问我是怎么精简我的物品的，有哪些经验或者哪些物品值得推荐。其实在精简的过程中，我确实感受到这里面还是有一定的原则可循的，那就写一篇文字和大家分享。声明：以下文字只是个人总结，没有经过普遍性验证，仅供参考。在精简物品的过程中，个人衣物是重头戏，我们就先来谈谈这个话题。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h4 id=&quot;精简原则：&quot;&gt;&lt;a href=&quot;#精简原则：&quot; class=&quot;headerlink&quot; title=&quot;精简原则：&quot;&gt;&lt;/a&gt;精简原则：&lt;/h4&gt;&lt;p&gt;1、功能性&amp;gt;适合性&amp;gt;个人喜好&lt;br&gt;我们平时在选购物品的时候，经常以个人喜好为主要标准。但是我认为要以功能性优先。比如你有很多喜欢的牛仔裤，但是如果公司要求正装出席某些场合的时候，你是否有合适的服装？&lt;br&gt;在满足功能性的前提下，其次要考虑的是适合性。穿在模特身上好看的衣服，一定适合自己吗？绝大多数情况之下，答案让人沮丧。我们的喜好经常受到媒体潜移默化地引导。最好的办法还是要了解自己的特质，身材比例，体型，肤色，气质，等等。网上有很多这类的电子书，大家可以参阅。&lt;br&gt;最后，在功能性和适合性都得到满足的前提下，我们再去考虑个人喜好。&lt;/p&gt;
 &lt;p&gt;2、 基本款&amp;gt;流行款&lt;br&gt;基本款的另一个名字叫经典。相对于流行款，它的适用范围更广，可搭配程度更高，并且不需要经常升级和更新。基本款的颜色最好选择纯色，相对于花色或多色的衣服，纯色的衣服更加高雅和容易搭配。&lt;/p&gt;
 &lt;p&gt;3、外衣偏深色，内衣偏浅色。&lt;br&gt;投资了经典设计和高质量的基本款之后，衣服升级的频率就会显著地下降。但是在这里要说明，外衣选择深色，即使很长时间之后也不会显得很旧；而内衣则不然，由于是贴身的衣服，应该选择浅色，一旦颜色泛黄显旧就要更新升级，以保证衣物的功能性，防止影响健康。&lt;/p&gt;
@@ -170,6 +161,7 @@
 &lt;p&gt;8、Evernote: 知识管理工具。&lt;/p&gt;
 &lt;p&gt;9、Eidetic: 记忆增强工具。&lt;/p&gt;
 &lt;p&gt;10、Bible: 电子版圣经。&lt;br&gt;其它日常需要都能够被系统自带App满足。&lt;/p&gt;
+&lt;p&gt;转自：豆瓣：Oscar&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/pic/0601.jpg&quot;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;只有小孩知道他们在寻找什么。 —— 《小王子》    &lt;/p&gt;
@@ -178,10 +170,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;每日给自己一句话：超抵抗力最大的路径前进！&quot;&gt;&lt;a href=&quot;#每日给自己一句话：超抵抗力最大的路径前进！&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：超抵抗力最大的路径前进！&quot;&gt;&lt;/a&gt;每日给自己一句话：超抵抗力最大的路径前进！&lt;/h3&gt;&lt;p&gt;转自：豆瓣：Oscar&lt;/p&gt;
-&lt;h4 id=&quot;我的精简心得之一：-衣物精简原则&quot;&gt;&lt;a href=&quot;#我的精简心得之一：-衣物精简原则&quot; class=&quot;headerlink&quot; title=&quot;我的精简心得之一： 衣物精简原则&quot;&gt;&lt;/a&gt;我的精简心得之一： 衣物精简原则&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;有不少人问我是怎么精简我的物品的，有哪些经验或者哪些物品值得推荐。其实在精简的过程中，我确实感受到这里面还是有一定的原则可循的，那就写一篇文字和大家分享。声明：以下文字只是个人总结，没有经过普遍性验证，仅供参考。在精简物品的过程中，个人衣物是重头戏，我们就先来谈谈这个话题。&lt;/li&gt;
-&lt;/ul&gt;
+      &lt;p&gt;每日给自己一句话：超抵抗力最大的路径前进！&lt;/p&gt;
     
     </summary>
     
@@ -193,9 +182,9 @@
     <link href="williamliuwen.cn/2016/05/31/%E6%9E%81%E7%AE%80%E6%B6%88%E8%B4%B9%E8%A7%82/"/>
     <id>williamliuwen.cn/2016/05/31/极简消费观/</id>
     <published>2016-05-31T12:17:55.000Z</published>
-    <updated>2016-05-31T12:20:28.000Z</updated>
+    <updated>2016-08-13T12:21:15.000Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;每日给自己一段话：&quot;&gt;&lt;a href=&quot;#每日给自己一段话：&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一段话：&quot;&gt;&lt;/a&gt;每日给自己一段话：&lt;/h3&gt;&lt;p&gt;生活就像逆水行舟，想活得有意义，还是要走抵抗力最大的那条路。看书学习抵抗力大，刷微博微信抵抗力小；坚持锻炼身体抵抗力大，窝在沙发里上网看电视抵抗力小；吃清淡健康食物抵抗力大，喝啤酒吃炸鸡抵抗力小；精简生活抵抗力大，囤积、消费抵抗力小。&lt;br&gt;抵抗力最大的路和抵抗力最小的路有共同的起点，可终点不啻霄壤。&lt;/p&gt;
+    <content type="html">&lt;p&gt;每日给自己一句话：生活就像逆水行舟，想活得有意义，还是要走抵抗力最大的那条路。看书学习抵抗力大，刷微博微信抵抗力小；坚持锻炼身体抵抗力大，窝在沙发里上网看电视抵抗力小；吃清淡健康食物抵抗力大，喝啤酒吃炸鸡抵抗力小；精简生活抵抗力大，囤积、消费抵抗力小。抵抗力最大的路和抵抗力最小的路有共同的起点，可终点不啻霄壤。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;p&gt;开始正文：来自网络&lt;/p&gt;
 &lt;ul&gt;
@@ -217,7 +206,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;每日给自己一段话：&quot;&gt;&lt;a href=&quot;#每日给自己一段话：&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一段话：&quot;&gt;&lt;/a&gt;每日给自己一段话：&lt;/h3&gt;&lt;p&gt;生活就像逆水行舟，想活得有意义，还是要走抵抗力最大的那条路。看书学习抵抗力大，刷微博微信抵抗力小；坚持锻炼身体抵抗力大，窝在沙发里上网看电视抵抗力小；吃清淡健康食物抵抗力大，喝啤酒吃炸鸡抵抗力小；精简生活抵抗力大，囤积、消费抵抗力小。&lt;br&gt;抵抗力最大的路和抵抗力最小的路有共同的起点，可终点不啻霄壤。&lt;/p&gt;
+      &lt;p&gt;每日给自己一句话：生活就像逆水行舟，想活得有意义，还是要走抵抗力最大的那条路。看书学习抵抗力大，刷微博微信抵抗力小；坚持锻炼身体抵抗力大，窝在沙发里上网看电视抵抗力小；吃清淡健康食物抵抗力大，喝啤酒吃炸鸡抵抗力小；精简生活抵抗力大，囤积、消费抵抗力小。抵抗力最大的路和抵抗力最小的路有共同的起点，可终点不啻霄壤。&lt;/p&gt;
     
     </summary>
     
@@ -229,16 +218,17 @@
     <link href="williamliuwen.cn/2016/05/30/%E6%9E%81%E7%AE%80%E7%94%9F%E6%B4%BB/"/>
     <id>williamliuwen.cn/2016/05/30/极简生活/</id>
     <published>2016-05-30T11:43:26.000Z</published>
-    <updated>2016-05-30T12:02:58.000Z</updated>
+    <updated>2016-08-13T12:20:31.000Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;关键词：&quot;&gt;&lt;a href=&quot;#关键词：&quot; class=&quot;headerlink&quot; title=&quot;关键词：&quot;&gt;&lt;/a&gt;关键词：&lt;/h3&gt;&lt;ul&gt;
+    <content type="html">&lt;p&gt;每日给自己一句话：多谈些问题，少谈些主义。 —— 胡适&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;关键词：&quot;&gt;&lt;a href=&quot;#关键词：&quot; class=&quot;headerlink&quot; title=&quot;关键词：&quot;&gt;&lt;/a&gt;关键词：&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;仓库(住所)&lt;/li&gt;
 &lt;li&gt;现在当下（快活）&lt;/li&gt;
 &lt;li&gt;未来过去（不快活）&lt;/li&gt;
 &lt;li&gt;需要，合适，舒服&lt;/li&gt;
 &lt;li&gt;不增加衣物，不增加卡片&lt;/li&gt;
 &lt;/ul&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;内容较多，给大家列多几点&quot;&gt;&lt;a href=&quot;#内容较多，给大家列多几点&quot; class=&quot;headerlink&quot; title=&quot;内容较多，给大家列多几点:&quot;&gt;&lt;/a&gt;内容较多，给大家列多几点:&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;超过自己管理能力的物品，不持有不留恋的物品，不持有无法回归自然或转让给其他人的物品，不持有和自己或自己的生活风格不符的物品，不持有生命本身就是一场体验，只经历，不占有。&lt;/p&gt;
 &lt;/li&gt;
@@ -295,13 +285,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;关键词：&quot;&gt;&lt;a href=&quot;#关键词：&quot; class=&quot;headerlink&quot; title=&quot;关键词：&quot;&gt;&lt;/a&gt;关键词：&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;仓库(住所)&lt;/li&gt;
-&lt;li&gt;现在当下（快活）&lt;/li&gt;
-&lt;li&gt;未来过去（不快活）&lt;/li&gt;
-&lt;li&gt;需要，合适，舒服&lt;/li&gt;
-&lt;li&gt;不增加衣物，不增加卡片&lt;/li&gt;
-&lt;/ul&gt;
+      &lt;p&gt;每日给自己一句话：多谈些问题，少谈些主义。 —— 胡适&lt;/p&gt;
     
     </summary>
     
@@ -313,9 +297,11 @@
     <link href="williamliuwen.cn/2016/05/28/%E7%BD%91%E7%BB%9C%E4%B8%93%E5%AE%B6%E8%AE%A4%E8%AF%86%E8%AE%BA/"/>
     <id>williamliuwen.cn/2016/05/28/网络专家认识论/</id>
     <published>2016-05-28T01:50:45.000Z</published>
-    <updated>2016-05-28T01:54:09.000Z</updated>
+    <updated>2016-08-13T12:23:08.000Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;每日给自己一句话：在没有成功之前都是在做量的积累；&quot;&gt;&lt;a href=&quot;#每日给自己一句话：在没有成功之前都是在做量的积累；&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：在没有成功之前都是在做量的积累；&quot;&gt;&lt;/a&gt;每日给自己一句话：在没有成功之前都是在做量的积累；&lt;/h3&gt;&lt;h2 id=&quot;专家&quot;&gt;&lt;a href=&quot;#专家&quot; class=&quot;headerlink&quot; title=&quot;专家&quot;&gt;&lt;/a&gt;专家&lt;/h2&gt;&lt;h3 id=&quot;职称：&quot;&gt;&lt;a href=&quot;#职称：&quot; class=&quot;headerlink&quot; title=&quot;职称：&quot;&gt;&lt;/a&gt;职称：&lt;/h3&gt;&lt;ul&gt;
+    <content type="html">&lt;p&gt;每日给自己一句话：在没有成功之前都是在做量的积累；&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;专家&quot;&gt;&lt;a href=&quot;#专家&quot; class=&quot;headerlink&quot; title=&quot;专家&quot;&gt;&lt;/a&gt;专家&lt;/h2&gt;&lt;h3 id=&quot;职称：&quot;&gt;&lt;a href=&quot;#职称：&quot; class=&quot;headerlink&quot; title=&quot;职称：&quot;&gt;&lt;/a&gt;职称：&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;高级&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;工作在大的网络公司、或研究所&lt;/p&gt;
@@ -328,9 +314,6 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;如果的确非常喜爱技术工作，而不擅长和喜欢与人沟通，则可以完全专注于自身的领域，以发展成为行业资深专家为方向和目标&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;发展过程比较漫长，任何一个领域的顶尖技术人才都需要长期的行业经验的累积和个人孜孜不倦的投入；&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;优势是越老越吃香，当别人随着年龄的逐步增长而开始担心饭碗问题时，你则渐入佳境，开始进入职业发展的黄金时期。&lt;/p&gt;
@@ -394,20 +377,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;每日给自己一句话：在没有成功之前都是在做量的积累；&quot;&gt;&lt;a href=&quot;#每日给自己一句话：在没有成功之前都是在做量的积累；&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：在没有成功之前都是在做量的积累；&quot;&gt;&lt;/a&gt;每日给自己一句话：在没有成功之前都是在做量的积累；&lt;/h3&gt;&lt;h2 id=&quot;专家&quot;&gt;&lt;a href=&quot;#专家&quot; class=&quot;headerlink&quot; title=&quot;专家&quot;&gt;&lt;/a&gt;专家&lt;/h2&gt;&lt;h3 id=&quot;职称：&quot;&gt;&lt;a href=&quot;#职称：&quot; class=&quot;headerlink&quot; title=&quot;职称：&quot;&gt;&lt;/a&gt;职称：&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;高级&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;工作在大的网络公司、或研究所&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;主要是技术主管、项目经理、技术专家&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;1、技术专家&quot;&gt;&lt;a href=&quot;#1、技术专家&quot; class=&quot;headerlink&quot; title=&quot;1、技术专家&quot;&gt;&lt;/a&gt;1、技术专家&lt;/h4&gt;&lt;h5 id=&quot;工作描述：&quot;&gt;&lt;a href=&quot;#工作描述：&quot; class=&quot;headerlink&quot; title=&quot;工作描述：&quot;&gt;&lt;/a&gt;工作描述：&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;某一行业的专家、顾问、权威；&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;如果的确非常喜爱技术工作，而不擅长和喜欢与人沟通，则可以完全专注于自身的领域，以发展成为行业资深专家为方向和目标&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+      &lt;p&gt;每日给自己一句话：在没有成功之前都是在做量的积累；&lt;/p&gt;
     
     </summary>
     
@@ -419,9 +389,11 @@
     <link href="williamliuwen.cn/2016/05/27/%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E5%91%98%E8%AE%A4%E8%AF%86%E8%AE%BA/"/>
     <id>williamliuwen.cn/2016/05/27/网络管理员认识论/</id>
     <published>2016-05-27T15:52:15.000Z</published>
-    <updated>2016-05-27T15:55:38.000Z</updated>
+    <updated>2016-08-13T12:22:53.000Z</updated>
     
-    <content type="html">&lt;h4 id=&quot;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&quot;&gt;&lt;a href=&quot;#每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&quot;&gt;&lt;/a&gt;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&lt;/h4&gt;&lt;p&gt;网络工程师里面的最低级别：&lt;/p&gt;
+    <content type="html">&lt;p&gt;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;网络工程师里面的最低级别：&lt;/p&gt;
 &lt;h4 id=&quot;网络管理员&quot;&gt;&lt;a href=&quot;#网络管理员&quot; class=&quot;headerlink&quot; title=&quot;网络管理员&quot;&gt;&lt;/a&gt;网络管理员&lt;/h4&gt;&lt;h4 id=&quot;职称：&quot;&gt;&lt;a href=&quot;#职称：&quot; class=&quot;headerlink&quot; title=&quot;职称：&quot;&gt;&lt;/a&gt;职称：&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;初级&lt;/p&gt;
 &lt;/li&gt;
@@ -430,7 +402,6 @@
 &lt;li&gt;&lt;p&gt;这些管理涉及到多个领域，每个领域的管理又有各自特定的任务。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h4 id=&quot;主要岗位：&quot;&gt;&lt;a href=&quot;#主要岗位：&quot; class=&quot;headerlink&quot; title=&quot;主要岗位：&quot;&gt;&lt;/a&gt;主要岗位：&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;网络管理员（系统管理员）&lt;/li&gt;
 &lt;/ul&gt;
@@ -456,15 +427,7 @@
     
     <summary type="html">
     
-      &lt;h4 id=&quot;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&quot;&gt;&lt;a href=&quot;#每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&quot;&gt;&lt;/a&gt;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&lt;/h4&gt;&lt;p&gt;网络工程师里面的最低级别：&lt;/p&gt;
-&lt;h4 id=&quot;网络管理员&quot;&gt;&lt;a href=&quot;#网络管理员&quot; class=&quot;headerlink&quot; title=&quot;网络管理员&quot;&gt;&lt;/a&gt;网络管理员&lt;/h4&gt;&lt;h4 id=&quot;职称：&quot;&gt;&lt;a href=&quot;#职称：&quot; class=&quot;headerlink&quot; title=&quot;职称：&quot;&gt;&lt;/a&gt;职称：&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;初级&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;工作在中小企业，涵盖网络基础设施管理、网络操作系统管理、网络应用系统管理、网络用户管理、网络安全保密管理、信息存储备份管理和网络机房管理等几大方向。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;这些管理涉及到多个领域，每个领域的管理又有各自特定的任务。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+      &lt;p&gt;每日给自己一句话：现在你的生活取决于你3年前的选择；现在你的生活决定你未来3年的品质。&lt;/p&gt;
     
     </summary>
     
@@ -476,9 +439,11 @@
     <link href="williamliuwen.cn/2016/05/26/%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%AE%A4%E8%AF%86%E8%AE%BA/"/>
     <id>williamliuwen.cn/2016/05/26/网络工程师认识论/</id>
     <published>2016-05-26T15:10:12.000Z</published>
-    <updated>2016-05-26T15:16:06.000Z</updated>
+    <updated>2016-08-13T12:22:40.000Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;每日给自己一句话：不要随大流，要有自己的绝活；&quot;&gt;&lt;a href=&quot;#每日给自己一句话：不要随大流，要有自己的绝活；&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：不要随大流，要有自己的绝活；&quot;&gt;&lt;/a&gt;每日给自己一句话：不要随大流，要有自己的绝活；&lt;/h3&gt;&lt;ul&gt;
+    <content type="html">&lt;p&gt;每日给自己一句话：不要随大流，要有自己的绝活；&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;ul&gt;
 &lt;li&gt;比网络管理员高一级别，打怪应该需要打一年才能升到，而且还要自己平时努力，不然管理员还是管理员；&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;工程师&quot;&gt;&lt;a href=&quot;#工程师&quot; class=&quot;headerlink&quot; title=&quot;工程师&quot;&gt;&lt;/a&gt;工程师&lt;/h3&gt;&lt;h4 id=&quot;职称：&quot;&gt;&lt;a href=&quot;#职称：&quot; class=&quot;headerlink&quot; title=&quot;职称：&quot;&gt;&lt;/a&gt;职称：&lt;/h4&gt;&lt;ul&gt;
@@ -486,7 +451,6 @@
 &lt;li&gt;工作在网络公司或者大中型企业。在网络公司中主要任务是设计并建设；在大中型企业中的主要任务是运营和维护。&lt;/li&gt;
 &lt;li&gt;网络工程师其实是一个包括许多种工种的职业，不同的网络工程师工种对从业的人员的要求也不一样，对从业人员的网络管理水平的要求差别很大。专业网络工程师主要有：网络系统设计师、网络工程师、系统工程师、网络安全工程师、数据存储工程师等。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h4 id=&quot;1、普通网络工程师&quot;&gt;&lt;a href=&quot;#1、普通网络工程师&quot; class=&quot;headerlink&quot; title=&quot;1、普通网络工程师&quot;&gt;&lt;/a&gt;1、普通网络工程师&lt;/h4&gt;&lt;h5 id=&quot;工作职责描述：&quot;&gt;&lt;a href=&quot;#工作职责描述：&quot; class=&quot;headerlink&quot; title=&quot;工作职责描述：&quot;&gt;&lt;/a&gt;工作职责描述：&lt;/h5&gt;&lt;ul&gt;
 &lt;li&gt;高级网络管理员，在大企业中或是在网络公司工作&lt;/li&gt;
 &lt;li&gt;维护公司网络设备，保证公司骨干网络正常工作&lt;/li&gt;
@@ -569,14 +533,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;每日给自己一句话：不要随大流，要有自己的绝活；&quot;&gt;&lt;a href=&quot;#每日给自己一句话：不要随大流，要有自己的绝活；&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：不要随大流，要有自己的绝活；&quot;&gt;&lt;/a&gt;每日给自己一句话：不要随大流，要有自己的绝活；&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;比网络管理员高一级别，打怪应该需要打一年才能升到，而且还要自己平时努力，不然管理员还是管理员；&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;工程师&quot;&gt;&lt;a href=&quot;#工程师&quot; class=&quot;headerlink&quot; title=&quot;工程师&quot;&gt;&lt;/a&gt;工程师&lt;/h3&gt;&lt;h4 id=&quot;职称：&quot;&gt;&lt;a href=&quot;#职称：&quot; class=&quot;headerlink&quot; title=&quot;职称：&quot;&gt;&lt;/a&gt;职称：&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;中级&lt;/li&gt;
-&lt;li&gt;工作在网络公司或者大中型企业。在网络公司中主要任务是设计并建设；在大中型企业中的主要任务是运营和维护。&lt;/li&gt;
-&lt;li&gt;网络工程师其实是一个包括许多种工种的职业，不同的网络工程师工种对从业的人员的要求也不一样，对从业人员的网络管理水平的要求差别很大。专业网络工程师主要有：网络系统设计师、网络工程师、系统工程师、网络安全工程师、数据存储工程师等。&lt;/li&gt;
-&lt;/ul&gt;
+      &lt;p&gt;每日给自己一句话：不要随大流，要有自己的绝活；&lt;/p&gt;
     
     </summary>
     
@@ -588,18 +545,17 @@
     <link href="williamliuwen.cn/2016/05/25/%E8%A7%A3%E8%AF%BB%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E8%81%8C%E4%B8%9A/"/>
     <id>williamliuwen.cn/2016/05/25/解读网络工程师职业/</id>
     <published>2016-05-25T14:34:36.000Z</published>
-    <updated>2016-05-25T14:36:58.000Z</updated>
+    <updated>2016-08-13T12:21:30.000Z</updated>
     
-    <content type="html">&lt;h4 id=&quot;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&quot;&gt;&lt;a href=&quot;#每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&quot;&gt;&lt;/a&gt;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&lt;/h4&gt;&lt;h4 id=&quot;一、网络工程师的职业优势&quot;&gt;&lt;a href=&quot;#一、网络工程师的职业优势&quot; class=&quot;headerlink&quot; title=&quot;一、网络工程师的职业优势&quot;&gt;&lt;/a&gt;一、网络工程师的职业优势&lt;/h4&gt;&lt;ul&gt;
+    <content type="html">&lt;p&gt;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h4 id=&quot;一、网络工程师的职业优势&quot;&gt;&lt;a href=&quot;#一、网络工程师的职业优势&quot; class=&quot;headerlink&quot; title=&quot;一、网络工程师的职业优势&quot;&gt;&lt;/a&gt;一、网络工程师的职业优势&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;1、最具增值潜力的职业，掌握企业核心网络架构、安全技术，具有不可替代的竞争优势&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;2、新型网络人才缺口大，27%的行业增长速度导致网络人才年缺口达30万，高薪高福利成为必然&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;3、可实现专业零基础入行，4-10个月的强化训练和职业化引导，就可成为企业急需的技能型网络人才&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;4、就业面广，一专多能，实践经验适用于各个领域&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;5、增值潜力大，职业价值随着自身经验的丰富以及项目运作的成熟，升值空间一路看涨&lt;/p&gt;
@@ -640,14 +596,7 @@
     
     <summary type="html">
     
-      &lt;h4 id=&quot;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&quot;&gt;&lt;a href=&quot;#每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&quot;&gt;&lt;/a&gt;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&lt;/h4&gt;&lt;h4 id=&quot;一、网络工程师的职业优势&quot;&gt;&lt;a href=&quot;#一、网络工程师的职业优势&quot; class=&quot;headerlink&quot; title=&quot;一、网络工程师的职业优势&quot;&gt;&lt;/a&gt;一、网络工程师的职业优势&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;1、最具增值潜力的职业，掌握企业核心网络架构、安全技术，具有不可替代的竞争优势&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;2、新型网络人才缺口大，27%的行业增长速度导致网络人才年缺口达30万，高薪高福利成为必然&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;3、可实现专业零基础入行，4-10个月的强化训练和职业化引导，就可成为企业急需的技能型网络人才&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
+      &lt;p&gt;每日给自己一句话：很多事情往往不是有兴趣才能做好，而是做好了才有兴趣。&lt;/p&gt;
     
     </summary>
     
@@ -659,10 +608,11 @@
     <link href="williamliuwen.cn/2016/05/24/%E7%BB%99%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E5%BB%BA%E8%AE%AE/"/>
     <id>williamliuwen.cn/2016/05/24/给网络工程师的建议/</id>
     <published>2016-05-24T14:35:18.000Z</published>
-    <updated>2016-08-12T22:06:12.000Z</updated>
+    <updated>2016-08-13T12:19:56.000Z</updated>
     
-    <content type="html">&lt;h4 id=&quot;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot;&gt;&lt;a href=&quot;#每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot;&gt;&lt;/a&gt;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&lt;/h4&gt;&lt;h4 id=&quot;应聘网络工程师要注意的地方：&quot;&gt;&lt;a href=&quot;#应聘网络工程师要注意的地方：&quot; class=&quot;headerlink&quot; title=&quot;应聘网络工程师要注意的地方：&quot;&gt;&lt;/a&gt;应聘网络工程师要注意的地方：&lt;/h4&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;ul&gt;
+    <content type="html">&lt;p&gt;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h4 id=&quot;应聘网络工程师要注意的地方：&quot;&gt;&lt;a href=&quot;#应聘网络工程师要注意的地方：&quot; class=&quot;headerlink&quot; title=&quot;应聘网络工程师要注意的地方：&quot;&gt;&lt;/a&gt;应聘网络工程师要注意的地方：&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;首先是简历这里，我比较关注的是职业经历和工作成果，还有就是技术专业方向等，对于职业经历，关注的重点是曾服务企业的规模以及所具体负责的业务范围，特别在具体工作中所处的位置是主导还是参与很重要。而技术方向而言，应当体现对自己职业生涯规划的一个思想，把自己在IT领域的学习和发展方向表述清晰。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;通过大部分简历的筛选来看，大部分简历内容比较泛泛，简历描述各种技术都会，实际面试的交流却反应出只是了解皮毛而已。我挑选的简历基本都是三年以上的工作经验，但是通过面试，感觉到大部分工程师还是处于办公电脑基础维护这样的水平，对于三层交换、路由、防火墙、数据库、分布式网络规划管理等方面缺乏一定的深入，我想建议具有一定经验的网络工程师来说，经过3年的积累，应该为自己的技术发展做个规划。个人比较喜欢接受过职业培训的员工，他们的动手实践能力一般都比较强，因为职业培训不同于大学教育，是很注重学员的实践能力的。山东海天软件培训基地创始人邹晓东就说过，实践能力是他们教学的宗旨。&lt;/p&gt;
@@ -682,7 +632,7 @@
     
     <summary type="html">
     
-      &lt;h4 id=&quot;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot;&gt;&lt;a href=&quot;#每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&quot;&gt;&lt;/a&gt;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&lt;/h4&gt;&lt;h4 id=&quot;应聘网络工程师要注意的地方：&quot;&gt;&lt;a href=&quot;#应聘网络工程师要注意的地方：&quot; class=&quot;headerlink&quot; title=&quot;应聘网络工程师要注意的地方：&quot;&gt;&lt;/a&gt;应聘网络工程师要注意的地方：&lt;/h4&gt;
+      &lt;p&gt;每日给自己一句话：明确自己想要的生活，明确经理职位要求；&lt;/p&gt;
     
     </summary>
     
@@ -694,14 +644,15 @@
     <link href="williamliuwen.cn/2016/05/23/%E6%88%91%E7%9A%84%E7%95%AA%E8%8C%84%E7%82%92%E8%9B%8B/"/>
     <id>williamliuwen.cn/2016/05/23/我的番茄炒蛋/</id>
     <published>2016-05-23T11:53:26.000Z</published>
-    <updated>2016-05-23T12:14:42.000Z</updated>
+    <updated>2016-08-13T12:23:21.000Z</updated>
     
-    <content type="html">&lt;h3 id=&quot;每日给自己一句话：背人说话没好事儿&quot;&gt;&lt;a href=&quot;#每日给自己一句话：背人说话没好事儿&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：背人说话没好事儿&quot;&gt;&lt;/a&gt;每日给自己一句话：背人说话没好事儿&lt;/h3&gt;&lt;blockquote&gt;
+    <content type="html">&lt;p&gt;每日给自己一句话：背人说话没好事儿&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;blockquote&gt;
 &lt;p&gt;一生大概有80年，一年大概有12个月，大概有365天，每天有24个小时，除了8小时的睡觉时间，16个小时都在工作，学习，生活，旅游，发呆。&lt;/p&gt;
 &lt;p&gt;你的一生是否幸福快乐自由享受，就在乎这80年里面，你是否过得幸福快乐自由享受；也在乎每天年中365天里面你是否过得幸福快乐自由享受；也在乎你每天16个小时里面，你是否过得幸福快乐自由享受。&lt;/p&gt;
 &lt;p&gt;珍惜你一天里面的16个小时，不要浪费，不给花在无关的事，无关的人上面。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h2 id=&quot;工作日&quot;&gt;&lt;a href=&quot;#工作日&quot; class=&quot;headerlink&quot; title=&quot;工作日&quot;&gt;&lt;/a&gt;工作日&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;我的工作日：一天里面大概有10个番茄时间花在学习上，就是花了5个小时了，还剩下11个小时，一个小时2个番茄时间，就是说还有22个番茄时间，我都用在了哪里呢：&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -743,11 +694,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;每日给自己一句话：背人说话没好事儿&quot;&gt;&lt;a href=&quot;#每日给自己一句话：背人说话没好事儿&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：背人说话没好事儿&quot;&gt;&lt;/a&gt;每日给自己一句话：背人说话没好事儿&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;一生大概有80年，一年大概有12个月，大概有365天，每天有24个小时，除了8小时的睡觉时间，16个小时都在工作，学习，生活，旅游，发呆。&lt;/p&gt;
-&lt;p&gt;你的一生是否幸福快乐自由享受，就在乎这80年里面，你是否过得幸福快乐自由享受；也在乎每天年中365天里面你是否过得幸福快乐自由享受；也在乎你每天16个小时里面，你是否过得幸福快乐自由享受。&lt;/p&gt;
-&lt;p&gt;珍惜你一天里面的16个小时，不要浪费，不给花在无关的事，无关的人上面。&lt;/p&gt;
-&lt;/blockquote&gt;
+      &lt;p&gt;每日给自己一句话：背人说话没好事儿&lt;/p&gt;
     
     </summary>
     
@@ -759,11 +706,12 @@
     <link href="williamliuwen.cn/2016/05/22/%E7%95%AA%E8%8C%84%E5%B7%A5%E4%BD%9C%E6%B3%95%E5%BD%B1%E5%93%8D%E5%8A%9B/"/>
     <id>williamliuwen.cn/2016/05/22/番茄工作法影响力/</id>
     <published>2016-05-22T13:11:43.000Z</published>
-    <updated>2016-08-12T22:05:53.000Z</updated>
+    <updated>2016-08-13T12:19:43.000Z</updated>
     
     <content type="html">&lt;hr&gt;
-&lt;h3 id=&quot;每日给自己一句话：I-didn’t-allude-to-anything-or-anybody-我并未影射任何人或任何事&quot;&gt;&lt;a href=&quot;#每日给自己一句话：I-didn’t-allude-to-anything-or-anybody-我并未影射任何人或任何事&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：I didn’t allude to anything or anybody.(我并未影射任何人或任何事)&quot;&gt;&lt;/a&gt;每日给自己一句话：I didn’t allude to anything or anybody.(我并未影射任何人或任何事)&lt;/h3&gt;&lt;h3 id=&quot;总共40多条，带你全面领悟番茄的乐趣：&quot;&gt;&lt;a href=&quot;#总共40多条，带你全面领悟番茄的乐趣：&quot; class=&quot;headerlink&quot; title=&quot;总共40多条，带你全面领悟番茄的乐趣：&quot;&gt;&lt;/a&gt;总共40多条，带你全面领悟番茄的乐趣：&lt;/h3&gt;&lt;p&gt;1、采用简单的工具，比如铅笔，纸，不容易引起分心的工具。&lt;/p&gt;
+&lt;p&gt;每日给自己一句话：I didn’t allude to anything or anybody.(我并未影射任何人或任何事)&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;总共40多条，带你全面领悟番茄的乐趣：&quot;&gt;&lt;a href=&quot;#总共40多条，带你全面领悟番茄的乐趣：&quot; class=&quot;headerlink&quot; title=&quot;总共40多条，带你全面领悟番茄的乐趣：&quot;&gt;&lt;/a&gt;总共40多条，带你全面领悟番茄的乐趣：&lt;/h3&gt;&lt;p&gt;1、采用简单的工具，比如铅笔，纸，不容易引起分心的工具。&lt;/p&gt;
 &lt;p&gt;2、一个番茄时间有30分钟，包括25分钟工作时间和一个5分钟休息时间&lt;/p&gt;
 &lt;p&gt;3、一个番茄时间不能被划分，不能被中断，如果发上所说情况，重新开始计算番茄时间。25分钟纯粹工作时间，然后休息3-5分钟。&lt;/p&gt;
 &lt;p&gt;4、到了休息时间，必须停止工作，就算你觉得你能再这休息的几分钟内完成你的工作。&lt;/p&gt;
@@ -838,7 +786,7 @@
     <summary type="html">
     
       &lt;hr&gt;
-&lt;h3 id=&quot;每日给自己一句话：I-didn’t-allude-to-anything-or-anybody-我并未影射任何人或任何事&quot;&gt;&lt;a href=&quot;#每日给自己一句话：I-didn’t-allude-to-anything-or-anybody-我并未影射任何人或任何事&quot; class=&quot;headerlink&quot; title=&quot;每日给自己一句话：I didn’t allude to anything or anybody.(我并未影射任何人或任何事)&quot;&gt;&lt;/a&gt;每日给自己一句话：I didn’t allude to anything or anybody.(我并未影射任何人或任何事)&lt;/h3&gt;&lt;h3 id=&quot;总共40多条，带你全面领悟番茄的乐趣：&quot;&gt;&lt;a href=&quot;#总共40多条，带你全面领悟番茄的乐趣：&quot; class=&quot;headerlink&quot; title=&quot;总共40多条，带你全面领悟番茄的乐趣：&quot;&gt;&lt;/a&gt;总共40多条，带你全面领悟番茄的乐趣：&lt;/h3&gt;&lt;p&gt;1、采用简单的工具，比如铅笔，纸，不容易引起分心的工具。&lt;/p&gt;
+&lt;p&gt;每日给自己一句话：I didn’t allude to anything or anybody.(我并未影射任何人或任何事)&lt;/p&gt;
     
     </summary>
     

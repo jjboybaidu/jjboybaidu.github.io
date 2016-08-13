@@ -11,23 +11,17 @@
     
 
     
-    <meta name="description" content="如果你是初学者，可以按照步骤来，这是一个记录贴，方便查询代码；
-
-初步建立GitHub仓库的一些命令：touch README.md  // 新建说明文件ssh-keygen -t rsa -C “your_email@youremail.com” // 创建本地的keygencd ~/.ssh // 进入创建好keygen的文件，用cat id_rsa.pub来查看keygen，然后再把它复制">
+    <meta name="description" content="逝者长已矣,生者永存悲。——语意出自《论语·微子》和《石壕吏》">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GitHub命令小结">
 <meta property="og:url" content="williamliuwen.cn/2016/06/03/GitHub命令小结/index.html">
 <meta property="og:site_name" content="JJBoy">
-<meta property="og:description" content="如果你是初学者，可以按照步骤来，这是一个记录贴，方便查询代码；
-
-初步建立GitHub仓库的一些命令：touch README.md  // 新建说明文件ssh-keygen -t rsa -C “your_email@youremail.com” // 创建本地的keygencd ~/.ssh // 进入创建好keygen的文件，用cat id_rsa.pub来查看keygen，然后再把它复制">
+<meta property="og:description" content="逝者长已矣,生者永存悲。——语意出自《论语·微子》和《石壕吏》">
 <meta property="og:image" content="williamliuwen.cn/pic/0603.jpg">
-<meta property="og:updated_time" content="2016-06-03T12:00:56.000Z">
+<meta property="og:updated_time" content="2016-08-13T12:24:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GitHub命令小结">
-<meta name="twitter:description" content="如果你是初学者，可以按照步骤来，这是一个记录贴，方便查询代码；
-
-初步建立GitHub仓库的一些命令：touch README.md  // 新建说明文件ssh-keygen -t rsa -C “your_email@youremail.com” // 创建本地的keygencd ~/.ssh // 进入创建好keygen的文件，用cat id_rsa.pub来查看keygen，然后再把它复制">
+<meta name="twitter:description" content="逝者长已矣,生者永存悲。——语意出自《论语·微子》和《石壕吏》">
 <meta name="twitter:image" content="williamliuwen.cn/pic/0603.jpg">
 
     
@@ -99,11 +93,12 @@
 		
 		</div>
 		
-		<blockquote>
+		<p>逝者长已矣,生者永存悲。——语意出自《论语·微子》和《石壕吏》</p>
+<a id="more"></a>
+<blockquote>
 <p>如果你是初学者，可以按照步骤来，这是一个记录贴，方便查询代码；</p>
 </blockquote>
 <h3 id="初步建立GitHub仓库的一些命令："><a href="#初步建立GitHub仓库的一些命令：" class="headerlink" title="初步建立GitHub仓库的一些命令："></a>初步建立GitHub仓库的一些命令：</h3><p>touch README.md  // 新建说明文件<br>ssh-keygen -t rsa -C “your_email@youremail.com” // 创建本地的keygen<br>cd ~/.ssh // 进入创建好keygen的文件，用cat id_rsa.pub来查看keygen，然后再把它复制到你的github</p>
-<a id="more"></a>
 <p>ssh -T git@github.com // 这个是测试一下连接；<br>git config –global user.name “your name”<br>git config –global user.email “your_email@youremail.com”<br>git init //在当前项目目录中生成本地git管理,并建立一个隐藏.git目录<br>git add . //添加当前目录中的所有文件到索引<br>git commit -m “first commit”  // 提交到本地源码库，并附加提交注释<br>git remote add origin https: // github.com/chape/test.git //添加到远程项目，别名为origin<br>git push -u origin master  // 把本地源码库push到github 别名为origin的远程项目中，确认提交</p>
 <h3 id="每次更改完本地仓库之后，使用更新语句提交到远程仓库："><a href="#每次更改完本地仓库之后，使用更新语句提交到远程仓库：" class="headerlink" title="每次更改完本地仓库之后，使用更新语句提交到远程仓库："></a>每次更改完本地仓库之后，使用更新语句提交到远程仓库：</h3><p>cd /到你要更新的目录下</p>
 <p>git add .</p>
