@@ -1,188 +1,94 @@
-/* Code, Pre [landscape](http://goo.gl/hnwXeD) */
+/**
+ * Tomorrow
+ * https://raw.githubusercontent.com/isagalaev/highlight.js/master/src/styles/tomorrow.css
+ */
 
-/* highlight */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
 
-pre, .highlight, .gist {  
-  background: #333 !important;
-  margin: 0.5em 0;
-  padding: 1em 2%;
-  overflow: auto;
-  color: #ccc;  
-  font-size: 14px;
-  text-shadow: none;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;  
-  border-style: solid;
-  border-color: #ddd;
-  border-width: 1px 0;
-  line-height: 20px;
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+    color: #8e908c;
 }
 
-code {
-  background: #eee;
-  border: 1px solid #d6d6d6;
-  padding: 0 5px;
-  margin: 0 2px;
-  font-size: 90%;
-  text-shadow: 0 1px #fff;  
-  word-break: break-all;
-  word-wrap: break-word;
-  white-space: normal;
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+    color: #c82829;
 }
 
-.highlight .gutter pre{
-  text-align: left;
-  padding-right: 20px;
-  width: 100%;
-  color: #666;  
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+    color: #f5871f;
 }
 
-pre,
-code {
-  font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;  
+/* Tomorrow Yellow */
+.hljs-attribute {
+    color: #eab700;
 }
 
-pre code {
-  background: none;
-  text-shadow: none;
-  padding: 0;
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+    color: #718c00;
 }
 
-.highlight pre {
-  border: none;
-  margin: 0;
-  padding: 0;
-  white-space: pre;
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+    color: #4271ae;
 }
 
-.highlight table {
-  margin: 0;
-  width: auto;  
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+    color: #8959a8;
 }
 
-.highlight td {
-  border: none;
-  padding: 0;  
+.hljs {
+    display: block;
+    overflow-x: auto;
+    /*background: white;*/
+    color: #4d4d4c;
+    padding: 0.5em;
 }
 
-/* gist */
-
-.container .gist .gist-file {
-  border: none;
-  font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;    
-  margin: 0;
-}
-.container .gist .gist-file .gist-data {
-  background: none;
-  border: none;
-}
-.container .gist .gist-file .gist-data .line-numbers {
-  background: none;
-  border: none;
-  padding-right: 20px;
-  color: #666;
-  text-align: left;  
-}
-.container .gist .gist-file .gist-data .line-data {
-  padding: 0 !important;
-}
-.container .gist .gist-file .highlight {
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-.container .gist .gist-file .gist-meta {
-  background: #333;
-  color: #999;
-  font: 0.85em "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-shadow: 0 0;
-  padding: 0;
-  margin-top: 1em;
-  margin-left: 20px;
-}
-.container .gist .gist-file .gist-meta a {
-  color: #258fb8;
-  font-weight: normal;
-}
-.container .gist .gist-file .gist-meta a:hover {
-  text-decoration: underline;
+.hljs-emphasis {
+    font-style: italic;
 }
 
-/* figcaption */
-
-.highlight figcaption {
-  zoom: 1;
-  font-size: 0.85em;
-  color: #999;
-  line-height: 1em;
-  margin-bottom: 1em;
-}
-.highlight figcaption:before,
-.highlight figcaption:after {
-  content: "";
-  display: table;
-}
-.highlight figcaption:after {
-  clear: both;
-}
-.highlight figcaption a {
-  float: right;
+.hljs-strong {
+    font-weight: bold;
 }
 
-pre .comment,
-pre .title {
-  color: #999;
+/* --- Custom --- */
+
+pre {
+    background: url("./blueprint-dark.png") top center #fafbfc;
+    border-left: 5px solid #558abb;
+    color: #4d4e53;
+    font-family: Consolas,Monaco,'Andale Mono',monospace;
+    font-weight: 400;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    -moz-hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
 }
-pre .variable,
-pre .attribute,
-pre .tag,
-pre .regexp,
-pre .ruby .constant,
-pre .xml .tag .title,
-pre .xml .pi,
-pre .xml .doctype,
-pre .html .doctype,
-pre .css .id,
-pre .css .class,
-pre .css .pseudo {
-  color: #f2777a;
-}
-pre .number,
-pre .preprocessor,
-pre .built_in,
-pre .literal,
-pre .params,
-pre .constant {
-  color: #f99157;
-}
-pre .class,
-pre .ruby .class .title,
-pre .css .rules .attribute {
-  color: #9c9;
-}
-pre .string,
-pre .value,
-pre .inheritance,
-pre .header,
-pre .ruby .symbol,
-pre .xml .cdata {
-  color: #9c9;
-}
-pre .css .hexcolor {
-  color: #6cc;
-}
-pre .function,
-pre .python .decorator,
-pre .python .title,
-pre .ruby .function .title,
-pre .ruby .title .keyword,
-pre .perl .sub,
-pre .javascript .title,
-pre .coffeescript .title {
-  color: #69c;
-}
-pre .keyword,
-pre .javascript .function {
-  color: #c9c;
-}
+
